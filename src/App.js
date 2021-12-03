@@ -1,13 +1,26 @@
-import "./App.css";
+import './App.css';
+import { useState, useEffect } from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <h2>Pier</h2>
-      <h2>Giacomo</h2>
-      <h2>Renat</h2>
-    </div>
-  );
+  const [flight, setFlight] = useState([]);
+
+  const url = 'http://api.aviationstack.com/v1/flights?';
+
+  useEffect(() => {
+    (async () => {
+      let params = new URLSearchParams({
+        access_key: '971718036530bcdb31f99cd133604de6',
+        limit: 10000,
+        // flight_date: '2019-02-31'
+      });
+      let response = await fetch(`${url}${params}`);
+      response = await response.json();
+      setFlight(response);
+      
+    })();
+  }, []);
+  console.log(flight);
+  return <div className='App'></div>;
 }
 
 export default App;
