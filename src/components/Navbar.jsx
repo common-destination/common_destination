@@ -5,48 +5,47 @@ import { NavLink } from 'react-router-dom';
 import { useTheme } from '../ThemeContext';
 
 const Navbar = () => {
-  const { burgerMenu, setBurgerMenu, devices } = useTheme();
-
-  const burgerMenuToggle = () => {
-    if (devices.burgerMenu && burgerMenu === false) {
-      setBurgerMenu(true);
+  const { burgerMenuToggle, setBurgerMenuToggle, devices } = useTheme();
+  const handleBurgerMenuToggle = () => {
+    if (devices.burgerMenu && !burgerMenuToggle) {
+      setBurgerMenuToggle(true);
     }
-    if (devices.burgerMenu && burgerMenu === true) {
-      setBurgerMenu(false);
+    if (devices.burgerMenu && burgerMenuToggle) {
+      setBurgerMenuToggle(false);
     }
   };
 
   return (
     <div className='Navbar'>
-      {!devices.burgerMenu || burgerMenu === true ? (
-        <ul className={!burgerMenu ? 'navBar' : 'burgerMenu'}>
-          <li onClick={burgerMenuToggle}>
+      {!devices.burgerMenu || burgerMenuToggle ? (
+        <ul className={!burgerMenuToggle ? 'navBar' : 'burgerMenu'}>
+          <li onClick={handleBurgerMenuToggle}>
             <NavLink className='navLink' to='/'>
               HOME
             </NavLink>
           </li>
-          <li onClick={burgerMenuToggle}>
+          <li onClick={handleBurgerMenuToggle}>
             <NavLink className='navLink' to='/login'>
               LOGIN
             </NavLink>
           </li>
-          <li onClick={burgerMenuToggle}>
+          <li onClick={handleBurgerMenuToggle}>
             <NavLink className='navLink' to='/signup'>
               SIGNUP
             </NavLink>
           </li>
-          <li onClick={burgerMenuToggle}>
+          <li onClick={handleBurgerMenuToggle}>
             <NavLink className='navLink' to='/profil'>
               PROFIL
             </NavLink>
           </li>
-          <li onClick={burgerMenuToggle}>
+          <li onClick={handleBurgerMenuToggle}>
             <NavLink className='navLink' to='/about'>
               ABOUT
             </NavLink>
           </li>
 
-          <li onClick={burgerMenuToggle}>
+          <li onClick={handleBurgerMenuToggle}>
             <NavLink className='navLink' to='/contact'>
               CONTACT
             </NavLink>
@@ -54,9 +53,9 @@ const Navbar = () => {
         </ul>
       ) : (
         devices.burgerMenu &&
-        !burgerMenu === true && (
+        !burgerMenuToggle && (
           <div
-            onClick={burgerMenuToggle}
+            onClick={handleBurgerMenuToggle}
             className='burgerIcon'
             to='/burgermenu'
           >
@@ -74,8 +73,8 @@ const Navbar = () => {
           </div>
         )
       )}
-      {devices.burgerMenu && burgerMenu === true && (
-        <p className='burgerX' onClick={burgerMenuToggle}>
+      {devices.burgerMenu && burgerMenuToggle && (
+        <p className='burgerX' onClick={handleBurgerMenuToggle}>
           X
         </p>
       )}

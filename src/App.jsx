@@ -6,13 +6,13 @@ import Main from './components/Main';
 import { useTheme } from './ThemeContext';
 
 function App() {
-  const { burgerMenu } = useTheme();
+  const { burgerMenuToggle } = useTheme();
 
   return (
     <Router>
       <div className='App' id='app-background'>
         <Navbar />
-        {!burgerMenu && <Main />}
+        {!burgerMenuToggle && <Main />}
       </div>
     </Router>
   );
