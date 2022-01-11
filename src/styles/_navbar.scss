@@ -1,0 +1,56 @@
+.Navbar {
+  
+  .navBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: large;
+    font-weight: bold;
+  }
+  li {
+    .navLink {
+      text-decoration: none;
+      color: blue;
+      margin: 1%;
+      margin: 0 8vw 0 0vw;
+    }
+    .active {
+      color: red !important;
+      font-weight: bolder;
+      font-size: 200%;
+    }
+  }
+
+  .BurgerMenuIcons {
+    display: flex;
+    justify-content: flex-start;
+
+    svg {
+      margin-left: 0.1vw;
+      width: clamp(1em, 2vw, 3em);
+      height: clamp(1em, 2vh, 3em);
+    }
+  }
+}
+
+.burgerIcon {
+  color: blue;
+  width: calc(2em + 2vw);
+  height: calc(1.5em + 2vh);
+}
+
+.burgerX {
+  color: blue;
+  position: absolute;
+  right: 6.5vw;
+  top: -2vh;
+  font-size: clamp(2em, 2vw, 3em);
+}
+
+@media only screen and (max-width: 749px) {
+  .burgerIcon {
+    position: absolute;
+    right: 4vw;
+    top: 2vh;
+  }
+}

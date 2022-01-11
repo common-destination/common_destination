@@ -1,0 +1,44 @@
+/* reset CSS */
+*,
+*::before,
+*::after {
+  // margin: 0;
+  // padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html {
+  background-color: black;
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden; /* Hide scrollbars */
+
+  body {
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    // padding: 0.1%;
+
+    .App {
+      @import './variables';
+      @import './navbar';
+      @import './burgerMenu';
+      @import './main';
+      @import './home';
+      @import './about';
+      @import './profile';
+      @import './contact';
+      @import './login';
+      @import './signup';
+
+      background-color: white;
+      max-width: 100%;
+      min-height: 100vh;
+
+      ul {
+        list-style: none;
+      }
+    }
+  }
+}
