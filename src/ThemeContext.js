@@ -12,6 +12,7 @@ export function ThemeProvider({ children }) {
   const [scrollbar, setScrollbar] = useState("stopDown");
   const [signupToggle, setSignupToggle] = useState(false);
   const [loginToggle, setLoginToggle] = useState(false);
+  const [airplanePosition, setAirplanePosition] = useState(0);
   const mediaQueries = {
     burgerMenu: useMediaQuery("(max-width: 750px)"),
   };
@@ -28,6 +29,8 @@ export function ThemeProvider({ children }) {
         mediaQueries,
         scrollbar,
         setScrollbar,
+        airplanePosition,
+        setAirplanePosition,
       }}
     >
       {children}

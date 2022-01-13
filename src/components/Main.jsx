@@ -14,8 +14,8 @@ import airplaneUp from "../asset/gifs/airplaneUp.gif";
 import airplaneUpStopped from "../asset/gifs/airplaneUpStopped.png";
 
 const Main = () => {
-  const { signupToggle, loginToggle, scrollbar } = useTheme();
-
+  const { signupToggle, loginToggle, scrollbar, airplanePosition } = useTheme();
+  // console.log(airplanePosition);
   const getScrollbarImage = () => {
     if (scrollbar === "stopDown") {
       return airplaneDownStopped;
@@ -38,6 +38,7 @@ const Main = () => {
       <img
         className="airplaneScrollBarDown"
         src={getScrollbarImage()}
+        style={{ top: `${airplanePosition}px` }}
         alt="scrollBar"
       />
       <Routes>
