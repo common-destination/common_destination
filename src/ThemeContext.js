@@ -1,5 +1,4 @@
-import React, { useState, useContext } from 'react';
-import useMediaQuery from './components/UseMediaQuery';
+import React, { useState, useContext } from "react";
 
 const ThemeContext = React.createContext();
 
@@ -9,16 +8,18 @@ export function useTheme() {
 
 export function ThemeProvider({ children }) {
   const [burgerMenuToggle, setBurgerMenuToggle] = useState(false);
-  const devices = {
-    burgerMenu: useMediaQuery('(max-width: 750px)'),
-  };
+  const [signupToggle, setSignupToggle] = useState(false);
+  const [loginToggle, setLoginToggle] = useState(false);
 
   return (
     <ThemeContext.Provider
       value={{
-        devices,
         burgerMenuToggle,
         setBurgerMenuToggle,
+        signupToggle,
+        setSignupToggle,
+        loginToggle,
+        setLoginToggle,
       }}
     >
       {children}

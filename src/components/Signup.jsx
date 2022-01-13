@@ -2,8 +2,8 @@ import React from 'react';
 
 function Signup() {
     return (
-        <div>
-            
+        <div className="Signup">
+            <h1>Signup</h1>
         </div>
     );
 }

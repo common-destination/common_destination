@@ -3,16 +3,13 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './styles/App.scss';
 import Navbar from './components/Navbar';
 import Main from './components/Main';
-import { useTheme } from './ThemeContext';
 
 function App() {
-  const { burgerMenuToggle } = useTheme();
-
   return (
     <Router>
-      <div className='App' id='app-background'>
+      <div className='App'>
         <Navbar />
-        {!burgerMenuToggle && <Main />}
+        <Main />
       </div>
     </Router>
   );
