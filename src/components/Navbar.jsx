@@ -23,43 +23,36 @@ const Navbar = () => {
   // !signupToggle ? setSignupToggle(true) : setSignupToggle(false);
   // !loginToggle ? setLoginToggle(true) : setLoginToggle(false);
 
- // if (!loginToggle) {
-    //   setLoginToggle(true);
-    // }
-    // if (loginToggle) {
-    //   setLoginToggle(false);
-    // }
+  // if (!loginToggle) {
+  //   setLoginToggle(true);
+  // }
+  // if (loginToggle) {
+  //   setLoginToggle(false);
+  // }
 
-    // if (!signupToggle) {
-    //   setSignupToggle(true);
-    // }
-    // if (signupToggle) {
-    //   setSignupToggle(false);
-    // }
+  // if (!signupToggle) {
+  //   setSignupToggle(true);
+  // }
+  // if (signupToggle) {
+  //   setSignupToggle(false);
+  // }
 
   return (
     <div className="Navbar">
       {!burgerMenuToggle && (
         <ul className="topNavBar">
           <li>
-            <NavLink className="navLink" to="/">
-              HOME
-            </NavLink>
+            <NavLink to="/">HOME</NavLink>
           </li>
           <li>
-            <NavLink className="navLink" to="/account">
-              ACCOUNT
-            </NavLink>
+            <NavLink to="/account">ACCOUNT</NavLink>
           </li>
         </ul>
       )}
       {burgerMenuToggle ? (
         <ul className="burgerMenu">
-      
           <li onClick={handleToogles}>
-            <NavLink to="/">
-              <p> HOME</p>
-            </NavLink>
+            <NavLink to="/">HOME</NavLink>
           </li>
           {/* <li
             onClick={() => {
@@ -68,27 +61,17 @@ const Navbar = () => {
               handleloginToggle();
             }}
           > */}
+          <li onClick={handleToogles}>LOGIN</li>
+          <li onClick={handleToogles}>SIGNUP</li>
           <li onClick={handleToogles}>
-            <p>LOGIN</p>
+            <NavLink to="/account">ACCOUNT</NavLink>
           </li>
           <li onClick={handleToogles}>
-            <p>SIGNUP</p>
-          </li>
-          <li onClick={handleToogles}>
-            <NavLink to="/account">
-              <p>ACCOUNT</p>
-            </NavLink>
-          </li>
-          <li onClick={handleToogles}>
-            <NavLink to="/about">
-              <p>ABOUT</p>
-            </NavLink>
+            <NavLink to="/about">ABOUT</NavLink>
           </li>
 
           <li onClick={handleToogles}>
-            <NavLink to="/contact">
-              <p>CONTACT</p>
-            </NavLink>
+            <NavLink to="/contact">CONTACT</NavLink>
           </li>
         </ul>
       ) : (

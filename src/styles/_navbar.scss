@@ -8,17 +8,12 @@
     font-weight: bold;
 
     li {
-      .navLink {
-        text-decoration: none;
-        color: blue;
-        margin: 1%;
-        margin: 0 8vw 0 0vw;
-      }
+      margin: 1%;
+      margin: 0 8vw 0 0vw;
+
       .active {
-        // color: red !important;
         display: none;
         font-weight: bolder;
-        font-size: 200%;
       }
     }
   }
