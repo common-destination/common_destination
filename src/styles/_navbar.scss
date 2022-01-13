@@ -39,6 +39,7 @@
   .menuIconClosed {
     width: clamp(1.8em, 1vw, 3.5em);
     height: clamp(1.8em, 1vh, 3.5em);
+    position: absolute;
     animation: animate 1.2s ease-in-out;
     animation-name: burgeMenuApparition;
   }
