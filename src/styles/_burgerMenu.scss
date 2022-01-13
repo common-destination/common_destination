@@ -1,17 +1,28 @@
 .burgerMenu {
-  background-color: rgba(177, 182, 175, 0.733);
+  background-color: #c3c3c3ce;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: clamp(1em, 1.5vw, 2em);
-  font-weight: bold;
   position: absolute;
+  right: 0;
   padding: 2% 1% 2% 1%;
-  min-height: 100vh;
-  width: 100vw;
+  animation: animate 1s ease-in-out;
+  animation-name: burgeMenuApparition;
+
 
   li {
     margin: 2vh;
+  }
+}
+
+@keyframes burgeMenuApparition {
+  0% {
+    opacity: 0;
+    transform: translate(180%, 130%) scale(0.1);
+  }
+  100% {
+    opacity: 1;
   }
 }

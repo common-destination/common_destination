@@ -1,15 +1,14 @@
 .Main {
-    // border: solid 1px red;
-    max-width: 100%;
-    min-height: 100vh;
-    background-color: $color3;
+  // border: solid 1px red;
+  max-width: 100%;
+  min-height: 700vh;
+  background-color: $color3;
 
-    padding: 1%;
-    .airplaneScrollBarDown{
-      width: clamp(1em,2.5vw,3em);
-      position: fixed;
-      top: 0;
-      right: 0;
-    }
+  padding: 1%;
+  .airplaneScrollBarDown {
+    width: clamp(1em, 2.5vw, 3em);
+    position: fixed;
+    top: 0;
+    right: 0;
   }
-  
+}

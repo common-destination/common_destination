@@ -8,13 +8,16 @@ import menuIconClosed from "../asset/icons/menuClosed2.png";
 
 const Navbar = () => {
   const {
+    mediaQueries,
     burgerMenuToggle,
     setBurgerMenuToggle,
-    signupToggle,
-    setSignupToggle,
-    loginToggle,
-    setLoginToggle,
+    // signupToggle,
+    // setSignupToggle,
+    // loginToggle,
+    // setLoginToggle,
   } = useTheme();
+
+  // console.log(mediaQueries.burgerMenu);
 
   const handleToogles = () => {
     !burgerMenuToggle ? setBurgerMenuToggle(true) : setBurgerMenuToggle(false);
@@ -50,7 +53,13 @@ const Navbar = () => {
         </ul>
       )}
       {burgerMenuToggle ? (
-        <ul className="burgerMenu">
+        <ul
+          className="burgerMenu"
+          style={{
+            width: mediaQueries.burgerMenu ? "100vw" : "40vw",
+            height: mediaQueries.burgerMenu ? "100vh" : "80vh",
+          }}
+        >
           <li onClick={handleToogles}>
             <NavLink to="/">HOME</NavLink>
           </li>
