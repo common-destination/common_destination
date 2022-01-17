@@ -5,16 +5,19 @@ import { NavLink } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import menuIcon from "../asset/icons/menu2.png";
 import menuIconClosed from "../asset/icons/menuClosed2.png";
+import avatarMale from "../asset/icons/avatarMale.png";
+import avatarFemale from "../asset/icons/avatarFemale.png";
 
 const Navbar = () => {
   const {
     mediaQueries,
     burgerMenuToggle,
     setBurgerMenuToggle,
-    // signupToggle,
-    // setSignupToggle,
-    // loginToggle,
-    // setLoginToggle,
+    signupToggle,
+    setSignupToggle,
+    loginToggle,
+    setLoginToggle,
+    gender,
   } = useTheme();
 
   // console.log(mediaQueries.burgerMenu);
@@ -23,23 +26,17 @@ const Navbar = () => {
     !burgerMenuToggle ? setBurgerMenuToggle(true) : setBurgerMenuToggle(false);
   };
 
-  // !signupToggle ? setSignupToggle(true) : setSignupToggle(false);
-  // !loginToggle ? setLoginToggle(true) : setLoginToggle(false);
+  const handleLoginToggles = () => {
+    !loginToggle ? setLoginToggle(true) : setLoginToggle(false);
 
-  // if (!loginToggle) {
-  //   setLoginToggle(true);
-  // }
-  // if (loginToggle) {
-  //   setLoginToggle(false);
-  // }
+  };
 
-  // if (!signupToggle) {
-  //   setSignupToggle(true);
-  // }
-  // if (signupToggle) {
-  //   setSignupToggle(false);
-  // }
+  const handleSignupToggles = () => {
+    !signupToggle ? setSignupToggle(true) : setSignupToggle(false);
 
+  };
+
+ 
   return (
     <div className="Navbar">
       {!burgerMenuToggle && (
@@ -48,7 +45,14 @@ const Navbar = () => {
             <NavLink to="/">HOME</NavLink>
           </li>
           <li>
-            <NavLink to="/account">ACCOUNT</NavLink>
+            <NavLink to="/account">
+              <img
+                src={gender === "male" ? avatarMale : avatarFemale}
+                alt="avatar"
+              />
+             
+              <span>username</span>
+            </NavLink>
           </li>
         </ul>
       )}
@@ -70,8 +74,8 @@ const Navbar = () => {
               handleloginToggle();
             }}
           > */}
-          <li onClick={handleToogles}>LOGIN</li>
-          <li onClick={handleToogles}>SIGNUP</li>
+          <li onClick={() => {handleToogles(); handleSignupToggles()}}>LOGIN</li>
+          <li onClick={() => {handleToogles(); handleLoginToggles()}}>SIGNUP</li>
           <li onClick={handleToogles}>
             <NavLink to="/account">ACCOUNT</NavLink>
           </li>

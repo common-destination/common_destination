@@ -12,6 +12,7 @@ export function ThemeProvider({ children }) {
   const [scrollbar, setScrollbar] = useState("stopDown");
   const [signupToggle, setSignupToggle] = useState(false);
   const [loginToggle, setLoginToggle] = useState(false);
+  const [gender, setGender] = useState("male");
   const [airplanePosition, setAirplanePosition] = useState(0);
   const mediaQueries = {
     burgerMenu: useMediaQuery("(max-width: 750px)"),
@@ -31,6 +32,8 @@ export function ThemeProvider({ children }) {
         setScrollbar,
         airplanePosition,
         setAirplanePosition,
+        gender,
+        setGender,
       }}
     >
       {children}

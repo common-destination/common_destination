@@ -15,7 +15,6 @@ import airplaneUpStopped from "../asset/gifs/airplaneUpStopped.png";
 
 const Main = () => {
   const { signupToggle, loginToggle, scrollbar, airplanePosition } = useTheme();
-  // console.log(airplanePosition);
   const getScrollbarImage = () => {
     if (scrollbar === "stopDown") {
       return airplaneDownStopped;
