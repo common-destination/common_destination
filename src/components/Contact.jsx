@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Contant() {
+function Contant(props) {
     return (
-        <div>
-            
+        <div className={props.className}>
+            <h1>Contact</h1>
         </div>
     );
 }

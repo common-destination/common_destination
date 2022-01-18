@@ -24,33 +24,42 @@ const Navbar = () => {
 
   const handleToogles = () => {
     !burgerMenuToggle ? setBurgerMenuToggle(true) : setBurgerMenuToggle(false);
+    setSignupToggle(false);
+    setLoginToggle(false);
   };
 
   const handleLoginToggles = () => {
     !loginToggle ? setLoginToggle(true) : setLoginToggle(false);
-
   };
 
   const handleSignupToggles = () => {
     !signupToggle ? setSignupToggle(true) : setSignupToggle(false);
-
   };
 
- 
   return (
     <div className="Navbar">
       {!burgerMenuToggle && (
         <ul className="topNavBar">
-          <li>
+          <li
+            onClick={() => {
+              setSignupToggle(false);
+              setLoginToggle(false);
+            }}
+          >
             <NavLink to="/">HOME</NavLink>
           </li>
-          <li>
+          <li
+            onClick={() => {
+              setSignupToggle(false);
+              setLoginToggle(false);
+            }}
+          >
             <NavLink to="/account">
               <img
                 src={gender === "male" ? avatarMale : avatarFemale}
                 alt="avatar"
               />
-             
+
               <span>username</span>
             </NavLink>
           </li>
@@ -67,15 +76,26 @@ const Navbar = () => {
           <li onClick={handleToogles}>
             <NavLink to="/">HOME</NavLink>
           </li>
-          {/* <li
+          <li
             onClick={() => {
-              handleBurgerMenuToggle();
-              handlesignupToggle();
-              handleloginToggle();
+              handleToogles();
+              handleLoginToggles();
+              setSignupToggle(false);
             }}
-          > */}
-          <li onClick={() => {handleToogles(); handleSignupToggles()}}>LOGIN</li>
-          <li onClick={() => {handleToogles(); handleLoginToggles()}}>SIGNUP</li>
+            style={{ cursor: "pointer" }}
+          >
+            LOGIN
+          </li>
+          <li
+            onClick={() => {
+              handleToogles();
+              handleSignupToggles();
+              setLoginToggle(false);
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            SIGNUP
+          </li>
           <li onClick={handleToogles}>
             <NavLink to="/account">ACCOUNT</NavLink>
           </li>

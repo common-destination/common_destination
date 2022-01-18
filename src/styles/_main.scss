@@ -10,4 +10,9 @@
     top: 0;
     right: 0;
   }
+
+  .backgroundBlurOpac {
+    opacity: 0.5;
+    filter: blur(1.2px);
+  }
 }

@@ -1,8 +1,9 @@
 import React from 'react';
 
-function Home() {
+function Home(props) {
   return (
-    <div className="Home">
+    <div className={props.className}>
+      <h1>Home</h1>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur eveniet alias inventore deleniti, ea facilis perspiciatis blanditiis nesciunt! Hic in minus laborum nam similique ea corporis beatae, eligendi unde laboriosam.
     Laborum, recusandae ea est numquam eveniet earum dolor suscipit ullam illo commodi, ut ipsum ipsa, accusantium corrupti asperiores ipsam maxime et vel iusto! Culpa dolor consectetur voluptatum possimus. Impedit, itaque.
     Libero delectus, unde facere earum esse eos illo maiores ea voluptatum ullam autem nemo aperiam obcaecati molestiae culpa, eveniet expedita placeat assumenda voluptas laborum, eaque sapiente aliquam? Ducimus, modi nisi.

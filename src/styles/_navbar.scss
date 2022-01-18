@@ -7,6 +7,7 @@
   align-items: center;
   position: fixed;
   top: 0;
+  
 
   .topNavBar {
     display: flex;
@@ -47,7 +48,7 @@
     width: clamp(1.8em, 1vw, 3.5em);
     height: clamp(1.8em, 1vh, 3.5em);
     position: absolute;
-    animation: animate 1.2s ease-in-out;
+    animation: animate 0.7s ease-in-out;
     animation-name: burgeMenuApparition;
   }
 }

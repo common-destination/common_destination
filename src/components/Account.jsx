@@ -1,9 +1,9 @@
 import React from 'react';
 
-function User() {
+function User(props) {
     return (
-        <div>
-            
+        <div className={props.className}>
+            <h1>Account</h1>
         </div>
     );
 }

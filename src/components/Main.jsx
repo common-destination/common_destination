@@ -40,11 +40,55 @@ const Main = () => {
         style={{ top: `${airplanePosition}px` }}
         alt="scrollBar"
       />
+
       <Routes>
-        <Route path="/account" element={<Account />}></Route>
-        <Route path="/about" element={<About />}></Route>
-        <Route path="/contact" element={<Contact />}></Route>
-        <Route exact path="/" element={<Home />}></Route>
+        <Route
+          path="/account"
+          element={
+            <Account
+              className={
+                loginToggle || signupToggle
+                  ? "Account backgroundBlurOpac"
+                  : "Account"
+              }
+            />
+          }
+        ></Route>
+        <Route
+          path="/about"
+          element={
+            <About
+              className={
+                loginToggle || signupToggle
+                  ? "Account backgroundBlurOpac"
+                  : "Account"
+              }
+            />
+          }
+        ></Route>
+        <Route
+          path="/contact"
+          element={
+            <Contact
+              className={
+                loginToggle || signupToggle
+                  ? "Contact backgroundBlurOpac"
+                  : "Contact"
+              }
+            />
+          }
+        ></Route>
+        <Route
+          exact
+          path="/"
+          element={
+            <Home
+              className={
+                loginToggle || signupToggle ? "Home backgroundBlurOpac" : "Home"
+              }
+            />
+          }
+        ></Route>
       </Routes>
     </div>
   );
