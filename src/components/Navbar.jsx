@@ -3,10 +3,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
-import menuIcon from "../asset/icons/menu2.png";
-import menuIconClosed from "../asset/icons/menuClosed2.png";
-import avatarMale from "../asset/icons/avatarMale.png";
-import avatarFemale from "../asset/icons/avatarFemale.png";
+import icons from "./icons"
 
 const Navbar = () => {
   const {
@@ -56,7 +53,7 @@ const Navbar = () => {
           >
             <NavLink to="/account">
               <img
-                src={gender === "male" ? avatarMale : avatarFemale}
+                src={gender === "male" ? icons.avatarMale : icons.avatarFemale}
                 alt="avatar"
               />
 
@@ -110,14 +107,14 @@ const Navbar = () => {
       ) : (
         !burgerMenuToggle && (
           <div onClick={handleToogles} to="/burgermenu">
-            <img className="menuIcon" src={menuIcon} alt="menu" />
+            <img className="menuIcon" src={icons.menuIcon} alt="menu" />
           </div>
         )
       )}
       {burgerMenuToggle && (
         <img
           className="menuIconClosed"
-          src={menuIconClosed}
+          src={icons.menuIconClosed}
           alt="menuClosed"
           onClick={handleToogles}
         />

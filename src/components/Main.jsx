@@ -8,27 +8,13 @@ import About from "./About";
 import Contact from "./Contact";
 import Home from "./Home";
 import { useTheme } from "../ThemeContext";
-import airplaneDown from "../asset/gifs/airplaneDown.gif";
-import airplaneDownStopped from "../asset/gifs/airplaneDownStopped.png";
-import airplaneUp from "../asset/gifs/airplaneUp.gif";
-import airplaneUpStopped from "../asset/gifs/airplaneUpStopped.png";
+import images from "./images"
 
+import * as scrollbarAnimation from "./scrollbarAnimation";
 const Main = () => {
-  const { signupToggle, loginToggle, scrollbar, airplanePosition } = useTheme();
-  const getScrollbarImage = () => {
-    if (scrollbar === "stopDown") {
-      return airplaneDownStopped;
-    }
-    if (scrollbar === "down") {
-      return airplaneDown;
-    }
-    if (scrollbar === "stopUp") {
-      return airplaneUpStopped;
-    }
-    if (scrollbar === "up") {
-      return airplaneUp;
-    }
-  };
+  const { signupToggle, loginToggle, scrollbarImg, airplanePosition } =
+    useTheme();
+
   return (
     <div className="Main">
       {loginToggle && <Login />}
@@ -36,7 +22,13 @@ const Main = () => {
 
       <img
         className="airplaneScrollBarDown"
-        src={getScrollbarImage()}
+        src={scrollbarAnimation.getScrollbarImage(
+          scrollbarImg,
+          images.airplaneDownStopped,
+          images.airplaneDown,
+          images.airplaneUpStopped,
+          images.airplaneUp
+        )}
         style={{ top: `${airplanePosition}px` }}
         alt="scrollBar"
       />

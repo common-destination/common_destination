@@ -11,11 +11,23 @@
   animation: animate 1s ease-in-out;
   animation-name: validationsApparition;
   z-index: 99999;
+
+  .menuIconClosed {
+    position: absolute;
+    top: 1.5vh;
+    right: 1vw;
+    cursor: grabbing;
+    width: clamp(1em, 2vw, 2em);
+    height: clamp(1.5em, 2.2vh, 3em);
+    z-index: 999999999;
+  }
 }
 
 @keyframes validationsApparition {
   0% {
     opacity: 0;
+    width: 10vw;
+    height: 10vh;
     box-shadow: 0px 0px 0px;
   }
   100% {

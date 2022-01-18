@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { useTheme } from "../ThemeContext";
 
-const ScrollbarAnimation = () => {
+export const ScrollbarAnimation = () => {
   const [scrollCount, setScrollCount] = useState(0);
-  const { setScrollbar, setAirplanePosition } = useTheme();
+  const { setScrollbarImg, setAirplanePosition } = useTheme();
   function usePrevious(value) {
     const ref = useRef();
     useEffect(() => {
@@ -12,6 +12,7 @@ const ScrollbarAnimation = () => {
     return ref.current;
   }
   const prevCount = usePrevious(scrollCount);
+
   window.addEventListener("scroll", function () {
     setScrollCount(window.pageYOffset);
     // console.log(`pageYOffset:${window.pageYOffset}`);
@@ -20,22 +21,35 @@ const ScrollbarAnimation = () => {
     console.log(`prevCountt: ${prevCount}`);
     // console.log(differce);
     if (window.scrollY === 0) {
-      setScrollbar("stopDown");
+      setScrollbarImg("stopDown");
       setAirplanePosition(0);
     } else if (window.scrollY > scrollCount) {
-      setScrollbar("down");
+      setScrollbarImg("down");
       setAirplanePosition(window.scrollY / 10);
     } else if (window.scrollY < scrollCount && window.scrollY !== 0) {
-      setScrollbar("up");
+      setScrollbarImg("up");
       setAirplanePosition(window.scrollY / 10);
     }
     setTimeout(() => {
       if (scrollCount === prevCount && window.scrollY !== 0) {
-        setScrollbar("stopUp");
+        setScrollbarImg("stopUp");
         setAirplanePosition(window.scrollY / 10);
       }
     }, 5000);
   });
 };
 
-export default ScrollbarAnimation;
+export const getScrollbarImage = (scrollbar, img1, img2, img3, img4) => {
+  switch (scrollbar) {
+    case "stopDown":
+      return img1;
+    case "down":
+      return img2;
+    case "stopUp":
+      return img3;
+    case "up":
+      return img4;
+    default:
+      return img1;
+  }
+};
