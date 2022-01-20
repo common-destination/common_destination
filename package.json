@@ -2,44 +2,6 @@
   "name": "common-destination",
   "version": "0.1.0",
   "private": true,
-<<<<<<< HEAD
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "frontend": "npm start",
-    "backend": "cd ../backend && npm start",
-    "dev": "concurrently \"npm run backend\" \"npm run frontend\""
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "concurrently": "^6.4.0"
-=======
     "dependencies": {
       "@testing-library/jest-dom": "^5.11.10",
       "@testing-library/react": "^11.2.6",
@@ -75,6 +37,5 @@
         "last 1 safari version"
       ]
     }
->>>>>>> frontendBasic
   }
   
