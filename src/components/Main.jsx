@@ -1,24 +1,21 @@
 // import React, { useState } from "react";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Signup from "./Signup";
-import Login from "./Login";
+import Validation from "./Validation";
 import Account from "./Account";
 import About from "./About";
 import Contact from "./Contact";
 import Home from "./Home";
 import { useTheme } from "../ThemeContext";
-import images from "./images"
+import images from "./images";
 
 import * as scrollbarAnimation from "./scrollbarAnimation";
 const Main = () => {
-  const { signupToggle, loginToggle, scrollbarImg, airplanePosition } =
-    useTheme();
+  const { validationToggle, scrollbarImg, airplanePosition } = useTheme();
 
   return (
     <div className="Main">
-      {loginToggle && <Login />}
-      {signupToggle && <Signup />}
+      {validationToggle && <Validation />}
 
       <img
         className="airplaneScrollBarDown"
@@ -39,9 +36,7 @@ const Main = () => {
           element={
             <Account
               className={
-                loginToggle || signupToggle
-                  ? "Account backgroundBlurOpac"
-                  : "Account"
+                validationToggle ? "Account backgroundBlurOpac" : "Account"
               }
             />
           }
@@ -51,9 +46,7 @@ const Main = () => {
           element={
             <About
               className={
-                loginToggle || signupToggle
-                  ? "Account backgroundBlurOpac"
-                  : "Account"
+                validationToggle ? "Account backgroundBlurOpac" : "Account"
               }
             />
           }
@@ -63,9 +56,7 @@ const Main = () => {
           element={
             <Contact
               className={
-                loginToggle || signupToggle
-                  ? "Contact backgroundBlurOpac"
-                  : "Contact"
+                validationToggle ? "Contact backgroundBlurOpac" : "Contact"
               }
             />
           }
@@ -75,9 +66,7 @@ const Main = () => {
           path="/"
           element={
             <Home
-              className={
-                loginToggle || signupToggle ? "Home backgroundBlurOpac" : "Home"
-              }
+              className={validationToggle ? "Home backgroundBlurOpac" : "Home"}
             />
           }
         ></Route>

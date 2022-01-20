@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import useMediaQuery from "./components/UseMediaQuery";
 
-
 const ThemeContext = React.createContext();
 
 export function useTheme() {
@@ -11,8 +10,9 @@ export function useTheme() {
 export function ThemeProvider({ children }) {
   const [burgerMenuToggle, setBurgerMenuToggle] = useState(false);
   const [scrollbarImg, setScrollbarImg] = useState("stopDown");
+  const [validationToggle, setValidationToggle] = useState(false);
   const [signupToggle, setSignupToggle] = useState(false);
-  const [loginToggle, setLoginToggle] = useState(false);
+  const [loginToggle, setLoginToggle] = useState(true);
   const [gender, setGender] = useState("male");
   const [airplanePosition, setAirplanePosition] = useState(0);
   const mediaQueries = {
@@ -24,6 +24,8 @@ export function ThemeProvider({ children }) {
       value={{
         burgerMenuToggle,
         setBurgerMenuToggle,
+        validationToggle,
+        setValidationToggle,
         signupToggle,
         setSignupToggle,
         loginToggle,
@@ -35,7 +37,6 @@ export function ThemeProvider({ children }) {
         setAirplanePosition,
         gender,
         setGender,
-      
       }}
     >
       {children}

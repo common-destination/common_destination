@@ -3,17 +3,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
-import icons from "./icons"
+import icons from "./icons";
 
 const Navbar = () => {
   const {
     mediaQueries,
     burgerMenuToggle,
     setBurgerMenuToggle,
-    signupToggle,
-    setSignupToggle,
-    loginToggle,
-    setLoginToggle,
+    // validationToggle,
+    setValidationToggle,
     gender,
   } = useTheme();
 
@@ -21,16 +19,11 @@ const Navbar = () => {
 
   const handleToogles = () => {
     !burgerMenuToggle ? setBurgerMenuToggle(true) : setBurgerMenuToggle(false);
-    setSignupToggle(false);
-    setLoginToggle(false);
+    setValidationToggle(false);
   };
 
-  const handleLoginToggles = () => {
-    !loginToggle ? setLoginToggle(true) : setLoginToggle(false);
-  };
-
-  const handleSignupToggles = () => {
-    !signupToggle ? setSignupToggle(true) : setSignupToggle(false);
+  const handleValidationToggle = () => {
+    setValidationToggle(true);
   };
 
   return (
@@ -39,16 +32,14 @@ const Navbar = () => {
         <ul className="topNavBar">
           <li
             onClick={() => {
-              setSignupToggle(false);
-              setLoginToggle(false);
+              setValidationToggle(false);
             }}
           >
             <NavLink to="/">HOME</NavLink>
           </li>
           <li
             onClick={() => {
-              setSignupToggle(false);
-              setLoginToggle(false);
+              setValidationToggle(false);
             }}
           >
             <NavLink to="/account">
@@ -56,7 +47,6 @@ const Navbar = () => {
                 src={gender === "male" ? icons.avatarMale : icons.avatarFemale}
                 alt="avatar"
               />
-
               <span>username</span>
             </NavLink>
           </li>
@@ -76,23 +66,13 @@ const Navbar = () => {
           <li
             onClick={() => {
               handleToogles();
-              handleLoginToggles();
-              setSignupToggle(false);
+              handleValidationToggle();
             }}
             style={{ cursor: "pointer" }}
           >
             LOGIN
           </li>
-          <li
-            onClick={() => {
-              handleToogles();
-              handleSignupToggles();
-              setLoginToggle(false);
-            }}
-            style={{ cursor: "pointer" }}
-          >
-            SIGNUP
-          </li>
+
           <li onClick={handleToogles}>
             <NavLink to="/account">ACCOUNT</NavLink>
           </li>
