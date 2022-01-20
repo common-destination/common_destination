@@ -1,3 +1,4 @@
+// import React, { useState, useContext, useEffect } from "react";
 import React, { useState, useContext } from "react";
 import useMediaQuery from "./functions/UseMediaQuery.jsx";
 
@@ -18,17 +19,33 @@ export function ThemeProvider({ children }) {
   const mediaQueries = {
     burgerMenu: useMediaQuery("(max-width: 750px)"),
   };
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   const [currentUser, setCurrentUser] = useState({});
+  const [appMessage, setAppMessage] = useState({kind:"none", message: ""});
 
-  const currentUserIsInGroup = (accessGroup) => {
-    const accessGroupArray = currentUser.accessGroups
-      .split(",")
-      .map((m) => m.trim());
-    return accessGroupArray.includes(accessGroup);
-  };
+  // useEffect(() => {
+  //   (async () => {
+  //     const requestOptions = {
+  //       method: "GET",
+  //       credentials: "include",
+  //     };
+  //     const response = await fetch(
+  //       // `${backendUrl}/users/currentuser`,
+  //       `http://localhost:7033/users/currentuser`,
+  //       requestOptions
+  //     );
+  //     if (response.ok) {
+  //       const _currentUser = await response.json();
+  //       setCurrentUser((prev) => ({ ...prev, ..._currentUser }));
+  //     }
+  //   })();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  const initializePage = () => {
+		setAppMessage(prev => ({ ...prev, ...{ kind: 'none', message: '' } }));
+	}
 
   return (
     <ThemeContext.Provider
@@ -50,8 +67,10 @@ export function ThemeProvider({ children }) {
         setGender,
         currentUser,
         setCurrentUser,
-        currentUserIsInGroup,
         backendUrl,
+        appMessage, 
+			setAppMessage,
+			initializePage
       }}
     >
       {children}

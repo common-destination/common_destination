@@ -13,6 +13,7 @@ const Navbar = () => {
     // validationToggle,
     setValidationToggle,
     gender,
+    currentUser,
   } = useTheme();
 
   // console.log(mediaQueries.burgerMenu);
@@ -47,7 +48,7 @@ const Navbar = () => {
                 src={gender === "male" ? icons.avatarMale : icons.avatarFemale}
                 alt="avatar"
               />
-              <span>username</span>
+              <span>{"ciao " + currentUser.username}</span>
             </NavLink>
           </li>
         </ul>
