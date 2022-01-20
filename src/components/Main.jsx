@@ -7,9 +7,10 @@ import About from "./About";
 import Contact from "./Contact";
 import Home from "./Home";
 import { useTheme } from "../ThemeContext";
-import images from "./images";
+import images from "../functions/images.js";
+import * as scrollbarAnimation from "../functions/scrollbarAnimation.jsx";
 
-import * as scrollbarAnimation from "./scrollbarAnimation";
+
 const Main = () => {
   const { validationToggle, scrollbarImg, airplanePosition } = useTheme();
 

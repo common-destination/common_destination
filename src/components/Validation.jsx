@@ -2,7 +2,7 @@ import React from "react";
 import { useTheme } from "../ThemeContext";
 import Login from "./Login";
 import Signup from "./Signup";
-import icons from "./icons";
+import icons from "../functions/icons.js";
 
 function Validation() {
   const {
