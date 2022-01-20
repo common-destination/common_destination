@@ -19,6 +19,17 @@ export function ThemeProvider({ children }) {
     burgerMenu: useMediaQuery("(max-width: 750px)"),
   };
 
+  const [currentUser, setCurrentUser] = useState({});
+
+  const currentUserIsInGroup = (accessGroup) => {
+    const accessGroupArray = currentUser.accessGroups
+      .split(",")
+      .map((m) => m.trim());
+    return accessGroupArray.includes(accessGroup);
+  };
+
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
   return (
     <ThemeContext.Provider
       value={{
@@ -37,6 +48,10 @@ export function ThemeProvider({ children }) {
         setAirplanePosition,
         gender,
         setGender,
+        currentUser,
+        setCurrentUser,
+        currentUserIsInGroup,
+        backendUrl,
       }}
     >
       {children}
