@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/_signup.scss";
 import { useState } from "react";
 import { useTheme } from "../ThemeContext";
 import { ImEyeBlocked, ImEye } from "react-icons/im";
@@ -17,6 +18,8 @@ function Signup() {
   const [passwordsInputType2, setPasswordsInputType2] = useState("password");
 
   const [usernameIsValid, setUsernameIsValid] = useState(false);
+  const [password1IsValid, setPassword1IsValid] = useState(false);
+
   const [emailIsValid, setEmailIsValid] = useState(false);
 
   // SIGNUP FORM FIELD HANDLERS
@@ -31,8 +34,16 @@ function Signup() {
   };
 
   const handle_signupFormField_password1 = (e) => {
-    let password1 = e.target.value;
-    setSignupFormField_password1(password1);
+    let _password1 = e.target.value;
+    if (
+      _password1.length >= 5 &&
+      /^(?=.*[a-zA-Z])(?=.*[0-9])/.test(_password1)
+    ) {
+      setPassword1IsValid(true);
+    } else {
+      setPassword1IsValid(false);
+    }
+    setSignupFormField_password1(_password1);
   };
 
   const handleShowPasswordButton1 = () => {
@@ -108,7 +119,7 @@ function Signup() {
           <div className={"note " + (usernameIsValid ? "valid" : "invalid")}>
             required, minium 3 characters and maximum 10 characters
           </div>
-          <div className="row">
+          <div className={`row ${password1IsValid ? "valid" : "invalid"}`}>
             <label htmlFor="signupFormField_password1">Password 1</label>
             <input
               type={passwordsInputType1}
@@ -141,6 +152,9 @@ function Signup() {
                 <ImEyeBlocked />
               )}
             </span>
+            <div className={`note ${password1IsValid ? "valid" : "invalid"}`}>
+              <p>required minium 5 characters and 1 number</p>
+            </div>
           </div>
           <div className={"row " + (emailIsValid ? "valid" : "invalid")}>
             <label htmlFor="signupFormField_email">E-Mail</label>
