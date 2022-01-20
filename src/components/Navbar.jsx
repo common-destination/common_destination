@@ -3,21 +3,25 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
-import icons from "../functions/icons.js";
+import { FcHome } from "react-icons/fc";
+import { FaHome } from "react-icons/fa";
+import { SiGnuprivacyguard } from "react-icons/si";
+import { MdManageAccounts, MdOutlineClose } from "react-icons/md";
+import { BsInfoSquareFill } from "react-icons/bs";
+import { GrContact } from "react-icons/gr";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
   const {
     mediaQueries,
     burgerMenuToggle,
     setBurgerMenuToggle,
-    // validationToggle,
     setValidationToggle,
-    gender,
   } = useTheme();
 
-  // console.log(mediaQueries.burgerMenu);
+  // const reactIconstyles = { fontSize: "1.8vw", margin: "0 1vw" };
 
-  const handleToogles = () => {
+  const handleToggles = () => {
     !burgerMenuToggle ? setBurgerMenuToggle(true) : setBurgerMenuToggle(false);
     setValidationToggle(false);
   };
@@ -35,7 +39,9 @@ const Navbar = () => {
               setValidationToggle(false);
             }}
           >
-            <NavLink to="/">HOME</NavLink>
+            <NavLink to="/">
+              <FcHome className="reactIcons" />
+            </NavLink>
           </li>
           <li
             onClick={() => {
@@ -43,11 +49,8 @@ const Navbar = () => {
             }}
           >
             <NavLink to="/account">
-              <img
-                src={gender === "male" ? icons.avatarMale : icons.avatarFemale}
-                alt="avatar"
-              />
-              <span>username</span>
+              <MdManageAccounts className="reactIcons" />
+              <span></span>
             </NavLink>
           </li>
         </ul>
@@ -56,48 +59,53 @@ const Navbar = () => {
         <ul
           className="burgerMenu"
           style={{
-            width: mediaQueries.burgerMenu ? "100vw" : "40vw",
-            height: mediaQueries.burgerMenu ? "100vh" : "80vh",
+            width: mediaQueries.burgerMenu ? "100vw" : "30vw",
+            height: mediaQueries.burgerMenu ? "100vh" : "70vh",
           }}
         >
-          <li onClick={handleToogles}>
-            <NavLink to="/">HOME</NavLink>
+          <li onClick={handleToggles}>
+            <NavLink to="/">
+              <FaHome className="reactIcons" /> HOME
+            </NavLink>
           </li>
           <li
             onClick={() => {
-              handleToogles();
+              handleToggles();
               handleValidationToggle();
             }}
             style={{ cursor: "pointer" }}
           >
+            <SiGnuprivacyguard className="reactIcons" />
             LOGIN
           </li>
 
-          <li onClick={handleToogles}>
-            <NavLink to="/account">ACCOUNT</NavLink>
+          <li onClick={handleToggles}>
+            <NavLink to="/account">
+              <MdManageAccounts className="reactIcons" />
+              ACCOUNT
+            </NavLink>
           </li>
-          <li onClick={handleToogles}>
-            <NavLink to="/about">ABOUT</NavLink>
+          <li onClick={handleToggles}>
+            <NavLink to="/about">
+              <BsInfoSquareFill className="reactIcons" />
+              ABOUT
+            </NavLink>
           </li>
 
-          <li onClick={handleToogles}>
-            <NavLink to="/contact">CONTACT</NavLink>
+          <li onClick={handleToggles}>
+            <NavLink to="/contact">
+              <GrContact className="reactIcons" />
+              CONTACT
+            </NavLink>
           </li>
         </ul>
       ) : (
         !burgerMenuToggle && (
-          <div onClick={handleToogles} to="/burgermenu">
-            <img className="menuIcon" src={icons.menuIcon} alt="menu" />
-          </div>
+          <GiHamburgerMenu className="menuIcon" onClick={handleToggles} />
         )
       )}
       {burgerMenuToggle && (
-        <img
-          className="menuIconClosed"
-          src={icons.menuIconClosed}
-          alt="menuClosed"
-          onClick={handleToogles}
-        />
+        <MdOutlineClose className="menuIconClosed" onClick={handleToggles} />
       )}
     </div>
   );

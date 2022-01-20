@@ -10,26 +10,31 @@ import { useTheme } from "../ThemeContext";
 import images from "../functions/images.js";
 import * as scrollbarAnimation from "../functions/scrollbarAnimation.jsx";
 
-
 const Main = () => {
-  const { validationToggle, scrollbarImg, airplanePosition } = useTheme();
+  const { validationToggle, scrollbarImg, airplanePosition, burgerMenuToggle } =
+    useTheme();
+
+  document.body.style.overflow =
+    validationToggle || burgerMenuToggle ? "hidden" : "scroll";
 
   return (
     <div className="Main">
       {validationToggle && <Validation />}
 
-      <img
-        className="airplaneScrollBarDown"
-        src={scrollbarAnimation.getScrollbarImage(
-          scrollbarImg,
-          images.airplaneDownStopped,
-          images.airplaneDown,
-          images.airplaneUpStopped,
-          images.airplaneUp
-        )}
-        style={{ top: `${airplanePosition}px` }}
-        alt="scrollBar"
-      />
+      {!burgerMenuToggle && (
+        <img
+          className="airplaneScrollBar"
+          src={scrollbarAnimation.getScrollbarImage(
+            scrollbarImg,
+            images.airplaneDownStopped,
+            images.airplaneDown,
+            images.airplaneUpStopped,
+            images.airplaneUp
+          )}
+          style={{ top: `${airplanePosition}px` }}
+          alt="scrollBar"
+        />
+      )}
 
       <Routes>
         <Route
@@ -47,7 +52,7 @@ const Main = () => {
           element={
             <About
               className={
-                validationToggle ? "Account backgroundBlurOpac" : "Account"
+                validationToggle ? "Account backgroundBlurOpac" : "About"
               }
             />
           }
