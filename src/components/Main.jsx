@@ -13,6 +13,7 @@ import images from "../functions/images.js";
 import * as scrollbarAnimation from "../functions/scrollbarAnimation.jsx";
 
 const Main = () => {
+
   const {
     validationToggle,
     scrollbarImg,
@@ -20,6 +21,8 @@ const Main = () => {
     setCurrentUser,
     currentUser,
     backendUrl,
+    burgerMenuToggle,
+    menuAccountToggle
   } = useTheme();
 
   useEffect(() => {
@@ -39,24 +42,31 @@ const Main = () => {
     })();
     console.log(currentUser);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [validationToggle]);
+  }, [validationToggle, menuAccountToggle]);
+
+
+  document.body.style.overflow =
+    validationToggle || burgerMenuToggle ? "hidden" : "scroll";
+
 
   return (
     <div className="Main">
       {validationToggle && <Validation />}
 
-      <img
-        className="airplaneScrollBarDown"
-        src={scrollbarAnimation.getScrollbarImage(
-          scrollbarImg,
-          images.airplaneDownStopped,
-          images.airplaneDown,
-          images.airplaneUpStopped,
-          images.airplaneUp
-        )}
-        style={{ top: `${airplanePosition}px` }}
-        alt="scrollBar"
-      />
+      {!burgerMenuToggle && (
+        <img
+          className="airplaneScrollBar"
+          src={scrollbarAnimation.getScrollbarImage(
+            scrollbarImg,
+            images.airplaneDownStopped,
+            images.airplaneDown,
+            images.airplaneUpStopped,
+            images.airplaneUp
+          )}
+          style={{ top: `${airplanePosition}px` }}
+          alt="scrollBar"
+        />
+      )}
 
       <Routes>
         <Route
@@ -74,7 +84,7 @@ const Main = () => {
           element={
             <About
               className={
-                validationToggle ? "Account backgroundBlurOpac" : "Account"
+                validationToggle ? "Account backgroundBlurOpac" : "About"
               }
             />
           }

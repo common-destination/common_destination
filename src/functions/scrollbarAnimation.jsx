@@ -3,7 +3,12 @@ import { useTheme } from "../ThemeContext";
 
 export const ScrollbarAnimation = () => {
   const [scrollCount, setScrollCount] = useState(0);
-  const { setScrollbarImg, setAirplanePosition } = useTheme();
+  const { setScrollbarImg, setAirplanePosition, mediaQueries } = useTheme();
+
+  useEffect(() => {
+    setAirplanePosition(window.scrollY / (mediaQueries.burgerMenu ? 9.5 : 2));
+  }, [scrollCount, setAirplanePosition, mediaQueries]);
+
   function usePrevious(value) {
     const ref = useRef();
     useEffect(() => {
@@ -15,25 +20,16 @@ export const ScrollbarAnimation = () => {
 
   window.addEventListener("scroll", function () {
     setScrollCount(window.pageYOffset);
-    // console.log(`pageYOffset:${window.pageYOffset}`);
-    // console.log(`scrolly:${window.scrollY}`);
-    console.log(`scrollCount: ${scrollCount}`);
-    console.log(`prevCountt: ${prevCount}`);
-    // console.log(differce);
     if (window.scrollY === 0) {
       setScrollbarImg("stopDown");
-      setAirplanePosition(0);
     } else if (window.scrollY > scrollCount) {
       setScrollbarImg("down");
-      setAirplanePosition(window.scrollY / 10);
     } else if (window.scrollY < scrollCount && window.scrollY !== 0) {
       setScrollbarImg("up");
-      setAirplanePosition(window.scrollY / 10);
     }
     setTimeout(() => {
       if (scrollCount === prevCount && window.scrollY !== 0) {
         setScrollbarImg("stopUp");
-        setAirplanePosition(window.scrollY / 10);
       }
     }, 5000);
   });
