@@ -10,6 +10,7 @@ import { MdManageAccounts, MdOutlineClose } from "react-icons/md";
 import { BsInfoSquareFill } from "react-icons/bs";
 import { GrContact } from "react-icons/gr";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { TiArrowSortedDown } from "react-icons/ti";
 
 const Navbar = () => {
   const {
@@ -17,9 +18,9 @@ const Navbar = () => {
     burgerMenuToggle,
     setBurgerMenuToggle,
     setValidationToggle,
+    setMenuAccountToggle,
+    menuAccountToggle,
   } = useTheme();
-
-  // const reactIconstyles = { fontSize: "1.8vw", margin: "0 1vw" };
 
   const handleToggles = () => {
     !burgerMenuToggle ? setBurgerMenuToggle(true) : setBurgerMenuToggle(false);
@@ -30,10 +31,23 @@ const Navbar = () => {
     setValidationToggle(true);
   };
 
+  const handleMenuAccountToggle = () => {
+    setMenuAccountToggle(true);
+  };
+
   return (
     <div className="Navbar">
       {!burgerMenuToggle && (
         <ul className="topNavBar">
+          <li
+            onClick={() => {
+              handleValidationToggle();
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            <SiGnuprivacyguard className="reactIcons" id="loginIcon" />
+            LOG IN
+          </li>
           <li
             onClick={() => {
               setValidationToggle(false);
@@ -44,15 +58,35 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li
-            onClick={() => {
+            onMouseOver={() => {
               setValidationToggle(false);
+              handleMenuAccountToggle();
             }}
           >
-            <NavLink to="/account">
-              <MdManageAccounts className="reactIcons" />
-              <span></span>
-            </NavLink>
+            <MdManageAccounts className="reactIcons" style={{ margin: "0" }} />
+            <TiArrowSortedDown style={{ margin: "-20% -10%" }} />
           </li>
+
+          {menuAccountToggle && (
+            <ul
+              onMouseLeave={() => {
+                setMenuAccountToggle(false);
+              }}
+              className="accountMenu"
+            >
+              <li>
+                <NavLink to="/account">
+                  <h3>VIEW PROFILE</h3>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/account">login</NavLink>
+              </li>
+              <li>
+                <NavLink to="/account">sign up</NavLink>
+              </li>
+            </ul>
+          )}
         </ul>
       )}
       {burgerMenuToggle ? (
