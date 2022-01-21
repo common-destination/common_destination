@@ -11,14 +11,24 @@ import images from "../functions/images.js";
 import * as scrollbarAnimation from "../functions/scrollbarAnimation.jsx";
 
 const Main = () => {
-  const { validationMenuToggle, scrollbarImg, airplanePosition, burgerMenuToggle } =
-    useTheme();
+  const {
+    validationMenuToggle,
+    scrollbarImg,
+    airplanePosition,
+    burgerMenuToggle,
+    setMenuAccountToggle
+  } = useTheme();
 
   document.body.style.overflow =
     validationMenuToggle || burgerMenuToggle ? "hidden" : "scroll";
 
   return (
-    <div className="Main">
+    <div
+      className="Main"
+      onClick={() => {
+        setMenuAccountToggle(false);
+      }}
+    >
       {validationMenuToggle && <Validation />}
 
       {!burgerMenuToggle && (
@@ -72,7 +82,9 @@ const Main = () => {
           path="/"
           element={
             <Home
-              className={validationMenuToggle ? "Home backgroundBlurOpac" : "Home"}
+              className={
+                validationMenuToggle ? "Home backgroundBlurOpac" : "Home"
+              }
             />
           }
         ></Route>
