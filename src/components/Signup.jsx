@@ -5,7 +5,7 @@ import { useTheme } from "../ThemeContext";
 import { ImEyeBlocked, ImEye } from "react-icons/im";
 
 function Signup() {
-  const { setCurrentUser, backendUrl } = useTheme();
+  const { setValidationToggle, setCurrentUser, backendUrl } = useTheme();
 
   const [signupFormField_username, setSignupFormField_username] = useState("");
   const [signupFormField_password1, setSignupFormField_password1] =
@@ -97,6 +97,7 @@ function Signup() {
       setSignupFormField_password1("");
       setSignupFormField_password2("");
       setSignupFormField_email("");
+      setValidationToggle(false);
     }
   };
 
@@ -137,7 +138,7 @@ function Signup() {
             </span>
           </div>
           <div className="row">
-            <label htmlFor="signupFormField_password2">Password 1</label>
+            <label htmlFor="signupFormField_password2">Password 2</label>
             <input
               type={passwordsInputType2}
               id="signupFormField_password2"

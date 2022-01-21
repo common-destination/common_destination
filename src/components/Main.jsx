@@ -7,15 +7,22 @@ import About from "./About";
 import Contact from "./Contact";
 import Home from "./Home";
 import { useTheme } from "../ThemeContext";
-import {useEffect } from "react";
+import { useEffect } from "react";
 
 import images from "../functions/images.js";
 import * as scrollbarAnimation from "../functions/scrollbarAnimation.jsx";
 
-
 const Main = () => {
-  const { validationToggle, scrollbarImg, airplanePosition, setCurrentUser , backendUrl} = useTheme();
-    useEffect(() => {
+  const {
+    validationToggle,
+    scrollbarImg,
+    airplanePosition,
+    setCurrentUser,
+    currentUser,
+    backendUrl,
+  } = useTheme();
+
+  useEffect(() => {
     (async () => {
       const requestOptions = {
         method: "GET",
@@ -30,8 +37,9 @@ const Main = () => {
         setCurrentUser((prev) => ({ ...prev, ..._currentUser }));
       }
     })();
+    console.log(currentUser);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [validationToggle]);
 
   return (
     <div className="Main">
