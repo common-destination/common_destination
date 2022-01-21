@@ -4,7 +4,10 @@ import Navbar from "./components/Navbar";
 import Main from "./components/Main";
 import * as scrollbarAnimation from "./functions/scrollbarAnimation.jsx";
 
+
 function App() {
+ 
+  
   scrollbarAnimation.ScrollbarAnimation();
 
   return (
