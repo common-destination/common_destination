@@ -5,7 +5,7 @@ import { useTheme } from "../ThemeContext";
 import BurgerMenu from "./BurgerMenu";
 import AccountMenu from "./AccountMenu";
 import TopMenu from "./TopMenu";
-import { MdOutlineClose } from "react-icons/md";
+import icons from "../functions/icons.js"
 
 const Navbar = () => {
   const {
@@ -48,7 +48,7 @@ const Navbar = () => {
             handleToggles={handleToggles}
             handleValidationToggle={handleValidationToggle}
           />
-          <MdOutlineClose className="menuIconClosed" onClick={handleToggles} />
+          <icons.MdOutlineClose className="menuIconClosed" onClick={handleToggles} />
         </>
       )}
     </div>

@@ -1,14 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
-import { FaHome } from "react-icons/fa";
-import { SiGnuprivacyguard } from "react-icons/si";
-import { MdManageAccounts} from "react-icons/md";
-import { BsInfoSquareFill } from "react-icons/bs";
-import { GrContact } from "react-icons/gr";
+import icons from "../functions/icons.js";
 
 function BurgerMenu(props) {
-const { mediaQueries } = useTheme();
+  const { mediaQueries } = useTheme();
   return (
     <ul
       className="burgerMenu"
@@ -19,7 +15,7 @@ const { mediaQueries } = useTheme();
     >
       <li onClick={props.handleToggles}>
         <NavLink to="/">
-          <FaHome className="reactIcons" /> HOME
+          <icons.FaHome className="reactIcons" /> HOME
         </NavLink>
       </li>
       <li
@@ -29,26 +25,26 @@ const { mediaQueries } = useTheme();
         }}
         style={{ cursor: "pointer" }}
       >
-        <SiGnuprivacyguard className="reactIcons" />
+        <icons.SiGnuprivacyguard className="reactIcons" />
         LOGIN
       </li>
 
       <li onClick={props.handleToggles}>
         <NavLink to="/account">
-          <MdManageAccounts className="reactIcons" />
+          <icons.MdManageAccounts className="reactIcons" />
           ACCOUNT
         </NavLink>
       </li>
       <li onClick={props.handleToggles}>
         <NavLink to="/about">
-          <BsInfoSquareFill className="reactIcons" />
+          <icons.BsInfoSquareFill className="reactIcons" />
           ABOUT
         </NavLink>
       </li>
 
       <li onClick={props.handleToggles}>
         <NavLink to="/contact">
-          <GrContact className="reactIcons" />
+          <icons.GrContact className="reactIcons" />
           CONTACT
         </NavLink>
       </li>
