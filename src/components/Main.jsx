@@ -11,15 +11,15 @@ import images from "../functions/images.js";
 import * as scrollbarAnimation from "../functions/scrollbarAnimation.jsx";
 
 const Main = () => {
-  const { validationToggle, scrollbarImg, airplanePosition, burgerMenuToggle } =
+  const { validationMenuToggle, scrollbarImg, airplanePosition, burgerMenuToggle } =
     useTheme();
 
   document.body.style.overflow =
-    validationToggle || burgerMenuToggle ? "hidden" : "scroll";
+    validationMenuToggle || burgerMenuToggle ? "hidden" : "scroll";
 
   return (
     <div className="Main">
-      {validationToggle && <Validation />}
+      {validationMenuToggle && <Validation />}
 
       {!burgerMenuToggle && (
         <img
@@ -42,7 +42,7 @@ const Main = () => {
           element={
             <Account
               className={
-                validationToggle ? "Account backgroundBlurOpac" : "Account"
+                validationMenuToggle ? "Account backgroundBlurOpac" : "Account"
               }
             />
           }
@@ -52,7 +52,7 @@ const Main = () => {
           element={
             <About
               className={
-                validationToggle ? "Account backgroundBlurOpac" : "About"
+                validationMenuToggle ? "Account backgroundBlurOpac" : "About"
               }
             />
           }
@@ -62,7 +62,7 @@ const Main = () => {
           element={
             <Contact
               className={
-                validationToggle ? "Contact backgroundBlurOpac" : "Contact"
+                validationMenuToggle ? "Contact backgroundBlurOpac" : "Contact"
               }
             />
           }
@@ -72,7 +72,7 @@ const Main = () => {
           path="/"
           element={
             <Home
-              className={validationToggle ? "Home backgroundBlurOpac" : "Home"}
+              className={validationMenuToggle ? "Home backgroundBlurOpac" : "Home"}
             />
           }
         ></Route>

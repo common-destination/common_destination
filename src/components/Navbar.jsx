@@ -17,18 +17,18 @@ const Navbar = () => {
     mediaQueries,
     burgerMenuToggle,
     setBurgerMenuToggle,
-    setValidationToggle,
+    setValidationMenuToggle,
     setMenuAccountToggle,
     menuAccountToggle,
   } = useTheme();
 
   const handleToggles = () => {
     !burgerMenuToggle ? setBurgerMenuToggle(true) : setBurgerMenuToggle(false);
-    setValidationToggle(false);
+    setValidationMenuToggle(false);
   };
 
   const handleValidationToggle = () => {
-    setValidationToggle(true);
+    setValidationMenuToggle(true);
   };
 
   const handleMenuAccountToggle = () => {
@@ -50,7 +50,7 @@ const Navbar = () => {
           </li>
           <li
             onClick={() => {
-              setValidationToggle(false);
+              setValidationMenuToggle(false);
             }}
           >
             <NavLink to="/">
@@ -59,7 +59,7 @@ const Navbar = () => {
           </li>
           <li
             onMouseOver={() => {
-              setValidationToggle(false);
+              setValidationMenuToggle(false);
               handleMenuAccountToggle();
             }}
           >
