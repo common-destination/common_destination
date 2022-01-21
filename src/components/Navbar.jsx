@@ -1,15 +1,11 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
-import { NavLink } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
-import { FcHome } from "react-icons/fc";
-import { SiGnuprivacyguard } from "react-icons/si";
-import { MdManageAccounts, MdOutlineClose } from "react-icons/md";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { TiArrowSortedDown } from "react-icons/ti";
 import BurgerMenu from "./BurgerMenu";
 import AccountMenu from "./AccountMenu";
+import TopMenu from "./TopMenu";
+import { MdOutlineClose } from "react-icons/md";
 
 const Navbar = () => {
   const {
@@ -36,41 +32,12 @@ const Navbar = () => {
   return (
     <div className="Navbar">
       {!burgerMenuToggle && (
-        <>
-          <ul className="topNavBar">
-            <li
-              onClick={() => {
-                handleValidationToggle();
-              }}
-              style={{ cursor: "pointer" }}
-            >
-              <SiGnuprivacyguard className="reactIcons" id="loginIcon" />
-              LOG IN
-            </li>
-            <li
-              onClick={() => {
-                setValidationMenuToggle(false);
-              }}
-            >
-              <NavLink to="/">
-                <FcHome className="reactIcons" />
-              </NavLink>
-            </li>
-            <li
-              onClick={() => {
-                setValidationMenuToggle(false);
-                handleMenuAccountToggle();
-              }}
-            >
-              <MdManageAccounts
-                className="reactIcons"
-                style={{ margin: "0" }}
-              />
-              <TiArrowSortedDown style={{ margin: "-20% -10%" }} />
-            </li>
-          </ul>
-          <GiHamburgerMenu className="menuIcon" onClick={handleToggles} />
-        </>
+        <TopMenu
+          handleMenuAccountToggle={handleMenuAccountToggle}
+          setValidationMenuToggle={setValidationMenuToggle}
+          handleValidationToggle={handleValidationToggle}
+          handleToggles={handleToggles}
+        />
       )}
       {menuAccountToggle && (
         <AccountMenu setMenuAccountToggle={setMenuAccountToggle} />

@@ -8,29 +8,7 @@
   position: fixed;
   top: 0;
 
-  .topNavBar {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: 1%;
-    font-size: clamp(1em, 1.5vw, 2em);
-    li {
-      margin: 1%;
-      margin: 0 2vw 0 0vw;
-      cursor: grabbing;
-      img {
-        width: clamp(1.4em, 2vw, 3.5em);
-        height: clamp(1.4em, 2vh, 3.5em);
-      }
-      span {
-        float: right;
-      }
-      .active {
-        display: none;
-      }
-    }
-  }
-
+ 
   .menuIcon,
   .menuIconClosed {
     cursor: grabbing;
