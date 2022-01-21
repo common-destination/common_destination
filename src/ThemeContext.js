@@ -23,7 +23,6 @@ export function ThemeProvider({ children }) {
 
   const [currentUser, setCurrentUser] = useState({});
 
-
   return (
     <ThemeContext.Provider
       value={{
@@ -43,9 +42,9 @@ export function ThemeProvider({ children }) {
         currentUser,
         setCurrentUser,
         backendUrl,
-.        setMenuAccountToggle,
-        menuAccountToggle
-    }}
+        setMenuAccountToggle,
+        menuAccountToggle,
+      }}
     >
       {children}
     </ThemeContext.Provider>
