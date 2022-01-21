@@ -18,8 +18,10 @@ const Navbar = () => {
     burgerMenuToggle,
     setBurgerMenuToggle,
     setValidationToggle,
+
     setMenuAccountToggle,
     menuAccountToggle,
+
   } = useTheme();
 
   const handleToggles = () => {
@@ -53,8 +55,10 @@ const Navbar = () => {
               setValidationToggle(false);
             }}
           >
+
             <NavLink to="/">
               <FcHome className="reactIcons" />
+
             </NavLink>
           </li>
           <li

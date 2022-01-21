@@ -7,15 +7,47 @@ import About from "./About";
 import Contact from "./Contact";
 import Home from "./Home";
 import { useTheme } from "../ThemeContext";
+import { useEffect } from "react";
+
 import images from "../functions/images.js";
 import * as scrollbarAnimation from "../functions/scrollbarAnimation.jsx";
 
 const Main = () => {
-  const { validationToggle, scrollbarImg, airplanePosition, burgerMenuToggle } =
-    useTheme();
+
+  const {
+    validationToggle,
+    scrollbarImg,
+    airplanePosition,
+    setCurrentUser,
+    currentUser,
+    backendUrl,
+    burgerMenuToggle,
+    menuAccountToggle
+  } = useTheme();
+
+  useEffect(() => {
+    (async () => {
+      const requestOptions = {
+        method: "GET",
+        credentials: "include",
+      };
+      const response = await fetch(
+        `${backendUrl}/users/currentuser`,
+        requestOptions
+      );
+      if (response.ok) {
+        const _currentUser = await response.json();
+        setCurrentUser((prev) => ({ ...prev, ..._currentUser }));
+      }
+    })();
+    console.log(currentUser);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [validationToggle, menuAccountToggle]);
+
 
   document.body.style.overflow =
     validationToggle || burgerMenuToggle ? "hidden" : "scroll";
+
 
   return (
     <div className="Main">

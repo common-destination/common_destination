@@ -1,3 +1,4 @@
+// import React, { useState, useContext, useEffect } from "react";
 import React, { useState, useContext } from "react";
 import useMediaQuery from "./functions/UseMediaQuery.jsx";
 
@@ -18,6 +19,10 @@ export function ThemeProvider({ children }) {
   const mediaQueries = {
     burgerMenu: useMediaQuery("(max-width: 750px)"),
   };
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
+  const [currentUser, setCurrentUser] = useState({});
+
 
   return (
     <ThemeContext.Provider
@@ -35,9 +40,12 @@ export function ThemeProvider({ children }) {
         setScrollbarImg,
         airplanePosition,
         setAirplanePosition,
-        setMenuAccountToggle,
-        menuAccountToggle,
-      }}
+        currentUser,
+        setCurrentUser,
+        backendUrl,
+.        setMenuAccountToggle,
+        menuAccountToggle
+    }}
     >
       {children}
     </ThemeContext.Provider>
