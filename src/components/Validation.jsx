@@ -6,7 +6,7 @@ import icons from "../functions/icons.js";
 
 function Validation() {
   const {
-    setValidationToggle,
+    setValidationMenuToggle,
     signupToggle,
     setSignupToggle,
     loginToggle,
@@ -49,7 +49,7 @@ function Validation() {
         src={icons.menuIconClosed}
         alt="menuClosed"
         onClick={() => {
-          setValidationToggle(false);
+          setValidationMenuToggle(false);
         }}
       />
 

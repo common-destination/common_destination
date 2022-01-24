@@ -1,13 +1,23 @@
-import menuIcon from "../assets/icons/menu2.png";
-import menuIconClosed from "../assets/icons/menuClosed2.png";
-import avatarMale from "../assets/icons/avatarMale.png";
-import avatarFemale from "../assets/icons/avatarFemale.png";
+import { MdOutlineClose } from "react-icons/md";
+import { FcHome } from "react-icons/fc";
+import { SiGnuprivacyguard } from "react-icons/si";
+import { MdManageAccounts } from "react-icons/md";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { TiArrowSortedDown } from "react-icons/ti";
+import { FaHome } from "react-icons/fa";
+import { BsInfoSquareFill } from "react-icons/bs";
+import { GrContact } from "react-icons/gr";
 
 const icons = {
-  menuIcon,
-  menuIconClosed,
-  avatarMale,
-  avatarFemale,
+  FcHome,
+  SiGnuprivacyguard,
+  MdManageAccounts,
+  GiHamburgerMenu,
+  TiArrowSortedDown,
+  MdOutlineClose,
+  FaHome,
+  BsInfoSquareFill,
+  GrContact,
 };
 
 export default icons;

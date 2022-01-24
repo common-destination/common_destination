@@ -11,7 +11,7 @@ export function useTheme() {
 export function ThemeProvider({ children }) {
   const [burgerMenuToggle, setBurgerMenuToggle] = useState(false);
   const [scrollbarImg, setScrollbarImg] = useState("stopDown");
-  const [validationToggle, setValidationToggle] = useState(false);
+  const [validationMenuToggle, setValidationMenuToggle] = useState(false);
   const [signupToggle, setSignupToggle] = useState(false);
   const [loginToggle, setLoginToggle] = useState(true);
   const [airplanePosition, setAirplanePosition] = useState(0);
@@ -28,8 +28,8 @@ export function ThemeProvider({ children }) {
       value={{
         burgerMenuToggle,
         setBurgerMenuToggle,
-        validationToggle,
-        setValidationToggle,
+        validationMenuToggle,
+        setValidationMenuToggle,
         signupToggle,
         setSignupToggle,
         loginToggle,
