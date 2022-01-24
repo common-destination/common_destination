@@ -13,23 +13,21 @@ import images from "../functions/images.js";
 import * as scrollbarAnimation from "../functions/scrollbarAnimation.jsx";
 
 const Main = () => {
-
-
   const {
-    validationToggle,
+    validationMenuToggle,
     scrollbarImg,
     airplanePosition,
     setCurrentUser,
     currentUser,
     backendUrl,
     burgerMenuToggle,
-    menuAccountToggle
+    menuAccountToggle,
+    setMenuAccountToggle,
   } = useTheme();
 
   document.body.style.overflowY =
     validationMenuToggle || burgerMenuToggle ? "hidden" : "scroll";
 
-  
   useEffect(() => {
     (async () => {
       const requestOptions = {
@@ -47,13 +45,10 @@ const Main = () => {
     })();
     console.log(currentUser);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [validationToggle, menuAccountToggle]);
-
+  }, [validationMenuToggle, menuAccountToggle]);
 
   document.body.style.overflow =
-    validationToggle || burgerMenuToggle ? "hidden" : "scroll";
-
-
+    validationMenuToggle || burgerMenuToggle ? "hidden" : "scroll";
 
   return (
     <div
@@ -95,11 +90,7 @@ const Main = () => {
           element={
             <About
               className={
-
                 validationMenuToggle ? "Account backgroundBlurOpac" : "About"
-
-               
-
               }
             />
           }
