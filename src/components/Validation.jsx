@@ -44,10 +44,8 @@ function Validation() {
           </li>
         )}
       </ul>
-      <img
+      <icons.MdOutlineClose
         className="menuIconClosed"
-        src={icons.menuIconClosed}
-        alt="menuClosed"
         onClick={() => {
           setValidationMenuToggle(false);
         }}
