@@ -1,7 +1,7 @@
 // import React, { useState } from "react";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Validation from "./Validation";
+import Validation from "./validation/Validation";
 import Account from "./Account";
 import About from "./About";
 import Contact from "./Contact";
@@ -47,7 +47,7 @@ const Main = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [validationMenuToggle, menuAccountToggle]);
 
-  document.body.style.overflow =
+  document.body.style.overflowY =
     validationMenuToggle || burgerMenuToggle ? "hidden" : "scroll";
 
   return (

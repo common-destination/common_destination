@@ -2,9 +2,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
 import { useTheme } from "../ThemeContext";
-import BurgerMenu from "./BurgerMenu";
-import AccountMenu from "./AccountMenu";
-import TopMenu from "./TopMenu";
+import BurgerMenu from "./navbar/BurgerMenu";
+import AccountMenu from "./navbar/AccountMenu";
+import TopMenu from "./navbar/TopMenu";
 import icons from "../functions/icons.js"
 
 const Navbar = () => {

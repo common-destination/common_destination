@@ -1,7 +1,6 @@
 import React from "react";
-import "../styles/_signup.scss";
 import { useState } from "react";
-import { useTheme } from "../ThemeContext";
+import { useTheme } from "../../ThemeContext";
 import { ImEyeBlocked, ImEye } from "react-icons/im";
 
 function Signup() {

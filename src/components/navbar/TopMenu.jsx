@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import icons from "../functions/icons.js";
+import icons from "../../functions/icons.js";
 
 function TopMenu(props) {
   return (

@@ -16,6 +16,7 @@ export function ThemeProvider({ children }) {
   const [loginToggle, setLoginToggle] = useState(true);
   const [airplanePosition, setAirplanePosition] = useState(0);
   const [menuAccountToggle, setMenuAccountToggle] = useState(false);
+
   const mediaQueries = {
     smallView: useMediaQuery("(max-width: 750px)"),
   };

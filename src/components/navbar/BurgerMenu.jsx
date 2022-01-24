@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useTheme } from "../ThemeContext";
-import icons from "../functions/icons.js";
+import { useTheme } from "../../ThemeContext";
+import icons from "../../functions/icons.js";
 
 function BurgerMenu(props) {
   const { mediaQueries } = useTheme();
