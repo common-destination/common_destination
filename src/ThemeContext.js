@@ -17,7 +17,7 @@ export function ThemeProvider({ children }) {
   const [airplanePosition, setAirplanePosition] = useState(0);
   const [menuAccountToggle, setMenuAccountToggle] = useState(false);
   const mediaQueries = {
-    burgerMenu: useMediaQuery("(max-width: 750px)"),
+    smallView: useMediaQuery("(max-width: 750px)"),
   };
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
