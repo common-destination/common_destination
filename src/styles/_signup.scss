@@ -1,3 +1,52 @@
-.Signup{
-    
+.Signup {
+  form {
+    // width: 600px;
+    .note.invalid {
+      color: red;
+    }
+    // fieldset {
+    //   border: 5px solid #ccc;
+    //   border-radius: 5px;
+    //   padding: 20px;
+    //   .loginFormMessage {
+    //     text-align: center;
+    //     background-color: rgb(165, 19, 19);
+    //     color: #fff;
+    //     font-size: 1.9rem;
+    //     font-weight: bold;
+    //     letter-spacing: 0.2;
+    //   }
+      .row {
+        display: flex;
+        align-content: flex-start;
+        // padding: 5px;
+        label {
+          &::after {
+            content: ":";
+          }
+        //   width: 130px;
+          margin: 0 0 10px 0;
+        }
+        input {
+          font-size: 1rem;
+        //   width: 300px;
+        }
+      }
+      .note {
+        font-size: 1rem;
+        // margin: 0 0 20px 97px;
+      }
+      .invalid input {
+        color: red;
+      }
+      .buttonRow {
+        display: flex;
+        justify-content: right;
+        button {
+          font-size: 1rem;
+          padding: 5px;
+        }
+      }
+    // }
+  }
 }
