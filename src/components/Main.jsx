@@ -19,7 +19,7 @@ const Main = () => {
     setMenuAccountToggle
   } = useTheme();
 
-  document.body.style.overflow =
+  document.body.style.overflowY =
     validationMenuToggle || burgerMenuToggle ? "hidden" : "scroll";
 
   return (
