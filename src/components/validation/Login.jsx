@@ -2,7 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useTheme } from "../../ThemeContext";
 import { useNavigate } from "react-router-dom";
-import { ImEyeBlocked, ImEye } from "react-icons/im";
+// import { ImEyeBlocked, ImEye } from "react-icons/im";
+import icons from "../../functions/icons.js";
 
 function Login() {
   const { setCurrentUser, backendUrl } = useTheme();
@@ -97,7 +98,7 @@ function Login() {
               onChange={handlePassword}
             />
             <span className="eyes-icon" onClick={handleShowPasswordButton}>
-              {passwordsInputType === "password" ? <ImEye /> : <ImEyeBlocked />}
+              {passwordsInputType === "password" ? <icons.ImEye /> : <icons.ImEyeBlocked />}
             </span>
           </div>
           <div className="buttonRow">
