@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useTheme } from "../../ThemeContext";
-import { ImEyeBlocked, ImEye } from "react-icons/im";
+// import { ImEyeBlocked, ImEye } from "react-icons/im";
+import icons from "../../functions/icons.js";
 
 function Signup() {
   const { setValidationToggle, setCurrentUser, backendUrl } = useTheme();
@@ -130,9 +131,9 @@ function Signup() {
             />
             <span className="eyes-icon" onClick={handleShowPasswordButton1}>
               {passwordsInputType1 === "password" ? (
-                <ImEye />
+                <icons.ImEye />
               ) : (
-                <ImEyeBlocked />
+                <icons.ImEyeBlocked  />
               )}
             </span>
           </div>
@@ -147,9 +148,9 @@ function Signup() {
             />
             <span className="eyes-icon" onClick={handleShowPasswordButton2}>
               {passwordsInputType2 === "password" ? (
-                <ImEye />
+                <icons.ImEye/>
               ) : (
-                <ImEyeBlocked />
+                <icons.ImEyeBlocked />
               )}
             </span>
             <div className={`note ${password1IsValid ? "valid" : "invalid"}`}>

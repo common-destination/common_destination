@@ -97,7 +97,7 @@ function Login() {
               autoComplete="on"
               onChange={handlePassword}
             />
-            <span className="eyes-icon" onClick={handleShowPasswordButton}>
+            <span className="eyesIcon" onClick={handleShowPasswordButton}>
               {passwordsInputType === "password" ? <icons.ImEye /> : <icons.ImEyeBlocked />}
             </span>
           </div>
