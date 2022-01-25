@@ -16,13 +16,24 @@ export function ThemeProvider({ children }) {
   const [loginToggle, setLoginToggle] = useState(true);
   const [airplanePosition, setAirplanePosition] = useState(0);
   const [menuAccountToggle, setMenuAccountToggle] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
 
   const mediaQueries = {
     smallView: useMediaQuery("(max-width: 750px)"),
   };
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
-  const [currentUser, setCurrentUser] = useState({});
+  const handleLogout = async (e) => {
+    const requestOptions = {
+      method: "GET",
+      credentials: "include",
+    };
+    const response = await fetch(`${backendUrl}/users/logout`, requestOptions);
+    if (response.ok) {
+      const _currentUser = await response.json();
+      setCurrentUser((prev) => ({ ...prev, ..._currentUser }));
+    }
+  };
 
   return (
     <ThemeContext.Provider
@@ -45,6 +56,7 @@ export function ThemeProvider({ children }) {
         backendUrl,
         setMenuAccountToggle,
         menuAccountToggle,
+        handleLogout,
       }}
     >
       {children}
