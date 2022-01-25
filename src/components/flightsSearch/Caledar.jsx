@@ -2,7 +2,7 @@ import React from "react";
 
 const Caledar = () => {
   return (
-    <div>
+    <div style={{ display: "flex" }}>
       <label>
         <h5>Depart</h5>
         <input type="date" name="date" />

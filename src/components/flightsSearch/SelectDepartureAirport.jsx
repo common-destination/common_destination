@@ -1,9 +1,11 @@
-import React from "react";
-// import { useTheme } from "../../ThemeContext.js";
+import React, { useState } from "react";
 
-function SelectDepartureAirport() {
-  // const { mediaQueries } = useTheme();
+function SelectDepartureAirport(props) {
+  const [selectNote, setSelectNote] = useState("select_note");
 
+  const handleChange = (e) => {
+    setSelectNote(e.target.value);
+  };
   return (
     <div>
       <div>
@@ -17,6 +19,16 @@ function SelectDepartureAirport() {
           <h5>From</h5>
         </label>
       </div>
+      <select value={selectNote} onChange={handleChange}>
+        <option value="select_note" disabled>
+          Please select...
+        </option>
+        {props.departureAirport.map((airport, index) => (
+          <option key={index} value={airport}>
+            {airport}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }
