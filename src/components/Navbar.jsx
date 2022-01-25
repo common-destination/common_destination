@@ -5,12 +5,13 @@ import { useTheme } from "../ThemeContext";
 import BurgerMenu from "./navbar/BurgerMenu";
 import AccountMenu from "./navbar/AccountMenu";
 import TopMenu from "./navbar/TopMenu";
-import icons from "../functions/icons.js"
+import icons from "../functions/icons.js";
 
 const Navbar = () => {
   const {
     burgerMenuToggle,
     setBurgerMenuToggle,
+    validationMenuToggle,
     setValidationMenuToggle,
     setMenuAccountToggle,
     menuAccountToggle,
@@ -22,11 +23,15 @@ const Navbar = () => {
   };
 
   const handleValidationToggle = () => {
-    setValidationMenuToggle(true);
+    !validationMenuToggle
+      ? setValidationMenuToggle(true)
+      : setValidationMenuToggle(false);
   };
 
   const handleMenuAccountToggle = () => {
-    setMenuAccountToggle(true);
+    !menuAccountToggle
+      ? setMenuAccountToggle(true)
+      : setMenuAccountToggle(false);
   };
 
   return (
@@ -40,7 +45,10 @@ const Navbar = () => {
         />
       )}
       {menuAccountToggle && (
-        <AccountMenu setMenuAccountToggle={setMenuAccountToggle} />
+        <AccountMenu
+          setMenuAccountToggle={setMenuAccountToggle}
+          handleValidationToggle={handleValidationToggle}
+        />
       )}
       {burgerMenuToggle && (
         <>
@@ -48,7 +56,10 @@ const Navbar = () => {
             handleToggles={handleToggles}
             handleValidationToggle={handleValidationToggle}
           />
-          <icons.MdOutlineClose className="menuIconClosed" onClick={handleToggles} />
+          <icons.MdOutlineClose
+            className="menuIconClosed"
+            onClick={handleToggles}
+          />
         </>
       )}
     </div>

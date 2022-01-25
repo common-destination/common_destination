@@ -1,18 +1,14 @@
 import React from "react";
-import { useTheme } from "../ThemeContext";
+// import { useTheme } from "../ThemeContext";
 import SelectDepartureAirport from "./flightsSearch/SelectDepartureAirport";
 
 function Home(props) {
-  const { currentUser } = useTheme();
+  // const { currentUser } = useTheme();
   // console.log(currentUser);
 
   return (
     <div className={props.className}>
-      {currentUser.username !== "anonymousUser" && (
-        <>
-          <h2>Welcome {"ciao" + currentUser.username}</h2>
-        </>
-      )}
+   
       <SelectDepartureAirport />
       <h1>Home</h1>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur eveniet
