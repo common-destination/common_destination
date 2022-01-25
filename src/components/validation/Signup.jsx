@@ -113,24 +113,26 @@ function Signup() {
         <fieldset>
           <legend>Signup</legend>
           <div className={"row " + (usernameIsValid ? "valid" : "invalid")}>
-            <label htmlFor="username">Username</label>
+            {/* <label htmlFor="username">Username</label> */}
             <input
               type="text"
               id="username"
               value={username}
+              placeholder="choose your username"
               onChange={handleUsername}
             />
           </div>
           <div className={"note " + (usernameIsValid ? "valid" : "invalid")}>
-            required, minium 3 characters and maximum 10 characters
+            <p>min 3 and max 10 characters </p>
           </div>
           <div className={`row ${passwordIsValid ? "valid" : "invalid"}`}>
-            <label htmlFor="password1">Password 1</label>
+            {/* <label htmlFor="password">Password</label> */}
             <input
               type={passwordsInputType1}
-              id="password1"
+              id="password"
               value={password}
               autoComplete="on"
+              placeholder="enter your password"
               onChange={handlePassword}
             />
             <span className="eyesIcon" onClick={handleShowPassword}>
@@ -142,16 +144,17 @@ function Signup() {
             </span>
           </div>
           <div className={`note ${passwordIsValid ? "valid" : "invalid"}`}>
-            <p>required minium 5 characters and 1 number</p>
+            <p>min 5 characters and numbers</p>
           </div>
           <div className={`row ${repeatPasswordIsValid ? "valid" : "invalid"}`}>
-            <label htmlFor="password2">Password 2</label>
+            {/* <label htmlFor="repeatPassword">Repeat password</label> */}
             <input
               type={passwordsInputType2}
-              id="password2"
+              id="repeatPassword"
               value={repeatPassword}
               autoComplete="on"
-              onChange={handlePassword}
+              placeholder="repeat your password"
+              onChange={handleRepeatPassword}
             />
             <span className="eyes-icon" onClick={handleShowRepeatPassword}>
               {passwordsInputType2 === "password" ? (
@@ -167,20 +170,21 @@ function Signup() {
             </div>
           </div>
           <div className={"row " + (emailIsValid ? "valid" : "invalid")}>
-            <label htmlFor="email">E-Mail</label>
+            {/* <label htmlFor="email">E-Mail</label> */}
             <input
               type="text"
               id="email"
               value={email}
+              placeholder="enter your email"
               onChange={handleEmail}
             />
           </div>
           <div className={"note " + (emailIsValid ? "valid" : "invalid")}>
-            e.g. xxxx@xxxx.xx
+            <p>e.g. xxxx@xxxx.xx </p>
             {!emailIsValid && !signupToggle && <p>please check your email</p>}
           </div>
           <div className="buttonRow">
-            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={handleSubmit}>Sign Up!</button>
           </div>
         </fieldset>
       </form>
