@@ -23,7 +23,7 @@ function BurgerMenu(props) {
         onClick={() => {
           props.handleToggles();
           currentUser.username !== "anonymousUser"
-            ? alert("logout")
+            ? props.handleLogout()
             : props.handleValidationToggle();
         }}
         style={{ cursor: "pointer" }}

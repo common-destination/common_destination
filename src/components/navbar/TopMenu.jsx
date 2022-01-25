@@ -13,7 +13,7 @@ function TopMenu(props) {
           onClick={() => {
             props.handleValidationToggle();
             currentUser.username !== "anonymousUser"
-              ? alert("logout")
+              ? props.handleLogout()
               : props.handleValidationToggle();
           }}
           style={{ cursor: "pointer" }}

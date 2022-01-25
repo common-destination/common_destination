@@ -21,6 +21,7 @@ export function ThemeProvider({ children }) {
   const mediaQueries = {
     smallView: useMediaQuery("(max-width: 750px)"),
   };
+  
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   const handleLogout = async (e) => {

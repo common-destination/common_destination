@@ -15,6 +15,7 @@ const Navbar = () => {
     setValidationMenuToggle,
     setMenuAccountToggle,
     menuAccountToggle,
+    handleLogout,
   } = useTheme();
 
   const handleToggles = () => {
@@ -42,12 +43,14 @@ const Navbar = () => {
           setValidationMenuToggle={setValidationMenuToggle}
           handleValidationToggle={handleValidationToggle}
           handleToggles={handleToggles}
+          handleLogout={handleLogout}
         />
       )}
       {menuAccountToggle && (
         <AccountMenu
           setMenuAccountToggle={setMenuAccountToggle}
           handleValidationToggle={handleValidationToggle}
+          handleLogout={handleLogout}
         />
       )}
       {burgerMenuToggle && (
@@ -55,6 +58,7 @@ const Navbar = () => {
           <BurgerMenu
             handleToggles={handleToggles}
             handleValidationToggle={handleValidationToggle}
+            handleLogout={handleLogout}
           />
           <icons.MdOutlineClose
             className="menuIconClosed"

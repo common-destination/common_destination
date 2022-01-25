@@ -4,7 +4,7 @@ import { useTheme } from "../../ThemeContext";
 import { ImEyeBlocked, ImEye } from "react-icons/im";
 
 function Signup() {
-  const { setValidationToggle, setCurrentUser, backendUrl } = useTheme();
+  const { setValidationMenuToggle, setCurrentUser, backendUrl } = useTheme();
 
   const [signupFormField_username, setSignupFormField_username] = useState("");
   const [signupFormField_password1, setSignupFormField_password1] =
@@ -20,6 +20,9 @@ function Signup() {
   const [password1IsValid, setPassword1IsValid] = useState(false);
 
   const [emailIsValid, setEmailIsValid] = useState(false);
+
+
+
 
   // SIGNUP FORM FIELD HANDLERS
   const handle_signupFormField_username = (e) => {
@@ -96,8 +99,9 @@ function Signup() {
       setSignupFormField_password1("");
       setSignupFormField_password2("");
       setSignupFormField_email("");
-      setValidationToggle(false);
+      setValidationMenuToggle(false);
     }
+    
   };
 
   return (
