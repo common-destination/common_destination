@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ImEyeBlocked, ImEye } from "react-icons/im";
 
 function Login() {
-  const { setCurrentUser, backendUrl } = useTheme();
+  const { setCurrentUser, backendUrl,handleLogout } = useTheme();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -55,22 +55,6 @@ function Login() {
     );
   };
 
-  const handle_logoutForm_logoutButton = async (e) => {
-    const requestOptions = {
-      method: "GET",
-      credentials: "include",
-    };
-    const response = await fetch(
-      `${backendUrl}/users/logout`,
-      requestOptions
-    );
-    if (response.ok) {
-      const _currentUser = await response.json();
-      setCurrentUser((prev) => ({ ...prev, ..._currentUser }));
-      navigate("/login");
-    }
-  };
-
   return (
     <div className="Login">
       <h1>Login</h1>
@@ -102,7 +86,7 @@ function Login() {
           </div>
           <div className="buttonRow">
             <button onClick={handleUsernameButton}>Login</button>
-            <button onClick={handle_logoutForm_logoutButton}>Logout</button>
+            <button onClick={handleLogout}>Logout</button>
           </div>
         </fieldset>
       </form>
