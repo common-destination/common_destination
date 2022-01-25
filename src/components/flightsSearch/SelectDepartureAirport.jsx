@@ -5,43 +5,12 @@ function SelectDepartureAirport() {
   const { mediaQueries } = useTheme();
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
+    <div>
       <div>
-        <input
-          type="radio"
-          name="ticket"
-          id="roundtrip"
-          style={{ margin: "0 0.5rem 0 0" }}
-        />
-        <span
-          style={{
-            margin: "0 5rem 0 0",
-            fontSize: "13.28px",
-            fontWeight: "bold",
-          }}
-        >
-          Roundtrip
-        </span>
-        <input
-          type="radio"
-          name="ticket"
-          id="one-way"
-          style={{ margin: "0 0.5rem 0 0" }}
-        />
-        <span
-          style={{
-            fontSize: "13.28px",
-            fontWeight: "bold",
-          }}
-        >
-          One Way
-        </span>
+        <input type="radio" name="ticket" id="roundtrip" />
+        <span>Roundtrip</span>
+        <input type="radio" name="ticket" id="one-way" />
+        <span>One Way</span>
       </div>
       <div>
         <label>
@@ -57,23 +26,13 @@ function SelectDepartureAirport() {
             placeholder="Select your Airport"
             autoComplete="true"
             autoFocus={mediaQueries.smallView ? true : false}
-            style={{
-              textAlign: "center",
-              width: "90vw",
-              height: "2rem",
-            }}
           />
         </div>
         <div>
           <div>
             <label>
               <h5>Depart</h5>
-              <input
-                type="date"
-                name="date"
-                required
-                pattern="\d{4}-\d{2}-\d{2}"
-              />
+              <input type="date" name="date" />
             </label>
           </div>
           <div>
@@ -82,7 +41,7 @@ function SelectDepartureAirport() {
             </label>
           </div>
         </div>
-        <input type="date" name="date" required pattern="\d{4}-\d{2}-\d{2}" />
+        <input type="date" name="date" />
       </form>
       <div>
         <button>Submit</button>
