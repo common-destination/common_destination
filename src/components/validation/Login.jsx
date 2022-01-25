@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import icons from "../../functions/icons.js";
 
 function Login() {
-  const { setCurrentUser, backendUrl, handleLogout  } = useTheme();
+  const { setValidationMenuToggle, setCurrentUser, backendUrl, handleLogout  } = useTheme();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -46,6 +46,7 @@ function Login() {
       navigate("/");
       setUsername("");
       setPassword("");
+      setValidationMenuToggle(false)
     }
   };
 
