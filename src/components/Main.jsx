@@ -22,7 +22,6 @@ const Main = () => {
     backendUrl,
     burgerMenuToggle,
     menuAccountToggle,
-    setMenuAccountToggle,
   } = useTheme();
 
   document.body.style.overflowY =
@@ -47,15 +46,11 @@ const Main = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [validationMenuToggle, menuAccountToggle]);
 
-  document.body.style.overflowY =
-    validationMenuToggle || burgerMenuToggle ? "hidden" : "scroll";
+
 
   return (
     <div
       className="Main"
-      onClick={() => {
-        setMenuAccountToggle(false);
-      }}
     >
       {validationMenuToggle && <Validation />}
 

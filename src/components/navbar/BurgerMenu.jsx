@@ -4,7 +4,7 @@ import { useTheme } from "../../ThemeContext";
 import icons from "../../functions/icons.js";
 
 function BurgerMenu(props) {
-  const { mediaQueries } = useTheme();
+  const { mediaQueries, currentUser } = useTheme();
   return (
     <ul
       className="burgerMenu"
@@ -18,15 +18,18 @@ function BurgerMenu(props) {
           <icons.FaHome className="reactIcons" /> HOME
         </NavLink>
       </li>
+
       <li
         onClick={() => {
           props.handleToggles();
-          props.handleValidationToggle();
+          currentUser.username !== "anonymousUser"
+            ? alert("logout")
+            : props.handleValidationToggle();
         }}
         style={{ cursor: "pointer" }}
       >
         <icons.SiGnuprivacyguard className="reactIcons" />
-        LOGIN
+        {currentUser.username === "anonymousUser" ? "LOGIN" : "LOGOUT"}
       </li>
 
       <li onClick={props.handleToggles}>
