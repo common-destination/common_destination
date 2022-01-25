@@ -19,6 +19,7 @@ function Signup() {
 
   const [usernameIsValid, setUsernameIsValid] = useState(false);
   const [password1IsValid, setPassword1IsValid] = useState(false);
+  const [password2IsValid, setPassword2IsValid] = useState(false);
 
   const [emailIsValid, setEmailIsValid] = useState(false);
 
@@ -52,8 +53,14 @@ function Signup() {
     );
   };
   const handle_signupFormField_password2 = (e) => {
-    let password2 = e.target.value;
-    setSignupFormField_password2(password2);
+    let _password2 = e.target.value;
+    if(_password2 === setPassword1IsValid)
+    {
+      setPassword2IsValid(true);
+    } else {
+      setPassword2IsValid(false);
+    }
+    setSignupFormField_password2(_password2);
   };
 
   const handleShowPasswordButton2 = () => {
@@ -129,7 +136,7 @@ function Signup() {
               autoComplete="on"
               onChange={handle_signupFormField_password1}
             />
-            <span className="eyes-icon" onClick={handleShowPasswordButton1}>
+            <span className="eyesIcon" onClick={handleShowPasswordButton1}>
               {passwordsInputType1 === "password" ? (
                 <icons.ImEye />
               ) : (
@@ -137,7 +144,10 @@ function Signup() {
               )}
             </span>
           </div>
-          <div className="row">
+          <div className={`note ${password1IsValid ? "valid" : "invalid"}`}>
+              <p>required minium 5 characters and 1 number</p>
+            </div>
+            <div className={`row ${password2IsValid ? "valid" : "invalid"}`}>
             <label htmlFor="signupFormField_password2">Password 2</label>
             <input
               type={passwordsInputType2}
@@ -153,8 +163,8 @@ function Signup() {
                 <icons.ImEyeBlocked />
               )}
             </span>
-            <div className={`note ${password1IsValid ? "valid" : "invalid"}`}>
-              <p>required minium 5 characters and 1 number</p>
+            <div className={`note ${password2IsValid ? "valid" : "invalid"}`}>
+              <p>your password is false</p>
             </div>
           </div>
           <div className={"row " + (emailIsValid ? "valid" : "invalid")}>
