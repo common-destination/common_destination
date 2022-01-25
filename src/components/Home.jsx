@@ -2,11 +2,21 @@ import React, { useState, useEffect } from "react";
 import Caledar from "./flightsSearch/Caledar";
 import SelectDepartureAirport from "./flightsSearch/SelectDepartureAirport";
 import { useTheme } from "../ThemeContext";
+import InputRadio from "./flightsSearch/InputRadio";
+// import InputType from "./flightsSearch/InputType";
 
 function Home(props) {
   const { backendUrl } = useTheme();
   const [arrPassengers, setArrPassengers] = useState([""]);
   const [departureAirport, setDepartureAirport] = useState([]);
+  const [counter, setCounter] = useState(0);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setCounter(counter);
+    setCounter(counter + 1);
+    setArrPassengers((prev) => [...prev, `${[""]}`]);
+  };
 
   useEffect(() => {
     (async () => {
@@ -29,21 +39,28 @@ function Home(props) {
 
   return (
     <div className={props.className}>
-      <form>
-        {arrPassengers.map((passenger, index) => (
-          <div key={index}>
-            <SelectDepartureAirport departureAirport={departureAirport} />
-            <Caledar />
+      {arrPassengers.map((passenger, index) => (
+        <div className="flightSearch" key={index}>
+          <div className="inputRadioContainer">
+            <InputRadio text="Roundtrip" inputName={index} />
+            <InputRadio text="Oneway" inputName={index} />
           </div>
-        ))}
+          <SelectDepartureAirport departureAirport={departureAirport} />
+          <Caledar />
+        </div>
+      ))}
+      <div className="btnContainer">
         <button
+          className="addPassengerBtn"
           type="button"
-          onClick={() => setArrPassengers((prev) => [...prev, `${[""]}`])}
+          onClick={handleSubmit}
         >
           Add new Passenger
         </button>
-        <button type="button">Submit</button>
-      </form>
+        <button className="submitBtn" type="button">
+          Submit
+        </button>
+      </div>
     </div>
   );
 }
