@@ -8,7 +8,6 @@ function Home(props) {
 
   return (
     <div className={props.className}>
-   
       <SelectDepartureAirport />
       <h1>Home</h1>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur eveniet

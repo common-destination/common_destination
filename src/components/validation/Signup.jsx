@@ -21,9 +21,6 @@ function Signup() {
 
   const [emailIsValid, setEmailIsValid] = useState(false);
 
-
-
-
   // SIGNUP FORM FIELD HANDLERS
   const handle_signupFormField_username = (e) => {
     let _username = e.target.value;
@@ -101,7 +98,6 @@ function Signup() {
       setSignupFormField_email("");
       setValidationMenuToggle(false);
     }
-    
   };
 
   return (
