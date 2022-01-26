@@ -5,9 +5,8 @@ import { useNavigate } from "react-router-dom";
 import icons from "../../functions/icons.js";
 
 function Login() {
-
-  const { setValidationMenuToggle, setCurrentUser, backendUrl, handleLogout  } = useTheme();
-
+  // const { setValidationMenuToggle, setCurrentUser, backendUrl, handleLogout } =
+  const { setValidationMenuToggle, setCurrentUser, backendUrl } = useTheme();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -48,7 +47,7 @@ function Login() {
       navigate("/");
       setUsername("");
       setPassword("");
-      setValidationMenuToggle(false)
+      setValidationMenuToggle(false);
     }
   };
 
@@ -60,36 +59,41 @@ function Login() {
 
   return (
     <div className="Login">
-      <h1>Login</h1>
       <form>
         <fieldset>
           <legend>Login</legend>
           <div className="loginFormMessage">{loginFormMessage}</div>
           <div className="row">
-            <label htmlFor="login">Username</label>
+            {/* <label htmlFor="login">Username</label> */}
             <input
               type="text"
               id="login"
               value={username}
+              placeholder="enter your username"
               onChange={handleUsername}
             />
           </div>
           <div className="row">
-            <label htmlFor="password">Password</label>
+            {/* <label htmlFor="password">Password</label> */}
             <input
               type={passwordsInputType}
               id="password"
               value={password}
               autoComplete="on"
+              placeholder="enter your password"
               onChange={handlePassword}
             />
             <span className="eyesIcon" onClick={handleShowPasswordButton}>
-              {passwordsInputType === "password" ? <icons.ImEye /> : <icons.ImEyeBlocked />}
+              {passwordsInputType === "password" ? (
+                <icons.ImEye />
+              ) : (
+                <icons.ImEyeBlocked />
+              )}
             </span>
           </div>
           <div className="buttonRow">
             <button onClick={handleUsernameButton}>Login</button>
-            <button onClick={handleLogout}>Logout</button>
+            {/* <button onClick={handleLogout}>Logout</button> */}
           </div>
         </fieldset>
       </form>
