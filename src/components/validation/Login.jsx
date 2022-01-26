@@ -85,9 +85,9 @@ function Login() {
             />
             <span className="eyesIcon" onClick={handleShowPasswordButton}>
               {passwordsInputType === "password" ? (
-                <icons.ImEye />
+                <icons.ImEye  color="#288fc5" className="reactIcons"/>
               ) : (
-                <icons.ImEyeBlocked />
+                <icons.ImEyeBlocked color="#288fc5" className="reactIcons"/>
               )}
             </span>
           </div>

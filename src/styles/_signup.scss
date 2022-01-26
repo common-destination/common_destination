@@ -1,18 +1,21 @@
 .Signup {
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
+  form {
     fieldset {
       border: 5px solid #7a7a7a96;
-      border-radius: 15px;
-      padding: 120px;
+      // border-radius: 15px;
+      // padding: 120px;
+      border-radius: 0.9rem;
+      padding: 1% 4% 2% 1%;
 
       legend {
         color: $color2;
-        font-size: 2.5rem;
+        font-size: clamp(2em, 1vw, 9em);
         font-weight: bold;
         letter-spacing: 0.2;
       }
@@ -26,37 +29,42 @@
       .row {
         display: flex;
         align-content: flex-start;
-        padding: 5px;
+        // padding: 5px;
+        // display: flex;
+        padding: 3% 0%;
 
         input {
-          font-size: 1.8rem;
+          width: 95%;
+          font-size: clamp(1.4em, 1vw, 2em);
           border: none;
           border-bottom: 1px solid black;
+          border-radius: 0.3rem;
           text-align: center;
+          margin-left: clamp(0.5em, 0.5vw, 1.5em);
         }
       }
       .note {
-        font-size: 1.3rem;
+        font-size: clamp(1.2em, 1vw, 6em);
         text-align: center;
       }
       .invalid input {
-        color: rgb(182, 32, 32);
+        color: #b91313ed;
       }
       .buttonRow {
         display: flex;
         justify-content: right;
+
         button {
-          font-size: 1.1rem;
+          font-size: clamp(1.1em, 1vw, 2em);
           border: none;
-          border-radius: 15px;
-          padding: 15px;
+          border-radius: 0.6rem;
+          padding: 3.5%;
           background-color: $color2;
           color: white;
           font-weight: 800;
           cursor: pointer;
         }
       }
- 
     }
   }
 }
