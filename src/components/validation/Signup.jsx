@@ -1,77 +1,81 @@
 import React from "react";
 import { useState } from "react";
 import { useTheme } from "../../ThemeContext";
-import { ImEyeBlocked, ImEye } from "react-icons/im";
+// import { ImEyeBlocked, ImEye } from "react-icons/im";
+import icons from "../../functions/icons.js";
 
 function Signup() {
-  const { setValidationToggle, setCurrentUser, backendUrl } = useTheme();
+  const { setValidationMenuToggle, setCurrentUser, backendUrl } = useTheme();
 
-  const [signupFormField_username, setSignupFormField_username] = useState("");
-  const [signupFormField_password1, setSignupFormField_password1] =
-    useState("");
-  const [signupFormField_password2, setSignupFormField_password2] =
-    useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
 
-  const [signupFormField_email, setSignupFormField_email] = useState("");
+  const [email, setEmail] = useState("");
   const [passwordsInputType1, setPasswordsInputType1] = useState("password");
   const [passwordsInputType2, setPasswordsInputType2] = useState("password");
 
   const [usernameIsValid, setUsernameIsValid] = useState(false);
-  const [password1IsValid, setPassword1IsValid] = useState(false);
+  const [passwordIsValid, setPasswordIsValid] = useState(false);
+  const [repeatPasswordIsValid, setRepeatPasswordIsValid] = useState(false);
+  const [signupToggle, setSignupToggle] = useState(true);
 
   const [emailIsValid, setEmailIsValid] = useState(false);
 
   // SIGNUP FORM FIELD HANDLERS
-  const handle_signupFormField_username = (e) => {
+  const handleUsername = (e) => {
     let _username = e.target.value;
     if (_username !== "" && _username.length <= 10 && _username.length >= 3) {
       setUsernameIsValid(true);
     } else {
       setUsernameIsValid(false);
     }
-    setSignupFormField_username(_username);
+    setUsername(_username);
   };
 
-  const handle_signupFormField_password1 = (e) => {
-    let _password1 = e.target.value;
-    if (
-      _password1.length >= 5 &&
-      /^(?=.*[a-zA-Z])(?=.*[0-9])/.test(_password1)
-    ) {
-      setPassword1IsValid(true);
+  const handlePassword = (e) => {
+    let _password = e.target.value;
+    if (_password.length >= 5 && /^(?=.*[a-zA-Z])(?=.*[0-9])/.test(_password)) {
+      setPasswordIsValid(true);
     } else {
-      setPassword1IsValid(false);
+      setPasswordIsValid(false);
     }
-    setSignupFormField_password1(_password1);
+    setPassword(_password);
   };
 
-  const handleShowPasswordButton1 = () => {
+  const handleShowPassword = () => {
     setPasswordsInputType1(
       passwordsInputType1 === "password" ? "text" : "password"
     );
   };
-  const handle_signupFormField_password2 = (e) => {
-    let password2 = e.target.value;
-    setSignupFormField_password2(password2);
+
+  const handleRepeatPassword = (e) => {
+    let _repeatPassword = e.target.value;
+    if (_repeatPassword === password) {
+      setRepeatPasswordIsValid(true);
+    } else {
+      setRepeatPasswordIsValid(false);
+    }
+    setRepeatPassword(_repeatPassword);
   };
 
-  const handleShowPasswordButton2 = () => {
+  const handleShowRepeatPassword = () => {
     setPasswordsInputType2(
       passwordsInputType2 === "password" ? "text" : "password"
     );
   };
 
-  const handle_signupFormField_email = (e) => {
+  const handleEmail = (e) => {
     let _email = e.target.value;
     if (_email !== "" && /(.+)@(.+){2,}\.(.+){2,}/.test(_email)) {
       setEmailIsValid(true);
     } else {
       setEmailIsValid(false);
     }
-    setSignupFormField_email(_email);
+    setEmail(_email);
   };
 
-  const handle_signupForm_signupButton = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const requestOptions = {
@@ -79,10 +83,10 @@ function Signup() {
       credentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        username: signupFormField_username,
-        password1: signupFormField_password1,
-        password2: signupFormField_password2,
-        email: signupFormField_email,
+        username: username,
+        password1: password,
+        password2: repeatPassword,
+        email: email,
       }),
     };
     console.log("request" + requestOptions);
@@ -92,84 +96,119 @@ function Signup() {
       const _currentUser = await response.json();
       console.log(_currentUser);
       setCurrentUser((prev) => ({ ...prev, ..._currentUser }));
-      setSignupFormField_username("");
-      setSignupFormField_password1("");
-      setSignupFormField_password2("");
-      setSignupFormField_email("");
-      setValidationToggle(false);
+      setUsername("");
+      setPassword("");
+      setRepeatPassword("");
+      setEmail("");
+      setValidationMenuToggle(false);
+    } else {
+      setSignupToggle(false);
     }
   };
 
   return (
     <div className="Signup">
-      <h1>Signup</h1>
-
       <form>
         <fieldset>
           <legend>Signup</legend>
-          <div className={"row " + (usernameIsValid ? "valid" : "invalid")}>
-            <label htmlFor="signupFormField_username">Username</label>
+          <div className={`row ${usernameIsValid ? "valid" : "invalid"}`}>
+            {/* <label htmlFor="username">Username</label> */}
             <input
               type="text"
-              id="signupFormField_username"
-              value={signupFormField_username}
-              onChange={handle_signupFormField_username}
+              id="username"
+              value={username}
+              placeholder="choose your username"
+              onChange={handleUsername}
             />
           </div>
-          <div className={"note " + (usernameIsValid ? "valid" : "invalid")}>
-            required, minium 3 characters and maximum 10 characters
+          <div className={`note ${usernameIsValid ? "valid" : "invalid"}`}>
+            {/* <p>min 3 and max 10 characters </p>
+            {!usernameIsValid && !signupToggle && <p>please check your email</p>} */}
+
+            {!usernameIsValid && !signupToggle ? (
+              <p>please check your username</p>
+            ) : (
+              <p>min 3 and max 10 characters </p>
+            )}
           </div>
-          <div className={`row ${password1IsValid ? "valid" : "invalid"}`}>
-            <label htmlFor="signupFormField_password1">Password 1</label>
+          <div className={`row ${passwordIsValid ? "valid" : "invalid"}`}>
+            {/* <label htmlFor="password">Password</label> */}
             <input
               type={passwordsInputType1}
-              id="signupFormField_password1"
-              value={signupFormField_password1}
+              id="password"
+              value={password}
               autoComplete="on"
-              onChange={handle_signupFormField_password1}
+              placeholder="enter your password"
+              onChange={handlePassword}
             />
-            <span className="eyes-icon" onClick={handleShowPasswordButton1}>
+            <span className="eyesIcon" onClick={handleShowPassword}>
               {passwordsInputType1 === "password" ? (
-                <ImEye />
+                <icons.ImEye />
               ) : (
-                <ImEyeBlocked />
+                <icons.ImEyeBlocked />
               )}
             </span>
           </div>
-          <div className="row">
-            <label htmlFor="signupFormField_password2">Password 2</label>
+          <div className={`note ${passwordIsValid ? "valid" : "invalid"}`}>
+            {/* <p>min 5 characters and numbers</p>
+            {!passwordIsValid && !signupToggle && (
+              <p>make sure your password contains 5 characters and a number</p>
+            )} */}
+
+            {!passwordIsValid && !signupToggle ? (
+              <p>make sure your password contains 5 characters and a number</p>
+            ) : (
+              <p>min 5 characters and numbers</p>
+            )}
+          </div>
+
+          <div className={`row ${repeatPasswordIsValid ? "valid" : "invalid"}`}>
+            {/* <label htmlFor="repeatPassword">Repeat password</label> */}
             <input
               type={passwordsInputType2}
-              id="signupFormField_password2"
-              value={signupFormField_password2}
+              id="repeatPassword"
+              value={repeatPassword}
               autoComplete="on"
-              onChange={handle_signupFormField_password2}
+              placeholder="repeat your password"
+              onChange={handleRepeatPassword}
             />
-            <span className="eyes-icon" onClick={handleShowPasswordButton2}>
+            <span className="eyesIcon" onClick={handleShowRepeatPassword}>
               {passwordsInputType2 === "password" ? (
-                <ImEye />
+                <icons.ImEye />
               ) : (
-                <ImEyeBlocked />
+                <icons.ImEyeBlocked />
               )}
             </span>
-            <div className={`note ${password1IsValid ? "valid" : "invalid"}`}>
-              <p>required minium 5 characters and 1 number</p>
-            </div>
           </div>
-          <div className={"row " + (emailIsValid ? "valid" : "invalid")}>
-            <label htmlFor="signupFormField_email">E-Mail</label>
+          <div
+            className={`note ${repeatPasswordIsValid ? "valid" : "invalid"}`}
+          >
+            {!repeatPasswordIsValid && !signupToggle && (
+              <p>the two passwords are different</p>
+            )}
+          </div>
+          <div className={`row ${emailIsValid ? "valid" : "invalid"}`}>
+            {/* <label htmlFor="email">E-Mail</label> */}
             <input
               type="text"
-              id="signupFormField_email"
-              value={signupFormField_email}
-              onChange={handle_signupFormField_email}
+              id="email"
+              value={email}
+              placeholder="enter your email"
+              onChange={handleEmail}
             />
           </div>
-          <div className={"note " + (emailIsValid ? "valid" : "invalid")}>
-            e.g. xxxx@xxxx.xx
+          <div className={`note ${emailIsValid ? "valid" : "invalid"}`}>
+            {/* <p>e.g. xxxx@xxxx.xx </p>
+            {!emailIsValid && !signupToggle && <p>please check your email</p>} */}
+
+            {!emailIsValid && !signupToggle ? (
+              <p>please check your email</p>
+            ) : (
+              <p>e.g. xxxx@xxxx.xx </p>
+            )}
           </div>
           <div className="buttonRow">
-            <button onClick={handle_signupForm_signupButton}>Submit</button>
+            <button onClick={handleSubmit}>Sign Up!</button>
           </div>
         </fieldset>
       </form>
