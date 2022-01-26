@@ -108,7 +108,6 @@ function Signup() {
 
   return (
     <div className="Signup">
-      <h1>Signup</h1>
       <form>
         <fieldset>
           <legend>Signup</legend>
