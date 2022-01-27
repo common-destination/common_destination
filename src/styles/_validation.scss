@@ -26,11 +26,11 @@
   }
   .menuIconClosed {
     position: absolute;
-    top: 1.5vh;
-    right: 1vw;
-    cursor: grabbing;
-    width: clamp(1em, 2vw, 2em);
-    height: clamp(1.5em, 2.2vh, 3em);
+    top: 5vh;
+    right: 4vw;
+    cursor: pointer;
+    width: clamp(2em, 2vw, 3em);
+    height: clamp(2em, 2.2vh, 3em);
     z-index: 999999999;
   }
 }
