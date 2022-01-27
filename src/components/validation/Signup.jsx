@@ -104,116 +104,120 @@ function Signup() {
       setValidationMenuToggle(false);
     } else {
       setSignupToggle(false);
+    }
 
-  };
-
-  return (
-    <div className="Signup">
-      <form>
-        <fieldset>
-          <legend>Signup</legend>
-          <div className={`row ${usernameIsValid ? "valid" : "invalid"}`}>
-            {/* <label htmlFor="username">Username</label> */}
-            <input
-              type="text"
-              id="username"
-              value={username}
-              placeholder="choose your username"
-              onChange={handleUsername}
-            />
-          </div>
-          <div className={`note ${usernameIsValid ? "valid" : "invalid"}`}>
-            {/* <p>min 3 and max 10 characters </p>
+    return (
+      <div className="Signup">
+        <form>
+          <fieldset>
+            <legend>Signup</legend>
+            <div className={`row ${usernameIsValid ? "valid" : "invalid"}`}>
+              {/* <label htmlFor="username">Username</label> */}
+              <input
+                type="text"
+                id="username"
+                value={username}
+                placeholder="choose your username"
+                onChange={handleUsername}
+              />
+            </div>
+            <div className={`note ${usernameIsValid ? "valid" : "invalid"}`}>
+              {/* <p>min 3 and max 10 characters </p>
             {!usernameIsValid && !signupToggle && <p>please check your email</p>} */}
 
-            {!usernameIsValid && !signupToggle ? (
-              <p>please check your username</p>
-            ) : (
-              <p>min 3 and max 10 characters </p>
-            )}
-          </div>
-          <div className={`row ${passwordIsValid ? "valid" : "invalid"}`}>
-            {/* <label htmlFor="password">Password</label> */}
-            <input
-              type={passwordsInputType1}
-              id="password"
-              value={password}
-              autoComplete="on"
-              placeholder="enter your password"
-              onChange={handlePassword}
-            />
-            <span className="eyesIcon" onClick={handleShowPassword}>
-              {passwordsInputType1 === "password" ? (
-                <icons.ImEye color="#288fc5" className="reactIcons" />
+              {!usernameIsValid && !signupToggle ? (
+                <p>please check your username</p>
               ) : (
-                <icons.ImEyeBlocked color="#288fc5" className="reactIcons" />
+                <p>min 3 and max 10 characters </p>
               )}
-            </span>
-          </div>
-          <div className={`note ${passwordIsValid ? "valid" : "invalid"}`}>
-            {/* <p>min 5 characters and numbers</p>
+            </div>
+            <div className={`row ${passwordIsValid ? "valid" : "invalid"}`}>
+              {/* <label htmlFor="password">Password</label> */}
+              <input
+                type={passwordsInputType1}
+                id="password"
+                value={password}
+                autoComplete="on"
+                placeholder="enter your password"
+                onChange={handlePassword}
+              />
+              <span className="eyesIcon" onClick={handleShowPassword}>
+                {passwordsInputType1 === "password" ? (
+                  <icons.ImEye color="#288fc5" className="reactIcons" />
+                ) : (
+                  <icons.ImEyeBlocked color="#288fc5" className="reactIcons" />
+                )}
+              </span>
+            </div>
+            <div className={`note ${passwordIsValid ? "valid" : "invalid"}`}>
+              {/* <p>min 5 characters and numbers</p>
             {!passwordIsValid && !signupToggle && (
               <p>make sure your password contains 5 characters and a number</p>
             )} */}
 
-            {!passwordIsValid && !signupToggle ? (
-              <p>make sure your password contains 5 characters and a number</p>
-            ) : (
-              <p>min 5 characters and numbers</p>
-            )}
-          </div>
-
-          <div className={`row ${repeatPasswordIsValid ? "valid" : "invalid"}`}>
-            {/* <label htmlFor="repeatPassword">Repeat password</label> */}
-            <input
-              type={passwordsInputType2}
-              id="repeatPassword"
-              value={repeatPassword}
-              autoComplete="on"
-              placeholder="repeat your password"
-              onChange={handleRepeatPassword}
-            />
-            <span className="eyesIcon" onClick={handleShowRepeatPassword}>
-              {passwordsInputType2 === "password" ? (
-                <icons.ImEye color="#288fc5" className="reactIcons" />
+              {!passwordIsValid && !signupToggle ? (
+                <p>
+                  make sure your password contains 5 characters and a number
+                </p>
               ) : (
-                <icons.ImEyeBlocked color="#288fc5" className="reactIcons" />
+                <p>min 5 characters and numbers</p>
               )}
-            </span>
-          </div>
-          <div
-            className={`note ${repeatPasswordIsValid ? "valid" : "invalid"}`}
-          >
-            {!repeatPasswordIsValid && !signupToggle && (
-              <p>the two passwords are different</p>
-            )}
-          </div>
-          <div className={`row ${emailIsValid ? "valid" : "invalid"}`}>
-            {/* <label htmlFor="email">E-Mail</label> */}
-            <input
-              type="text"
-              id="email"
-              value={email}
-              placeholder="enter your email"
-              onChange={handleEmail}
-            />
-          </div>
-          <div className={`note ${emailIsValid ? "valid" : "invalid"}`}>
-            {/* <p>e.g. xxxx@xxxx.xx </p>
+            </div>
+
+            <div
+              className={`row ${repeatPasswordIsValid ? "valid" : "invalid"}`}
+            >
+              {/* <label htmlFor="repeatPassword">Repeat password</label> */}
+              <input
+                type={passwordsInputType2}
+                id="repeatPassword"
+                value={repeatPassword}
+                autoComplete="on"
+                placeholder="repeat your password"
+                onChange={handleRepeatPassword}
+              />
+              <span className="eyesIcon" onClick={handleShowRepeatPassword}>
+                {passwordsInputType2 === "password" ? (
+                  <icons.ImEye color="#288fc5" className="reactIcons" />
+                ) : (
+                  <icons.ImEyeBlocked color="#288fc5" className="reactIcons" />
+                )}
+              </span>
+            </div>
+            <div
+              className={`note ${repeatPasswordIsValid ? "valid" : "invalid"}`}
+            >
+              {!repeatPasswordIsValid && !signupToggle && (
+                <p>the two passwords are different</p>
+              )}
+            </div>
+            <div className={`row ${emailIsValid ? "valid" : "invalid"}`}>
+              {/* <label htmlFor="email">E-Mail</label> */}
+              <input
+                type="text"
+                id="email"
+                value={email}
+                placeholder="enter your email"
+                onChange={handleEmail}
+              />
+            </div>
+            <div className={`note ${emailIsValid ? "valid" : "invalid"}`}>
+              {/* <p>e.g. xxxx@xxxx.xx </p>
             {!emailIsValid && !signupToggle && <p>please check your email</p>} */}
 
-            {!emailIsValid && !signupToggle ? (
-              <p>please check your email</p>
-            ) : (
-              <p>e.g. xxxx@xxxx.xx </p>
-            )}
-          </div>
-          <div className="buttonRow">
-            <button onClick={handleSubmit}>Sign Up!</button>
-          </div>
-        </fieldset>
-      </form>
-    </div>
-  );
+              {!emailIsValid && !signupToggle ? (
+                <p>please check your email</p>
+              ) : (
+                <p>e.g. xxxx@xxxx.xx </p>
+              )}
+            </div>
+            <div className="buttonRow">
+              <button onClick={handleSubmit}>Sign Up!</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    );
+  };
 }
 export default Signup;
