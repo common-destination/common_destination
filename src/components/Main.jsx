@@ -46,12 +46,8 @@ const Main = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [validationMenuToggle, menuAccountToggle]);
 
-
-
   return (
-    <div
-      className="Main"
-    >
+    <div className="Main">
       {validationMenuToggle && <Validation />}
 
       {!burgerMenuToggle && (

@@ -96,6 +96,7 @@ function Signup() {
       const _currentUser = await response.json();
       console.log(_currentUser);
       setCurrentUser((prev) => ({ ...prev, ..._currentUser }));
+
       setUsername("");
       setPassword("");
       setRepeatPassword("");
@@ -103,7 +104,7 @@ function Signup() {
       setValidationMenuToggle(false);
     } else {
       setSignupToggle(false);
-    }
+
   };
 
   return (

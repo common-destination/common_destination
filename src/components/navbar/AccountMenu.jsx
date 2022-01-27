@@ -1,17 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "../../ThemeContext.js";
-import icons from "../../functions/icons.js"
+import icons from "../../functions/icons.js";
 
 function AccountMenu(props) {
   const { currentUser } = useTheme();
 
   return (
     <ul
+      className="AccountMenu"
       onClick={() => {
         props.setMenuAccountToggle(false);
       }}
-      className="accountMenu"
     >
       {currentUser.username !== "anonymousUser" && (
         <li>
@@ -20,13 +20,15 @@ function AccountMenu(props) {
           </NavLink>
         </li>
       )}
-      <li onClick={() => {
-            props.handleValidationToggle();
-            currentUser.username !== "anonymousUser"
-              ? alert("logout")
-              : props.handleValidationToggle();
-          }}
-          style={{ cursor: "pointer" }}>
+      <li
+        onClick={() => {
+          props.handleValidationToggle();
+          currentUser.username !== "anonymousUser"
+            ? props.handleLogout()
+            : props.handleValidationToggle();
+        }}
+        style={{ cursor: "pointer" }}
+      >
         <icons.SiGnuprivacyguard className="reactIcons" id="loginIcon" />
         {currentUser.username === "anonymousUser" ? "LOG IN" : "LOG OUT"}
       </li>
