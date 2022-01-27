@@ -1,41 +1,34 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "../../ThemeContext.js";
-import icons from "../../functions/icons.js";
 
 function AccountMenu(props) {
   const { currentUser } = useTheme();
 
   return (
-    <ul
-      className="AccountMenu"
-      onClick={() => {
-        props.setMenuAccountToggle(false);
-      }}
-    >
+    <div className="AccountMenu">
       {currentUser.username !== "anonymousUser" && (
-        <li>
-          <NavLink to="/account">
-            <h3>{currentUser.username}</h3>
-          </NavLink>
-        </li>
+        <h3 style={{ marginBottom: "3vh" }}>
+          <NavLink to="/account">{currentUser.username}</NavLink>
+        </h3>
       )}
-      <li
+      <ul
         onClick={() => {
-          props.handleValidationToggle();
-          currentUser.username !== "anonymousUser"
-            ? props.handleLogout()
-            : props.handleValidationToggle();
+          props.setMenuAccountToggle(false);
         }}
-        style={{ cursor: "pointer" }}
       >
-        <icons.SiGnuprivacyguard className="reactIcons" id="loginIcon" />
-        {currentUser.username === "anonymousUser" ? "LOG IN" : "LOG OUT"}
-      </li>
-      <li>
-        <NavLink to="/account">sign up</NavLink>
-      </li>
-    </ul>
+        <li
+          onClick={() => {
+            currentUser.username !== "anonymousUser"
+              ? props.handleLogout()
+              : props.handleValidationToggle();
+          }}
+          style={{ cursor: "pointer" }}
+        >
+          {currentUser.username === "anonymousUser" ? "LOG IN" : "LOG OUT"}
+        </li>
+      </ul>
+    </div>
   );
 }
 

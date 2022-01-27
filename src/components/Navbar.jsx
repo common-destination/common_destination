@@ -23,6 +23,8 @@ const Navbar = () => {
     setValidationMenuToggle(false);
   };
 
+   
+
   const handleValidationToggle = () => {
     !validationMenuToggle
       ? setValidationMenuToggle(true)
