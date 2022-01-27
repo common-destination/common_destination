@@ -11,6 +11,11 @@
   animation: animate 1s ease-in-out;
   animation-name: validationsApparition;
   z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   ul {
     li {
       width: max-content;

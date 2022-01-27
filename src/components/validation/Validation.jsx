@@ -17,8 +17,8 @@ function Validation() {
     <div
       className="Validation"
       style={{
-        width: mediaQueries.burgerMenu ? "100vw" : "40vw",
-        minHeight: mediaQueries.burgerMenu ? "100vh" : "70vh",
+        width: mediaQueries.smallView ? "100vw" : "40vw",
+        minHeight: mediaQueries.smallView ? "100vh" : "70vh",
       }}
     >
       <ul>

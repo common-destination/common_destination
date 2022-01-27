@@ -19,7 +19,7 @@ export function ThemeProvider({ children }) {
   const [currentUser, setCurrentUser] = useState({});
 
   const mediaQueries = {
-    smallView: useMediaQuery("(max-width: 750px)"),
+    smallView: useMediaQuery("(max-width: 800px)"),
   };
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
