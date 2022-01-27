@@ -8,10 +8,10 @@ function AccountMenu(props) {
 
   return (
     <ul
+      className="AccountMenu"
       onClick={() => {
         props.setMenuAccountToggle(false);
       }}
-      className="accountMenu"
     >
       {currentUser.username !== "anonymousUser" && (
         <li>
