@@ -35,7 +35,7 @@ function Home(props) {
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(departureAirport);
+  // console.log(departureAirport);
 
   return (
     <div className={props.className}>
