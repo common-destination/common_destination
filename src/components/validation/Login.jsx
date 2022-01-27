@@ -33,7 +33,7 @@ function Login() {
     console.log(requestOptions);
     const response = await fetch(`${backendUrl}/users/login`, requestOptions);
     if (!response.ok) {
-      setUsername("");
+      // setUsername("");
       setPassword("");
       setInvalidLogin("Oops..check your credentials");
     } else {
@@ -57,7 +57,6 @@ function Login() {
       <form>
         <fieldset>
           <legend>Login</legend>
-          <div className="loginFormMessage">{invalidLogin}</div>
           <div className="row">
             {/* <label htmlFor="login">Username</label> */}
             <input
@@ -85,6 +84,9 @@ function Login() {
                 <icons.ImEyeBlocked color="#288fc5" className="reactIcons" />
               )}
             </span>
+          </div>
+          <div className="note">
+            <p>{invalidLogin}</p>
           </div>
           <div className="buttonRow">
             <button onClick={handleLogin}>Login</button>
