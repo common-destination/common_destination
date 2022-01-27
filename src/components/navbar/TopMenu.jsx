@@ -9,17 +9,12 @@ function TopMenu(props) {
   return (
     <>
       <ul className="topMenu">
-        <li
-          onClick={() => {
-            props.handleValidationToggle();
-            currentUser.username !== "anonymousUser"
-              ? props.handleLogout()
-              : props.handleValidationToggle();
-          }}
-          style={{ cursor: "pointer" }}
-        >
-          {/* <icons.SiGnuprivacyguard className="reactIcons" id="loginIcon" /> */}
-          {currentUser.username === "anonymousUser" ? "LOG IN" : "LOG OUT"}
+        <li>
+          {currentUser.username !== "anonymousUser" && (
+            <NavLink to="/account">   
+              <h5 style={{ marginRight: "40vw" }}>{currentUser.username} </h5>
+            </NavLink>
+          )}
         </li>
         <li
           onClick={() => {

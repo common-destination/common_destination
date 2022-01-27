@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { useTheme } from "../../ThemeContext";
-import { useNavigate } from "react-router-dom";
 import icons from "../../functions/icons.js";
 
 function Login() {
@@ -11,11 +10,8 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const [loginFormMessage, setLoginFormMessage] = useState("");
+  const [invalidLogin, setInvalidLogin] = useState("");
   const [passwordsInputType, setPasswordsInputType] = useState("password");
-
-  const navigate = useNavigate();
-
   const handleUsername = (e) => {
     const _username = e.target.value;
     setUsername(_username);
@@ -26,7 +22,7 @@ function Login() {
     setPassword(_password);
   };
 
-  const handleUsernameButton = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const requestOptions = {
       method: "POST",
@@ -37,14 +33,13 @@ function Login() {
     console.log(requestOptions);
     const response = await fetch(`${backendUrl}/users/login`, requestOptions);
     if (!response.ok) {
-      setUsername("");
+      // setUsername("");
       setPassword("");
-      setLoginFormMessage("Bad Login");
+      setInvalidLogin("Oops..check your credentials");
     } else {
       const _currentUser = await response.json();
       console.log(_currentUser);
       setCurrentUser((prev) => ({ ...prev, ..._currentUser }));
-      navigate("/");
       setUsername("");
       setPassword("");
       setValidationMenuToggle(false);
@@ -62,7 +57,6 @@ function Login() {
       <form>
         <fieldset>
           <legend>Login</legend>
-          <div className="loginFormMessage">{loginFormMessage}</div>
           <div className="row">
             {/* <label htmlFor="login">Username</label> */}
             <input
@@ -85,14 +79,17 @@ function Login() {
             />
             <span className="eyesIcon" onClick={handleShowPasswordButton}>
               {passwordsInputType === "password" ? (
-                <icons.ImEye  color="#288fc5" className="reactIcons"/>
+                <icons.ImEye color="#288fc5" className="reactIcons" />
               ) : (
-                <icons.ImEyeBlocked color="#288fc5" className="reactIcons"/>
+                <icons.ImEyeBlocked color="#288fc5" className="reactIcons" />
               )}
             </span>
           </div>
+          <div className="note">
+            <p>{invalidLogin}</p>
+          </div>
           <div className="buttonRow">
-            <button onClick={handleUsernameButton}>Login</button>
+            <button onClick={handleLogin}>Login</button>
             {/* <button onClick={handleLogout}>Logout</button> */}
           </div>
         </fieldset>

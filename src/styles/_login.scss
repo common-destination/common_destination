@@ -35,6 +35,11 @@
         }
       }
 
+      .note {
+        font-size: clamp(0.9em, 1vw, 5em);
+        text-align: center;
+      }
+
       .buttonRow {
         display: flex;
         justify-content: right;
