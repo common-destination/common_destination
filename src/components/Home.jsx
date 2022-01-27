@@ -4,13 +4,15 @@ import PassengersCriteria from "./flightsSearch/PassengersCriteria.jsx";
 
 function Home(props) {
   const { backendUrl } = useTheme();
-  const [arrPassengers, setArrPassengers] = useState([""]);
+  const [arrPassengers, setArrPassengers] = useState(["passenger1"]);
+  const [passengersCounter, setPassengersCounter] = useState(2);
   const [departureAirport, setDepartureAirport] = useState([]);
 
-  const addNewPassenger = (e) => {
-    e.preventDefault();
-    setArrPassengers((prev) => [...prev, `${[""]}`]);
+  const addNewPassenger = () => {
+    setArrPassengers((prev) => [...prev, `passenger${passengersCounter}`]);
+    setPassengersCounter(passengersCounter + 1);
   };
+  console.log(arrPassengers);
 
   useEffect(() => {
     (async () => {
@@ -29,12 +31,15 @@ function Home(props) {
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(departureAirport);
 
   return (
     <div className={props.className}>
       {arrPassengers.map((passenger, index) => (
-        <PassengersCriteria key={index} departureAirport={departureAirport} index={index} />
+        <PassengersCriteria
+          key={index}
+          departureAirport={departureAirport}
+          index={index}
+        />
       ))}
       <div className="btnContainer">
         <button
