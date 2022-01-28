@@ -13,7 +13,7 @@ function BurgerMenu(props) {
         height: mediaQueries.burgerMenu ? "100vh" : "70vh",
       }}
     >
-      <li onClick={props.handleToggles}>
+      <li onClick={props.handleBurgerMenuToggles}>
         <NavLink to="/">
           <icons.FaHome className="reactIcons" /> HOME
         </NavLink>
@@ -21,10 +21,10 @@ function BurgerMenu(props) {
 
       <li
         onClick={() => {
-          props.handleToggles();
+          props.handleBurgerMenuToggles();
           currentUser.username !== "anonymousUser"
             ? props.handleLogout()
-            : props.handleValidationToggle();
+            : props.setValidationMenuToggle();
         }}
         style={{ cursor: "pointer" }}
       >
@@ -32,20 +32,20 @@ function BurgerMenu(props) {
         {currentUser.username === "anonymousUser" ? "LOGIN" : "LOGOUT"}
       </li>
 
-      <li onClick={props.handleToggles}>
+      <li onClick={props.handleBurgerMenuToggles}>
         <NavLink to="/account">
           <icons.MdManageAccounts className="reactIcons" />
           ACCOUNT
         </NavLink>
       </li>
-      <li onClick={props.handleToggles}>
+      <li onClick={props.handleBurgerMenuToggles}>
         <NavLink to="/about">
           <icons.BsInfoSquareFill className="reactIcons" />
           ABOUT
         </NavLink>
       </li>
 
-      <li onClick={props.handleToggles}>
+      <li onClick={props.handleBurgerMenuToggles}>
         <NavLink to="/contact">
           <icons.GrContact className="reactIcons" />
           CONTACT

@@ -18,53 +18,43 @@ const Navbar = () => {
     handleLogout,
   } = useTheme();
 
-  const handleToggles = () => {
+  const handleBurgerMenuToggles = () => {
     !burgerMenuToggle ? setBurgerMenuToggle(true) : setBurgerMenuToggle(false);
     setValidationMenuToggle(false);
   };
 
-   
-
-  const handleValidationToggle = () => {
-    !validationMenuToggle
-      ? setValidationMenuToggle(true)
-      : setValidationMenuToggle(false);
-  };
-
-  const handleMenuAccountToggle = () => {
-    !menuAccountToggle
-      ? setMenuAccountToggle(true)
-      : setMenuAccountToggle(false);
-  };
 
   return (
     <div className="Navbar">
       {!burgerMenuToggle && (
         <TopMenu
-          handleMenuAccountToggle={handleMenuAccountToggle}
+          setMenuAccountToggle={() => setMenuAccountToggle(!menuAccountToggle)}
           setValidationMenuToggle={setValidationMenuToggle}
-          handleValidationToggle={handleValidationToggle}
-          handleToggles={handleToggles}
+          handleBurgerMenuToggles={handleBurgerMenuToggles}
           handleLogout={handleLogout}
         />
       )}
       {menuAccountToggle && (
         <AccountMenu
           setMenuAccountToggle={setMenuAccountToggle}
-          handleValidationToggle={handleValidationToggle}
+          setValidationMenuToggle={() =>
+            setValidationMenuToggle(!validationMenuToggle)
+          }
           handleLogout={handleLogout}
         />
       )}
       {burgerMenuToggle && (
         <>
           <BurgerMenu
-            handleToggles={handleToggles}
-            handleValidationToggle={handleValidationToggle}
+            handleBurgerMenuToggles={handleBurgerMenuToggles}
+            setValidationMenuToggle={() =>
+              setValidationMenuToggle(!validationMenuToggle)
+            }
             handleLogout={handleLogout}
           />
           <icons.MdOutlineClose
             className="menuIconClosed"
-            onClick={handleToggles}
+            onClick={handleBurgerMenuToggles}
           />
         </>
       )}

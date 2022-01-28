@@ -11,7 +11,7 @@ function TopMenu(props) {
       <ul className="topMenu">
         <li>
           {currentUser.username !== "anonymousUser" && (
-            <NavLink to="/account">   
+            <NavLink to="/account">
               <h5 style={{ marginRight: "40vw" }}>{currentUser.username} </h5>
             </NavLink>
           )}
@@ -28,7 +28,7 @@ function TopMenu(props) {
         <li
           onClick={() => {
             props.setValidationMenuToggle(false);
-            props.handleMenuAccountToggle();
+            props.setMenuAccountToggle();
           }}
         >
           <icons.MdManageAccounts
@@ -40,7 +40,7 @@ function TopMenu(props) {
       </ul>
       <icons.GiHamburgerMenu
         className="menuIcon"
-        onClick={props.handleToggles}
+        onClick={props.handleBurgerMenuToggles}
       />
     </>
   );
