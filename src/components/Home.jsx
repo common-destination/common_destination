@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useTheme } from "../ThemeContext";
 import PassengersCriteria from "./flightsSearch/PassengersCriteria.jsx";
+import icons from "../functions/icons.js";
 
 function Home(props) {
   const { backendUrl } = useTheme();
-  const [arrPassengers, setArrPassengers] = useState(["passenger1"]);
-  const [passengersCounter, setPassengersCounter] = useState(2);
+  const [arrPassengers, setArrPassengers] = useState(["passenger"]);
   const [departureAirport, setDepartureAirport] = useState([]);
 
   const addNewPassenger = () => {
-    setArrPassengers((prev) => [...prev, `passenger${passengersCounter}`]);
-    setPassengersCounter(passengersCounter + 1);
+    setArrPassengers((prev) => [...prev, "passenger"]);
   };
+
+  const deletePassenger = (wichPassenger) => {
+    let newArray = [...arrPassengers];
+    newArray.splice(wichPassenger, 1);
+    return setArrPassengers(newArray);
+  };
+
   console.log(arrPassengers);
 
   useEffect(() => {
@@ -32,25 +38,32 @@ function Home(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    setArrPassengers((prev) =>
+      prev.map((passenger, index) => `passenger ${index + 1}`)
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [arrPassengers]);
+
   return (
     <div className={props.className}>
       {arrPassengers.map((passenger, index) => (
         <PassengersCriteria
           key={index}
           departureAirport={departureAirport}
+          deletePassenger={() => deletePassenger(index)}
           index={index}
+          passengerName={passenger}
         />
       ))}
       <div className="btnContainer">
-        <button
+        <icons.GrAddCircle
           className="addPassengerBtn"
           type="button"
           onClick={addNewPassenger}
-        >
-          Add new Passenger
-        </button>
+        />
         <button className="submitBtn" type="button">
-          Submit
+          Search flights
         </button>
       </div>
     </div>

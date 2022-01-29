@@ -4,7 +4,7 @@ const InputRadio = (props) => {
   return (
     <div>
       <input
-        // checked="roundtrip"
+        checked={props.checked}
         onClick={props.setCalendarToggle}
         type="radio"
         name={props.inputName}
