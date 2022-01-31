@@ -5,23 +5,22 @@ import icons from "../functions/icons.js";
 
 function Home(props) {
   const { backendUrl } = useTheme();
-  const [passengers, setPassengers] = useState(["passenger"]);
-  // const [passengers, setPassengers] = useState([
-  //   "passenger1",
-  //   "passenger2",
-  //   "passenger3",
-  //   "passenger4",
-  // ]);
+  const [passengers, setPassengers] = useState(["passenger1", "passengers2"]);
   const [departureAirport, setDepartureAirport] = useState([]);
+  const [counter, setCounter] = useState(0);
 
   const addNewPassenger = () => {
     setPassengers((prev) => [...prev, "passenger"]);
+    setCounter((prev) => prev + 1);
   };
 
   const deletePassenger = (wichPassenger) => {
-    let newArray = [...passengers];
-    newArray.splice(wichPassenger, 1);
-    return setPassengers(newArray);
+    if (passengers.length > 2) {
+      setCounter((prev) => prev - 1);
+      let newArray = [...passengers];
+      newArray.splice(wichPassenger, 1);
+      return setPassengers(newArray);
+    }
   };
 
   console.log(passengers);
@@ -49,7 +48,7 @@ function Home(props) {
       prev.map((passenger, index) => `passenger ${index + 1}`)
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [passengers]);
+  }, [counter]);
 
   return (
     <div className={props.className}>
@@ -58,8 +57,9 @@ function Home(props) {
           key={index}
           departureAirport={departureAirport}
           deletePassenger={() => deletePassenger(index)}
-          index={index}
+          inputName={index}
           passengerName={passenger}
+          passengers={passengers}
         />
       ))}
       <div className="btnContainer">

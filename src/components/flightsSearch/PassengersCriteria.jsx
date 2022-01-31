@@ -18,19 +18,21 @@ const PassengersCriteria = (props) => {
           }}
           text="Roundtrip"
           checked={calendarToggle ? true : false}
-          inputName={props.index}
+          inputName={props.inputName}
         />
         <InputRadio
           setCalendarToggle={() => {
             setCalendarToggle(false);
           }}
           text="Oneway"
-          inputName={props.index}
+          inputName={props.inputName}
         />
-        <icons.RiDeleteBinLine
-          className="deletePassenger"
-          onClick={props.deletePassenger}
-        />
+        {props.passengers.length > 2 && (
+          <icons.RiDeleteBinLine
+            className="deletePassenger"
+            onClick={props.deletePassenger}
+          />
+        )}
       </div>
       <SelectDepartureAirport departureAirport={props.departureAirport} />
       <div className="chooseDates">

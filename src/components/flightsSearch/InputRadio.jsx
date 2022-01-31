@@ -2,7 +2,7 @@ import React from "react";
 
 const InputRadio = (props) => {
   return (
-    <div>
+    <>
       <input
         checked={props.checked}
         onClick={props.setCalendarToggle}
@@ -11,7 +11,7 @@ const InputRadio = (props) => {
         id="trip"
       />
       <label>{props.text}</label>
-    </div>
+    </>
   );
 };
 
