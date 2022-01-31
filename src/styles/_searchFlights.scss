@@ -1,11 +1,11 @@
 .flightSearch {
   width: clamp(22em, 70vw, 40em);
-  height: 20vh;
+  height: 25vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 3%;
-  margin: 1vh 0;
+  padding: 8% 2%;
+  margin: 3vh 0 1vh 0;
   border: 2px solid red;
 
   h5 {
@@ -23,6 +23,7 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
+    margin: 2vh 0;
   }
 
   .selectDeparture {
@@ -31,14 +32,29 @@
       text-align: center;
     }
   }
-
-  .calendar {
+  .deletePassenger {
+    font-size: (clamp(1em, 1.5vw, 2em));
+    cursor: pointer;
+  }
+  .chooseDates {
     width: 100%;
+    margin: 2vh 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    .calendar {
+      width: 70%;
+      display: flex;
+      justify-content: space-between;
+      input {
+        width: 95%;
+      }
+    }
 
-    input {
-      width: 95%;
+    .minimumJourney {
+      width: 3.5vw;
+      height: 3.5vh;
+      padding: 0.6%;
     }
   }
 }

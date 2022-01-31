@@ -11,8 +11,14 @@
     justify-content: space-between;
 
     .addPassengerBtn {
+      font-size: (clamp(1.2em, 1.7vw, 2.1em));
+      cursor: pointer;
     }
     .submitBtn {
+      padding: 1% 3%;
+      border-radius: 0.5rem;
+      border: none;
+      font-size: clamp(0.95em, 1.5vw, 1em);
     }
   }
 }

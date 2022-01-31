@@ -5,8 +5,11 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { FaHome } from "react-icons/fa";
 import { BsInfoSquareFill } from "react-icons/bs";
-import { GrContact } from "react-icons/gr";
+import { GrContact,GrAddCircle } from "react-icons/gr";
 import { ImEyeBlocked, ImEye } from "react-icons/im";
+import { RiDeleteBinLine } from "react-icons/ri";
+
+
 
 const icons = {
   FcHome,
@@ -20,6 +23,8 @@ const icons = {
   GrContact,
   ImEyeBlocked,
   ImEye,
+  RiDeleteBinLine,
+  GrAddCircle
 };
 
 export default icons;

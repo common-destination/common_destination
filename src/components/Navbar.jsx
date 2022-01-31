@@ -23,7 +23,6 @@ const Navbar = () => {
     setValidationMenuToggle(false);
   };
 
-
   return (
     <div className="Navbar">
       {!burgerMenuToggle && (
@@ -37,9 +36,7 @@ const Navbar = () => {
       {menuAccountToggle && (
         <AccountMenu
           setMenuAccountToggle={setMenuAccountToggle}
-          setValidationMenuToggle={() =>
-            setValidationMenuToggle(!validationMenuToggle)
-          }
+          setValidationMenuToggle={setValidationMenuToggle}
           handleLogout={handleLogout}
         />
       )}

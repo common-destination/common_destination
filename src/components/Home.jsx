@@ -1,18 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { useTheme } from "../ThemeContext";
 import PassengersCriteria from "./flightsSearch/PassengersCriteria.jsx";
+import icons from "../functions/icons.js";
 
 function Home(props) {
   const { backendUrl } = useTheme();
-  const [arrPassengers, setArrPassengers] = useState(["passenger1"]);
-  const [passengersCounter, setPassengersCounter] = useState(2);
+  const [passengers, setPassengers] = useState(["passenger"]);
+  // const [passengers, setPassengers] = useState([
+  //   "passenger1",
+  //   "passenger2",
+  //   "passenger3",
+  //   "passenger4",
+  // ]);
   const [departureAirport, setDepartureAirport] = useState([]);
 
   const addNewPassenger = () => {
-    setArrPassengers((prev) => [...prev, `passenger${passengersCounter}`]);
-    setPassengersCounter(passengersCounter + 1);
+    setPassengers((prev) => [...prev, "passenger"]);
   };
-  console.log(arrPassengers);
+
+  const deletePassenger = (wichPassenger) => {
+    let newArray = [...passengers];
+    newArray.splice(wichPassenger, 1);
+    return setPassengers(newArray);
+  };
+
+  console.log(passengers);
 
   useEffect(() => {
     (async () => {
@@ -32,25 +44,32 @@ function Home(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    setPassengers((prev) =>
+      prev.map((passenger, index) => `passenger ${index + 1}`)
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [passengers]);
+
   return (
     <div className={props.className}>
-      {arrPassengers.map((passenger, index) => (
+      {passengers.map((passenger, index) => (
         <PassengersCriteria
           key={index}
           departureAirport={departureAirport}
+          deletePassenger={() => deletePassenger(index)}
           index={index}
+          passengerName={passenger}
         />
       ))}
       <div className="btnContainer">
-        <button
+        <icons.GrAddCircle
           className="addPassengerBtn"
           type="button"
           onClick={addNewPassenger}
-        >
-          Add new Passenger
-        </button>
+        />
         <button className="submitBtn" type="button">
-          Submit
+          Search flights
         </button>
       </div>
     </div>

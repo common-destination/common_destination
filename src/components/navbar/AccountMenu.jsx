@@ -21,7 +21,7 @@ function AccountMenu(props) {
           onClick={() => {
             currentUser.username !== "anonymousUser"
               ? props.handleLogout()
-              : props.setValidationToggle();
+              : props.setValidationMenuToggle(true);
           }}
           style={{ cursor: "pointer" }}
         >
