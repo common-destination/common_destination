@@ -1,11 +1,88 @@
-import React from 'react';
+import React, { useRef, useState } from "react";
+import emailjs from "emailjs-com";
+import { init } from "@emailjs/browser";
 
-function Contant(props) {
-    return (
-        <div className={props.className}>
-            <h1>Contact</h1>
-        </div>
-    );
+init(process.env.REACT_APP_USER_ID);
+
+function Contanct(props) {
+  const formRef = useRef();
+  const [done, setDone] = useState(false);
+  const [name, setName] = useState("");
+  const [subject, setSubject] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        process.env.REACT_APP_SERVICE_ID,
+        process.env.REACT_APP_TEMPLATE_ID,
+        formRef.current,
+        process.env.REACT_APP_USER_ID
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          setDone(true);
+          setName("");
+          setSubject("");
+          setEmail("");
+          setMessage("");
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
+  return (
+    <div className={props.className}>
+      <div className="contactLeft">
+        <h2 className="title"> Get in touch!</h2>
+        <form ref={formRef} onSubmit={handleSubmit}>
+          {/* <fieldset>
+            <legend>Get in touch!</legend> */}
+            <input
+              type="text"
+              placeholder="Name"
+              name="user_name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required={true}
+            />
+            <input
+              type="text"
+              placeholder="Subject"
+              name="user_subject"
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+              required={true}
+            />
+            <input
+              type="text"
+              placeholder="Email"
+              name="user_email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required={true}
+            />
+            <textarea
+              placeholder="Message"
+              name="message"
+              rows="5"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required={true}
+            ></textarea>
+            <button>Submit</button>
+            {done && "Thank you!"}
+          {/* </fieldset> */}
+        </form>
+      </div>
+      <div className="contactRight">IMAGE!</div>
+    </div>
+  );
 }
 
-export default Contant;
+export default Contanct;
