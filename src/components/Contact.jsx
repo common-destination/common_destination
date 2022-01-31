@@ -80,7 +80,7 @@ function Contanct(props) {
           {/* </fieldset> */}
         </form>
       </div>
-      <div className="contactRight">IMAGE!</div>
+      <div className="contactRight">IMAGE!TEST</div>
     </div>
   );
 }
