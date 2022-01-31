@@ -1,10 +1,10 @@
 .Contact {
-  border: 3px solid red;
+  border: 3px solid #864000;
   display: flex;
-//   background-color: $color5;
-//   box-shadow: 0px 11px 31px 6px #000000;
-  //   width: 100vw;
-  //   height: 100vh;
+  background-color: $color5;
+  box-shadow: 0px 11px 31px 6px #000000;
+    // width: 100vw;
+    // height: 100vh;
 
   .contactLeft {
     flex: 1;
@@ -18,8 +18,8 @@
       flex-wrap: wrap;
 
       input {
-        // width: 35%;
-        // height: 40px;
+        width: 35%;
+        height: 40px;
         border: none;
         border-bottom: 1px solid black;
         margin: 10px 0px;
