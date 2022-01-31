@@ -5,20 +5,26 @@ import icons from "../functions/icons.js";
 
 function Home(props) {
   const { backendUrl } = useTheme();
-  const [arrPassengers, setArrPassengers] = useState(["passenger"]);
+  const [passengers, setPassengers] = useState(["passenger"]);
+  // const [passengers, setPassengers] = useState([
+  //   "passenger1",
+  //   "passenger2",
+  //   "passenger3",
+  //   "passenger4",
+  // ]);
   const [departureAirport, setDepartureAirport] = useState([]);
 
   const addNewPassenger = () => {
-    setArrPassengers((prev) => [...prev, "passenger"]);
+    setPassengers((prev) => [...prev, "passenger"]);
   };
 
   const deletePassenger = (wichPassenger) => {
-    let newArray = [...arrPassengers];
+    let newArray = [...passengers];
     newArray.splice(wichPassenger, 1);
-    return setArrPassengers(newArray);
+    return setPassengers(newArray);
   };
 
-  console.log(arrPassengers);
+  console.log(passengers);
 
   useEffect(() => {
     (async () => {
@@ -39,15 +45,15 @@ function Home(props) {
   }, []);
 
   useEffect(() => {
-    setArrPassengers((prev) =>
+    setPassengers((prev) =>
       prev.map((passenger, index) => `passenger ${index + 1}`)
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [arrPassengers]);
+  }, [passengers]);
 
   return (
     <div className={props.className}>
-      {arrPassengers.map((passenger, index) => (
+      {passengers.map((passenger, index) => (
         <PassengersCriteria
           key={index}
           departureAirport={departureAirport}

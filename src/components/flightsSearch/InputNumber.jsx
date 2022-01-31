@@ -5,7 +5,7 @@ function inputNumber(props) {
     <>
       <label>
         <h5>min Journey</h5>
-        <input className="minimumJourney" type="number" />
+        <input className="minimumJourney" type="number" defaultValue={1} />
       </label>
     </>
   );
