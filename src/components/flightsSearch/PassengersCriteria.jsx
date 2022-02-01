@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Calendar from "./Calendar.jsx";
 import SelectDepartureAirport from "./SelectDepartureAirport.jsx";
-import InputRadio from "./InputRadio.jsx";
+import InputRadios from "./InputRadios.jsx";
 import icons from "../../functions/icons.js";
 import InputNumber from "./InputNumber.jsx";
 
@@ -10,21 +10,13 @@ const PassengersCriteria = (props) => {
 
   return (
     <div className="flightSearch">
+      <p>{props.id}</p>
       <div className="inputRadioContainer">
         <h3>{props.passengerName}</h3>
-        <InputRadio
-          setCalendarToggle={() => {
-            setCalendarToggle(true);
-          }}
-          text="Roundtrip"
-          checked={calendarToggle ? true : false}
-          inputName={props.inputName}
-        />
-        <InputRadio
-          setCalendarToggle={() => {
-            setCalendarToggle(false);
-          }}
-          text="Oneway"
+        <InputRadios
+          roundTripToggle={() => setCalendarToggle(true)}
+          oneWayToggle={() => setCalendarToggle(false)}
+          defaultChecked={calendarToggle ? true : false}
           inputName={props.inputName}
         />
         {props.passengers.length > 2 && (
@@ -40,6 +32,7 @@ const PassengersCriteria = (props) => {
       </div>
       <div className="chooseDates">
         <Calendar calendarToggle={calendarToggle} />
+        <InputNumber labelText="max stay time" />
       </div>
     </div>
   );

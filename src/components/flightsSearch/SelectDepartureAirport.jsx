@@ -1,34 +1,27 @@
-import React from "react";
+import React, { useState} from "react";
 
 function SelectDepartureAirport(props) {
-  // const [selectNote, setSelectNote] = useState("select_note");
+  const [airport, setAirport] = useState("");
 
-  // const handleChange = (e) => {
-  //   setSelectNote(e.target.value);
-  // };
+
   return (
     <div className="selectDeparture">
       <label>
         <h5>From</h5>
       </label>
-      <input placeholder="Choose an airport" list="opts" />
+      <input
+        placeholder="Choose an airport"
+        list="opts"
+        value={airport}
+        onChange={(e) => setAirport(e.target.value)}
+      />
       <datalist id="opts">
-        {props.departureAirport.map((airport, index) => (
-          <option key={index} value={airport}>
-            {airport}
+        {props.departureAirport.map((departureAirport, index) => (
+          <option key={index} value={departureAirport}>
+            {departureAirport}
           </option>
         ))}
       </datalist>
-      {/* <select value={selectNote} onChange={handleChange}>
-        <option value="select_note" disabled>
-          Choose an airport
-        </option>
-        {props.departureAirport.map((airport, index) => (
-          <option key={index} value={airport}>
-            {airport}
-          </option>
-        ))}
-      </select> */}
     </div>
   );
 }
