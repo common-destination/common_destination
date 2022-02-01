@@ -58,7 +58,6 @@ function Login() {
         <fieldset>
           <legend>Login</legend>
           <div className="row">
-            {/* <label htmlFor="login">Username</label> */}
             <input
               type="text"
               id="login"
@@ -68,7 +67,6 @@ function Login() {
             />
           </div>
           <div className="row">
-            {/* <label htmlFor="password">Password</label> */}
             <input
               type={passwordsInputType}
               id="password"
@@ -90,7 +88,6 @@ function Login() {
           </div>
           <div className="buttonRow">
             <button onClick={handleLogin}>Login</button>
-            {/* <button onClick={handleLogout}>Logout</button> */}
           </div>
         </fieldset>
       </form>

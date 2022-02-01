@@ -20,8 +20,24 @@
     li {
       width: max-content;
       padding: 1%;
-      background-color: $color3;
-      border: 2px solid black;
+      display: flex;
+      align-items: center;
+
+      // background-color: $color3;
+      // border: 2px solid black;
+
+      p {
+        font-size: clamp(0.9em, 1vw, 5em);
+      }
+
+      button {
+        @include buttonStyle;
+        padding: 0.3vw;
+        border-radius: 0.3rem;
+        font-weight: 200;
+        font-size: clamp(1em, 1vw, 1.2em);
+        margin-left: 0.3vw;
+      }
     }
   }
   .menuIconClosed {

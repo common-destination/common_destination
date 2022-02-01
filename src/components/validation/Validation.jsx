@@ -13,6 +13,7 @@ function Validation() {
     setLoginToggle,
     mediaQueries,
   } = useTheme();
+
   return (
     <div
       className="Validation"
@@ -21,29 +22,6 @@ function Validation() {
         minHeight: mediaQueries.smallView ? "100vh" : "70vh",
       }}
     >
-      <ul>
-        {loginToggle ? (
-          <li
-            onClick={() => {
-              setLoginToggle(false);
-              setSignupToggle(true);
-            }}
-            style={{ cursor: "pointer" }}
-          >
-            sign up
-          </li>
-        ) : (
-          <li
-            onClick={() => {
-              setLoginToggle(true);
-              setSignupToggle(false);
-            }}
-            style={{ cursor: "pointer" }}
-          >
-            login
-          </li>
-        )}
-      </ul>
       <icons.MdOutlineClose
         className="menuIconClosed"
         onClick={() => {
@@ -51,8 +29,35 @@ function Validation() {
         }}
       />
 
-      {loginToggle && <Login />}
       {signupToggle && <Signup />}
+      {loginToggle && <Login />}
+
+      <ul>
+        {loginToggle ? (
+          <li>
+            <p>don't have an account yet?</p>
+            <button
+              onClick={() => {
+                setLoginToggle(false);
+                setSignupToggle(true);
+              }}
+            >
+              Sign up!
+            </button>
+          </li>
+        ) : (
+          <li>
+            <p>if you have already an accout</p><button
+              onClick={() => {
+                setLoginToggle(true);
+                setSignupToggle(false);
+              }}
+            >
+              Log In!
+            </button>
+          </li>
+        )}
+      </ul>
     </div>
   );
 }
