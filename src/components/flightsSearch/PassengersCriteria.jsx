@@ -28,11 +28,10 @@ const PassengersCriteria = (props) => {
       </div>
       <div className="searchAndInputNumberWrapper">
         <SelectDepartureAirport departureAirport={props.departureAirport} />
-        <InputNumber />
+        <InputNumber labelText="max stay time" />
       </div>
       <div className="chooseDates">
         <Calendar calendarToggle={calendarToggle} />
-        <InputNumber labelText="max stay time" />
       </div>
     </div>
   );
