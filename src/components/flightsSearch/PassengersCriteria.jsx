@@ -34,10 +34,12 @@ const PassengersCriteria = (props) => {
           />
         )}
       </div>
-      <SelectDepartureAirport departureAirport={props.departureAirport} />
+      <div className="searchAndInputNumberWrapper">
+        <SelectDepartureAirport departureAirport={props.departureAirport} />
+        <InputNumber />
+      </div>
       <div className="chooseDates">
         <Calendar calendarToggle={calendarToggle} />
-        <InputNumber />
       </div>
     </div>
   );
