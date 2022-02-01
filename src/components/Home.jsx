@@ -5,7 +5,7 @@ import icons from "../functions/icons.js";
 
 function Home(props) {
   const { backendUrl } = useTheme();
-  const [passengers, setPassengers] = useState(["passenger1", "passengers2"]);
+  const [passengers, setPassengers] = useState([]);
   const [departureAirport, setDepartureAirport] = useState([]);
   const [counter, setCounter] = useState(0);
 
@@ -19,11 +19,12 @@ function Home(props) {
       setCounter((prev) => prev - 1);
       let newArray = [...passengers];
       newArray.splice(wichPassenger, 1);
+      console.log(newArray);
       return setPassengers(newArray);
     }
   };
 
-  console.log(passengers);
+  // console.log(passengers);
 
   useEffect(() => {
     (async () => {
@@ -40,6 +41,23 @@ function Home(props) {
         setDepartureAirport(_departureAirport);
       }
     })();
+
+    setPassengers([
+      {
+        name: "",
+        airport: "",
+        minDepartureDate: {},
+        maxReturnDate: {},
+        minimumStayTime: 1,
+      },
+      {
+        name: "",
+        airport: "",
+        minDepartureDate: {},
+        maxReturnDate: {},
+        minimumStayTime: 1,
+      },
+    ]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -68,6 +86,10 @@ function Home(props) {
           type="button"
           onClick={addNewPassenger}
         />
+        <label>
+        <h5>min stay time together</h5>
+        <input className="minimumJourney" type="number" defaultValue={1} />
+      </label>
         <button className="submitBtn" type="button">
           Search flights
         </button>
