@@ -1,8 +1,6 @@
 // all style-variables that we use in more components
 // ex:
 
-
-
 $color1: #217099;
 $color2: #288fc5;
 $color3: #46a7da;
@@ -17,4 +15,44 @@ $container: #0770e3;
 // $title: #864000;
 // $focus: #0770e3;
 
+@mixin initialStyle {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin fieldsetStyle {
+  border: 4px solid #7a7a7a96;
+  border-radius: 0.9rem;
+  padding: 1% 4% 2% 1%;
+}
+
+@mixin legendStyle {
+  color: $color2;
+  font-size: clamp(2em, 1vw, 9em);
+  font-weight: bold;
+  letter-spacing: 0.2;
+}
+
+@mixin inputStyle {
+  font-size: clamp(1.4em, 1vw, 2em);
+  border: none;
+  border-bottom: 1px solid black;
+  border-radius: 0.3rem;
+  text-align: center;
+  margin-left: clamp(0.5em, 0.5vw, 1.5em);
+}
+
+@mixin buttonStyle {
+  font-size: clamp(1.1em, 1vw, 2em);
+  border: none;
+  border-radius: 0.6rem;
+  padding: 3.5%;
+  background-color: $color2;
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+}
 
