@@ -7,24 +7,22 @@ function Home(props) {
   const { backendUrl } = useTheme();
   const [passengers, setPassengers] = useState([]);
   const [departureAirport, setDepartureAirport] = useState([]);
-  const [counter, setCounter] = useState(0);
 
   const addNewPassenger = () => {
-    setPassengers((prev) => [...prev, "passenger"]);
-    setCounter((prev) => prev + 1);
+    setPassengers((prev) => [...prev, {}]);
   };
 
   const deletePassenger = (wichPassenger) => {
     if (passengers.length > 2) {
-      setCounter((prev) => prev - 1);
       let newArray = [...passengers];
       newArray.splice(wichPassenger, 1);
-      console.log(newArray);
       return setPassengers(newArray);
+      //   setPassengers(
+      //           passengers.filter((element) => passenger.name !== wichPassenger)
+      //         );
+      // }
     }
   };
-
-  // console.log(passengers);
 
   useEffect(() => {
     (async () => {
@@ -46,27 +44,20 @@ function Home(props) {
       {
         name: "",
         airport: "",
-        minDepartureDate: {},
-        maxReturnDate: {},
-        minimumStayTime: 1,
+        minDepartureDate: "",
+        maxReturnDate: "",
+        maxStayTime: 1,
       },
       {
         name: "",
         airport: "",
-        minDepartureDate: {},
-        maxReturnDate: {},
-        minimumStayTime: 1,
+        minDepartureDate: "",
+        maxReturnDate: "",
+        maxStayTime: 1,
       },
     ]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    setPassengers((prev) =>
-      prev.map((passenger, index) => `passenger ${index + 1}`)
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [counter]);
 
   return (
     <div className={props.className}>
@@ -76,7 +67,7 @@ function Home(props) {
           departureAirport={departureAirport}
           deletePassenger={() => deletePassenger(index)}
           inputName={index}
-          passengerName={passenger}
+          passengerName={`passenger ${index + 1}`}
           passengers={passengers}
         />
       ))}
@@ -87,9 +78,9 @@ function Home(props) {
           onClick={addNewPassenger}
         />
         <label>
-        <h5>min stay time together</h5>
-        <input className="minimumJourney" type="number" defaultValue={1} />
-      </label>
+          <h5>min stay time together</h5>
+          <input className="minimumJourney" type="number" defaultValue={1} />
+        </label>
         <button className="submitBtn" type="button">
           Search flights
         </button>

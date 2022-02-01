@@ -6,8 +6,7 @@ function InputNumber(props) {
     <>
       <label>
         <h5>{props.labelText}</h5>
-        <input className="minimumJourney" type="number"  value={maxStayTime} min="1"
-          max="30"
+        <input className="maxStayTime" type="number"  value={maxStayTime}
           onChange={(e) => setMaxStayTime(e.target.value)}/>
       </label>
     </>

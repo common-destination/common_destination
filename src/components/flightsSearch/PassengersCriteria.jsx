@@ -7,12 +7,22 @@ import InputNumber from "./InputNumber.jsx";
 
 const PassengersCriteria = (props) => {
   const [calendarToggle, setCalendarToggle] = useState(true);
+  // const [passenger, setPassenger] = useState({});
+  // const [airport, setAirport] = useState("");
+  // const [minDepartureDate, setMinDepartureDate] = useState("");
+  // const [maxDepartureDate, setMaxDepartureDate] = useState("");
+  // const [maxStayTime, setMaxStayTime] = useState(1);
+
+  // useEffect(() => {
+  //   setPassenger({ airport, minDepartureDate, maxDepartureDate, maxStayTime });
+  // }, [passengerName, airport, minDepartureDate, maxDepartureDate, maxStayTime]);
+  const passengerName = props.passengerName;
+  console.log(passengerName);
 
   return (
-    <div className="flightSearch">
-      <p>{props.id}</p>
+    <div className="flightSearch"> 
       <div className="inputRadioContainer">
-        <h3>{props.passengerName}</h3>
+        <h3>{passengerName}</h3>
         <InputRadios
           roundTripToggle={() => setCalendarToggle(true)}
           oneWayToggle={() => setCalendarToggle(false)}
