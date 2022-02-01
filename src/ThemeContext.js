@@ -18,6 +18,7 @@ export function ThemeProvider({ children }) {
   const [menuAccountToggle, setMenuAccountToggle] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
 
+
   const mediaQueries = {
     smallView: useMediaQuery("(max-width: 800px)"),
   };

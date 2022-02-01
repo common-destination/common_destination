@@ -1,14 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 
-function inputNumber(props) {
+
+function InputNumber(props) {
+  const [maxStayTime, setMaxStayTime] = useState(1);
   return (
     <>
       <label>
-        <h5>min stay time</h5>
-        <input className="minimumJourney" type="number" defaultValue={1} />
+        <h5>{props.labelText}</h5>
+        <input className="minimumJourney" type="number"  value={maxStayTime}
+          onChange={(e) => setMaxStayTime(e.target.value)}/>
       </label>
     </>
   );
 }
 
-export default inputNumber;
+export default InputNumber;
