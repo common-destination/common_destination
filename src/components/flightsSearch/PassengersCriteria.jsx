@@ -17,7 +17,7 @@ const PassengersCriteria = (props) => {
   //   setPassenger({ airport, minDepartureDate, maxDepartureDate, maxStayTime });
   // }, [passengerName, airport, minDepartureDate, maxDepartureDate, maxStayTime]);
   const passengerName = props.passengerName;
-  console.log(passengerName);
+  // console.log(passengerName);
 
   return (
     <div className="flightSearch"> 
