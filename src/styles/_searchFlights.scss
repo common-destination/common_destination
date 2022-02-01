@@ -28,7 +28,7 @@
 
   .selectDeparture {
     input {
-      width: 50%;
+      width: 100%;
       text-align: center;
     }
   }
@@ -50,11 +50,18 @@
         width: 95%;
       }
     }
+  }
+  .searchAndInputNumberWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
     .minimumJourney {
-      width: 3.5vw;
-      height: 3.5vh;
-      padding: 0.6%;
+      width: 3.5rem;
+      // height: 3vh;
+      margin: 0 1rem;
+      // padding: 0.5rem 2rem;
+      text-align: center;
     }
   }
 }
