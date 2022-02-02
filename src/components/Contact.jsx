@@ -42,32 +42,34 @@ function Contanct(props) {
       <form ref={formRef} onSubmit={handleSubmit}>
         <fieldset>
           <legend>Get in touch!</legend>
-          <InputData
-            placeholder="Name"
-            name="user_name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <InputData
-            placeholder="Subject"
-            name="user_subject"
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
-          />
-          <InputData
-            placeholder="Email"
-            name="user_email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <textarea
-            placeholder="Message"
-            name="message"
-            rows="5"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            required={true}
-          ></textarea>
+          <div className="inputArea">
+            <InputData
+              placeholder="Name"
+              name="user_name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <InputData
+              placeholder="Subject"
+              name="user_subject"
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+            />
+            <InputData
+              placeholder="Email"
+              name="user_email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <textarea
+              placeholder="Message"
+              name="message"
+              rows="8"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required={true}
+            ></textarea>
+          </div>
           <button>Send</button>
           {done && "Thank you!"}
         </fieldset>
