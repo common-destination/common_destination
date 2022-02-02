@@ -4,7 +4,7 @@ import icons from "../../functions/icons.js";
 import { useTheme } from "../../ThemeContext.js";
 // import logo from "../.././assets/images/logoTest2.png";
 
-function TopMenu(props) {
+function TopMenu({setValidationMenuToggle,setMenuAccountToggle,handleBurgerMenuToggles}) {
   const { mediaQueries, currentUser } = useTheme();
 
   return (
@@ -30,7 +30,7 @@ function TopMenu(props) {
         </li>
         <li
           onClick={() => {
-            props.setValidationMenuToggle(false);
+            setValidationMenuToggle(false);
           }}
         >
           <NavLink to="/">
@@ -39,8 +39,8 @@ function TopMenu(props) {
         </li>
         <li
           onClick={() => {
-            props.setValidationMenuToggle(false);
-            props.setMenuAccountToggle();
+            setValidationMenuToggle(false);
+            setMenuAccountToggle();
           }}
         >
           <icons.MdManageAccounts className="reactIcons" />
@@ -48,7 +48,7 @@ function TopMenu(props) {
         <li>
           <icons.GiHamburgerMenu
             className="menuIcon"
-            onClick={props.handleBurgerMenuToggles}
+            onClick={handleBurgerMenuToggles}
           />
         </li>
       </ul>
