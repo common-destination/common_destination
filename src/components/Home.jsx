@@ -79,7 +79,13 @@ function Home(props) {
         />
         <label>
           <h5>min stay time together</h5>
-          <input className="minimumJourney" type="number" defaultValue={1} />
+          <input
+            className="minimumJourney"
+            type="number"
+            min="1"
+            max="30"
+            defaultValue={1}
+          />
         </label>
         <button className="submitBtn" type="button">
           Search flights
