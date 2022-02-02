@@ -57,9 +57,14 @@
     justify-content: space-between;
 
     .maxStayTime {
-      width: 3.5vw;
-      height: 3.5vh;
-      padding: 0.6%;
+      // width: 3.5vw;
+      width: clamp(3rem, 3.5vw, 4rem);
+      // height: 3.5vh;
+      padding: 2% 3%;
+      text-align: center;
+      border-radius: 0.5rem;
+      border: none;
+      // font-size: clamp(0.95em, 1.5vw, 1em);
     }
   }
 }

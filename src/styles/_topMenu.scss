@@ -1,23 +1,51 @@
+// .topMenu {
+//   display: flex;
+//   // flex-direction: row;
+//   // justify-content: flex-start;
+//   align-items: center;
+//   padding: 1%;
+//   font-size: clamp(1em, 1.5vw, 2em);
+//   li {
+//     margin: 1%;
+//     margin: 0 2vw 0 0vw;
+//     cursor: grabbing;
+//     img {
+//       width: clamp(1.4em, 2vw, 3.5em);
+//       height: clamp(1.4em, 2vh, 3.5em);
+//     }
+//     span {
+//       float: right;
+//     }
+//     .active {
+//       display: none;
+//     }
+//   }
+// }
+
 .topMenu {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  padding: 1%;
-  font-size: clamp(1em, 1.5vw, 2em);
-  li {
-    margin: 1%;
-    margin: 0 2vw 0 0vw;
-    cursor: grabbing;
-    img {
-      width: clamp(1.4em, 2vw, 3.5em);
-      height: clamp(1.4em, 2vh, 3.5em);
+  // border: 1px solid red;
+  width: 100%;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    // border: 1px solid blue;
+    color: $color1;
+    font-weight: bolder;
+    margin: 0 0 0 2vw;
+
+    h1 {
+      font-size: clamp(1.1em, 1.8vw, 1.8em);
+      
     }
-    span {
-      float: right;
-    }
-    .active {
-      display: none;
-    }
+  }
+
+  .topNavbar {
+    display: flex;
+    align-items: center;
+    // border: 1px solid green;
   }
 }
