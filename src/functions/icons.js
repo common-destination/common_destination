@@ -1,5 +1,5 @@
 import { FcHome } from "react-icons/fc";
-import { SiGnuprivacyguard } from "react-icons/si";
+import { SiGnuprivacyguard, SiYourtraveldottv } from "react-icons/si";
 import { MdOutlineClose, MdManageAccounts } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { TiArrowSortedDown } from "react-icons/ti";
@@ -24,7 +24,8 @@ const icons = {
   ImEyeBlocked,
   ImEye,
   RiDeleteBinLine,
-  GrAddCircle
+  GrAddCircle,
+  SiYourtraveldottv
 };
 
 export default icons;
