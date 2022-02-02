@@ -3,8 +3,9 @@ import { useTheme } from "../ThemeContext";
 import ShowPassenger from "./flightsSearch/ShowPassenger.jsx";
 import icons from "../functions/icons.js";
 
-function Home({className}) {
+function Home({ className }) {
   const { backendUrl } = useTheme();
+  const [stayTimeTogether, setStayTimeTogether] = useState(1);
   const [passengers, setPassengers] = useState([]);
   const [departureAirports, setDepartureAirports] = useState([]);
   const passengerSchema = {
@@ -12,7 +13,7 @@ function Home({className}) {
     airport: "",
     minDepartureDate: "",
     maxReturnDate: "",
-  }
+  };
 
   const addNewPassenger = () => {
     setPassengers((prev) => [...prev, passengerSchema]);
@@ -32,6 +33,7 @@ function Home({className}) {
 
   const updatePassenger = (passenger) => {
     setPassengers((prev) => [...prev, passenger]);
+    // console.log(passenger);
   };
 
   useEffect(() => {
@@ -50,10 +52,7 @@ function Home({className}) {
       }
     })();
 
-    setPassengers([
-      passengerSchema,
-      passengerSchema,
-    ]);
+    setPassengers([passengerSchema, passengerSchema]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   console.log(passengers);
@@ -64,7 +63,12 @@ function Home({className}) {
         <span>passenger: {passengers.length}</span>
         <label>
           <h5>min stay time together</h5>
-          <input className="minimumJourney" type="number" defaultValue={1} />
+          <input
+            className="minimumJourney"
+            type="number"
+            value={stayTimeTogether}
+            onChange={(e) => setStayTimeTogether(e.target.value)}
+          />
         </label>
       </div>
 
@@ -73,7 +77,7 @@ function Home({className}) {
           key={index}
           departureAirports={departureAirports}
           deletePassenger={() => deletePassenger(index)}
-          // updatePassenger={updatePassenger}
+          updatePassenger={updatePassenger}
           inputName={index}
           passengerName={`passenger ${index + 1}`}
           showDelete={passengers.length > 2}

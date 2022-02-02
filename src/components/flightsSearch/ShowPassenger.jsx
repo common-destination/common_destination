@@ -3,38 +3,39 @@ import Calendar from "./Calendar.jsx";
 import SelectDepartureAirport from "./SelectDepartureAirport.jsx";
 import icons from "../../functions/icons.js";
 
-
 const ShowPassenger = ({
   _passenger,
-  // updatePassenger,
+  updatePassenger,
   passengerName,
   showDelete,
   deletePassenger,
   departureAirports,
 }) => {
   const [passenger, setPassenger] = useState(_passenger);
-  // passenger.name = passengerName;
+  passenger.name = passengerName;
 
   const handleAirport = (airport) => {
     passenger.airport = airport;
     setPassenger({ ...passenger });
+    updatePassenger(passenger)
   };
 
   const handleMinOutboundDate = (minOutboundDate) => {
     passenger.minOutboundDate = minOutboundDate;
     setPassenger({ ...passenger });
+    updatePassenger(passenger)
   };
 
   const handleMaxReturnDate = (maxReturnDate) => {
     passenger.maxReturnDate = maxReturnDate;
     setPassenger({ ...passenger });
+    updatePassenger(passenger)
   };
 
-  // updatePassenger(passenger);
+
 
   return (
-    <div className="flightSearch" >
-  
+    <div className="flightSearch">
       <div className="inputRadioContainer">
         <h3>{passengerName}</h3>
         {showDelete && (
