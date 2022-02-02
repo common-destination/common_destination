@@ -1,8 +1,13 @@
 // import moment from "moment";
 
-const Calendar = (props) => {
-  // console.log(props.minOutboundDate);
-  // console.log(props.returnDepartureDate);
+const Calendar = ({
+  handleMinOutboundDate,
+  handleMaxReturnDate,
+  minOutboundDate,
+  maxReturnDate,
+}) => {
+  // console.log(minOutboundDate);
+  // console.log(maxReturnDate);
 
   return (
     <div className="calendar">
@@ -11,8 +16,8 @@ const Calendar = (props) => {
         <input
           type="datetime-local"
           name="date"
-          value={props.minOutboundDate}
-          onChange={(e) => props.setMinOutboundDate(e.target.value)}
+          value={minOutboundDate}
+          onChange={(e) => handleMinOutboundDate(e.target.value)}
         />
       </label>
       <label>
@@ -20,8 +25,8 @@ const Calendar = (props) => {
         <input
           type="datetime-local"
           name="date"
-          value={props.maxReturnDate}
-          onChange={(e) => props.setMaxReturnDate(e.target.value)}
+          value={maxReturnDate}
+          onChange={(e) => handleMaxReturnDate(e.target.value)}
         />
       </label>
     </div>

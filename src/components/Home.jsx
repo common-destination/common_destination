@@ -46,21 +46,23 @@ function Home(props) {
 
     setPassengers([
       {
-        name: "",
-        airport: "",
-        minDepartureDate: "",
-        maxReturnDate: "",
+        // name: "",
+        // airport: "",
+        // minDepartureDate: "",
+        // maxReturnDate: "",
       },
       {
-        name: "",
-        airport: "",
-        minDepartureDate: "",
-        maxReturnDate: "",
+        // name: "",
+        // airport: "",
+        // minDepartureDate: "",
+        // maxReturnDate: "",
       },
     ]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+console.log("1",passengers[0]);
+console.log("2",passengers[1]);
+console.log("3",passengers[2]);
   return (
     <div className={props.className}>
       <div className="passengerAmount">
@@ -76,7 +78,7 @@ function Home(props) {
           key={index}
           departureAirports={departureAirports}
           deletePassenger={() => deletePassenger(index)}
-          updatePassenger={updatePassenger}
+          // updatePassenger={updatePassenger}
           inputName={index}
           passengerName={`passenger ${index + 1}`}
           showDelete={passengers.length > 2}

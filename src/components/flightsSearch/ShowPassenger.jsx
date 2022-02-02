@@ -1,31 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Calendar from "./Calendar.jsx";
 import SelectDepartureAirport from "./SelectDepartureAirport.jsx";
 import icons from "../../functions/icons.js";
 
 const ShowPassenger = ({
   _passenger,
-  updatePassenger,
+  // updatePassenger,
   passengerName,
   showDelete,
   deletePassenger,
   departureAirports,
 }) => {
-  // const [airport, setAirport] = useState("");
-  // const [minOutboundDate, setMinOutboundDate] = useState("");
-  // const [maxReturnDate, setMaxReturnDate] = useState("");
   const [passenger, setPassenger] = useState(_passenger);
+  // passenger.name = passengerName;
 
-  const handleAirportChange = (airport) => {
+  const handleAirport = (airport) => {
     passenger.airport = airport;
     setPassenger({ ...passenger });
   };
 
-  // const handleCalendarChange = (airport) => {
-  //   passenger.airport = airport;
-  //   setPassenger({ ...passenger });
-  // };
+  const handleMinOutboundDate = (minOutboundDate) => {
+    passenger.minOutboundDate = minOutboundDate;
+    setPassenger({ ...passenger });
+  };
 
+  const handleMaxReturnDate = (maxReturnDate) => {
+    passenger.maxReturnDate = maxReturnDate;
+    setPassenger({ ...passenger });
+  };
+
+  // updatePassenger(passenger);
 
   return (
     <div className="flightSearch">
@@ -42,16 +46,16 @@ const ShowPassenger = ({
         <SelectDepartureAirport
           departureAirports={departureAirports}
           airport={passenger.airport}
-          handleAirportChange={handleAirportChange}
+          handleAirport={handleAirport}
         />
       </div>
       <div className="chooseDates">
-        {/* <Calendar
+        <Calendar
+          handleMinOutboundDate={handleMinOutboundDate}
+          handleMaxReturnDate={handleMaxReturnDate}
           minOutboundDate={passenger.minOutboundDate}
-          setMinOutboundDate={setMinOutboundDate}
           maxReturnDate={passenger.maxReturnDate}
-          setMaxReturnDate={setMaxReturnDate}
-        /> */}
+        />
       </div>
     </div>
   );

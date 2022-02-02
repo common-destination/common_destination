@@ -1,5 +1,5 @@
-function SelectDepartureAirport({handleAirportChange,airport,departureAirports,}) {
-  console.log(airport)
+function SelectDepartureAirport({handleAirport,airport,departureAirports,}) {
+  // console.log(airport)
   return (
     <div className="selectDeparture">
       <label>
@@ -9,7 +9,7 @@ function SelectDepartureAirport({handleAirportChange,airport,departureAirports,}
         placeholder="Choose an airport"
         list="opts"
         value={airport}
-        onChange={(e) => handleAirportChange(e.target.value)}
+        onChange={(e) => handleAirport(e.target.value)}
       />
       <datalist id="opts">
         {departureAirports.map((departureAirport, index) => (
