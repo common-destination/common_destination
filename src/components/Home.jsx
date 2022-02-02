@@ -61,7 +61,7 @@ function Home({className}) {
   return (
     <div className={className}>
       <div className="passengerAmount">
-        <span>passenger: {passengers.length}</span>
+        <span>Passengers: {passengers.length}</span>
         <label>
           <h5>min stay time together</h5>
           <input className="minimumJourney" type="number" defaultValue={1} />

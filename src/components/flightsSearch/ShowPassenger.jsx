@@ -44,7 +44,7 @@ const ShowPassenger = ({
           />
         )}
       </div>
-      <div className="searchAndInputNumberWrapper">
+      <div className="selectDepartureAirport">
         <SelectDepartureAirport
           departureAirports={departureAirports}
           airport={passenger.airport}
