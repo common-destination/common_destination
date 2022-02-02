@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "../../ThemeContext.js";
 
-function AccountMenu(props) {
+function AccountMenu({setMenuAccountToggle,handleLogout,setValidationMenuToggle}) {
   const { currentUser } = useTheme();
 
   return (
@@ -14,14 +14,14 @@ function AccountMenu(props) {
       )}
       <ul
         onClick={() => {
-          props.setMenuAccountToggle(false);
+          setMenuAccountToggle(false);
         }}
       >
         <li
           onClick={() => {
             currentUser.username !== "anonymousUser"
-              ? props.handleLogout()
-              : props.setValidationMenuToggle(true);
+              ? handleLogout()
+              : setValidationMenuToggle(true);
           }}
           style={{ cursor: "pointer" }}
         >

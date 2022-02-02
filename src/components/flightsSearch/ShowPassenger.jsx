@@ -3,6 +3,7 @@ import Calendar from "./Calendar.jsx";
 import SelectDepartureAirport from "./SelectDepartureAirport.jsx";
 import icons from "../../functions/icons.js";
 
+
 const ShowPassenger = ({
   _passenger,
   // updatePassenger,
@@ -32,7 +33,8 @@ const ShowPassenger = ({
   // updatePassenger(passenger);
 
   return (
-    <div className="flightSearch">
+    <div className="flightSearch" >
+  
       <div className="inputRadioContainer">
         <h3>{passengerName}</h3>
         {showDelete && (

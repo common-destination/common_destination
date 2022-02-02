@@ -3,13 +3,19 @@ import { useTheme } from "../ThemeContext";
 import ShowPassenger from "./flightsSearch/ShowPassenger.jsx";
 import icons from "../functions/icons.js";
 
-function Home(props) {
+function Home({className}) {
   const { backendUrl } = useTheme();
   const [passengers, setPassengers] = useState([]);
   const [departureAirports, setDepartureAirports] = useState([]);
+  const passengerSchema = {
+    name: "",
+    airport: "",
+    minDepartureDate: "",
+    maxReturnDate: "",
+  }
 
   const addNewPassenger = () => {
-    setPassengers((prev) => [...prev, {}]);
+    setPassengers((prev) => [...prev, passengerSchema]);
   };
 
   const deletePassenger = (wichPassenger) => {
@@ -26,7 +32,7 @@ function Home(props) {
 
   const updatePassenger = (passenger) => {
     setPassengers((prev) => [...prev, passenger]);
-  }
+  };
 
   useEffect(() => {
     (async () => {
@@ -45,26 +51,15 @@ function Home(props) {
     })();
 
     setPassengers([
-      {
-        // name: "",
-        // airport: "",
-        // minDepartureDate: "",
-        // maxReturnDate: "",
-      },
-      {
-        // name: "",
-        // airport: "",
-        // minDepartureDate: "",
-        // maxReturnDate: "",
-      },
+      passengerSchema,
+      passengerSchema,
     ]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-console.log("1",passengers[0]);
-console.log("2",passengers[1]);
-console.log("3",passengers[2]);
+  console.log(passengers);
+
   return (
-    <div className={props.className}>
+    <div className={className}>
       <div className="passengerAmount">
         <span>passenger: {passengers.length}</span>
         <label>
@@ -101,4 +96,3 @@ console.log("3",passengers[2]);
 }
 
 export default Home;
-
