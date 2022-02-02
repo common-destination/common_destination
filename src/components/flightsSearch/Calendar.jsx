@@ -1,10 +1,8 @@
-import React, { useState } from "react";
 // import moment from "moment";
 
 const Calendar = (props) => {
-  const [minOutboundDate, setMinOutboundDate] = useState("");
-  const [maxReturnDate, setMaxReturnDate] = useState("");
-
+  // console.log(props.minOutboundDate);
+  // console.log(props.returnDepartureDate);
 
   return (
     <div className="calendar">
@@ -13,21 +11,19 @@ const Calendar = (props) => {
         <input
           type="datetime-local"
           name="date"
-          value={minOutboundDate}
-          onChange={(e) => setMinOutboundDate(e.target.value)}
+          value={props.minOutboundDate}
+          onChange={(e) => props.setMinOutboundDate(e.target.value)}
         />
       </label>
-      {props.calendarToggle && (
-        <label>
-          <h5>max return date</h5>
-          <input
-            type="datetime-local"
-            name="date"
-            value={maxReturnDate}
-            onChange={(e) => setMaxReturnDate(e.target.value)}
-          />
-        </label>
-      )}
+      <label>
+        <h5>max depart date</h5>
+        <input
+          type="datetime-local"
+          name="date"
+          value={props.maxReturnDate}
+          onChange={(e) => props.setMaxReturnDate(e.target.value)}
+        />
+      </label>
     </div>
   );
 };
