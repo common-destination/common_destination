@@ -1,50 +1,64 @@
 import React, { useState } from "react";
 import Calendar from "./Calendar.jsx";
 import SelectDepartureAirport from "./SelectDepartureAirport.jsx";
-import InputRadios from "./InputRadios.jsx";
 import icons from "../../functions/icons.js";
-import InputNumber from "./InputNumber.jsx";
 
-const PassengersCriteria = (props) => {
-  const [calendarToggle, setCalendarToggle] = useState(true);
-  // const [passenger, setPassenger] = useState({});
-  // const [airport, setAirport] = useState("");
-  // const [minDepartureDate, setMinDepartureDate] = useState("");
-  // const [maxDepartureDate, setMaxDepartureDate] = useState("");
-  // const [maxStayTime, setMaxStayTime] = useState(1);
+const ShowPassenger = ({
+  _passenger,
+  // updatePassenger,
+  passengerName,
+  showDelete,
+  deletePassenger,
+  departureAirports,
+}) => {
+  const [passenger, setPassenger] = useState(_passenger);
+  // passenger.name = passengerName;
 
-  // useEffect(() => {
-  //   setPassenger({ airport, minDepartureDate, maxDepartureDate, maxStayTime });
-  // }, [passengerName, airport, minDepartureDate, maxDepartureDate, maxStayTime]);
-  const passengerName = props.passengerName;
-  // console.log(passengerName);
+  const handleAirport = (airport) => {
+    passenger.airport = airport;
+    setPassenger({ ...passenger });
+  };
+
+  const handleMinOutboundDate = (minOutboundDate) => {
+    passenger.minOutboundDate = minOutboundDate;
+    setPassenger({ ...passenger });
+  };
+
+  const handleMaxReturnDate = (maxReturnDate) => {
+    passenger.maxReturnDate = maxReturnDate;
+    setPassenger({ ...passenger });
+  };
+
+  // updatePassenger(passenger);
 
   return (
-    <div className="flightSearch"> 
+    <div className="flightSearch">
       <div className="inputRadioContainer">
         <h3>{passengerName}</h3>
-        <InputRadios
-          roundTripToggle={() => setCalendarToggle(true)}
-          oneWayToggle={() => setCalendarToggle(false)}
-          defaultChecked={calendarToggle ? true : false}
-          inputName={props.inputName}
-        />
-        {props.passengers.length > 2 && (
+        {showDelete && (
           <icons.RiDeleteBinLine
             className="deletePassenger"
-            onClick={props.deletePassenger}
+            onClick={deletePassenger}
           />
         )}
       </div>
       <div className="searchAndInputNumberWrapper">
-        <SelectDepartureAirport departureAirport={props.departureAirport} />
-        <InputNumber labelText="max stay time" />
+        <SelectDepartureAirport
+          departureAirports={departureAirports}
+          airport={passenger.airport}
+          handleAirport={handleAirport}
+        />
       </div>
       <div className="chooseDates">
-        <Calendar calendarToggle={calendarToggle} />
+        <Calendar
+          handleMinOutboundDate={handleMinOutboundDate}
+          handleMaxReturnDate={handleMaxReturnDate}
+          minOutboundDate={passenger.minOutboundDate}
+          maxReturnDate={passenger.maxReturnDate}
+        />
       </div>
     </div>
   );
 };
 
-export default PassengersCriteria;
+export default ShowPassenger;

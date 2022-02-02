@@ -1,9 +1,5 @@
-import React, { useState} from "react";
-
-function SelectDepartureAirport(props) {
-  const [airport, setAirport] = useState("");
-
-
+function SelectDepartureAirport({handleAirport,airport,departureAirports,}) {
+  // console.log(airport)
   return (
     <div className="selectDeparture">
       <label>
@@ -13,10 +9,10 @@ function SelectDepartureAirport(props) {
         placeholder="Choose an airport"
         list="opts"
         value={airport}
-        onChange={(e) => setAirport(e.target.value)}
+        onChange={(e) => handleAirport(e.target.value)}
       />
       <datalist id="opts">
-        {props.departureAirport.map((departureAirport, index) => (
+        {departureAirports.map((departureAirport, index) => (
           <option key={index} value={departureAirport}>
             {departureAirport}
           </option>
