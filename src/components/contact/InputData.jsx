@@ -1,15 +1,15 @@
 import React from "react";
 
-function InputData(props) {
+function InputData({placeholder,name,value,onChange} ){
   return (
     <>
       <input
         type="text"
-        placeholder={props.placeholder}
-        name={props.name}
-        value={props.value}
+        placeholder={placeholder}
+        name={name}
+        value={value}
         required={true}
-        onChange={props.onChange}
+        onChange={onChange}
       />
     </>
   );

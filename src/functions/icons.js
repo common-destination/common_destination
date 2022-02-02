@@ -2,7 +2,6 @@ import { FcHome } from "react-icons/fc";
 import { SiGnuprivacyguard, SiYourtraveldottv } from "react-icons/si";
 import { MdOutlineClose, MdManageAccounts } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { TiArrowSortedDown } from "react-icons/ti";
 import { FaHome } from "react-icons/fa";
 import { BsInfoSquareFill } from "react-icons/bs";
 import { GrContact,GrAddCircle } from "react-icons/gr";
@@ -16,7 +15,6 @@ const icons = {
   SiGnuprivacyguard,
   MdManageAccounts,
   GiHamburgerMenu,
-  TiArrowSortedDown,
   MdOutlineClose,
   FaHome,
   BsInfoSquareFill,

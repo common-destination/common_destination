@@ -44,10 +44,8 @@ function TopMenu(props) {
           }}
         >
           <icons.MdManageAccounts className="reactIcons" />
-          <icons.TiArrowSortedDown />
         </li>
         <li>
-          {" "}
           <icons.GiHamburgerMenu
             className="menuIcon"
             onClick={props.handleBurgerMenuToggles}
