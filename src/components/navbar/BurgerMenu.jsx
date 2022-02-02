@@ -9,8 +9,8 @@ function BurgerMenu(props) {
     <ul
       className="burgerMenu"
       style={{
-        width: mediaQueries.burgerMenu ? "100vw" : "30vw",
-        height: mediaQueries.burgerMenu ? "100vh" : "70vh",
+        width: mediaQueries.smallView ? "100vw" : "30vw",
+        height: mediaQueries.smallView ? "100vh" : "70vh",
       }}
     >
       <li onClick={props.handleBurgerMenuToggles}>
