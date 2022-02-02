@@ -6,38 +6,36 @@ import icons from "../../functions/icons.js";
 const ShowPassenger = ({
   _passenger,
   updatePassenger,
-  passengerName,
   showDelete,
   deletePassenger,
   departureAirports,
 }) => {
   const [passenger, setPassenger] = useState(_passenger);
-  passenger.name = passengerName;
+  console.log(_passenger);
+  // passenger.name = passengerName;
 
   const handleAirport = (airport) => {
     passenger.airport = airport;
     setPassenger({ ...passenger });
-    updatePassenger(passenger)
+    updatePassenger(passenger);
   };
 
   const handleMinOutboundDate = (minOutboundDate) => {
     passenger.minOutboundDate = minOutboundDate;
     setPassenger({ ...passenger });
-    updatePassenger(passenger)
+    updatePassenger(passenger);
   };
 
   const handleMaxReturnDate = (maxReturnDate) => {
     passenger.maxReturnDate = maxReturnDate;
     setPassenger({ ...passenger });
-    updatePassenger(passenger)
+    updatePassenger(passenger);
   };
-
-
 
   return (
     <div className="flightSearch">
       <div className="inputRadioContainer">
-        <h3>{passengerName}</h3>
+        <h3>{passenger.name}</h3>
         {showDelete && (
           <icons.RiDeleteBinLine
             className="deletePassenger"

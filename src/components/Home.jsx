@@ -8,7 +8,7 @@ function Home({ className }) {
   const [stayTimeTogether, setStayTimeTogether] = useState(1);
   const [passengers, setPassengers] = useState([]);
   const [departureAirports, setDepartureAirports] = useState([]);
-  const passengerSchema = {
+  const emptyPassenger = {
     name: "",
     airport: "",
     minDepartureDate: "",
@@ -16,24 +16,42 @@ function Home({ className }) {
   };
 
   const addNewPassenger = () => {
-    setPassengers((prev) => [...prev, passengerSchema]);
+    const _passengers = updatePassengersNames([...passengers, emptyPassenger]);
+    setPassengers([..._passengers]);
   };
 
   const deletePassenger = (wichPassenger) => {
     if (passengers.length > 2) {
       let newArray = [...passengers];
       newArray.splice(wichPassenger, 1);
-      return setPassengers(newArray);
+      console.log(newArray);
+      const _passengers = updatePassengersNames(newArray);
+      console.log(_passengers);
+
+      setPassengers([..._passengers]);
       //   setPassengers(
       //           passengers.filter((element) => passenger.name !== wichPassenger)
       //         );
       // }
     }
+    // updatePassengersNames(_passengers);
   };
 
   const updatePassenger = (passenger) => {
-    setPassengers((prev) => [...prev, passenger]);
+    // setPassengers((prev) => [...prev, passenger]);
     // console.log(passenger);
+  };
+
+  const updatePassengersNames = (passengers) => {
+    const arr = [];
+    passengers.forEach((passenger, index) => {
+      const _passenger = { ...passenger };
+      _passenger.name = `passenger${index + 1}`;
+      arr.push(_passenger);
+      // console.log(_passenger);
+    });
+    // console.log(arr);
+    return arr;
   };
 
   useEffect(() => {
@@ -51,16 +69,20 @@ function Home({ className }) {
         setDepartureAirports(_departureAirports);
       }
     })();
+    let _passengers = [emptyPassenger, emptyPassenger];
+    _passengers = updatePassengersNames(_passengers);
+    console.log({ _passengers });
+    setPassengers([..._passengers]);
 
-    setPassengers([passengerSchema, passengerSchema]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(passengers);
+  // console.log(passengers);
+
 
   return (
     <div className={className}>
       <div className="passengerAmount">
-        <span>passenger: {passengers.length}</span>
+        <span>passengers: {passengers.length}</span>
         <label>
           <h5>min stay time together</h5>
           <input
@@ -79,7 +101,6 @@ function Home({ className }) {
           deletePassenger={() => deletePassenger(index)}
           updatePassenger={updatePassenger}
           inputName={index}
-          passengerName={`passenger ${index + 1}`}
           showDelete={passengers.length > 2}
           _passenger={passenger}
         />
