@@ -77,7 +77,6 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const requestOptions = {
       method: "POST",
       credentials: "include",

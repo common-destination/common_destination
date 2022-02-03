@@ -18,7 +18,7 @@ const Main = () => {
     scrollbarImg,
     airplanePosition,
     setCurrentUser,
-    currentUser,
+    // currentUser,
     backendUrl,
     burgerMenuToggle,
     menuAccountToggle,
@@ -42,7 +42,7 @@ const Main = () => {
         setCurrentUser((prev) => ({ ...prev, ..._currentUser }));
       }
     })();
-    console.log(currentUser);
+    // console.log(currentUser);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [validationMenuToggle, menuAccountToggle]);
 
