@@ -41,14 +41,12 @@ function Home({ className }) {
     })();
     const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
     setPassengers([...fillDataIntoPassengers(_passengers)]);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   console.log({ passengers });
 
-  const handlePassengerChange = (passenger) => {
-    passengers[passenger.index] = passenger;
+  const handlePassengerChange = () => {
     setPassengers([...passengers]);
   };
 
@@ -65,26 +63,29 @@ function Home({ className }) {
     setPassengers([..._passengers]);
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const requestOptions = {
-  //     method: "POST",
-  //     credentials: "include",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(
-  //      passengers,
-  //     ),
-  //   };
-  //   // console.log("request" + requestOptions);
-  //   const response = await fetch(`${backendUrl}/flights/compatible-flights`, requestOptions);
-  //   // console.log("repsonse" + response);
-  //   if (response.ok) {
-  //     const _passengers = await response.json();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const requestOptions = {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ passengers, stayTimeTogether }),
+    };
+    // console.log("request" + requestOptions);
+    const response = await fetch(
+      `${backendUrl}/flights/passengers-data`,
+      requestOptions
+    );
+    // console.log("repsonse" + response);
+    if (response.ok) {
+      // const _passengers = await response.json();
 
-  //   } else {
-
-  //   }
-  // };
+      const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
+      setPassengers([...fillDataIntoPassengers(_passengers)]);
+    } else {
+      console.log("error");
+    }
+  };
 
   return (
     <div className={className}>
@@ -116,8 +117,7 @@ function Home({ className }) {
           type="button"
           onClick={handlePassengerAdd}
         />
-
-        <button className="submitBtn" type="button">
+        <button className="submitBtn" type="button" onClick={handleSubmit}>
           Search flights
         </button>
       </div>

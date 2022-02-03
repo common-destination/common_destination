@@ -12,8 +12,11 @@ const ShowPassenger = ({
 
   const handleChangeField = (key, value) => {
     passenger[key] = value;
-    handlePassengerChange(passenger);
+    handlePassengerChange();
   };
+
+
+
 
   return (
     <div className="flightSearch">
