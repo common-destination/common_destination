@@ -3,53 +3,26 @@ import { useTheme } from "../ThemeContext";
 import ShowPassenger from "./flightsSearch/ShowPassenger.jsx";
 import icons from "../functions/icons.js";
 
+const _emptyPassenger = {
+  id: "",
+  airport: "",
+  minOutboundDate: "",
+  maxReturnDate: "",
+};
+
+const fillDataIntoPassengers = (passengers) => {
+  passengers.forEach((passenger, index) => {
+    passenger.id = `${index + 1}`;
+    passenger.genericTitle = `Passenger #${index + 1}`;
+  });
+  return passengers;
+};
+
 function Home({ className }) {
   const { backendUrl } = useTheme();
   const [stayTimeTogether, setStayTimeTogether] = useState(1);
   const [passengers, setPassengers] = useState([]);
   const [departureAirports, setDepartureAirports] = useState([]);
-  const emptyPassenger = {
-    name: "",
-    airport: "",
-    minDepartureDate: "",
-    maxReturnDate: "",
-  };
-
-  const addNewPassenger = () => {
-    const _passengers = updatePassengersNames([...passengers, emptyPassenger]);
-    setPassengers([..._passengers]);
-  };
-
-  const deletePassenger = (wichPassenger) => {
-    if (passengers.length > 2) {
-      let newArray = [...passengers];
-      newArray.splice(wichPassenger, 1);
-      const _passengers = updatePassengersNames(newArray);
-      setPassengers([..._passengers]);
-      //   setPassengers(
-      //           passengers.filter((element) => passenger.name !== wichPassenger)
-      //         );
-      // }
-    }
-  };
-
-  const updatePassenger = (passenger) => {
-    // setPassengers((prev) => ([ ...prev, passenger]));
-
-    // setPassengers((prev) => [...prev, passenger]);
-    // console.log(passenger);
-  };
-  const updatePassengersNames = (passengers) => {
-    const arr = [];
-    passengers.forEach((passenger, index) => {
-      const _passenger = { ...passenger };
-      _passenger.name = `passenger${index + 1}`;
-      arr.push(_passenger);
-      // console.log(_passenger);
-    });
-    // console.log(arr);
-    return arr;
-  };
 
   useEffect(() => {
     (async () => {
@@ -66,14 +39,31 @@ function Home({ className }) {
         setDepartureAirports(_departureAirports);
       }
     })();
-    let _passengers = [{...emptyPassenger}, {...emptyPassenger}];
-    _passengers = updatePassengersNames(_passengers);
-    setPassengers([...updatePassengersNames(_passengers)]);
+    const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
+    setPassengers([...fillDataIntoPassengers(_passengers)]);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log({passengers});
 
+  console.log({ passengers });
+
+  const handlePassengerChange = (passenger) => {
+    passengers[passenger.index] = passenger;
+    setPassengers([...passengers]);
+  };
+
+  const handlePassengerAdd = () => {
+    const _passengers = [...passengers, { ..._emptyPassenger }];
+    fillDataIntoPassengers(_passengers);
+    setPassengers([..._passengers]);
+  };
+
+  const handlePassengerDelete = (index) => {
+    const _passengers = [...passengers];
+    _passengers.splice(index, 1);
+    fillDataIntoPassengers(_passengers);
+    setPassengers([..._passengers]);
+  };
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
@@ -90,12 +80,11 @@ function Home({ className }) {
   //   // console.log("repsonse" + response);
   //   if (response.ok) {
   //     const _passengers = await response.json();
-     
+
   //   } else {
-     
+
   //   }
   // };
-
 
   return (
     <div className={className}>
@@ -111,23 +100,21 @@ function Home({ className }) {
           />
         </label>
       </div>
-
       {passengers.map((passenger, index) => (
         <ShowPassenger
           key={index}
           departureAirports={departureAirports}
-          deletePassenger={() => deletePassenger(index)}
-          updatePassenger={updatePassenger}
-          inputName={index}
-          showDelete={passengers.length > 2}
-          _passenger={passenger}
+          handlePassengerChange={handlePassengerChange}
+          handlePassengerDelete={handlePassengerDelete}
+          canDelete={passengers.length > 2}
+          passenger={passenger}
         />
       ))}
       <div className="btnContainer">
         <icons.GrAddCircle
           className="addPassengerBtn"
           type="button"
-          onClick={addNewPassenger}
+          onClick={handlePassengerAdd}
         />
 
         <button className="submitBtn" type="button">

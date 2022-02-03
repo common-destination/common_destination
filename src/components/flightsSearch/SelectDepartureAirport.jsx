@@ -1,4 +1,4 @@
-function SelectDepartureAirport({handleAirport,passenger,departureAirports}) {
+function SelectDepartureAirport({airport, handleChangeField, departureAirports}) {
   // console.log(airport)
   return (
     <div className="selectDeparture">
@@ -8,8 +8,8 @@ function SelectDepartureAirport({handleAirport,passenger,departureAirports}) {
       <input
         placeholder="Choose an airport"
         list="opts"
-        value={passenger.airport}
-        onChange={(e) => handleAirport(e.target.value)}
+        value={airport}
+        onChange={(e) => handleChangeField('airport', e.target.value)}
       />
       <datalist id="opts">
         {departureAirports.map((departureAirport, index) => (

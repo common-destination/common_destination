@@ -1,59 +1,41 @@
-import React, { useState } from "react";
 import Calendar from "./Calendar.jsx";
 import SelectDepartureAirport from "./SelectDepartureAirport.jsx";
 import icons from "../../functions/icons.js";
 
 const ShowPassenger = ({
-  _passenger,
-  updatePassenger,
-  showDelete,
-  deletePassenger,
+  passenger,
+  handlePassengerChange,
+  handlePassengerDelete,
   departureAirports,
+  canDelete,
 }) => {
-  const [passenger, setPassenger] = useState(_passenger);
-  // console.log(_passenger);
-  // passenger.name = passengerName;
 
-  const handleAirport = (airport) => {
-    passenger.airport = airport;
-    setPassenger({ ...passenger });
-    updatePassenger(passenger);
-  };
-
-  const handleMinOutboundDate = (minOutboundDate) => {
-    passenger.minOutboundDate = minOutboundDate;
-    setPassenger({ ...passenger });
-    updatePassenger(passenger);
-  };
-
-  const handleMaxReturnDate = (maxReturnDate) => {
-    passenger.maxReturnDate = maxReturnDate;
-    setPassenger({ ...passenger });
-    updatePassenger(passenger);
+  const handleChangeField = (key, value) => {
+    passenger[key] = value;
+    handlePassengerChange(passenger);
   };
 
   return (
     <div className="flightSearch">
       <div className="inputRadioContainer">
-        <h3>{passenger.name}</h3>
-        {showDelete && (
+        <h3>{passenger.genericTitle}</h3>
+        {canDelete && (
           <icons.RiDeleteBinLine
             className="deletePassenger"
-            onClick={deletePassenger}
+            onClick={handlePassengerDelete}
           />
         )}
       </div>
       <div className="searchAndInputNumberWrapper">
         <SelectDepartureAirport
           departureAirports={departureAirports}
-          passenger={passenger}
-          handleAirport={handleAirport}
+          airport={passenger.airport}
+          handleChangeField={handleChangeField}
         />
       </div>
       <div className="chooseDates">
         <Calendar
-          handleMinOutboundDate={handleMinOutboundDate}
-          handleMaxReturnDate={handleMaxReturnDate}
+          handleChangeField={handleChangeField}
           minOutboundDate={passenger.minOutboundDate}
           maxReturnDate={passenger.maxReturnDate}
         />
