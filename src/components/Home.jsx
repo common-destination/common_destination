@@ -64,7 +64,7 @@ function Home({className}) {
         <span>Passengers: {passengers.length}</span>
         <label>
           <h5>min stay time together</h5>
-          <input className="minimumJourney" type="number" defaultValue={1} />
+          <input className="minimumJourney" type="number" min="0" defaultValue={1} />
         </label>
       </div>
 
