@@ -1,43 +1,49 @@
 .flightSearch {
   width: clamp(22em, 70vw, 40em);
-  height: 28vh;
+  // height: 28vh;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 8% 2%;
-  margin: 3vh 0 1vh 0;
-  border: 2px solid red;
+  padding: 0 2%;
+  margin: 0.5vh 0;
+  border: 2px solid #4e6096;
+  ;
   background-size: cover;
-
-  h5 {
-    margin: 1% 0;
-  }
-
-  input {
-    padding: 1% 3%;
-    border-radius: 0.5rem;
-    border: none;
-    font-size: clamp(0.95em, 1.5vw, 1em);
-  }
+  // text-align: center;
 
   .inputRadioContainer {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // margin: 0 4vh;
+    // margin: 0 0 2% 0;
   }
 
-  .selectDeparture {
-    input {
-      width: 100%;
-      text-align: center;
-    }
+  input {
+    @include inputStyle;
+    // padding: 1% 3%;
+    // border-radius: 0.5rem;
+    // border: none;
+    // font-size: clamp(0.95em, 1.5vw, 1em);
   }
+
   .deletePassenger {
-    // font-size: clamp(1em, 1.5vw, 1em);
     cursor: pointer;
+    // font-size: clamp(1em, 1.5vw, 1em);
   }
+
+  // h5 {
+  //   // margin: 1% 0;
+  // }
+
+  // .selectDeparture {
+  //   input {
+  //     // width: 100%;
+  //     // text-align: center;
+  //   }
+  // }
+
   // .chooseDates {
   //   // width: 100%;
   //   // margin: 2vh 0;

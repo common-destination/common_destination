@@ -93,9 +93,11 @@ function Home({ className }) {
         <span>passengers: {passengers.length}</span>
         <label>
           <h5>min stay time together</h5>
+
           <input
             className="minimumJourney"
             type="number"
+            min="0"
             value={stayTimeTogether}
             onChange={(e) => setStayTimeTogether(e.target.value)}
           />
