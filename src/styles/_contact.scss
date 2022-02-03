@@ -15,7 +15,6 @@
 
     fieldset {
       @include fieldsetStyle;
-      opacity: 90%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -26,7 +25,6 @@
         background-color: #d0391d;
         color: #fff;
         border-radius: 0.4rem;
-        opacity: 80%;
         margin-left: 0.8rem;
       }
 
@@ -61,7 +59,6 @@
         @include buttonStyle;
         margin-bottom: 1%;
         background-color: #d0391d;
-        opacity: 90%;
         text-align: center;
         width: fit-content;
 

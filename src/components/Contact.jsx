@@ -1,11 +1,14 @@
 import React, { useRef, useState } from "react";
-import emailjs from "emailjs-com";
-import { init } from "@emailjs/browser";
+// import emailjs from "emailjs-com";
+// import emailjs from "@emailjs/browser";
+import { useTheme } from "../ThemeContext";
+import emailjs, { init } from "@emailjs/browser";
 import InputData from "./contact/InputData";
 
 init(process.env.REACT_APP_USER_ID);
 
 function Contanct(props) {
+  const { burgerMenuToggle } = useTheme();
   const formRef = useRef();
   const [done, setDone] = useState(false);
   const [name, setName] = useState("");
@@ -40,8 +43,10 @@ function Contanct(props) {
   return (
     <div className={props.className}>
       <form ref={formRef} onSubmit={handleSubmit}>
-        <fieldset>
-          <legend>Get in touch!</legend>
+        <fieldset style={{ opacity: burgerMenuToggle ? "100%" : "90%" }}>
+          <legend style={{ opacity: burgerMenuToggle ? "100%" : "80%" }}>
+            Get in touch!
+          </legend>
           <div className="inputArea">
             <InputData
               placeholder="Name"
