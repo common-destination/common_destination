@@ -41,9 +41,15 @@
       font-size: clamp(1.1em, 1.8vw, 1.8em);
     }
   }
+  
   .topNavbar {
     display: flex;
     align-items: center;
     // border: 1px solid green;
+
+    .reactIcons {
+      font-size: clamp(1.6em, 2vw, 2.3em);
+      margin: 0 2vw;
+    }
   }
 }
