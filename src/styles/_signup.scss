@@ -4,6 +4,8 @@
   form {
     fieldset {
       @include fieldsetStyle;
+      padding: 1% 4% 2% 1%;
+
 
       legend {
         @include legendStyle;

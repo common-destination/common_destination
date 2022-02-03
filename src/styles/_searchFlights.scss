@@ -1,6 +1,6 @@
 .flightSearch {
   width: clamp(22em, 70vw, 40em);
-  height: 25vh;
+  height: 28vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -10,7 +10,7 @@
   background-size: cover;
 
   h5 {
-    margin: 1vh 0;
+    margin: 1% 0;
   }
 
   input {
@@ -23,8 +23,9 @@
   .inputRadioContainer {
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    margin: 2vh 0;
+    justify-content: space-between;
+    align-items: center;
+    // margin: 0 4vh;
   }
 
   .selectDeparture {
@@ -34,38 +35,40 @@
     }
   }
   .deletePassenger {
-    font-size: (clamp(1em, 1.5vw, 2em));
+    // font-size: clamp(1em, 1.5vw, 1em);
     cursor: pointer;
   }
-  .chooseDates {
-    width: 100%;
-    margin: 2vh 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .calendar {
-      width: 70%;
-      display: flex;
-      justify-content: space-between;
-      input {
-        width: 95%;
-      }
-    }
-  }
-  .searchAndInputNumberWrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  // .chooseDates {
+  //   // width: 100%;
+  //   // margin: 2vh 0;
+  //   // display: flex;
+  //   // justify-content: space-between;
+  //   // align-items: center;
 
-    .maxStayTime {
-      // width: 3.5vw;
-      width: clamp(3rem, 3.5vw, 4rem);
-      // height: 3.5vh;
-      padding: 2% 3%;
-      text-align: center;
-      border-radius: 0.5rem;
-      border: none;
-      // font-size: clamp(0.95em, 1.5vw, 1em);
-    }
-  }
+  //   // .calendar {
+  //   //   // width: 70%;
+  //   //   // display: flex;
+  //   //   // justify-content: space-between;
+
+  //   //   // input {
+  //   //   //   // width: 95%;
+  //   //   // }
+  //   // }
+  // }
+  // .selectDepartureAirport {
+  //   // display: flex;
+  //   // flex-direction: row;
+  //   // justify-content: space-between;
+
+  //   // .maxStayTime {
+  //   //   // width: 3.5vw;
+  //   //   width: clamp(3rem, 3.5vw, 4rem);
+  //   //   // height: 3.5vh;
+  //   //   padding: 2% 3%;
+  //   //   text-align: center;
+  //   //   border-radius: 0.5rem;
+  //   //   border: none;
+  //   //   // font-size: clamp(0.95em, 1.5vw, 1em);
+  //   // }
+  // }
 }

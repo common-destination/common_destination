@@ -1,11 +1,14 @@
 import React, { useRef, useState } from "react";
-import emailjs from "emailjs-com";
-import { init } from "@emailjs/browser";
+// import emailjs from "emailjs-com";
+// import emailjs from "@emailjs/browser";
+import { useTheme } from "../ThemeContext";
+import emailjs, { init } from "@emailjs/browser";
 import InputData from "./contact/InputData";
 
 init(process.env.REACT_APP_USER_ID);
 
 function Contanct(props) {
+  const { burgerMenuToggle } = useTheme();
   const formRef = useRef();
   const [done, setDone] = useState(false);
   const [name, setName] = useState("");
@@ -40,34 +43,38 @@ function Contanct(props) {
   return (
     <div className={props.className}>
       <form ref={formRef} onSubmit={handleSubmit}>
-        <fieldset>
-          <legend>Get in touch!</legend>
-          <InputData
-            placeholder="Name"
-            name="user_name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <InputData
-            placeholder="Subject"
-            name="user_subject"
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
-          />
-          <InputData
-            placeholder="Email"
-            name="user_email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <textarea
-            placeholder="Message"
-            name="message"
-            rows="5"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            required={true}
-          ></textarea>
+        <fieldset style={{ opacity: burgerMenuToggle ? "100%" : "90%" }}>
+          <legend style={{ opacity: burgerMenuToggle ? "100%" : "80%" }}>
+            Get in touch!
+          </legend>
+          <div className="inputArea">
+            <InputData
+              placeholder="Name"
+              name="user_name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <InputData
+              placeholder="Subject"
+              name="user_subject"
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+            />
+            <InputData
+              placeholder="Email"
+              name="user_email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <textarea
+              placeholder="Message"
+              name="message"
+              rows="8"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required={true}
+            ></textarea>
+          </div>
           <button>Send</button>
           {done && "Thank you!"}
         </fieldset>

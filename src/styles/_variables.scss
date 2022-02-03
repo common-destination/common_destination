@@ -8,8 +8,8 @@ $color4: #aaaaaa;
 $color5: #c3c3c3;
 $color6: #741e1e;
 
-//alternative color 
-$color3:#FBFBFB;
+//alternative color
+$color3: #fbfbfb;
 
 $background: #cedae7;
 $border: #864000;
@@ -29,7 +29,6 @@ $container: #0770e3;
 @mixin fieldsetStyle {
   border: 4px solid #7a7a7a96;
   border-radius: 0.9rem;
-  padding: 1% 4% 2% 1%;
 }
 
 @mixin legendStyle {
@@ -58,4 +57,3 @@ $container: #0770e3;
   font-weight: 800;
   cursor: pointer;
 }
-

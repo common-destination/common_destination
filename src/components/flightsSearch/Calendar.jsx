@@ -4,7 +4,7 @@ const Calendar = ({ handleChangeField, minOutboundDate, maxReturnDate }) => {
   return (
     <div className="calendar">
       <label>
-        <h5>min depart date</h5>
+        <h5>Earliest departure date</h5>
         <input
           type="datetime-local"
           name="date"
@@ -13,7 +13,7 @@ const Calendar = ({ handleChangeField, minOutboundDate, maxReturnDate }) => {
         />
       </label>
       <label>
-        <h5>max depart date</h5>
+        <h5>Latest return date</h5>
         <input
           type="datetime-local"
           name="date"
