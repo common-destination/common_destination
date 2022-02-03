@@ -11,7 +11,7 @@ const ShowPassenger = ({
   departureAirports,
 }) => {
   const [passenger, setPassenger] = useState(_passenger);
-  console.log(_passenger);
+  // console.log(_passenger);
   // passenger.name = passengerName;
 
   const handleAirport = (airport) => {
@@ -46,7 +46,7 @@ const ShowPassenger = ({
       <div className="searchAndInputNumberWrapper">
         <SelectDepartureAirport
           departureAirports={departureAirports}
-          airport={passenger.airport}
+          passenger={passenger}
           handleAirport={handleAirport}
         />
       </div>

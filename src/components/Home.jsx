@@ -24,24 +24,21 @@ function Home({ className }) {
     if (passengers.length > 2) {
       let newArray = [...passengers];
       newArray.splice(wichPassenger, 1);
-      console.log(newArray);
       const _passengers = updatePassengersNames(newArray);
-      console.log(_passengers);
-
       setPassengers([..._passengers]);
       //   setPassengers(
       //           passengers.filter((element) => passenger.name !== wichPassenger)
       //         );
       // }
     }
-    // updatePassengersNames(_passengers);
   };
 
   const updatePassenger = (passenger) => {
+    // setPassengers((prev) => ([ ...prev, passenger]));
+
     // setPassengers((prev) => [...prev, passenger]);
     // console.log(passenger);
   };
-
   const updatePassengersNames = (passengers) => {
     const arr = [];
     passengers.forEach((passenger, index) => {
@@ -69,14 +66,35 @@ function Home({ className }) {
         setDepartureAirports(_departureAirports);
       }
     })();
-    let _passengers = [emptyPassenger, emptyPassenger];
+    let _passengers = [{...emptyPassenger}, {...emptyPassenger}];
     _passengers = updatePassengersNames(_passengers);
-    console.log({ _passengers });
-    setPassengers([..._passengers]);
+    setPassengers([...updatePassengersNames(_passengers)]);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  // console.log(passengers);
+  console.log({passengers});
+
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const requestOptions = {
+  //     method: "POST",
+  //     credentials: "include",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(
+  //      passengers,
+  //     ),
+  //   };
+  //   // console.log("request" + requestOptions);
+  //   const response = await fetch(`${backendUrl}/flights/compatible-flights`, requestOptions);
+  //   // console.log("repsonse" + response);
+  //   if (response.ok) {
+  //     const _passengers = await response.json();
+     
+  //   } else {
+     
+  //   }
+  // };
 
 
   return (
