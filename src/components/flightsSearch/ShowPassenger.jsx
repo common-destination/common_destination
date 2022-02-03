@@ -1,46 +1,31 @@
-import React, { useState } from "react";
 import Calendar from "./Calendar.jsx";
 import SelectDepartureAirport from "./SelectDepartureAirport.jsx";
 import icons from "../../functions/icons.js";
 
-
 const ShowPassenger = ({
-  _passenger,
-  // updatePassenger,
-  passengerName,
-  showDelete,
-  deletePassenger,
+  passenger,
+  handlePassengerChange,
+  handlePassengerDelete,
   departureAirports,
+  canDelete,
 }) => {
-  const [passenger, setPassenger] = useState(_passenger);
-  // passenger.name = passengerName;
 
-  const handleAirport = (airport) => {
-    passenger.airport = airport;
-    setPassenger({ ...passenger });
+  const handleChangeField = (key, value) => {
+    passenger[key] = value;
+    handlePassengerChange();
   };
 
-  const handleMinOutboundDate = (minOutboundDate) => {
-    passenger.minOutboundDate = minOutboundDate;
-    setPassenger({ ...passenger });
-  };
 
-  const handleMaxReturnDate = (maxReturnDate) => {
-    passenger.maxReturnDate = maxReturnDate;
-    setPassenger({ ...passenger });
-  };
 
-  // updatePassenger(passenger);
 
   return (
-    <div className="flightSearch" >
-  
+    <div className="flightSearch">
       <div className="inputRadioContainer">
-        <h3>{passengerName}</h3>
-        {showDelete && (
+        <h3>{passenger.genericTitle}</h3>
+        {canDelete && (
           <icons.RiDeleteBinLine
             className="deletePassenger"
-            onClick={deletePassenger}
+            onClick={handlePassengerDelete}
           />
         )}
       </div>
@@ -48,13 +33,12 @@ const ShowPassenger = ({
         <SelectDepartureAirport
           departureAirports={departureAirports}
           airport={passenger.airport}
-          handleAirport={handleAirport}
+          handleChangeField={handleChangeField}
         />
       </div>
       <div className="chooseDates">
         <Calendar
-          handleMinOutboundDate={handleMinOutboundDate}
-          handleMaxReturnDate={handleMaxReturnDate}
+          handleChangeField={handleChangeField}
           minOutboundDate={passenger.minOutboundDate}
           maxReturnDate={passenger.maxReturnDate}
         />
