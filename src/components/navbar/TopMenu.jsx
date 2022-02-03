@@ -47,7 +47,7 @@ function TopMenu({setValidationMenuToggle,setMenuAccountToggle,handleBurgerMenuT
         </li>
         <li>
           <icons.GiHamburgerMenu
-            className="menuIcon"
+            className="menuIcon reactIcons"
             onClick={handleBurgerMenuToggles}
           />
         </li>
