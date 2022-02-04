@@ -1,12 +1,14 @@
-.flightSearch {
+.showPassenger {
   width: clamp(22em, 70vw, 40em);
   height: max-content;
   display: flex;
   // flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   padding: 1%;
   margin: 3vh 0 1vh 0;
   border: 2px solid red;
+  background-color: rgb(133, 133, 235);
   background-size: cover;
 
   h5 {

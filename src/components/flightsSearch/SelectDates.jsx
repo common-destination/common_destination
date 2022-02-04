@@ -28,6 +28,13 @@ const SelectDates = ({
   const maxDateOutbound = new Date(moment().add(1, "years"));
   const minDateReturn = new Date(moment().add(stayTimeTogether, "hours"));
   const maxDateReturn = new Date(moment().add(stayTimeTogether, "hours").add(1, "years"));
+
+const styles = {
+  width: 'max-content',
+  border: "1px solid black",
+  margin: "0 1vw"
+}
+
   return (
     <div className="selectDates">
       <DateTimePickerComponent
@@ -35,8 +42,7 @@ const SelectDates = ({
         value={minOutboundDate}
         min={minDateOutbound}
         max={maxDateOutbound}
-        width={200}
-        style={{margin: "0 1vw"}}
+        style={styles}
         format="dd-MM-yy HH:mm"
         step={60}
         onChange={(e) => handleChangeField("minOutboundDate", e.target.value)}
@@ -46,8 +52,7 @@ const SelectDates = ({
         value={maxReturnDate}
         min={minDateReturn}
         max={maxDateReturn}
-        width={200}
-        style={{margin: "0 1vw"}}
+        style={styles}
         format="dd-MM-yy HH:mm"
         step={60}
         onChange={(e) => handleChangeField("maxReturnDate", e.target.value)}

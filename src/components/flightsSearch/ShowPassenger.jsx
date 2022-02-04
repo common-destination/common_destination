@@ -18,7 +18,7 @@ const ShowPassenger = ({
   };
 
   return (
-    <div className="flightSearch">
+    <div className="showPassenger">
       <SelectDepartureAirport
         departureAirports={departureAirports}
         airport={passenger.airport}
