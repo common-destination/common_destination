@@ -1,10 +1,10 @@
 .flightSearch {
   width: clamp(22em, 70vw, 40em);
-  height: 28vh;
+  height: max-content;
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   justify-content: space-around;
-  padding: 8% 2%;
+  padding: 1%;
   margin: 3vh 0 1vh 0;
   border: 2px solid red;
   background-size: cover;
@@ -20,13 +20,6 @@
     font-size: clamp(0.95em, 1.5vw, 1em);
   }
 
-  .inputRadioContainer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    // margin: 0 4vh;
-  }
 
   .selectDeparture {
     input {
@@ -38,37 +31,19 @@
     // font-size: clamp(1em, 1.5vw, 1em);
     cursor: pointer;
   }
-  // .chooseDates {
-  //   // width: 100%;
-  //   // margin: 2vh 0;
-  //   // display: flex;
-  //   // justify-content: space-between;
-  //   // align-items: center;
 
-  //   // .calendar {
-  //   //   // width: 70%;
-  //   //   // display: flex;
-  //   //   // justify-content: space-between;
-
-  //   //   // input {
-  //   //   //   // width: 95%;
-  //   //   // }
-  //   // }
-  // }
   // .selectDepartureAirport {
-  //   // display: flex;
-  //   // flex-direction: row;
-  //   // justify-content: space-between;
 
-  //   // .maxStayTime {
-  //   //   // width: 3.5vw;
-  //   //   width: clamp(3rem, 3.5vw, 4rem);
-  //   //   // height: 3.5vh;
-  //   //   padding: 2% 3%;
-  //   //   text-align: center;
-  //   //   border-radius: 0.5rem;
-  //   //   border: none;
-  //   //   // font-size: clamp(0.95em, 1.5vw, 1em);
-  //   // }
   // }
+    // .maxStayTime {
+    //   // width: 3.5vw;
+    //   width: clamp(3rem, 3.5vw, 4rem);
+    //   // height: 3.5vh;
+    //   padding: 2% 3%;
+    //   text-align: center;
+    //   border-radius: 0.5rem;
+    //   border: none;
+    //   // font-size: clamp(0.95em, 1.5vw, 1em);
+    // }
+  
 }

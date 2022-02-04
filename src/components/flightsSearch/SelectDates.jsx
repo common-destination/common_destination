@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import moment from "moment";
 import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
 
-const Calendar = ({
+const SelectDates = ({
   handleChangeField,
   minOutboundDate,
   maxReturnDate,
   stayTimeTogether,
-  setCalendarIsValid,
+  setDateAreValid,
 }) => {
   useEffect(() => {
     const timeDifferenceInHours = moment(maxReturnDate).diff(
@@ -18,22 +18,25 @@ const Calendar = ({
     // console.log(timeDifferenceInHours - stayTimeTogether);
 
     timeDifferenceInHours >= stayTimeTogether
-      ? setCalendarIsValid(true)
-      : setCalendarIsValid(false);
+      ? setDateAreValid(true)
+      : setDateAreValid(false);
 
     // if (timeDifferenceInHours <= 0)
     //   return alert("the return date must be after the outward date");
-  }, [minOutboundDate, maxReturnDate, setCalendarIsValid, stayTimeTogether]);
-  const minDate = new Date();
-  const maxDate = new Date(moment().add(1, "years"));
+  }, [minOutboundDate, maxReturnDate, setDateAreValid, stayTimeTogether]);
+  const minDateOutbound = new Date();
+  const maxDateOutbound = new Date(moment().add(1, "years"));
+  const minDateReturn = new Date(moment().add(stayTimeTogether, "hours"));
+  const maxDateReturn = new Date(moment().add(stayTimeTogether, "hours").add(1, "years"));
   return (
-    <div className="calendar">
+    <div className="selectDates">
       <DateTimePickerComponent
         placeholder="Earliest date"
         value={minOutboundDate}
-        min={minDate}
-        max={maxDate}
+        min={minDateOutbound}
+        max={maxDateOutbound}
         width={200}
+        style={{margin: "0 1vw"}}
         format="dd-MM-yy HH:mm"
         step={60}
         onChange={(e) => handleChangeField("minOutboundDate", e.target.value)}
@@ -41,9 +44,10 @@ const Calendar = ({
       <DateTimePickerComponent
         placeholder="Latest return date"
         value={maxReturnDate}
-        min={minDate}
-        max={maxDate}
+        min={minDateReturn}
+        max={maxDateReturn}
         width={200}
+        style={{margin: "0 1vw"}}
         format="dd-MM-yy HH:mm"
         step={60}
         onChange={(e) => handleChangeField("maxReturnDate", e.target.value)}
@@ -52,4 +56,4 @@ const Calendar = ({
   );
 };
 
-export default Calendar;
+export default SelectDates;

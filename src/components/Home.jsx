@@ -5,7 +5,6 @@ import { useTheme } from "../ThemeContext";
 import ShowPassenger from "./flightsSearch/ShowPassenger.jsx";
 import icons from "../functions/icons.js";
 
-
 const _emptyPassenger = {
   id: "",
   airport: "",
@@ -15,19 +14,21 @@ const _emptyPassenger = {
 const fillDataIntoPassengers = (passengers) => {
   passengers.forEach((passenger, index) => {
     passenger.id = `${index + 1}`;
-    passenger.genericTitle = `Passenger #${index + 1}`;
-    // passenger.minOutboundDate =   new Date();
-    // passenger.maxReturnDate =  new Date(moment().add(1, "days"));
+    passenger.genericTitle = `Passenger${index + 1}`;
   });
   return passengers;
 };
 
 function Home({ className }) {
   const { backendUrl } = useTheme();
-  const [stayTimeTogether, setStayTimeTogether] = useState(24);
+  const [stayTimeTogether, setStayTimeTogether] = useState({
+    days: 1,
+    hours: 0,
+    // amount: prev.days * 24 + prev.hours,
+  });
   const [passengers, setPassengers] = useState([]);
   const [departureAirports, setDepartureAirports] = useState([]);
-  const [calendarIsValid, setCalendarIsValid] = useState(false);
+  const [dateAreValid, setDateAreValid] = useState(false);
 
   const navigate = useNavigate();
 
@@ -81,7 +82,7 @@ function Home({ className }) {
       `${backendUrl}/flights/passengers-data`,
       requestOptions
     );
-    if (response.ok && calendarIsValid) {
+    if (response.ok && dateAreValid) {
       const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
       setPassengers([...fillDataIntoPassengers(_passengers)]);
       navigate("/commonDestination");
@@ -89,19 +90,34 @@ function Home({ className }) {
       console.log("error");
     }
   };
-console.log({passengers})
+
+
+  console.log({ passengers });
   return (
     <div className={className}>
-      <div className="passengerAmount">
+      <div className="passengersCriteria">
         <span>passengers: {passengers.length}</span>
         <label>
-          <h5>min stay time together in hours</h5>
-          <input
-            className="minimumJourney"
-            type="number"
-            value={stayTimeTogether}
-            onChange={(e) => setStayTimeTogether(e.target.value)}
-          />
+          <h5>min stay time together</h5>
+          <div className="stayTimeTogether">
+            <p>days:</p>
+            <input
+              type="text"
+              value={stayTimeTogether.days}
+              onChange={(e) =>
+                setStayTimeTogether((prev) => (prev.days = e.target.value))
+              }
+            />
+            <p>hours:</p>
+
+            <input
+              type="text"
+              value={stayTimeTogether.hours}
+              onChange={(e) =>
+                setStayTimeTogether((prev) => (prev.hours = e.target.value))
+              }
+            />
+          </div>
         </label>
       </div>
       {passengers.map((passenger, index) => (
@@ -113,7 +129,7 @@ console.log({passengers})
           canDelete={passengers.length > 2}
           passenger={passenger}
           stayTimeTogether={stayTimeTogether}
-          setCalendarIsValid={setCalendarIsValid}
+          setDateAreValid={setDateAreValid}
         />
       ))}
       <div className="btnContainer">
