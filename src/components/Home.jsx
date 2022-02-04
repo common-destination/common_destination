@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+// import moment from "moment";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import ShowPassenger from "./flightsSearch/ShowPassenger.jsx";
+import GeneralCriteria from "./flightsSearch/GeneralCriteria.jsx";
 import icons from "../functions/icons.js";
 
 const _emptyPassenger = {
@@ -9,20 +12,27 @@ const _emptyPassenger = {
   minOutboundDate: "",
   maxReturnDate: "",
 };
-
 const fillDataIntoPassengers = (passengers) => {
   passengers.forEach((passenger, index) => {
     passenger.id = `${index + 1}`;
-    passenger.genericTitle = `Passenger #${index + 1}`;
+    passenger.genericTitle = `Passenger${index + 1}`;
   });
   return passengers;
 };
 
 function Home({ className }) {
   const { backendUrl } = useTheme();
-  const [stayTimeTogether, setStayTimeTogether] = useState(1);
+  const [durationPicker, setDurationPicker] = useState({
+    days: 1,
+    hours: 0,
+    // amount: prev.days * 24 + prev.hours,
+  });
+  const [stayTimeTogether, setStayTimeTogether] = useState(24);
   const [passengers, setPassengers] = useState([]);
   const [departureAirports, setDepartureAirports] = useState([]);
+  const [dateAreValid, setDateAreValid] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -43,8 +53,11 @@ function Home({ className }) {
     setPassengers([...fillDataIntoPassengers(_passengers)]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  // console.log(passengers);
 
-  console.log({ passengers });
+  useEffect(() => {
+    setStayTimeTogether(durationPicker.days * 24 + durationPicker.hours);
+  }, [durationPicker]);
 
   const handlePassengerChange = () => {
     setPassengers([...passengers]);
@@ -71,61 +84,53 @@ function Home({ className }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ passengers, stayTimeTogether }),
     };
-    // console.log("request" + requestOptions);
     const response = await fetch(
       `${backendUrl}/flights/passengers-data`,
       requestOptions
     );
-    // console.log("repsonse" + response);
-    if (response.ok) {
-      // const _passengers = await response.json();
-
+    if (response.ok && dateAreValid) {
       const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
       setPassengers([...fillDataIntoPassengers(_passengers)]);
+      navigate("/commonDestination");
     } else {
       console.log("error");
     }
   };
 
+  console.log({ passengers });
   return (
     <div className={className}>
-      <div className="passengerAmount">
-        <span>passengers: {passengers.length}</span>
-        <label>
-          <h5>min stay time together</h5>
-
-          <input
-            className="minimumJourney"
-            type="number"
-            min="0"
-            value={stayTimeTogether}
-            onChange={(e) => setStayTimeTogether(e.target.value)}
+      <div className="passengersCriteria">
+        <GeneralCriteria
+          passengers={passengers}
+          durationPicker={durationPicker}
+          setDurationPicker={setDurationPicker}
+        />
+        {passengers.map((passenger, index) => (
+          <ShowPassenger
+            key={index}
+            departureAirports={departureAirports}
+            handlePassengerChange={handlePassengerChange}
+            handlePassengerDelete={handlePassengerDelete}
+            canDelete={passengers.length > 2}
+            passenger={passenger}
+            stayTimeTogether={stayTimeTogether}
+            setDateAreValid={setDateAreValid}
           />
-        </label>
-      </div>
-      {passengers.map((passenger, index) => (
-        <ShowPassenger
-          key={index}
-          departureAirports={departureAirports}
-          handlePassengerChange={handlePassengerChange}
-          handlePassengerDelete={handlePassengerDelete}
-          canDelete={passengers.length > 2}
-          passenger={passenger}
-        />
-      ))}
-      <div className="btnContainer">
-        <icons.GrAddCircle
-          className="addPassengerBtn"
-          type="button"
-          onClick={handlePassengerAdd}
-        />
-        <button className="submitBtn" type="button" onClick={handleSubmit}>
-          Search flights
-        </button>
+        ))}
+        <div className="btnContainer">
+          <icons.GrAddCircle
+            className="addPassengerBtn"
+            type="button"
+            onClick={handlePassengerAdd}
+          />
+          <button className="submitBtn" type="button" onClick={handleSubmit}>
+            Common Destinations
+          </button>
+        </div>
       </div>
     </div>
   );
 }
 
 export default Home;
-

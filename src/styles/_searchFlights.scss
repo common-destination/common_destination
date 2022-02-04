@@ -1,80 +1,49 @@
 .flightSearch {
   width: clamp(22em, 70vw, 40em);
-  // height: 28vh;
-  height: fit-content;
+  height: max-content;
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   justify-content: space-around;
-  padding: 0 2%;
-  margin: 0.5vh 0;
-  border: 2px solid #4e6096;
-  ;
+  padding: 1%;
+  margin: 3vh 0 1vh 0;
+  border: 2px solid red;
   background-size: cover;
-  // text-align: center;
 
-  .inputRadioContainer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    // margin: 0 0 2% 0;
+  h5 {
+    margin: 1% 0;
   }
 
   input {
-    @include inputStyle;
-    // padding: 1% 3%;
-    // border-radius: 0.5rem;
-    // border: none;
-    // font-size: clamp(0.95em, 1.5vw, 1em);
+    padding: 1% 3%;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: clamp(0.95em, 1.5vw, 1em);
   }
 
+
+  .selectDeparture {
+    input {
+      width: 100%;
+      text-align: center;
+    }
+  }
   .deletePassenger {
-    cursor: pointer;
     // font-size: clamp(1em, 1.5vw, 1em);
+    cursor: pointer;
   }
 
-  // h5 {
-  //   // margin: 1% 0;
-  // }
-
-  // .selectDeparture {
-  //   input {
-  //     // width: 100%;
-  //     // text-align: center;
-  //   }
-  // }
-
-  // .chooseDates {
-  //   // width: 100%;
-  //   // margin: 2vh 0;
-  //   // display: flex;
-  //   // justify-content: space-between;
-  //   // align-items: center;
-
-  //   // .calendar {
-  //   //   // width: 70%;
-  //   //   // display: flex;
-  //   //   // justify-content: space-between;
-
-  //   //   // input {
-  //   //   //   // width: 95%;
-  //   //   // }
-  //   // }
-  // }
   // .selectDepartureAirport {
-  //   // display: flex;
-  //   // flex-direction: row;
-  //   // justify-content: space-between;
 
-  //   // .maxStayTime {
-  //   //   // width: 3.5vw;
-  //   //   width: clamp(3rem, 3.5vw, 4rem);
-  //   //   // height: 3.5vh;
-  //   //   padding: 2% 3%;
-  //   //   text-align: center;
-  //   //   border-radius: 0.5rem;
-  //   //   border: none;
-  //   //   // font-size: clamp(0.95em, 1.5vw, 1em);
-  //   // }
   // }
+    // .maxStayTime {
+    //   // width: 3.5vw;
+    //   width: clamp(3rem, 3.5vw, 4rem);
+    //   // height: 3.5vh;
+    //   padding: 2% 3%;
+    //   text-align: center;
+    //   border-radius: 0.5rem;
+    //   border: none;
+    //   // font-size: clamp(0.95em, 1.5vw, 1em);
+    // }
+  
 }

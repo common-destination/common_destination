@@ -6,6 +6,7 @@ import Account from "./Account";
 import About from "./About";
 import Contact from "./Contact";
 import Home from "./Home";
+import CommonDestinations from "./flightsSearch/CommonDestinations.jsx"
 import { useTheme } from "../ThemeContext";
 import { useEffect } from "react";
 
@@ -92,6 +93,17 @@ const Main = () => {
             <Contact
               className={
                 validationMenuToggle ? "Contact backgroundBlurOpac" : "Contact"
+              }
+            />
+          }
+        ></Route>
+          <Route
+          exact
+          path="/commonDestinations"
+          element={
+            <CommonDestinations
+              className={
+                validationMenuToggle ? "CommonDestinations backgroundBlurOpac" : "CommonDestinations"
               }
             />
           }
