@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import ShowPassenger from "./flightsSearch/ShowPassenger.jsx";
+import GeneralCriteria from "./flightsSearch/GeneralCriteria.jsx";
 import icons from "../functions/icons.js";
 
 const _emptyPassenger = {
@@ -21,11 +22,12 @@ const fillDataIntoPassengers = (passengers) => {
 
 function Home({ className }) {
   const { backendUrl } = useTheme();
-  const [stayTimeTogether, setStayTimeTogether] = useState({
+  const [durationPicker, setDurationPicker] = useState({
     days: 1,
     hours: 0,
     // amount: prev.days * 24 + prev.hours,
   });
+  const [stayTimeTogether, setStayTimeTogether] = useState(24);
   const [passengers, setPassengers] = useState([]);
   const [departureAirports, setDepartureAirports] = useState([]);
   const [dateAreValid, setDateAreValid] = useState(false);
@@ -52,6 +54,10 @@ function Home({ className }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // console.log(passengers);
+
+  useEffect(() => {
+    setStayTimeTogether(durationPicker.days * 24 + durationPicker.hours);
+  }, [durationPicker]);
 
   const handlePassengerChange = () => {
     setPassengers([...passengers]);
@@ -91,56 +97,37 @@ function Home({ className }) {
     }
   };
 
-
   console.log({ passengers });
   return (
     <div className={className}>
       <div className="passengersCriteria">
-        <span>passengers: {passengers.length}</span>
-        <label>
-          <h5>min stay time together</h5>
-          <div className="stayTimeTogether">
-            <p>days:</p>
-            <input
-              type="text"
-              value={stayTimeTogether.days}
-              onChange={(e) =>
-                setStayTimeTogether((prev) => (prev.days = e.target.value))
-              }
-            />
-            <p>hours:</p>
-
-            <input
-              type="text"
-              value={stayTimeTogether.hours}
-              onChange={(e) =>
-                setStayTimeTogether((prev) => (prev.hours = e.target.value))
-              }
-            />
-          </div>
-        </label>
-      </div>
-      {passengers.map((passenger, index) => (
-        <ShowPassenger
-          key={index}
-          departureAirports={departureAirports}
-          handlePassengerChange={handlePassengerChange}
-          handlePassengerDelete={handlePassengerDelete}
-          canDelete={passengers.length > 2}
-          passenger={passenger}
-          stayTimeTogether={stayTimeTogether}
-          setDateAreValid={setDateAreValid}
+        <GeneralCriteria
+          passengers={passengers}
+          durationPicker={durationPicker}
+          setDurationPicker={setDurationPicker}
         />
-      ))}
-      <div className="btnContainer">
-        <icons.GrAddCircle
-          className="addPassengerBtn"
-          type="button"
-          onClick={handlePassengerAdd}
-        />
-        <button className="submitBtn" type="button" onClick={handleSubmit}>
-          Search flights
-        </button>
+        {passengers.map((passenger, index) => (
+          <ShowPassenger
+            key={index}
+            departureAirports={departureAirports}
+            handlePassengerChange={handlePassengerChange}
+            handlePassengerDelete={handlePassengerDelete}
+            canDelete={passengers.length > 2}
+            passenger={passenger}
+            stayTimeTogether={stayTimeTogether}
+            setDateAreValid={setDateAreValid}
+          />
+        ))}
+        <div className="btnContainer">
+          <icons.GrAddCircle
+            className="addPassengerBtn"
+            type="button"
+            onClick={handlePassengerAdd}
+          />
+          <button className="submitBtn" type="button" onClick={handleSubmit}>
+            Common Destinations
+          </button>
+        </div>
       </div>
     </div>
   );
