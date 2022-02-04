@@ -1,6 +1,8 @@
-import Calendar from "./Calendar.jsx";
+import Calendar from "./Calendar2.jsx";
 import SelectDepartureAirport from "./SelectDepartureAirport.jsx";
 import icons from "../../functions/icons.js";
+
+
 
 const ShowPassenger = ({
   passenger,
@@ -8,15 +10,15 @@ const ShowPassenger = ({
   handlePassengerDelete,
   departureAirports,
   canDelete,
+  stayTimeTogether,
+  setCalendarIsValid
 }) => {
 
   const handleChangeField = (key, value) => {
     passenger[key] = value;
-    handlePassengerChange();
+    // fieldIsValid ? handlePassengerChange() : console.log(value, "isn't valid");
+    handlePassengerChange() ;
   };
-
-
-
 
   return (
     <div className="flightSearch">
@@ -41,6 +43,8 @@ const ShowPassenger = ({
           handleChangeField={handleChangeField}
           minOutboundDate={passenger.minOutboundDate}
           maxReturnDate={passenger.maxReturnDate}
+          stayTimeTogether={stayTimeTogether}
+          setCalendarIsValid={setCalendarIsValid}
         />
       </div>
     </div>

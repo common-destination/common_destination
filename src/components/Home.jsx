@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+// import moment from "moment";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import ShowPassenger from "./flightsSearch/ShowPassenger.jsx";
 import icons from "../functions/icons.js";
+
 
 const _emptyPassenger = {
   id: "",
@@ -9,20 +12,24 @@ const _emptyPassenger = {
   minOutboundDate: "",
   maxReturnDate: "",
 };
-
 const fillDataIntoPassengers = (passengers) => {
   passengers.forEach((passenger, index) => {
     passenger.id = `${index + 1}`;
     passenger.genericTitle = `Passenger #${index + 1}`;
+    // passenger.minOutboundDate =   new Date();
+    // passenger.maxReturnDate =  new Date(moment().add(1, "days"));
   });
   return passengers;
 };
 
 function Home({ className }) {
   const { backendUrl } = useTheme();
-  const [stayTimeTogether, setStayTimeTogether] = useState(1);
+  const [stayTimeTogether, setStayTimeTogether] = useState(24);
   const [passengers, setPassengers] = useState([]);
   const [departureAirports, setDepartureAirports] = useState([]);
+  const [calendarIsValid, setCalendarIsValid] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -43,8 +50,7 @@ function Home({ className }) {
     setPassengers([...fillDataIntoPassengers(_passengers)]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log({ passengers });
+  // console.log(passengers);
 
   const handlePassengerChange = () => {
     setPassengers([...passengers]);
@@ -71,28 +77,25 @@ function Home({ className }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ passengers, stayTimeTogether }),
     };
-    // console.log("request" + requestOptions);
     const response = await fetch(
       `${backendUrl}/flights/passengers-data`,
       requestOptions
     );
-    // console.log("repsonse" + response);
-    if (response.ok) {
-      // const _passengers = await response.json();
-
+    if (response.ok && calendarIsValid) {
       const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
       setPassengers([...fillDataIntoPassengers(_passengers)]);
+      navigate("/commonDestination");
     } else {
       console.log("error");
     }
   };
-
+console.log({passengers})
   return (
     <div className={className}>
       <div className="passengerAmount">
         <span>passengers: {passengers.length}</span>
         <label>
-          <h5>min stay time together</h5>
+          <h5>min stay time together in hours</h5>
           <input
             className="minimumJourney"
             type="number"
@@ -109,6 +112,8 @@ function Home({ className }) {
           handlePassengerDelete={handlePassengerDelete}
           canDelete={passengers.length > 2}
           passenger={passenger}
+          stayTimeTogether={stayTimeTogether}
+          setCalendarIsValid={setCalendarIsValid}
         />
       ))}
       <div className="btnContainer">
@@ -126,4 +131,3 @@ function Home({ className }) {
 }
 
 export default Home;
-

@@ -1,6 +1,29 @@
-// import moment from "moment";
+import React, { useEffect } from "react";
+import moment from "moment";
 
-const Calendar = ({ handleChangeField, minOutboundDate, maxReturnDate }) => {
+const Calendar = ({
+  handleChangeField,
+  minOutboundDate,
+  maxReturnDate,
+  stayTimeTogether,
+  setCalendarIsValid,
+}) => {
+  useEffect(() => {
+    const timeDifferenceInHours = moment(maxReturnDate).diff(
+      moment(minOutboundDate),
+      "hours"
+    );
+    console.log({ timeDifferenceInHours });
+    console.log(timeDifferenceInHours - stayTimeTogether);
+
+    timeDifferenceInHours >= stayTimeTogether
+      ? setCalendarIsValid(true)
+      : setCalendarIsValid(false);
+
+    // if (timeDifferenceInHours <= 0)
+    //   return alert("the return date must be after the outward date");
+  }, [minOutboundDate, maxReturnDate, setCalendarIsValid, stayTimeTogether]);
+
   return (
     <div className="calendar">
       <label>
