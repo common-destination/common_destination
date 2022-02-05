@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import moment from "moment";
 import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
 
@@ -7,8 +7,10 @@ const SelectDates = ({
   minOutboundDate,
   maxReturnDate,
   stayTimeTogether,
-  setDateAreValid,
+  
 }) => {
+  const [dateAreValid, setDateAreValid] = useState(true);
+
   useEffect(() => {
     const timeDifferenceInHours = moment(maxReturnDate).diff(
       moment(minOutboundDate),
@@ -27,13 +29,15 @@ const SelectDates = ({
   const minDateOutbound = new Date();
   const maxDateOutbound = new Date(moment().add(1, "years"));
   const minDateReturn = new Date(moment().add(stayTimeTogether, "hours"));
-  const maxDateReturn = new Date(moment().add(stayTimeTogether, "hours").add(1, "years"));
+  const maxDateReturn = new Date(
+    moment().add(stayTimeTogether, "hours").add(1, "years")
+  );
 
-const styles = {
-  width: 'max-content',
-  border: "1px solid black",
-  margin: "0 1vw"
-}
+  const styles = {
+    width: "max-content",
+    border: "1px solid black",
+    margin: "0 1vw",
+  };
 
   return (
     <div className="selectDates">

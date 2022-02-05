@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import moment from "moment";
+import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import ShowPassenger from "./flightsSearch/ShowPassenger.jsx";
@@ -25,14 +25,16 @@ function Home({ className }) {
   const [durationPicker, setDurationPicker] = useState({
     days: 1,
     hours: 0,
-    // amount: prev.days * 24 + prev.hours,
   });
   const [stayTimeTogether, setStayTimeTogether] = useState(24);
   const [passengers, setPassengers] = useState([]);
   const [departureAirports, setDepartureAirports] = useState([]);
-  const [dateAreValid, setDateAreValid] = useState(false);
-
+  const [datesValidation, setDatesValidation] = useState(false);
   const navigate = useNavigate();
+
+  const outbounds = passengers.map((passenger) => passenger.minOutboundDate);
+
+  const returns = passengers.map((passenger) => passenger.maxReturnDate);
 
   useEffect(() => {
     (async () => {
@@ -57,10 +59,39 @@ function Home({ className }) {
 
   useEffect(() => {
     setStayTimeTogether(durationPicker.days * 24 + durationPicker.hours);
-  }, [durationPicker]);
+    console.log("2",{stayTimeTogether});
+  }, [durationPicker,passengers]);
+
+  // useEffect(() => {
+  //   if (outbounds > 0 && returns > 0) {
+  //     const earliestReturn = moment(
+  //       returns.reduce((a, b) => Math.min(moment(a), moment(b)))
+  //     );
+  //     console.log({outbounds})
+  //     console.log({returns})
+  //     console.log({earliestReturn});
+  //     const lastestOutbound = moment(
+  //       outbounds.reduce((a, b) => Math.max(moment(b), moment(a)))
+  //     );
+  //     console.log({lastestOutbound});
+  //     const howManyTimeTogether = moment(earliestReturn).diff(
+  //       moment(lastestOutbound),
+  //       "hours"
+  //     );
+  //     console.log({howManyTimeTogether});
+  //     console.log({stayTimeTogether})
+  //     howManyTimeTogether >= stayTimeTogether
+  //       ? setDatesValidation(true)
+  //       : setDatesValidation(false);
+  //   }
+  // }, [passengers,outbounds, returns, stayTimeTogether]);
 
   const handlePassengerChange = () => {
     setPassengers([...passengers]);
+  };
+
+  const handleDurationPickerChange = () => {
+    setDurationPicker({...durationPicker});
   };
 
   const handlePassengerAdd = () => {
@@ -88,16 +119,35 @@ function Home({ className }) {
       `${backendUrl}/flights/passengers-data`,
       requestOptions
     );
-    if (response.ok && dateAreValid) {
+    const earliestReturn = moment(
+      returns.reduce((a, b) => Math.min(moment(a), moment(b)))
+    );
+    console.log({ outbounds });
+    console.log({ returns });
+    console.log({ earliestReturn });
+    const lastestOutbound = moment(
+      outbounds.reduce((a, b) => Math.max(moment(b), moment(a)))
+    );
+    console.log({ lastestOutbound });
+    const howManyTimeTogether = moment(earliestReturn).diff(
+      moment(lastestOutbound),
+      "hours"
+    );
+    console.log({ howManyTimeTogether });
+    console.log({ stayTimeTogether });
+    howManyTimeTogether >= stayTimeTogether
+      ? setDatesValidation(true)
+      : setDatesValidation(false);
+    if (response.ok && datesValidation) {
       const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
       setPassengers([...fillDataIntoPassengers(_passengers)]);
-      navigate("/commonDestination");
+      navigate("/commonDestinations");
     } else {
       console.log("error");
     }
   };
 
-  console.log({ passengers });
+  // console.log({ passengers });
   return (
     <div className={className}>
       <div className="passengersCriteria">
@@ -105,6 +155,7 @@ function Home({ className }) {
           passengers={passengers}
           durationPicker={durationPicker}
           setDurationPicker={setDurationPicker}
+          handleDurationPickerChange={handleDurationPickerChange}
         />
         {passengers.map((passenger, index) => (
           <ShowPassenger
@@ -115,7 +166,6 @@ function Home({ className }) {
             canDelete={passengers.length > 2}
             passenger={passenger}
             stayTimeTogether={stayTimeTogether}
-            setDateAreValid={setDateAreValid}
           />
         ))}
         <div className="btnContainer">

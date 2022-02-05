@@ -29,7 +29,7 @@ const ShowPassenger = ({
         minOutboundDate={passenger.minOutboundDate}
         maxReturnDate={passenger.maxReturnDate}
         stayTimeTogether={stayTimeTogether}
-        setDateAreValid={setDateAreValid}
+        
       />
       {canDelete && (
         <icons.RiDeleteBinLine

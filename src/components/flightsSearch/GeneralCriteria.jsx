@@ -1,6 +1,17 @@
 import React from "react";
 
-function GeneralCriteria({passengers, durationPicker, setDurationPicker}) {
+function GeneralCriteria({
+  passengers,
+  durationPicker,
+  handleDurationPickerChange,
+}) {
+  const handleChangeField = (key, value) => {
+    durationPicker[key] = value;
+    // fieldIsValid ? handlePassengerChange() : console.log(value, "isn't valid");
+    handleDurationPickerChange();
+  };
+  // console.log(typeof durationPicker.days)
+  console.log(typeof durationPicker.hours);
   return (
     <div className="generalCriteria">
       <span>passengers: {passengers.length}</span>
@@ -9,19 +20,15 @@ function GeneralCriteria({passengers, durationPicker, setDurationPicker}) {
         <div className="stayTimeTogether">
           <p>days:</p>
           <input
-            type="text"
+            type="number"
             value={durationPicker.days}
-            onChange={(e) =>
-              setDurationPicker((prev) => (prev.days = e.target.value))
-            }
+            onChange={(e) => handleChangeField("days", parseInt(e.target.value))}
           />
           <p>hours:</p>
           <input
-            type="text"
+            type="number"
             value={durationPicker.hours}
-            onChange={(e) =>
-              setDurationPicker((prev) => (prev.hours = e.target.value))
-            }
+            onChange={(e) => handleChangeField("hours", parseInt(e.target.value))}
           />
         </div>
       </label>
