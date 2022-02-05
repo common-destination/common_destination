@@ -22,10 +22,6 @@ const fillDataIntoPassengers = (passengers) => {
 
 function Home({ className }) {
   const { backendUrl } = useTheme();
-  const [durationPicker, setDurationPicker] = useState({
-    days: 1,
-    hours: 0,
-  });
   const [stayTimeTogether, setStayTimeTogether] = useState(24);
   const [passengers, setPassengers] = useState([]);
   const [departureAirports, setDepartureAirports] = useState([]);
@@ -56,11 +52,9 @@ function Home({ className }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // console.log(passengers);
+  console.log(stayTimeTogether)
 
-  useEffect(() => {
-    setStayTimeTogether(durationPicker.days * 24 + durationPicker.hours);
-    console.log("2",{stayTimeTogether});
-  }, [durationPicker,passengers]);
+ 
 
   // useEffect(() => {
   //   if (outbounds > 0 && returns > 0) {
@@ -90,9 +84,7 @@ function Home({ className }) {
     setPassengers([...passengers]);
   };
 
-  const handleDurationPickerChange = () => {
-    setDurationPicker({...durationPicker});
-  };
+
 
   const handlePassengerAdd = () => {
     const _passengers = [...passengers, { ..._emptyPassenger }];
@@ -153,9 +145,9 @@ function Home({ className }) {
       <div className="passengersCriteria">
         <GeneralCriteria
           passengers={passengers}
-          durationPicker={durationPicker}
-          setDurationPicker={setDurationPicker}
-          handleDurationPickerChange={handleDurationPickerChange}
+          stayTimeTogether={stayTimeTogether}
+          setStayTimeTogether={setStayTimeTogether}
+         
         />
         {passengers.map((passenger, index) => (
           <ShowPassenger
