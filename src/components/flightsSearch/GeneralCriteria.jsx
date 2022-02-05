@@ -10,7 +10,6 @@ function GeneralCriteria({
   const [hoursCounter, setHoursCounter] = useState(0);
 
   useEffect(() => {
-    // if (daysCounter === 0) return setHoursCounter(24);
     setStayTimeTogether(daysCounter * 24 + hoursCounter);
     console.log(stayTimeTogether);
   }, [
@@ -31,11 +30,14 @@ function GeneralCriteria({
             <>
               <p>days:</p>
               <icons.HiMinusCircle
-                onClick={() =>
-                  daysCounter > 0
-                    ? setDaysCounter((prev) => prev - 1)
-                    : setDaysCounter((prev) => prev - 0)
-                }
+                onClick={() => {
+                  if (daysCounter < 2) {
+                    setHoursCounter(24);
+                  }
+                  if (daysCounter >= 1) {
+                    setDaysCounter((prev) => prev - 1);
+                  }
+                }}
               />
               <p>{daysCounter}</p>
               <icons.BsPlusCircleFill
@@ -44,19 +46,30 @@ function GeneralCriteria({
             </>
           )}
 
-          {daysCounter <= 0 && (
+          {daysCounter < 1 && (
             <>
               <p>hours:</p>
               <icons.HiMinusCircle
-                onClick={() =>
-                  hoursCounter > 0
-                    ? setHoursCounter((prev) => prev - 1)
-                    : setHoursCounter((prev) => prev - 0)
-                }
+                onClick={() => {
+                  // console.log({hoursCounter})
+                  if (hoursCounter >= 4 )
+                    return setHoursCounter((prev) => prev - 2);
+                  // console.log("2",{hoursCounter})
+
+                  if (hoursCounter === 24) return setHoursCounter(0);
+                }}
               />
               <p>{hoursCounter}</p>
               <icons.BsPlusCircleFill
-                onClick={() => setHoursCounter((prev) => prev + 1)}
+                onClick={() => {
+                  if (hoursCounter >= 23) {
+                    setDaysCounter(1);
+                    setHoursCounter(0);
+                  }
+                  if (hoursCounter < 24) {
+                    setHoursCounter((prev) => prev + 2);
+                  }
+                }}
               />
             </>
           )}
