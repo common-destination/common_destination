@@ -1,3 +1,4 @@
+
 import SelectDates from "./SelectDates.jsx";
 import SelectDepartureAirport from "./SelectDepartureAirport.jsx";
 import icons from "../../functions/icons.js";
@@ -11,11 +12,17 @@ const ShowPassenger = ({
   stayTimeTogether,
   setDateAreValid,
 }) => {
+
+  
+
+
   const handleChangeField = (key, value) => {
     passenger[key] = value;
     // fieldIsValid ? handlePassengerChange() : console.log(value, "isn't valid");
     handlePassengerChange();
   };
+
+  
 
   return (
     <div className="showPassenger">
@@ -29,7 +36,6 @@ const ShowPassenger = ({
         minOutboundDate={passenger.minOutboundDate}
         maxReturnDate={passenger.maxReturnDate}
         stayTimeTogether={stayTimeTogether}
-        
       />
       {canDelete && (
         <icons.RiDeleteBinLine

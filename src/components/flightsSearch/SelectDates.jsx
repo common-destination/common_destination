@@ -15,12 +15,12 @@ const SelectDates = ({
       moment(minOutboundDate),
       "hours"
     );
-    // console.log({ timeDifferenceInHours });
-    // console.log(timeDifferenceInHours - stayTimeTogether);
-
+    console.log({ timeDifferenceInHours });
+    console.log(timeDifferenceInHours - stayTimeTogether);
+    console.log(typeof timeDifferenceInHours);
     timeDifferenceInHours >= stayTimeTogether
       ? setDateAreValid(true)
-      : setDateAreValid(false);
+      : setDateAreValid(false)
 
     // if (timeDifferenceInHours <= 0)
     //   return alert("the return date must be after the outward date");
@@ -33,7 +33,8 @@ const SelectDates = ({
   );
   const styles = {
     width: "max-content",
-    border: "1px solid black",
+    border: "1px solid" ,
+    borderColor: dateAreValid ? "black": "red",
     margin: "0 1vw",
   };
 

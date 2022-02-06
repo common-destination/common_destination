@@ -19,10 +19,16 @@ function Home({ className }) {
   const [passengers, setPassengers] = useState([]);
   const [departureAirports, setDepartureAirports] = useState([]);
   const [datesValidation, setDatesValidation] = useState(false);
+  const [passengersValidation, setPassengersValidation] = useState(false);
   const navigate = useNavigate();
   const outbounds = passengers.map((passenger) => passenger.minOutboundDate);
   const returns = passengers.map((passenger) => passenger.maxReturnDate);
   const airports = passengers.map((passenger) => passenger.airport);
+
+  // console.log(airports.includes(""));
+  // console.log(airports);
+
+
 
   const fillDataIntoPassengers = (passengers) => {
     passengers.forEach((passenger, index) => {
@@ -108,14 +114,14 @@ function Home({ className }) {
     );
 
     if (
-      returns.includes("") ||
-      outbounds.includes("") ||
-      airports.includes("")
+      !returns.includes("") &&
+      !outbounds.includes("") &&
+      !airports.includes("") &&
+      datesValidation
     ) {
-      setDatesValidation(false);
-      alert("empty fields");
+      setPassengersValidation(true);
     }
-    if (response.ok && datesValidation) {
+    if (response.ok && passengersValidation) {
       const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
       setPassengers([...fillDataIntoPassengers(_passengers)]);
       navigate("/commonDestinations");
