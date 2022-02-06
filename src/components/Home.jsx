@@ -22,6 +22,7 @@ function Home({ className }) {
   const navigate = useNavigate();
   const outbounds = passengers.map((passenger) => passenger.minOutboundDate);
   const returns = passengers.map((passenger) => passenger.maxReturnDate);
+  const airports = passengers.map((passenger) => passenger.airport);
 
   const fillDataIntoPassengers = (passengers) => {
     passengers.forEach((passenger, index) => {
@@ -106,7 +107,11 @@ function Home({ className }) {
       requestOptions
     );
 
-    if (returns.includes("") || outbounds.includes("")) {
+    if (
+      returns.includes("") ||
+      outbounds.includes("") ||
+      airports.includes("")
+    ) {
       setDatesValidation(false);
       alert("empty fields");
     }
