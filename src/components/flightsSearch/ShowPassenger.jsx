@@ -10,7 +10,8 @@ const ShowPassenger = ({
   departureAirports,
   canDelete,
   stayTimeTogether,
-  setDateAreValid,
+  setPassengersValidation,
+  setAirportsValidation
 }) => {
 
   
@@ -30,12 +31,14 @@ const ShowPassenger = ({
         departureAirports={departureAirports}
         airport={passenger.airport}
         handleChangeField={handleChangeField}
+        setAirportsValidation={setAirportsValidation}
       />
       <SelectDates
         handleChangeField={handleChangeField}
         minOutboundDate={passenger.minOutboundDate}
         maxReturnDate={passenger.maxReturnDate}
         stayTimeTogether={stayTimeTogether}
+        setPassengersValidation={setPassengersValidation}
       />
       {canDelete && (
         <icons.RiDeleteBinLine

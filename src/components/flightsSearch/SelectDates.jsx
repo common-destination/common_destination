@@ -7,24 +7,12 @@ const SelectDates = ({
   minOutboundDate,
   maxReturnDate,
   stayTimeTogether,
+
 }) => {
   const [dateAreValid, setDateAreValid] = useState(true);
 
-  useEffect(() => {
-    const timeDifferenceInHours = moment(maxReturnDate).diff(
-      moment(minOutboundDate),
-      "hours"
-    );
-    console.log({ timeDifferenceInHours });
-    console.log(timeDifferenceInHours - stayTimeTogether);
-    console.log(typeof timeDifferenceInHours);
-    timeDifferenceInHours >= stayTimeTogether
-      ? setDateAreValid(true)
-      : setDateAreValid(false)
 
-    // if (timeDifferenceInHours <= 0)
-    //   return alert("the return date must be after the outward date");
-  }, [minOutboundDate, maxReturnDate, setDateAreValid, stayTimeTogether]);
+
   const minDateOutbound = new Date();
   const maxDateOutbound = new Date(moment().add(1, "years"));
   const minDateReturn = new Date(moment().add(stayTimeTogether, "hours"));
@@ -33,10 +21,25 @@ const SelectDates = ({
   );
   const styles = {
     width: "max-content",
-    border: "1px solid" ,
-    borderColor: dateAreValid ? "black": "red",
+    border: "1px solid",
+    borderColor: dateAreValid ? "black" : "red",
     margin: "0 1vw",
   };
+
+  useEffect(() => {
+    const timeDifferenceInHours = moment(maxReturnDate).diff(
+      moment(minOutboundDate),
+      "hours"
+    );
+    timeDifferenceInHours >= stayTimeTogether
+      ? setDateAreValid(true)
+      : setDateAreValid(false);
+  }, [minOutboundDate, maxReturnDate, setDateAreValid, stayTimeTogether]);
+
+
+
+
+
 
   return (
     <div className="selectDates">

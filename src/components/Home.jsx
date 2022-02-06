@@ -12,23 +12,20 @@ const _emptyPassenger = {
   minOutboundDate: "",
   maxReturnDate: "",
 };
-
 function Home({ className }) {
   const { backendUrl } = useTheme();
   const [stayTimeTogether, setStayTimeTogether] = useState(24);
   const [passengers, setPassengers] = useState([]);
   const [departureAirports, setDepartureAirports] = useState([]);
   const [datesValidation, setDatesValidation] = useState(false);
+  const [airportsValidation, setAirportsValidation] = useState(false);
   const [passengersValidation, setPassengersValidation] = useState(false);
   const navigate = useNavigate();
   const outbounds = passengers.map((passenger) => passenger.minOutboundDate);
   const returns = passengers.map((passenger) => passenger.maxReturnDate);
   const airports = passengers.map((passenger) => passenger.airport);
 
-  // console.log(airports.includes(""));
-  // console.log(airports);
-
-
+  console.log(passengersValidation);
 
   const fillDataIntoPassengers = (passengers) => {
     passengers.forEach((passenger, index) => {
@@ -83,6 +80,25 @@ function Home({ className }) {
     }
   }, [passengers, outbounds, returns, stayTimeTogether]);
 
+  useEffect(() => {
+    if (
+      !returns.includes("") &&
+      !outbounds.includes("") &&
+      !airports.includes("") &&
+      datesValidation &&
+      airportsValidation
+    ) {
+      setPassengersValidation(true);
+    }
+  }, [
+    passengers,
+    airports,
+    airportsValidation,
+    datesValidation,
+    outbounds,
+    returns,
+  ]);
+
   const handlePassengerChange = () => {
     setPassengers([...passengers]);
   };
@@ -113,14 +129,6 @@ function Home({ className }) {
       requestOptions
     );
 
-    if (
-      !returns.includes("") &&
-      !outbounds.includes("") &&
-      !airports.includes("") &&
-      datesValidation
-    ) {
-      setPassengersValidation(true);
-    }
     if (response.ok && passengersValidation) {
       const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
       setPassengers([...fillDataIntoPassengers(_passengers)]);
@@ -148,6 +156,7 @@ function Home({ className }) {
             canDelete={passengers.length > 2}
             passenger={passenger}
             stayTimeTogether={stayTimeTogether}
+            setAirportsValidation={setAirportsValidation}
           />
         ))}
         <div className="btnContainer">
