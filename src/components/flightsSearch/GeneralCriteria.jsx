@@ -11,7 +11,7 @@ function GeneralCriteria({
 
   useEffect(() => {
     setStayTimeTogether(daysCounter * 24 + hoursCounter);
-    console.log(stayTimeTogether);
+    // console.log(stayTimeTogether);
   }, [
     daysCounter,
     hoursCounter,
@@ -51,11 +51,8 @@ function GeneralCriteria({
               <p>hours:</p>
               <icons.HiMinusCircle
                 onClick={() => {
-                  // console.log({hoursCounter})
                   if (hoursCounter >= 4 )
                     return setHoursCounter((prev) => prev - 2);
-                  // console.log("2",{hoursCounter})
-
                   if (hoursCounter === 24) return setHoursCounter(0);
                 }}
               />

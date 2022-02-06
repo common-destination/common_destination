@@ -7,7 +7,6 @@ const SelectDates = ({
   minOutboundDate,
   maxReturnDate,
   stayTimeTogether,
-  
 }) => {
   const [dateAreValid, setDateAreValid] = useState(true);
 
@@ -27,11 +26,16 @@ const SelectDates = ({
     //   return alert("the return date must be after the outward date");
   }, [minOutboundDate, maxReturnDate, setDateAreValid, stayTimeTogether]);
   const minDateOutbound = new Date();
+  // console.log({ minDateOutbound });
+
   const maxDateOutbound = new Date(moment().add(1, "years"));
+  // console.log({ maxDateOutbound });
   const minDateReturn = new Date(moment().add(stayTimeTogether, "hours"));
+  // console.log({ minDateReturn });
   const maxDateReturn = new Date(
     moment().add(stayTimeTogether, "hours").add(1, "years")
   );
+  // console.log({ maxDateReturn });
 
   const styles = {
     width: "max-content",
