@@ -12,25 +12,33 @@ const _emptyPassenger = {
   minOutboundDate: "",
   maxReturnDate: "",
 };
-const fillDataIntoPassengers = (passengers) => {
-  passengers.forEach((passenger, index) => {
-    passenger.id = `${index + 1}`;
-    passenger.genericTitle = `Passenger${index + 1}`;
-  });
-  return passengers;
-};
-
 function Home({ className }) {
   const { backendUrl } = useTheme();
   const [stayTimeTogether, setStayTimeTogether] = useState(24);
   const [passengers, setPassengers] = useState([]);
   const [departureAirports, setDepartureAirports] = useState([]);
   const [datesValidation, setDatesValidation] = useState(false);
+  const [airportsValidation, setAirportsValidation] = useState(false);
+  const [passengersValidation, setPassengersValidation] = useState(false);
   const navigate = useNavigate();
-
   const outbounds = passengers.map((passenger) => passenger.minOutboundDate);
-
   const returns = passengers.map((passenger) => passenger.maxReturnDate);
+  const airports = passengers.map((passenger) => passenger.airport);
+
+  // console.log(passengersValidation);
+  console.log(stayTimeTogether);
+
+  const fillDataIntoPassengers = (passengers) => {
+    passengers.forEach((passenger, index) => {
+      passenger.id = `${index + 1}`;
+      passenger.genericTitle = `Passenger${index + 1}`;
+      // passenger.minOutboundDate = new Date();
+      // passenger.maxReturnDate = new Date(
+      //   moment().add(stayTimeTogether, "hours")
+      // );
+    });
+    return passengers;
+  };
 
   useEffect(() => {
     (async () => {
@@ -51,40 +59,48 @@ function Home({ className }) {
     setPassengers([...fillDataIntoPassengers(_passengers)]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  // console.log(passengers);
-  console.log(stayTimeTogether)
 
- 
+  useEffect(() => {
+    if (outbounds.length > 0 && returns.length > 0) {
+      const earliestReturn = moment(
+        returns.reduce((a, b) => Math.min(moment(a), moment(b)))
+      );
+      const lastestOutbound = moment(
+        outbounds.reduce((a, b) => Math.max(moment(b), moment(a)))
+      );
+      const howManyTimeTogether = moment(earliestReturn).diff(
+        moment(lastestOutbound),
+        "hours"
+      );
 
-  // useEffect(() => {
-  //   if (outbounds > 0 && returns > 0) {
-  //     const earliestReturn = moment(
-  //       returns.reduce((a, b) => Math.min(moment(a), moment(b)))
-  //     );
-  //     console.log({outbounds})
-  //     console.log({returns})
-  //     console.log({earliestReturn});
-  //     const lastestOutbound = moment(
-  //       outbounds.reduce((a, b) => Math.max(moment(b), moment(a)))
-  //     );
-  //     console.log({lastestOutbound});
-  //     const howManyTimeTogether = moment(earliestReturn).diff(
-  //       moment(lastestOutbound),
-  //       "hours"
-  //     );
-  //     console.log({howManyTimeTogether});
-  //     console.log({stayTimeTogether})
-  //     howManyTimeTogether >= stayTimeTogether
-  //       ? setDatesValidation(true)
-  //       : setDatesValidation(false);
-  //   }
-  // }, [passengers,outbounds, returns, stayTimeTogether]);
+      howManyTimeTogether + 1 >= stayTimeTogether
+        ? setDatesValidation(true)
+        : setDatesValidation(false);
+    }
+  }, [passengers, outbounds, returns, stayTimeTogether]);
+
+  useEffect(() => {
+    if (
+      !returns.includes("") &&
+      !outbounds.includes("") &&
+      !airports.includes("") &&
+      datesValidation &&
+      airportsValidation
+    ) {
+      setPassengersValidation(true);
+    }
+  }, [
+    passengers,
+    airports,
+    airportsValidation,
+    datesValidation,
+    outbounds,
+    returns,
+  ]);
 
   const handlePassengerChange = () => {
     setPassengers([...passengers]);
   };
-
-
 
   const handlePassengerAdd = () => {
     const _passengers = [...passengers, { ..._emptyPassenger }];
@@ -111,30 +127,14 @@ function Home({ className }) {
       `${backendUrl}/flights/passengers-data`,
       requestOptions
     );
-    const earliestReturn = moment(
-      returns.reduce((a, b) => Math.min(moment(a), moment(b)))
-    );
-    console.log({ outbounds });
-    console.log({ returns });
-    console.log({ earliestReturn });
-    const lastestOutbound = moment(
-      outbounds.reduce((a, b) => Math.max(moment(b), moment(a)))
-    );
-    console.log({ lastestOutbound });
-    const howManyTimeTogether = moment(earliestReturn).diff(
-      moment(lastestOutbound),
-      "hours"
-    );
-    console.log({ howManyTimeTogether });
-    console.log({ stayTimeTogether });
-    howManyTimeTogether >= stayTimeTogether
-      ? setDatesValidation(true)
-      : setDatesValidation(false);
-    if (response.ok && datesValidation) {
+
+    if (response.ok && passengersValidation) {
       const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
       setPassengers([...fillDataIntoPassengers(_passengers)]);
       navigate("/commonDestinations");
-    } else {
+    } 
+
+    else {
       console.log("error");
     }
   };
@@ -147,7 +147,6 @@ function Home({ className }) {
           passengers={passengers}
           stayTimeTogether={stayTimeTogether}
           setStayTimeTogether={setStayTimeTogether}
-         
         />
         {passengers.map((passenger, index) => (
           <ShowPassenger
@@ -158,6 +157,7 @@ function Home({ className }) {
             canDelete={passengers.length > 2}
             passenger={passenger}
             stayTimeTogether={stayTimeTogether}
+            setAirportsValidation={setAirportsValidation}
           />
         ))}
         <div className="btnContainer">

@@ -19,7 +19,7 @@ const Main = () => {
     scrollbarImg,
     airplanePosition,
     setCurrentUser,
-    // currentUser,
+    mediaQueries,
     backendUrl,
     burgerMenuToggle,
     menuAccountToggle,
@@ -51,7 +51,7 @@ const Main = () => {
     <div className="Main">
       {validationMenuToggle && <Validation />}
 
-      {!burgerMenuToggle && (
+      {!burgerMenuToggle && !mediaQueries.smallView &&(
         <img
           className="airplaneScrollBar"
           src={scrollbarAnimation.getScrollbarImage(
@@ -114,7 +114,7 @@ const Main = () => {
           element={
             <Home
               className={
-                validationMenuToggle ? "Home backgroundBlurOpac" : "Home"
+                validationMenuToggle  ? "Home backgroundBlurOpac" : "Home"
               }
             />
           }

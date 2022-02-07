@@ -1,68 +1,80 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
 import moment from "moment";
-import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
+import "react-datepicker/dist/react-datepicker.css";
+import "react-datepicker/dist/react-datepicker-cssmodules.css";
+// import setHours from "date-fns/setHours";
+// import setMinutes from "date-fns/setMinutes";
 
 const SelectDates = ({
   handleChangeField,
   minOutboundDate,
   maxReturnDate,
   stayTimeTogether,
-  
 }) => {
-  const [dateAreValid, setDateAreValid] = useState(true);
+  // const [startDate, setStartDate] = useState(
+  //   setHours(setMinutes(new Date(), 0), 9)
+  // );
 
-  useEffect(() => {
-    const timeDifferenceInHours = moment(maxReturnDate).diff(
-      moment(minOutboundDate),
-      "hours"
-    );
-    // console.log({ timeDifferenceInHours });
-    // console.log(timeDifferenceInHours - stayTimeTogether);
+  const [startDate, setStartDate] = useState("");
+  const [returnDate, setReturnDate] = useState("");
 
-    timeDifferenceInHours >= stayTimeTogether
-      ? setDateAreValid(true)
-      : setDateAreValid(false);
-
-    // if (timeDifferenceInHours <= 0)
-    //   return alert("the return date must be after the outward date");
-  }, [minOutboundDate, maxReturnDate, setDateAreValid, stayTimeTogether]);
-  const minDateOutbound = new Date();
-  const maxDateOutbound = new Date(moment().add(1, "years"));
-  const minDateReturn = new Date(moment().add(stayTimeTogether, "hours"));
+  const today = new Date();
+  const minDateOutbound = new Date(moment(today));
+  const maxDateOutbound = new Date(moment(today).add(1, "years"));
+  const minDateReturn = new Date(moment(today).add(stayTimeTogether, "hours"));
   const maxDateReturn = new Date(
-    moment().add(stayTimeTogether, "hours").add(1, "years")
+    moment(today).add(stayTimeTogether, "hours").add(1, "years")
   );
 
+  const filterPassedTime = (time) => {
+    const currentDate = new Date();
+    const selectedDate = new Date(time);
+    return currentDate.getTime() < selectedDate.getTime();
+  };
+
   const styles = {
-    width: "max-content",
-    border: "1px solid black",
-    margin: "0 1vw",
+    dateInput: {
+      borderWidth: 0,
+    },
+    dateText: {
+      color: "red",
+      textAlign: "left",
+      fontSize: 20,
+    },
   };
 
   return (
     <div className="selectDates">
-      <DateTimePickerComponent
-        placeholder="Earliest date"
-        value={minOutboundDate}
-        min={minDateOutbound}
-        max={maxDateOutbound}
-        style={styles}
-        format="dd-MM-yy HH:mm"
-        step={60}
-        onChange={(e) => handleChangeField("minOutboundDate", e.target.value)}
+      <DatePicker
+        placeholderText={"earliest start"}
+        minDate={minDateOutbound}
+        maxDate={maxDateOutbound}
+        selected={startDate}
+        onChange={(date) => setStartDate(date)}
+        showTimeSelect
+        filterTime={filterPassedTime}
+        timeFormat="HH:mm"
+        timeIntervals={60}
+        dateFormat="dd-MMM-yyyy HH:mm"
+        customStyles={styles}
+        // timeCaption="hour"
       />
-      <DateTimePickerComponent
-        placeholder="Latest return date"
-        value={maxReturnDate}
-        min={minDateReturn}
-        max={maxDateReturn}
-        style={styles}
-        format="dd-MM-yy HH:mm"
-        step={60}
-        onChange={(e) => handleChangeField("maxReturnDate", e.target.value)}
+      <DatePicker
+        placeholderText={"lastest return"}
+        minDate={minDateReturn}
+        maxDate={maxDateReturn}
+        selected={returnDate}
+        onChange={(date) => setReturnDate(date)}
+        showTimeSelect
+        filterTime={filterPassedTime}
+        timeFormat="HH:mm"
+        timeIntervals={60}
+        dateFormat="dd-MMM-yyyy HH:mm"
+       
+        // timeCaption="hour"
       />
     </div>
   );
 };
-
 export default SelectDates;
