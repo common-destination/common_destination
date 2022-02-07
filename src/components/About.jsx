@@ -4,6 +4,7 @@ import img from "../assets/images/image1.png";
 function About(props) {
   return (
     <div className={props.className}>
+      {/* <div className="aboutWrapper"> */}
       <div className="image">
         <img src={img} alt="" />
       </div>
@@ -22,20 +23,9 @@ function About(props) {
           repudiandae recusandae ullam vero corrupti pariatur, ex ab temporibus?
           Dolor in, cupiditate eligendi placeat expedita repudiandae?
         </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum id porro
-          magnam, debitis deleniti numquam doloribus commodi amet doloremque
-          sint corporis dolor provident quas temporibus voluptas iusto, animi
-          nostrum vel ex modi, eum quidem accusamus saepe tenetur! Veniam dolore
-          dolor quae, temporibus nisi non deleniti quos placeat repudiandae
-          sapiente eos officiis ratione saepe id recusandae aliquid et commodi,
-          voluptate nesciunt doloribus facilis odio! Tenetur numquam nihil
-          veritatis modi, atque natus libero pariatur iusto tempora earum! Eius,
-          nulla. Laudantium culpa asperiores, accusamus expedita commodi eveniet
-          quasi quas ab minus assumenda, hic beatae, dolor magni esse odio
-          neque. Aspernatur facilis velit delectus.
-        </p>
       </div>
+      <div className="wave"></div>
+      {/* </div> */}
     </div>
   );
 }
