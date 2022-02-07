@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
@@ -15,10 +15,9 @@ const SelectDates = ({
   // const [startDate, setStartDate] = useState(
   //   setHours(setMinutes(new Date(), 0), 9)
   // );
-
-  const [startDate, setStartDate] = useState("");
-  const [returnDate, setReturnDate] = useState("");
-
+  const [dateAreValid, setDateAreValid] = useState(true);
+  // const [startDate, setStartDate] = useState("");
+  // const [returnDate, setReturnDate] = useState("");
   const today = new Date();
   const minDateOutbound = new Date(moment(today));
   const maxDateOutbound = new Date(moment(today).add(1, "years"));
@@ -33,46 +32,49 @@ const SelectDates = ({
     return currentDate.getTime() < selectedDate.getTime();
   };
 
-  const styles = {
-    dateInput: {
-      borderWidth: 0,
-    },
-    dateText: {
-      color: "red",
-      textAlign: "left",
-      fontSize: 20,
-    },
-  };
+  useEffect(() => {
+    const timeDifferenceInHours = moment(maxReturnDate).diff(
+      moment(minOutboundDate),
+      "hours"
+    );
+    timeDifferenceInHours >= stayTimeTogether
+      ? setDateAreValid(true)
+      : setDateAreValid(false);
+  }, [minOutboundDate, maxReturnDate, setDateAreValid, stayTimeTogether]);
 
+  
   return (
     <div className="selectDates">
       <DatePicker
         placeholderText={"earliest start"}
         minDate={minDateOutbound}
         maxDate={maxDateOutbound}
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
+        selected={minOutboundDate}
+        onChange={(date) => {
+          // setStartDate(date);
+          handleChangeField("minOutboundDate", date);
+        }}
         showTimeSelect
         filterTime={filterPassedTime}
         timeFormat="HH:mm"
         timeIntervals={60}
         dateFormat="dd-MMM-yyyy HH:mm"
-        customStyles={styles}
         // timeCaption="hour"
       />
       <DatePicker
         placeholderText={"lastest return"}
         minDate={minDateReturn}
         maxDate={maxDateReturn}
-        selected={returnDate}
-        onChange={(date) => setReturnDate(date)}
+        selected={maxReturnDate}
+        onChange={(date) => {
+          // setReturnDate(date);
+          handleChangeField("maxReturnDate", date);
+        }}
         showTimeSelect
         filterTime={filterPassedTime}
         timeFormat="HH:mm"
         timeIntervals={60}
         dateFormat="dd-MMM-yyyy HH:mm"
-       
-        // timeCaption="hour"
       />
     </div>
   );
