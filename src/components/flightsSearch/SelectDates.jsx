@@ -56,7 +56,7 @@ const SelectDates = ({
         filterTime={filterPassedTime}
         timeFormat="HH:mm"
         timeIntervals={60}
-        dateFormat="dd-MM-yyyy HH:mm"
+        dateFormat="dd-MMM-yyyy HH:mm"
         customStyles={styles}
         // timeCaption="hour"
       />
@@ -70,7 +70,7 @@ const SelectDates = ({
         filterTime={filterPassedTime}
         timeFormat="HH:mm"
         timeIntervals={60}
-        dateFormat="dd-MM-yyyy HH:mm"
+        dateFormat="dd-MMM-yyyy HH:mm"
        
         // timeCaption="hour"
       />
