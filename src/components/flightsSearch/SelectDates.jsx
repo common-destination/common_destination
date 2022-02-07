@@ -32,11 +32,17 @@ const SelectDates = ({
     return currentDate.getTime() < selectedDate.getTime();
   };
 
-  // useEffect(() => {
-  //   handleChangeField("minOutboundDate", startDate);
-  //   handleChangeField("maxReturnDate", returnDate);
-  // }, [startDate, returnDate, handleChangeField]);
+  useEffect(() => {
+    const timeDifferenceInHours = moment(maxReturnDate).diff(
+      moment(minOutboundDate),
+      "hours"
+    );
+    timeDifferenceInHours >= stayTimeTogether
+      ? setDateAreValid(true)
+      : setDateAreValid(false);
+  }, [minOutboundDate, maxReturnDate, setDateAreValid, stayTimeTogether]);
 
+  
   return (
     <div className="selectDates">
       <DatePicker

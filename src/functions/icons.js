@@ -1,4 +1,4 @@
-import { FcHome } from "react-icons/fc";
+import { FcHome,FcInfo } from "react-icons/fc";
 import { SiGnuprivacyguard, SiYourtraveldottv } from "react-icons/si";
 import { MdOutlineClose, MdManageAccounts } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -12,6 +12,7 @@ import { BsPlusCircleFill } from "react-icons/bs";
 
 const icons = {
   FcHome,
+  FcInfo,
   SiGnuprivacyguard,
   MdManageAccounts,
   GiHamburgerMenu,

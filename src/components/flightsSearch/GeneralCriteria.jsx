@@ -8,6 +8,7 @@ function GeneralCriteria({
 }) {
   const [daysCounter, setDaysCounter] = useState(1);
   const [hoursCounter, setHoursCounter] = useState(0);
+  const [infos, setInfos] = useState(false);
 
   useEffect(() => {
     setStayTimeTogether(daysCounter * 24 + hoursCounter);
@@ -24,9 +25,14 @@ function GeneralCriteria({
     <div className="generalCriteria">
       <span>passengers: {passengers.length}</span>
       <label>
-        <h5 title="infos sdhjddsjdslkjdsjdsk jdsajdsaldsajds">
-          meeting duration:
-        </h5>
+        {infos &&(<div className="bubble bubble-bottom-left">this is the time bla bla bla</div>)}
+        <h5>meeting duration:</h5>
+        <icons.FcInfo
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            !infos ? setInfos(true) : setInfos(false);
+          }}
+        />
         <div className="stayTimeTogether">
           {daysCounter > 0 && (
             <>
