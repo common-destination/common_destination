@@ -2,6 +2,14 @@ import React, { useEffect, useState } from "react";
 import moment from "moment";
 import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
 
+const today = new Date().toLocaleString().split(',')[0];
+// const today = new Date().slice()
+// var date = new Date();
+// date.setHours(13);
+// date.setMinutes(45);
+
+console.log(today);
+
 const SelectDates = ({
   handleChangeField,
   minOutboundDate,
@@ -10,14 +18,11 @@ const SelectDates = ({
 
 }) => {
   const [dateAreValid, setDateAreValid] = useState(true);
-
-
-
-  const minDateOutbound = new Date();
-  const maxDateOutbound = new Date(moment().add(1, "years"));
-  const minDateReturn = new Date(moment().add(stayTimeTogether, "hours"));
+  const minDateOutbound = new Date(moment(today).startOf("00:00"));
+  const maxDateOutbound = new Date(moment(today).startOf("00:00").add(1, "years"));
+  const minDateReturn = new Date(moment(today).startOf("00:00").add(stayTimeTogether, "hours"));
   const maxDateReturn = new Date(
-    moment().add(stayTimeTogether, "hours").add(1, "years")
+    moment(today).startOf("00:00").add(stayTimeTogether, "hours").add(1, "years")
   );
   const styles = {
     width: "max-content",
@@ -35,9 +40,6 @@ const SelectDates = ({
       ? setDateAreValid(true)
       : setDateAreValid(false);
   }, [minOutboundDate, maxReturnDate, setDateAreValid, stayTimeTogether]);
-
-
-
 
 
 

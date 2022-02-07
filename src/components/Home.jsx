@@ -25,7 +25,7 @@ function Home({ className }) {
   const returns = passengers.map((passenger) => passenger.maxReturnDate);
   const airports = passengers.map((passenger) => passenger.airport);
 
-  console.log(passengersValidation);
+  // console.log(passengersValidation);
 
   const fillDataIntoPassengers = (passengers) => {
     passengers.forEach((passenger, index) => {
@@ -58,8 +58,6 @@ function Home({ className }) {
     setPassengers([...fillDataIntoPassengers(_passengers)]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  // console.log(passengers);
-  // console.log(stayTimeTogether);
 
   useEffect(() => {
     if (outbounds.length > 0 && returns.length > 0) {
@@ -133,7 +131,9 @@ function Home({ className }) {
       const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
       setPassengers([...fillDataIntoPassengers(_passengers)]);
       navigate("/commonDestinations");
-    } else {
+    } 
+
+    else {
       console.log("error");
     }
   };
