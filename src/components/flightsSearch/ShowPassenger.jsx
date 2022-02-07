@@ -1,4 +1,3 @@
-
 import SelectDates from "./SelectDates.jsx";
 import SelectDepartureAirport from "./SelectDepartureAirport.jsx";
 import icons from "../../functions/icons.js";
@@ -11,42 +10,36 @@ const ShowPassenger = ({
   canDelete,
   stayTimeTogether,
   setPassengersValidation,
-  setAirportsValidation
+  setAirportsValidation,
 }) => {
-
-  
-
-
   const handleChangeField = (key, value) => {
     passenger[key] = value;
-    // fieldIsValid ? handlePassengerChange() : console.log(value, "isn't valid");
     handlePassengerChange();
   };
-
-  
-
   return (
-    <div className="showPassenger">
-      <SelectDepartureAirport
-        departureAirports={departureAirports}
-        airport={passenger.airport}
-        handleChangeField={handleChangeField}
-        setAirportsValidation={setAirportsValidation}
-      />
-      <SelectDates
-        handleChangeField={handleChangeField}
-        minOutboundDate={passenger.minOutboundDate}
-        maxReturnDate={passenger.maxReturnDate}
-        stayTimeTogether={stayTimeTogether}
-        setPassengersValidation={setPassengersValidation}
-      />
-      {canDelete && (
-        <icons.RiDeleteBinLine
-          className="deletePassenger"
-          onClick={handlePassengerDelete}
+    <>
+      <div className="showPassenger">
+        <SelectDepartureAirport
+          departureAirports={departureAirports}
+          airport={passenger.airport}
+          handleChangeField={handleChangeField}
+          setAirportsValidation={setAirportsValidation}
         />
-      )}
-    </div>
+        <SelectDates
+          handleChangeField={handleChangeField}
+          minOutboundDate={passenger.minOutboundDate}
+          maxReturnDate={passenger.maxReturnDate}
+          stayTimeTogether={stayTimeTogether}
+          setPassengersValidation={setPassengersValidation}
+        />
+        {canDelete && (
+          <icons.RiDeleteBinLine
+            className="deletePassenger"
+            onClick={handlePassengerDelete}
+          />
+        )}
+      </div>
+    </>
   );
 };
 

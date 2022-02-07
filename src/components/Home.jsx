@@ -26,6 +26,7 @@ function Home({ className }) {
   const airports = passengers.map((passenger) => passenger.airport);
 
   // console.log(passengersValidation);
+  console.log(stayTimeTogether);
 
   const fillDataIntoPassengers = (passengers) => {
     passengers.forEach((passenger, index) => {

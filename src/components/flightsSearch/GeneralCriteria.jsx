@@ -24,11 +24,13 @@ function GeneralCriteria({
     <div className="generalCriteria">
       <span>passengers: {passengers.length}</span>
       <label>
-        <h5>min stay time together</h5>
+        <h5 title="infos sdhjddsjdslkjdsjdsk jdsajdsaldsajds">
+          meeting duration:
+        </h5>
         <div className="stayTimeTogether">
           {daysCounter > 0 && (
             <>
-              <p>days:</p>
+              <p> min </p>
               <icons.HiMinusCircle
                 onClick={() => {
                   if (daysCounter < 2) {
@@ -43,15 +45,17 @@ function GeneralCriteria({
               <icons.BsPlusCircleFill
                 onClick={() => setDaysCounter((prev) => prev + 1)}
               />
+              <p> days</p>
             </>
           )}
 
           {daysCounter < 1 && (
             <>
-              <p>hours:</p>
+              <p> min </p>
+
               <icons.HiMinusCircle
                 onClick={() => {
-                  if (hoursCounter >= 4 )
+                  if (hoursCounter >= 4)
                     return setHoursCounter((prev) => prev - 2);
                   if (hoursCounter === 24) return setHoursCounter(0);
                 }}
@@ -68,6 +72,7 @@ function GeneralCriteria({
                   }
                 }}
               />
+              <p> hours </p>
             </>
           )}
         </div>

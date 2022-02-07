@@ -1,72 +1,80 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
 import moment from "moment";
-import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
-
-const today = new Date().toLocaleString().split(',')[0];
-// const today = new Date().slice()
-// var date = new Date();
-// date.setHours(13);
-// date.setMinutes(45);
-
-console.log(today);
+import "react-datepicker/dist/react-datepicker.css";
+import "react-datepicker/dist/react-datepicker-cssmodules.css";
+// import setHours from "date-fns/setHours";
+// import setMinutes from "date-fns/setMinutes";
 
 const SelectDates = ({
   handleChangeField,
   minOutboundDate,
   maxReturnDate,
   stayTimeTogether,
-
 }) => {
-  const [dateAreValid, setDateAreValid] = useState(true);
-  const minDateOutbound = new Date(moment(today).startOf("00:00"));
-  const maxDateOutbound = new Date(moment(today).startOf("00:00").add(1, "years"));
-  const minDateReturn = new Date(moment(today).startOf("00:00").add(stayTimeTogether, "hours"));
+  // const [startDate, setStartDate] = useState(
+  //   setHours(setMinutes(new Date(), 0), 9)
+  // );
+
+  const [startDate, setStartDate] = useState("");
+  const [returnDate, setReturnDate] = useState("");
+
+  const today = new Date();
+  const minDateOutbound = new Date(moment(today));
+  const maxDateOutbound = new Date(moment(today).add(1, "years"));
+  const minDateReturn = new Date(moment(today).add(stayTimeTogether, "hours"));
   const maxDateReturn = new Date(
-    moment(today).startOf("00:00").add(stayTimeTogether, "hours").add(1, "years")
+    moment(today).add(stayTimeTogether, "hours").add(1, "years")
   );
-  const styles = {
-    width: "max-content",
-    border: "1px solid",
-    borderColor: dateAreValid ? "black" : "red",
-    margin: "0 1vw",
+
+  const filterPassedTime = (time) => {
+    const currentDate = new Date();
+    const selectedDate = new Date(time);
+    return currentDate.getTime() < selectedDate.getTime();
   };
 
-  useEffect(() => {
-    const timeDifferenceInHours = moment(maxReturnDate).diff(
-      moment(minOutboundDate),
-      "hours"
-    );
-    timeDifferenceInHours >= stayTimeTogether
-      ? setDateAreValid(true)
-      : setDateAreValid(false);
-  }, [minOutboundDate, maxReturnDate, setDateAreValid, stayTimeTogether]);
-
-
+  const styles = {
+    dateInput: {
+      borderWidth: 0,
+    },
+    dateText: {
+      color: "red",
+      textAlign: "left",
+      fontSize: 20,
+    },
+  };
 
   return (
     <div className="selectDates">
-      <DateTimePickerComponent
-        placeholder="Earliest date"
-        value={minOutboundDate}
-        min={minDateOutbound}
-        max={maxDateOutbound}
-        style={styles}
-        format="dd-MM-yy HH:mm"
-        step={60}
-        onChange={(e) => handleChangeField("minOutboundDate", e.target.value)}
+      <DatePicker
+        placeholderText={"earliest start"}
+        minDate={minDateOutbound}
+        maxDate={maxDateOutbound}
+        selected={startDate}
+        onChange={(date) => setStartDate(date)}
+        showTimeSelect
+        filterTime={filterPassedTime}
+        timeFormat="HH:mm"
+        timeIntervals={60}
+        dateFormat="dd-MM-yyyy HH:mm"
+        customStyles={styles}
+        // timeCaption="hour"
       />
-      <DateTimePickerComponent
-        placeholder="Latest return date"
-        value={maxReturnDate}
-        min={minDateReturn}
-        max={maxDateReturn}
-        style={styles}
-        format="dd-MM-yy HH:mm"
-        step={60}
-        onChange={(e) => handleChangeField("maxReturnDate", e.target.value)}
+      <DatePicker
+        placeholderText={"lastest return"}
+        minDate={minDateReturn}
+        maxDate={maxDateReturn}
+        selected={returnDate}
+        onChange={(date) => setReturnDate(date)}
+        showTimeSelect
+        filterTime={filterPassedTime}
+        timeFormat="HH:mm"
+        timeIntervals={60}
+        dateFormat="dd-MM-yyyy HH:mm"
+       
+        // timeCaption="hour"
       />
     </div>
   );
 };
-
 export default SelectDates;
