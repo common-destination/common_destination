@@ -7,16 +7,15 @@ function GeneralCriteria({
   passengers,
   stayTimeTogether,
   setStayTimeTogether,
-  airportsValidation,
-  setErrorsToggle,
-  errorsToggle
-
-
+  datesError,
+  setDatesError,
+  airportsError,
+  setAirportsError,
 }) {
   const [daysCounter, setDaysCounter] = useState(1);
   const [hoursCounter, setHoursCounter] = useState(0);
   const [mettingTimeInfos, setMeetingTimeInfos] = useState(false);
- 
+
 
   useEffect(() => {
     setStayTimeTogether(daysCounter * 24 + hoursCounter);
@@ -26,20 +25,28 @@ function GeneralCriteria({
     passengers,
     stayTimeTogether,
     setStayTimeTogether,
-    errorsToggle
-  
   ]);
+
  
 
   return (
     <div className="generalCriteria">
-      {errorsToggle && !airportsValidation  &&(
+      {datesError && (
         <SmallComponents.PopUpInfos
-          className="airportError"
-          text={popUp.airportError}
-          setInfos={setErrorsToggle}
+          className="passengerCriteriaError"
+          text={popUp.dateError}
+          setInfos={setDatesError}
         />
       )}
+
+      {airportsError && (
+        <SmallComponents.PopUpInfos
+          className="passengerCriteriaError"
+          text={popUp.airportError}
+          setInfos={setAirportsError}
+        />
+      )}
+
       <span>passengers: {passengers.length}</span>
       <label>
         {mettingTimeInfos && (

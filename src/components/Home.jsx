@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
@@ -20,6 +20,8 @@ function Home({ className }) {
   const [datesValidation, setDatesValidation] = useState(false);
   const [airportsValidation, setAirportsValidation] = useState(false);
   const [passengersValidation, setPassengersValidation] = useState(false);
+  const [datesError, setDatesError] = useState(false);
+  const [airportsError, setAirportsError] = useState(false);
   const [errorsToggle, setErrorsToggle] = useState(false);
   const navigate = useNavigate();
   const outbounds = passengers.map((passenger) => passenger.minOutboundDate);
@@ -99,6 +101,15 @@ function Home({ className }) {
     returns,
   ]);
 
+  useEffect(() => {
+    errorsToggle && !airportsValidation
+      ? setAirportsError(true)
+      : setAirportsError(false);
+    errorsToggle && !datesValidation
+      ? setDatesError(true)
+      : setDatesError(false);
+  }, [airportsValidation, datesValidation, errorsToggle]);
+
   const handlePassengerChange = () => {
     setPassengers([...passengers]);
   };
@@ -134,9 +145,8 @@ function Home({ className }) {
       setPassengers([...fillDataIntoPassengers(_passengers)]);
       navigate("/commonDestinations");
     } else {
-      setErrorsToggle(true)
+      setErrorsToggle(true);
     }
-
   };
 
   return (
@@ -147,9 +157,11 @@ function Home({ className }) {
           stayTimeTogether={stayTimeTogether}
           setStayTimeTogether={setStayTimeTogether}
           airportsValidation={airportsValidation}
-          errorsToggle={errorsToggle}
-          setErrorsToggle={setErrorsToggle}
-          
+          datesValidation={datesValidation}
+          airportsError={airportsError}
+          setAirportsError={setAirportsError}
+          datesError={datesError}
+          setDatesError={setDatesError}
         />
         {passengers.map((passenger, index) => (
           <ShowPassenger
@@ -161,7 +173,10 @@ function Home({ className }) {
             passenger={passenger}
             stayTimeTogether={stayTimeTogether}
             errorsToggle={errorsToggle}
-            setAirportsValidation={setAirportsValidation}
+            airportsError={airportsError}
+            setAirportsError={setAirportsError}
+            datesError={datesError}
+            setDatesError={setDatesError}
           />
         ))}
         <div className="btnContainer">
