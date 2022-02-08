@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
-import "react-datepicker/dist/react-datepicker-cssmodules.css";
+// import "../../styles/datePicker.scss";
 // import setHours from "date-fns/setHours";
 // import setMinutes from "date-fns/setMinutes";
 
@@ -42,10 +42,9 @@ const SelectDates = ({
       : setDateAreValid(false);
   }, [minOutboundDate, maxReturnDate, setDateAreValid, stayTimeTogether]);
 
-  
   return (
     <div className="selectDates">
-      <DatePicker
+      <DatePicker className="date-picker"
         placeholderText={"earliest start"}
         minDate={minDateOutbound}
         maxDate={maxDateOutbound}
@@ -56,12 +55,10 @@ const SelectDates = ({
         }}
         showTimeSelect
         filterTime={filterPassedTime}
-        timeFormat="HH:mm"
         timeIntervals={60}
         dateFormat="dd-MMM-yyyy HH:mm"
-        // timeCaption="hour"
       />
-      <DatePicker
+      <DatePicker className="date-picker"
         placeholderText={"lastest return"}
         minDate={minDateReturn}
         maxDate={maxDateReturn}
