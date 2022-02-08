@@ -1,5 +1,6 @@
 import React from "react";
-import img from "../assets/images/image1-min.png";
+// import img from "../assets/images/image1-min.png";
+import img from "../assets/images/airport-min.jpg";
 
 function About(props) {
   return (
