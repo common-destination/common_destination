@@ -80,15 +80,15 @@ function Home({ className }) {
       allarmRef.current = `lastestOutbound:${lastestOutbound} is late than earliestReturn ${earliestReturn}`;
     }
   }, [passengers, outbounds, returns, stayTimeTogether]);
-
-  // useEffect(() => {
-  //   if (submitIsActive) {
-  //     departureAirports.includes(airports)
-  //       ? setAirportsValidation(true)
-  //       : setAirportsValidation(false);
-  //     // setAirportsError(true);
-  //   }
-  // }, [departureAirports, airports, submitIsActive]);
+console.log(airports.every(airport => departureAirports.includes(airport)))
+  useEffect(() => {
+    const allAirportsFieldAreTrue = airports.every(airport => departureAirports.includes(airport));
+    submitIsActive &&  allAirportsFieldAreTrue
+      ? setAirportsValidation(true)
+      : setAirportsValidation(false);
+    setAirportsError(true);
+    // setAirportsError(true);
+  }, [departureAirports, airports, submitIsActive]);
 
   useEffect(() => {
     if (
@@ -150,9 +150,6 @@ function Home({ className }) {
       //   console.log(allarmRef);
       // } else if (!airportsValidation) {
       //   console.log("airports field are empty or the airport isn't in our list");
-    } else {
-      setAirportsError(true);
-      setAirportsValidation(false);
     }
 
     console.log({ airportsError });
@@ -171,6 +168,7 @@ function Home({ className }) {
           airportsError={airportsError}
           setAirportsError={setAirportsError}
           submitIsActive={submitIsActive}
+          setSubmitIsActive={setSubmitIsActive}
         />
         {passengers.map((passenger, index) => (
           <ShowPassenger

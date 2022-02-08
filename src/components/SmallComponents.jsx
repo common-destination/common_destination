@@ -7,7 +7,7 @@ export const PopUpInfos = ({className, text, setInfos}) => {
       <p>{text}</p>
       <icons.MdOutlineClose
         className="menuIconClosed"
-        onClick={() => setInfos(false)}
+        onClick={setInfos}
         style={{ cursor: "pointer" }}
       />
     </div>

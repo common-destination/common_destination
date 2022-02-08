@@ -9,6 +9,7 @@ function GeneralCriteria({
   setStayTimeTogether,
   airportsValidation,
   submitIsActive,
+  setSubmitIsActive,
   airportsError,
   setAirportsError
 
@@ -36,7 +37,7 @@ function GeneralCriteria({
         <SmallComponents.PopUpInfos
           className="airportError"
           text={popUp.airportError}
-          setInfos={setAirportsError}
+          setInfos={()=>{setAirportsError(false); setSubmitIsActive(false)}}
         />
       )}
       <span>passengers: {passengers.length}</span>
@@ -45,7 +46,7 @@ function GeneralCriteria({
           <SmallComponents.PopUpInfos
             className="bubble bubble-bottom-left"
             text={popUp.meetingDuration}
-            setInfos={setMeetingTimeInfos}
+            setInfos={() => {setMeetingTimeInfos()}}
           />
         )}
         <h5>meeting duration:</h5>
