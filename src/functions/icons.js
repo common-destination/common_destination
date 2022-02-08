@@ -1,9 +1,9 @@
 import { FcHome,FcInfo } from "react-icons/fc";
 import { SiGnuprivacyguard, SiYourtraveldottv } from "react-icons/si";
-import { MdOutlineClose, MdManageAccounts } from "react-icons/md";
+import { MdOutlineClose, MdManageAccounts, MdAddCircle } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaHome } from "react-icons/fa";
-import { BsInfoSquareFill } from "react-icons/bs";
+import { BsInfoSquareFill, BsFillPersonPlusFill } from "react-icons/bs";
 import { GrContact, GrAddCircle } from "react-icons/gr";
 import { ImEyeBlocked, ImEye } from "react-icons/im";
 import { RiDeleteBinLine } from "react-icons/ri";
@@ -24,6 +24,8 @@ const icons = {
   ImEye,
   RiDeleteBinLine,
   GrAddCircle,
+  MdAddCircle,
+  BsFillPersonPlusFill,
   SiYourtraveldottv,
   HiMinusCircle,
   BsPlusCircleFill,
