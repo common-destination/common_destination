@@ -23,8 +23,11 @@ function GeneralCriteria({
 
   return (
     <div className="generalCriteria">
-      <span>passengers: {passengers.length}</span>
-      <label>
+      <label
+        onClick={() => {
+          infos && setInfos(false);
+        }}
+      >
         {infos && (
           <div className="bubble bubble-bottom-left">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi
@@ -32,19 +35,18 @@ function GeneralCriteria({
           </div>
         )}
         <div className="stayTimeTogether">
-          <h5>
-            meeting duration:
-            <icons.FcInfo
-              style={{ cursor: "pointer" }}
-              onClick={() => {
-                !infos ? setInfos(true) : setInfos(false);
-              }}
-            />
-          </h5>
+          <icons.FaInfoCircle
+            className="iconInfo"
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              !infos ? setInfos(true) : setInfos(false);
+            }}
+          />
+          <span>minimum duration</span>
           {daysCounter > 0 && (
             <>
-              <p> min </p>
               <icons.FaMinusCircle
+                className="iconsPlusMinus"
                 onClick={() => {
                   if (daysCounter < 2) {
                     setHoursCounter(22);
@@ -57,6 +59,7 @@ function GeneralCriteria({
               <p>{daysCounter}</p>
               {/* {console.log("days", daysCounter)} */}
               <icons.FaPlusCircle
+                className="iconsPlusMinus"
                 onClick={() => setDaysCounter((prev) => prev + 1)}
               />
               <p> days</p>
@@ -65,18 +68,18 @@ function GeneralCriteria({
 
           {daysCounter < 1 && (
             <>
-              <p> min </p>
-
               <icons.FaMinusCircle
+                className="iconsPlusMinus"
                 onClick={() => {
-                  if (hoursCounter >= 4)
+                  if (hoursCounter < 24 && hoursCounter > 2)
                     return setHoursCounter((prev) => prev - 2);
-                  if (hoursCounter === 24) return setHoursCounter(0);
+                  // if (hoursCounter === 24) return setHoursCounter(0); // => no need to set
                 }}
               />
               <p>{hoursCounter}</p>
               {/* {console.log("hours", hoursCounter)} */}
               <icons.FaPlusCircle
+                className="iconsPlusMinus"
                 onClick={() => {
                   if (hoursCounter >= 22) {
                     setDaysCounter(1);
@@ -92,6 +95,7 @@ function GeneralCriteria({
           )}
         </div>
       </label>
+      <span>passengers: {passengers.length}</span>
     </div>
   );
 }
