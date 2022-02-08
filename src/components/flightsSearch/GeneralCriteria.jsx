@@ -8,10 +8,9 @@ function GeneralCriteria({
   stayTimeTogether,
   setStayTimeTogether,
   airportsValidation,
-  submitIsActive,
-  setSubmitIsActive,
-  airportsError,
-  setAirportsError
+  setErrorsToggle,
+  errorsToggle
+
 
 }) {
   const [daysCounter, setDaysCounter] = useState(1);
@@ -27,17 +26,18 @@ function GeneralCriteria({
     passengers,
     stayTimeTogether,
     setStayTimeTogether,
+    errorsToggle
   
   ]);
  
 
   return (
     <div className="generalCriteria">
-      {airportsError && submitIsActive && !airportsValidation  &&(
+      {errorsToggle && !airportsValidation  &&(
         <SmallComponents.PopUpInfos
           className="airportError"
           text={popUp.airportError}
-          setInfos={()=>{setAirportsError(false); setSubmitIsActive(false)}}
+          setInfos={setErrorsToggle}
         />
       )}
       <span>passengers: {passengers.length}</span>
@@ -46,7 +46,7 @@ function GeneralCriteria({
           <SmallComponents.PopUpInfos
             className="bubble bubble-bottom-left"
             text={popUp.meetingDuration}
-            setInfos={() => {setMeetingTimeInfos()}}
+            setInfos={setMeetingTimeInfos}
           />
         )}
         <h5>meeting duration:</h5>

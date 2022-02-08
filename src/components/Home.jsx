@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect} from "react";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
@@ -14,34 +14,26 @@ const _emptyPassenger = {
 };
 function Home({ className }) {
   const { backendUrl } = useTheme();
-  const [stayTimeTogether, setStayTimeTogether] = useState(24);
-  const [passengers, setPassengers] = useState([]);
   const [departureAirports, setDepartureAirports] = useState([]);
+  const [passengers, setPassengers] = useState([]);
+  const [stayTimeTogether, setStayTimeTogether] = useState(24);
   const [datesValidation, setDatesValidation] = useState(false);
   const [airportsValidation, setAirportsValidation] = useState(false);
   const [passengersValidation, setPassengersValidation] = useState(false);
-  const [submitIsActive, setSubmitIsActive] = useState(false);
-  const [airportsError, setAirportsError] = useState(false);
+  const [errorsToggle, setErrorsToggle] = useState(false);
   const navigate = useNavigate();
-  const allarmRef = useRef(null);
   const outbounds = passengers.map((passenger) => passenger.minOutboundDate);
   const returns = passengers.map((passenger) => passenger.maxReturnDate);
   const airports = passengers.map((passenger) => passenger.airport);
-
-  // console.log(passengersValidation);
-  // console.log(passengers);
 
   const fillDataIntoPassengers = (passengers) => {
     passengers.forEach((passenger, index) => {
       passenger.id = `${index + 1}`;
       passenger.genericTitle = `Passenger${index + 1}`;
-      // passenger.minOutboundDate = new Date();
-      // passenger.maxReturnDate = new Date(
-      //   moment().add(stayTimeTogether, "hours")
-      // );
     });
     return passengers;
   };
+
   useEffect(() => {
     (async () => {
       const requestOptions = {
@@ -74,32 +66,30 @@ function Home({ className }) {
         moment(lastestOutbound),
         "hours"
       );
-      howManyTimeTogether >= stayTimeTogether
+      howManyTimeTogether >= stayTimeTogether &&
+      !returns.includes("") &&
+      !outbounds.includes("")
         ? setDatesValidation(true)
         : setDatesValidation(false);
-      allarmRef.current = `lastestOutbound:${lastestOutbound} is late than earliestReturn ${earliestReturn}`;
     }
   }, [passengers, outbounds, returns, stayTimeTogether]);
-console.log(airports.every(airport => departureAirports.includes(airport)))
-  useEffect(() => {
-    const allAirportsFieldAreTrue = airports.every(airport => departureAirports.includes(airport));
-    submitIsActive &&  allAirportsFieldAreTrue
-      ? setAirportsValidation(true)
-      : setAirportsValidation(false);
-    setAirportsError(true);
-    // setAirportsError(true);
-  }, [departureAirports, airports, submitIsActive]);
 
   useEffect(() => {
-    if (
-      !returns.includes("") &&
-      !outbounds.includes("") &&
-      !airports.includes("") &&
-      datesValidation &&
-      airportsValidation
-    ) {
-      setPassengersValidation(true);
+    const allAirportsFieldAreTrue = airports.every((airport) =>
+      departureAirports.includes(airport)
+    );
+
+    if (allAirportsFieldAreTrue) {
+      setAirportsValidation(true);
+    } else {
+      setAirportsValidation(false);
     }
+  }, [departureAirports, airports]);
+
+  useEffect(() => {
+    if (datesValidation && airportsValidation) {
+      setPassengersValidation(true);
+    } else return setPassengersValidation(false);
   }, [
     passengers,
     airports,
@@ -143,18 +133,10 @@ console.log(airports.every(airport => departureAirports.includes(airport)))
       const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
       setPassengers([...fillDataIntoPassengers(_passengers)]);
       navigate("/commonDestinations");
-      // } else if (!datesValidation && !airportsValidation) {
-      //   console.log(allarmRef);
-      //   console.log("airports field are empty or the airport isn't in our list");
-      // } else if (!datesValidation) {
-      //   console.log(allarmRef);
-      // } else if (!airportsValidation) {
-      //   console.log("airports field are empty or the airport isn't in our list");
+    } else {
+      setErrorsToggle(true)
     }
 
-    console.log({ airportsError });
-    console.log({ airportsValidation });
-    console.log({ submitIsActive });
   };
 
   return (
@@ -165,10 +147,9 @@ console.log(airports.every(airport => departureAirports.includes(airport)))
           stayTimeTogether={stayTimeTogether}
           setStayTimeTogether={setStayTimeTogether}
           airportsValidation={airportsValidation}
-          airportsError={airportsError}
-          setAirportsError={setAirportsError}
-          submitIsActive={submitIsActive}
-          setSubmitIsActive={setSubmitIsActive}
+          errorsToggle={errorsToggle}
+          setErrorsToggle={setErrorsToggle}
+          
         />
         {passengers.map((passenger, index) => (
           <ShowPassenger
@@ -179,9 +160,8 @@ console.log(airports.every(airport => departureAirports.includes(airport)))
             canDelete={passengers.length > 2}
             passenger={passenger}
             stayTimeTogether={stayTimeTogether}
+            errorsToggle={errorsToggle}
             setAirportsValidation={setAirportsValidation}
-            submitIsActive={submitIsActive}
-            setAirportsError={setAirportsError}
           />
         ))}
         <div className="btnContainer">
@@ -190,14 +170,7 @@ console.log(airports.every(airport => departureAirports.includes(airport)))
             type="button"
             onClick={handlePassengerAdd}
           />
-          <button
-            className="submitBtn"
-            type="button"
-            onClick={(e) => {
-              handleSubmit(e);
-              setSubmitIsActive(true);
-            }}
-          >
+          <button className="submitBtn" type="button" onClick={handleSubmit}>
             Common Destinations
           </button>
         </div>

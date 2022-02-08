@@ -57,7 +57,7 @@ const SelectDates = ({
         dateFormat="dd-MMM-yyyy HH:mm"
       />
       <DatePicker
-        placeholderText={"lastest return"}
+        placeholderText={"latest return"}
         minDate={minReturn}
         maxDate={maxReturn}
         selected={maxReturnDate}

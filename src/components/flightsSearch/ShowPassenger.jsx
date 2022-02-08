@@ -11,23 +11,26 @@ const ShowPassenger = ({
   stayTimeTogether,
   setPassengersValidation,
   setAirportsValidation,
-  submitIsActive,
-  setAirportsError,
+  errorsToggle
+  
 }) => {
   const handleChangeField = (key, value) => {
     passenger[key] = value;
     handlePassengerChange();
   };
+
+  // console.log({errorsToggle});
+  // console.log({submitIsActive});
+
   return (
     <>
-      <div className="showPassenger">
+      <div className="showPassenger" style={{opacity: errorsToggle && !setPassengersValidation ? 0.5 : 1}}>
         <SelectDepartureAirport
           departureAirports={departureAirports}
           airport={passenger.airport}
           handleChangeField={handleChangeField}
           setAirportsValidation={setAirportsValidation}
-          submitIsActive={submitIsActive}
-          setAirportsError={setAirportsError}
+          errorsToggle={errorsToggle}
         />
         <SelectDates
           handleChangeField={handleChangeField}
@@ -35,7 +38,7 @@ const ShowPassenger = ({
           maxReturnDate={passenger.maxReturnDate}
           stayTimeTogether={stayTimeTogether}
           setPassengersValidation={setPassengersValidation}
-          submitIsActive={submitIsActive}
+         
         />
         {canDelete && (
           <icons.RiDeleteBinLine
