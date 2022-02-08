@@ -25,7 +25,18 @@ function GeneralCriteria({
     <div className="generalCriteria">
       <span>passengers: {passengers.length}</span>
       <label>
-        {infos &&(<div className="bubble bubble-bottom-left">this is the time bla bla bla</div>)}
+        {infos && (
+          <div className="bubble bubble-bottom-left">
+            <p>this is the time bla bla bla</p>
+            <icons.MdOutlineClose
+              className="menuIconClosed"
+              onClick={() => {
+                setInfos(false);
+              }}
+              style={{ cursor: "pointer" }}
+            />
+          </div>
+        )}
         <h5>meeting duration:</h5>
         <icons.FcInfo
           style={{ cursor: "pointer" }}

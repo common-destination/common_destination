@@ -11,6 +11,8 @@ const ShowPassenger = ({
   stayTimeTogether,
   setPassengersValidation,
   setAirportsValidation,
+  submitIsActive
+  
 }) => {
   const handleChangeField = (key, value) => {
     passenger[key] = value;
@@ -24,6 +26,7 @@ const ShowPassenger = ({
           airport={passenger.airport}
           handleChangeField={handleChangeField}
           setAirportsValidation={setAirportsValidation}
+          submitIsActive={submitIsActive}
         />
         <SelectDates
           handleChangeField={handleChangeField}
@@ -31,6 +34,7 @@ const ShowPassenger = ({
           maxReturnDate={passenger.maxReturnDate}
           stayTimeTogether={stayTimeTogether}
           setPassengersValidation={setPassengersValidation}
+          submitIsActive={submitIsActive}
         />
         {canDelete && (
           <icons.RiDeleteBinLine

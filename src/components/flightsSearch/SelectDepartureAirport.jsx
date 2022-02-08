@@ -5,21 +5,26 @@ function SelectDepartureAirport({
   handleChangeField,
   departureAirports,
   setAirportsValidation,
+  submitIsActive
 }) {
   const [airportIsValid, setAirportIsValid] = useState(false);
 
   const styles = {
-    border: "1px solid",
-    borderColor: airportIsValid ? "black" : "red",
+    border: submitIsActive && !airportIsValid ? "2px solid red" : "1px solid black ",
   };
 
   useEffect(() => {
-    departureAirports.includes(airport)
+   if(submitIsActive) {departureAirports.includes(airport)
       ? setAirportIsValid(true)
       : setAirportIsValid(false);
+    if (airportIsValid) return setAirportsValidation(true)};
+  }, [airport, airportIsValid, setAirportsValidation, departureAirports,submitIsActive]);
 
-    if (airportIsValid) return setAirportsValidation(true);
-  }, [airport, departureAirports, airportIsValid, setAirportsValidation]);
+
+// useEffect(() => {
+
+
+// },[submitIsActive])
 
   return (
     <div className="selectDeparture">
