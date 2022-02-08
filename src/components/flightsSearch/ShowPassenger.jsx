@@ -19,12 +19,20 @@ const ShowPassenger = ({
   return (
     <>
       <div className="showPassenger">
-        <SelectDepartureAirport
-          departureAirports={departureAirports}
-          airport={passenger.airport}
-          handleChangeField={handleChangeField}
-          setAirportsValidation={setAirportsValidation}
-        />
+        <div className="airportDeleteContainer">
+          <SelectDepartureAirport
+            departureAirports={departureAirports}
+            airport={passenger.airport}
+            handleChangeField={handleChangeField}
+            setAirportsValidation={setAirportsValidation}
+          />
+          {canDelete && (
+            <icons.RiDeleteBinLine
+              className="deletePassenger"
+              onClick={handlePassengerDelete}
+            />
+          )}
+        </div>
         <SelectDates
           handleChangeField={handleChangeField}
           minOutboundDate={passenger.minOutboundDate}
@@ -32,12 +40,12 @@ const ShowPassenger = ({
           stayTimeTogether={stayTimeTogether}
           setPassengersValidation={setPassengersValidation}
         />
-        {canDelete && (
+        {/* {canDelete && (
           <icons.RiDeleteBinLine
             className="deletePassenger"
             onClick={handlePassengerDelete}
           />
-        )}
+        )} */}
       </div>
     </>
   );

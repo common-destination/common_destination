@@ -8,9 +8,7 @@ $color4: #aaaaaa;
 $color5: #c3c3c3;
 $color6: #741e1e;
 
-
 $bor-col: #4e6096;
-
 
 //alternative color
 $color3: #fbfbfb;
@@ -43,21 +41,13 @@ $container: #0770e3;
 }
 
 @mixin inputStyle {
-  // font-size: clamp(1.4em, 1vw, 2em);
-  // border: none;
-  // border-bottom: 1px solid black;
-  // border-radius: 0.3rem;
-  // text-align: center;
-  // margin-left: clamp(0.5em, 0.5vw, 1.5em);
-
+  width: 100%;
   padding: 2px;
   font-size: 16px;
   font-weight: bold;
-  border-width: 2px;
-  border-color: $bor-col;
-  background-color: #ffffff;
+  border: 2px solid $bor-col;
+  background-color: #fff;
   color: #000000;
-  border-style: solid;
   border-radius: 8px;
   box-shadow: 0px 0px 2px rgba(40, 57, 102, 0.99);
   text-shadow: 0px 0px 0px rgba(40, 57, 102, 0);
@@ -92,3 +82,24 @@ $container: #0770e3;
     top: 2px;
   }
 }
+
+$datepicker__background-color: #f0f0f0 !default;
+$datepicker__border-color: #aeaeae !default;
+$datepicker__highlighted-color: #3dcc4a !default;
+$datepicker__muted-color: #ccc !default;
+$datepicker__selected-color: #216ba5 !default;
+$datepicker__text-color: #000 !default;
+$datepicker__header-color: #000 !default;
+$datepicker__navigation-disabled-color: lighten(
+  $datepicker__muted-color,
+  10%
+) !default;
+
+$datepicker__border-radius: 0.3rem !default;
+$datepicker__day-margin: 0.166rem !default;
+$datepicker__font-size: 0.8rem !default;
+$datepicker__font-family: "Helvetica Neue", helvetica, arial, sans-serif !default;
+$datepicker__item-size: 1.7rem !default;
+$datepicker__margin: 0.4rem !default;
+$datepicker__navigation-button-size: 32px !default;
+$datepicker__triangle-size: 8px !default;
