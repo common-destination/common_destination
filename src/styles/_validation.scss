@@ -1,9 +1,9 @@
 .Validation {
-  border: 2px solid black;
+  // border: 2px solid black;
   // background-color: $color5;
   // background-color: #20456df8;
   // background-color: #F5793B;
-  background-color: #1A4578;
+  background-color: #2F799F;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -31,6 +31,7 @@
 
       p {
         font-size: clamp(0.9em, 1vw, 5em);
+        color: #cfc6c6;
       }
 
       button {
@@ -51,6 +52,7 @@
     width: clamp(2em, 2vw, 3em);
     height: clamp(2em, 2.2vh, 3em);
     z-index: 999999999;
+    color: #cfc6c6;
   }
 }
 

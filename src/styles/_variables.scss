@@ -29,15 +29,14 @@ $container: #0770e3;
 }
 
 @mixin fieldsetStyle {
-  border: 4px solid #7a7a7a96;
+  border: 4px solid #e0d8d8;
   border-radius: 0.9rem;
 }
 
 @mixin legendStyle {
-  color: $color2;
+  color: #e0d8d8;
   font-size: clamp(2em, 1vw, 9em);
   font-weight: bold;
-  letter-spacing: 0.2;
 }
 
 @mixin inputStyle {
