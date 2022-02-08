@@ -47,7 +47,7 @@ function Validation() {
           </li>
         ) : (
           <li>
-            <p>if you have already an accout</p><button
+            <p>if you have already an account</p><button
               onClick={() => {
                 setLoginToggle(true);
                 setSignupToggle(false);
