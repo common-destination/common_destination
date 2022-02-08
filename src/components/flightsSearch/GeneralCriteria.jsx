@@ -1,47 +1,60 @@
 import React, { useState, useEffect } from "react";
 import icons from "../../functions/icons.js";
+import * as SmallComponents from "../SmallComponents.jsx";
+import popUp from "../../data/popUp.json";
 
 function GeneralCriteria({
   passengers,
   stayTimeTogether,
   setStayTimeTogether,
+  airportsValidation,
+  submitIsActive,
+  airportsError,
+  setAirportsError
+
 }) {
   const [daysCounter, setDaysCounter] = useState(1);
   const [hoursCounter, setHoursCounter] = useState(0);
-  const [infos, setInfos] = useState(false);
+  const [mettingTimeInfos, setMeetingTimeInfos] = useState(false);
+ 
 
   useEffect(() => {
     setStayTimeTogether(daysCounter * 24 + hoursCounter);
-    // console.log(stayTimeTogether);
   }, [
     daysCounter,
     hoursCounter,
     passengers,
     stayTimeTogether,
     setStayTimeTogether,
+  
   ]);
+ 
 
   return (
     <div className="generalCriteria">
+      {airportsError && submitIsActive && !airportsValidation  &&(
+        <SmallComponents.PopUpInfos
+          className="airportError"
+          text={popUp.airportError}
+          setInfos={setAirportsError}
+        />
+      )}
       <span>passengers: {passengers.length}</span>
       <label>
-        {infos && (
-          <div className="bubble bubble-bottom-left">
-            <p>this is the time bla bla bla</p>
-            <icons.MdOutlineClose
-              className="menuIconClosed"
-              onClick={() => {
-                setInfos(false);
-              }}
-              style={{ cursor: "pointer" }}
-            />
-          </div>
+        {mettingTimeInfos && (
+          <SmallComponents.PopUpInfos
+            className="bubble bubble-bottom-left"
+            text={popUp.meetingDuration}
+            setInfos={setMeetingTimeInfos}
+          />
         )}
         <h5>meeting duration:</h5>
         <icons.FcInfo
           style={{ cursor: "pointer" }}
           onClick={() => {
-            !infos ? setInfos(true) : setInfos(false);
+            !mettingTimeInfos
+              ? setMeetingTimeInfos(true)
+              : setMeetingTimeInfos(false);
           }}
         />
         <div className="stayTimeTogether">

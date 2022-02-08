@@ -11,8 +11,8 @@ const ShowPassenger = ({
   stayTimeTogether,
   setPassengersValidation,
   setAirportsValidation,
-  submitIsActive
-  
+  submitIsActive,
+  setAirportsError,
 }) => {
   const handleChangeField = (key, value) => {
     passenger[key] = value;
@@ -27,6 +27,7 @@ const ShowPassenger = ({
           handleChangeField={handleChangeField}
           setAirportsValidation={setAirportsValidation}
           submitIsActive={submitIsActive}
+          setAirportsError={setAirportsError}
         />
         <SelectDates
           handleChangeField={handleChangeField}

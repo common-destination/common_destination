@@ -21,6 +21,7 @@ function Home({ className }) {
   const [airportsValidation, setAirportsValidation] = useState(false);
   const [passengersValidation, setPassengersValidation] = useState(false);
   const [submitIsActive, setSubmitIsActive] = useState(false);
+  const [airportsError, setAirportsError] = useState(false);
   const navigate = useNavigate();
   const allarmRef = useRef(null);
   const outbounds = passengers.map((passenger) => passenger.minOutboundDate);
@@ -79,7 +80,16 @@ function Home({ className }) {
       allarmRef.current = `lastestOutbound:${lastestOutbound} is late than earliestReturn ${earliestReturn}`;
     }
   }, [passengers, outbounds, returns, stayTimeTogether]);
-  console.log({ airports });
+
+  // useEffect(() => {
+  //   if (submitIsActive) {
+  //     departureAirports.includes(airports)
+  //       ? setAirportsValidation(true)
+  //       : setAirportsValidation(false);
+  //     // setAirportsError(true);
+  //   }
+  // }, [departureAirports, airports, submitIsActive]);
+
   useEffect(() => {
     if (
       !returns.includes("") &&
@@ -133,16 +143,21 @@ function Home({ className }) {
       const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
       setPassengers([...fillDataIntoPassengers(_passengers)]);
       navigate("/commonDestinations");
-    } else if (!datesValidation && !airportsValidation) {
-      console.log(allarmRef);
-      console.log("airports field are empty or the airport isn't in our list");
-    } else if (!datesValidation) {
-      console.log(allarmRef);
-    } else if (!airportsValidation) {
-      console.log("airports field are empty or the airport isn't in our list");
+      // } else if (!datesValidation && !airportsValidation) {
+      //   console.log(allarmRef);
+      //   console.log("airports field are empty or the airport isn't in our list");
+      // } else if (!datesValidation) {
+      //   console.log(allarmRef);
+      // } else if (!airportsValidation) {
+      //   console.log("airports field are empty or the airport isn't in our list");
+    } else {
+      setAirportsError(true);
+      setAirportsValidation(false);
     }
 
-    console.log(submitIsActive);
+    console.log({ airportsError });
+    console.log({ airportsValidation });
+    console.log({ submitIsActive });
   };
 
   return (
@@ -152,6 +167,10 @@ function Home({ className }) {
           passengers={passengers}
           stayTimeTogether={stayTimeTogether}
           setStayTimeTogether={setStayTimeTogether}
+          airportsValidation={airportsValidation}
+          airportsError={airportsError}
+          setAirportsError={setAirportsError}
+          submitIsActive={submitIsActive}
         />
         {passengers.map((passenger, index) => (
           <ShowPassenger
@@ -164,6 +183,7 @@ function Home({ className }) {
             stayTimeTogether={stayTimeTogether}
             setAirportsValidation={setAirportsValidation}
             submitIsActive={submitIsActive}
+            setAirportsError={setAirportsError}
           />
         ))}
         <div className="btnContainer">
