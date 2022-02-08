@@ -132,9 +132,7 @@ function Home({ className }) {
       const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
       setPassengers([...fillDataIntoPassengers(_passengers)]);
       navigate("/commonDestinations");
-    } 
-
-    else {
+    } else {
       console.log("error");
     }
   };
@@ -161,7 +159,7 @@ function Home({ className }) {
           />
         ))}
         <div className="btnContainer">
-          <icons.GrAddCircle
+          <icons.BsFillPersonPlusFill
             className="addPassengerBtn"
             type="button"
             onClick={handlePassengerAdd}
