@@ -5,42 +5,57 @@
   flex-direction: column;
   align-items: center;
   // justify-content: center;
-  margin-top: 15vh;
+  // margin-top: 2vh;
+  padding-top: 10vh;
 
   .generalCriteria {
     // width: clamp(20em, 70vw, 40em);
-    margin: 1vw;
-    display: flex;
-    justify-content: space-between;
+
+    // display: flex;
+    // justify-content: space-between;
+
+    body {
+      background: #368dda;
+    }
+
+    p {
+      margin-left: 1vw;
+    }
 
     .bubble {
       position: relative;
-      font-family: sans-serif;
-      font-size: 18px;
-      line-height: 24px;
-      width: 300px;
-      background: red;
-      border-radius: 40px;
-      padding: 24px;
+      // font-family: sans-serif;
+      // font-size: 18px;
+      // line-height: 24px;
+      width: clamp(200px, 33.33vmin, 300px);
+      background: rgb(221, 221, 255, 0.8);
+      border-radius: 1rem;
+      border: 3px solid rgba(221, 221, 255, 0.8);
+      box-shadow: 0 0 30px 5px #555;
+      padding: 0.3rem;
       text-align: center;
       color: #000;
-    }
+      margin-bottom: 26px;
 
-    .bubble-bottom-left:before {
-      content: "";
-      width: 0px;
-      height: 0px;
-      position: absolute;
-      border-left: 24px solid red;
-      border-right: 12px solid transparent;
-      border-top: 12px solid red;
-      border-bottom: 20px solid transparent;
-      left: 32px;
-      bottom: -24px;
+      &::before {
+        content: "";
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        border-left: 24px solid rgb(221, 221, 255);
+        border-right: 12px solid transparent;
+        border-top: 12px solid rgba(221, 221, 255);
+        border-bottom: 20px solid transparent;
+        left: 115px;
+        bottom: -31px;
+      }
     }
 
     .stayTimeTogether {
+      width: 100%;
       display: flex;
+      // justify-content: center;
+
       input {
         width: clamp(3em, 6vw, 7em);
         margin: 0 1vw;
@@ -68,4 +83,3 @@
     }
   }
 }
-
