@@ -16,7 +16,6 @@ function GeneralCriteria({
   const [hoursCounter, setHoursCounter] = useState(0);
   const [mettingTimeInfos, setMeetingTimeInfos] = useState(false);
 
-
   useEffect(() => {
     setStayTimeTogether(daysCounter * 24 + hoursCounter);
   }, [
@@ -27,11 +26,8 @@ function GeneralCriteria({
     setStayTimeTogether,
   ]);
 
- 
-
   return (
     <div className="generalCriteria">
-
       {datesError && (
         <SmallComponents.PopUpInfos
           className="passengerCriteriaError"
@@ -71,10 +67,12 @@ function GeneralCriteria({
             className="iconInfo"
             style={{ cursor: "pointer" }}
             onClick={() => {
-              !mettingTimeInfos ? setMeetingTimeInfos(true) : setMeetingTimeInfos(false);
+              !mettingTimeInfos
+                ? setMeetingTimeInfos(true)
+                : setMeetingTimeInfos(false);
             }}
           />
-          <span>minimum duration</span>
+          <span>duration</span>
           {daysCounter > 0 && (
             <>
               <icons.FaMinusCircle
@@ -94,7 +92,7 @@ function GeneralCriteria({
                 className="iconsPlusMinus"
                 onClick={() => setDaysCounter((prev) => prev + 1)}
               />
-              <p> days</p>
+              <p>days</p>
             </>
           )}
 
@@ -122,12 +120,14 @@ function GeneralCriteria({
                   }
                 }}
               />
-              <p> hours </p>
+              <p>hours</p>
             </>
           )}
+          <span className="passengersLength">
+          {passengers.length} Passengers
+          </span>
         </div>
       </label>
-      <span>passengers: {passengers.length}</span>
     </div>
   );
 }
