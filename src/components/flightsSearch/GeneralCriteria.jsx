@@ -48,7 +48,6 @@ function GeneralCriteria({
         />
       )}
 
-      <span>passengers: {passengers.length}</span>
       <label>
         {mettingTimeInfos && (
           <SmallComponents.PopUpInfos
@@ -57,7 +56,7 @@ function GeneralCriteria({
             setInfos={setMeetingTimeInfos}
           />
         )}
-        <h5>meeting duration:</h5>
+        {/* <h5>meeting duration:</h5>
         <icons.FcInfo
           style={{ cursor: "pointer" }}
           onClick={() => {
@@ -65,7 +64,7 @@ function GeneralCriteria({
               ? setMeetingTimeInfos(true)
               : setMeetingTimeInfos(false);
           }}
-        />
+        /> */}
 
         <div className="stayTimeTogether">
           <icons.FaInfoCircle
