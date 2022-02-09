@@ -4,7 +4,6 @@ import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 // import "../../styles/datePicker.scss";
 
-
 const SelectDates = ({
   handleChangeField,
   minOutboundDate,
@@ -23,9 +22,7 @@ const SelectDates = ({
     moment(today).add(stayTimeTogether, "hours").add(1, "years")
   );
 
-  //  const styles = {
-  //     border: datesError && dateIsEmpty || datesError && !dateAreValid ? "3px solid red" : "1px solid black ",
-  //   };
+
 
   useEffect(() => {
     const timeDifferenceInHours = moment(maxReturnDate).diff(
@@ -41,17 +38,16 @@ const SelectDates = ({
       : setDateIsEmpty(false);
   }, [minOutboundDate, maxReturnDate, setDateAreValid, stayTimeTogether]);
 
-
-  useEffect(() => {
-    if (datesError) {
-      if (dateIsEmpty) {
-        alert("date is empty");
-      }
-      if (dateAreValid) {
-        alert("departure is bigger than return");
-      }
-    }
-  }, [datesError, dateAreValid, dateIsEmpty]);
+  // useEffect(() => {
+  //   if (datesError) {
+  //     if (dateIsEmpty) {
+  //       alert("date is empty");
+  //     }
+  //     if (dateAreValid) {
+  //       alert("departure is bigger than return");
+  //     }
+  //   }
+  // }, [datesError, dateAreValid, dateIsEmpty]);
 
   const filterPassedTime = (time) => {
     const currentDate = new Date();
@@ -59,10 +55,14 @@ const SelectDates = ({
     return currentDate.getTime() < selectedDate.getTime();
   };
 
-
   return (
     <div className="selectDates">
-      <DatePicker className="date-picker"
+      <DatePicker
+        className={
+          (datesError && dateIsEmpty) || (datesError && !dateAreValid)
+            ? "dateError datePicker"
+            : "datePicker"
+        }
         placeholderText={"earliest start"}
         minDate={minOutbound}
         maxDate={maxOutbound}
@@ -75,11 +75,16 @@ const SelectDates = ({
         timeIntervals={60}
         dateFormat="dd-MMM-yyyy HH:mm"
       />
-      <DatePicker className="date-picker"
+      <DatePicker
+         className={
+          (datesError && dateIsEmpty) || (datesError && !dateAreValid)
+            ? "dateError datePicker"
+            : "datePicker"
+        }
+
         placeholderText={"latest return"}
         minDate={minReturn}
         maxDate={maxReturn}
-
         selected={maxReturnDate}
         onChange={(date) => {
           handleChangeField("maxReturnDate", date);

@@ -30,8 +30,11 @@
   .selectDates {
     display: flex;
     
-    .date-picker {
+    .datePicker {
       width: 100%;
+    }
+    .dateError{
+      border: 2px solid red;
     }
   }
 }
