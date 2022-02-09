@@ -1,0 +1,5 @@
+{
+    "meetingDuration" : "The minimum time passengers want to spend together.",
+    "airportError" : "The airport fields marked in red are wrong. Make sure that the airport exists.",
+    "dateError" : "Some date fields are wrong."
+}

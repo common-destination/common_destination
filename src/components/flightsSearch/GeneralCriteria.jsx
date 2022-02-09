@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from "react";
 import icons from "../../functions/icons.js";
+import * as SmallComponents from "../SmallComponents.jsx";
+import popUp from "../../data/popUp.json";
 
 function GeneralCriteria({
   passengers,
   stayTimeTogether,
   setStayTimeTogether,
+  datesError,
+  setDatesError,
+  airportsError,
+  setAirportsError,
 }) {
   const [daysCounter, setDaysCounter] = useState(1);
   const [hoursCounter, setHoursCounter] = useState(0);
-  const [infos, setInfos] = useState(false);
+  const [mettingTimeInfos, setMeetingTimeInfos] = useState(false);
+
 
   useEffect(() => {
     setStayTimeTogether(daysCounter * 24 + hoursCounter);
-    // console.log(stayTimeTogether);
   }, [
     daysCounter,
     hoursCounter,
@@ -21,19 +27,46 @@ function GeneralCriteria({
     setStayTimeTogether,
   ]);
 
+ 
+
   return (
     <div className="generalCriteria">
-      <label
-        onClick={() => {
-          infos && setInfos(false);
-        }}
-      >
-        {infos && (
-          <div className="bubble bubble-bottom-left">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi
-            placeat quibusdam doloribus animi saepe quae quis enim.
-          </div>
+
+      {datesError && (
+        <SmallComponents.PopUpInfos
+          className="passengerCriteriaError"
+          text={popUp.dateError}
+          setInfos={setDatesError}
+        />
+      )}
+
+      {airportsError && (
+        <SmallComponents.PopUpInfos
+          className="passengerCriteriaError"
+          text={popUp.airportError}
+          setInfos={setAirportsError}
+        />
+      )}
+
+      <span>passengers: {passengers.length}</span>
+      <label>
+        {mettingTimeInfos && (
+          <SmallComponents.PopUpInfos
+            className="bubble bubble-bottom-left"
+            text={popUp.meetingDuration}
+            setInfos={setMeetingTimeInfos}
+          />
         )}
+        <h5>meeting duration:</h5>
+        <icons.FcInfo
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            !mettingTimeInfos
+              ? setMeetingTimeInfos(true)
+              : setMeetingTimeInfos(false);
+          }}
+        />
+
         <div className="stayTimeTogether">
           <icons.FaInfoCircle
             className="iconInfo"

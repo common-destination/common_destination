@@ -12,7 +12,7 @@ function CommonDestinations(className) {
   //       credentials: "include",
   //     };
   //     const response = await fetch(
-  //       `${backendUrl}/flights/common-destination`,
+  //       `${backendUrl}/common-destinations`,
   //       requestOptions
   //     );
   //     if (response.ok) {

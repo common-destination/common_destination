@@ -11,13 +11,7 @@ function TopMenu({setValidationMenuToggle,setMenuAccountToggle,handleBurgerMenuT
     <div className="topMenu">
       <div className="logo">
         <icons.SiYourtraveldottv className="reactIcons" />
-        {/* <h1
-          style={{
-            display: mediaQueries.smallView ? "none" : "block",
-          }}
-        >
-          Common Destination
-        </h1> */}
+
         { !mediaQueries.smallView && (<h1>Common Destination</h1>)}
       </div>
       <ul className="topNavbar">

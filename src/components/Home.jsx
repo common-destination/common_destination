@@ -14,28 +14,24 @@ const _emptyPassenger = {
 };
 function Home({ className }) {
   const { backendUrl } = useTheme();
-  const [stayTimeTogether, setStayTimeTogether] = useState(24);
-  const [passengers, setPassengers] = useState([]);
   const [departureAirports, setDepartureAirports] = useState([]);
+  const [passengers, setPassengers] = useState([]);
+  const [stayTimeTogether, setStayTimeTogether] = useState(24);
   const [datesValidation, setDatesValidation] = useState(false);
   const [airportsValidation, setAirportsValidation] = useState(false);
   const [passengersValidation, setPassengersValidation] = useState(false);
+  const [datesError, setDatesError] = useState(false);
+  const [airportsError, setAirportsError] = useState(false);
+  const [errorsToggle, setErrorsToggle] = useState(false);
   const navigate = useNavigate();
   const outbounds = passengers.map((passenger) => passenger.minOutboundDate);
   const returns = passengers.map((passenger) => passenger.maxReturnDate);
   const airports = passengers.map((passenger) => passenger.airport);
 
-  // console.log(passengersValidation);
-  // console.log(passengers);
-
   const fillDataIntoPassengers = (passengers) => {
     passengers.forEach((passenger, index) => {
       passenger.id = `${index + 1}`;
-      passenger.genericTitle = `Passenger${index + 1}`;
-      // passenger.minOutboundDate = new Date();
-      // passenger.maxReturnDate = new Date(
-      //   moment().add(stayTimeTogether, "hours")
-      // );
+      // passenger.genericTitle = `Passenger${index + 1}`;
     });
     return passengers;
   };
@@ -72,23 +68,30 @@ function Home({ className }) {
         moment(lastestOutbound),
         "hours"
       );
-
-      howManyTimeTogether + 1 >= stayTimeTogether
+      howManyTimeTogether >= stayTimeTogether &&
+      !returns.includes("") &&
+      !outbounds.includes("")
         ? setDatesValidation(true)
         : setDatesValidation(false);
     }
   }, [passengers, outbounds, returns, stayTimeTogether]);
 
   useEffect(() => {
-    if (
-      !returns.includes("") &&
-      !outbounds.includes("") &&
-      !airports.includes("") &&
-      datesValidation &&
-      airportsValidation
-    ) {
-      setPassengersValidation(true);
+    const allAirportsFieldAreTrue = airports.every((airport) =>
+      departureAirports.includes(airport)
+    );
+
+    if (allAirportsFieldAreTrue) {
+      setAirportsValidation(true);
+    } else {
+      setAirportsValidation(false);
     }
+  }, [departureAirports, airports]);
+
+  useEffect(() => {
+    if (datesValidation && airportsValidation) {
+      setPassengersValidation(true);
+    } else return setPassengersValidation(false);
   }, [
     passengers,
     airports,
@@ -97,6 +100,15 @@ function Home({ className }) {
     outbounds,
     returns,
   ]);
+
+  useEffect(() => {
+    errorsToggle && !airportsValidation
+      ? setAirportsError(true)
+      : setAirportsError(false);
+    errorsToggle && !datesValidation
+      ? setDatesError(true)
+      : setDatesError(false);
+  }, [airportsValidation, datesValidation, errorsToggle]);
 
   const handlePassengerChange = () => {
     setPassengers([...passengers]);
@@ -124,7 +136,7 @@ function Home({ className }) {
       body: JSON.stringify({ passengers, stayTimeTogether }),
     };
     const response = await fetch(
-      `${backendUrl}/flights/passengers-data`,
+      `${backendUrl}/common-destinations/passengers-data`,
       requestOptions
     );
 
@@ -133,11 +145,12 @@ function Home({ className }) {
       setPassengers([...fillDataIntoPassengers(_passengers)]);
       navigate("/commonDestinations");
     } else {
-      console.log("error");
+
+      setErrorsToggle(true);
+
     }
   };
 
-  // console.log({ passengers });
   return (
     <div className={className}>
       <div className="passengersCriteria">
@@ -145,6 +158,12 @@ function Home({ className }) {
           passengers={passengers}
           stayTimeTogether={stayTimeTogether}
           setStayTimeTogether={setStayTimeTogether}
+          airportsValidation={airportsValidation}
+          datesValidation={datesValidation}
+          airportsError={airportsError}
+          setAirportsError={setAirportsError}
+          datesError={datesError}
+          setDatesError={setDatesError}
         />
         {passengers.map((passenger, index) => (
           <ShowPassenger
@@ -155,7 +174,11 @@ function Home({ className }) {
             canDelete={passengers.length > 2}
             passenger={passenger}
             stayTimeTogether={stayTimeTogether}
-            setAirportsValidation={setAirportsValidation}
+            errorsToggle={errorsToggle}
+            airportsError={airportsError}
+            setAirportsError={setAirportsError}
+            datesError={datesError}
+            setDatesError={setDatesError}
           />
         ))}
         <div className="btnContainer">

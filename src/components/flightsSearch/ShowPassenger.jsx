@@ -9,22 +9,27 @@ const ShowPassenger = ({
   departureAirports,
   canDelete,
   stayTimeTogether,
-  setPassengersValidation,
-  setAirportsValidation,
+  airportsError,
+  datesError,
 }) => {
   const handleChangeField = (key, value) => {
     passenger[key] = value;
     handlePassengerChange();
   };
+
   return (
-    <>
-      <div className="showPassenger">
+   
+
+      <div className="showPassenger"
+          style={{ opacity: airportsError || datesError ? 0.5 : 1 }}
+      >
         <div className="airportDeleteContainer">
           <SelectDepartureAirport
             departureAirports={departureAirports}
             airport={passenger.airport}
             handleChangeField={handleChangeField}
-            setAirportsValidation={setAirportsValidation}
+airportsError={airportsError}
+            
           />
           {canDelete && (
             <icons.RiDeleteBinLine
@@ -33,21 +38,16 @@ const ShowPassenger = ({
             />
           )}
         </div>
+
         <SelectDates
           handleChangeField={handleChangeField}
           minOutboundDate={passenger.minOutboundDate}
           maxReturnDate={passenger.maxReturnDate}
           stayTimeTogether={stayTimeTogether}
-          setPassengersValidation={setPassengersValidation}
+          datesError={datesError}
         />
-        {/* {canDelete && (
-          <icons.RiDeleteBinLine
-            className="deletePassenger"
-            onClick={handlePassengerDelete}
-          />
-        )} */}
       </div>
-    </>
+   
   );
 };
 

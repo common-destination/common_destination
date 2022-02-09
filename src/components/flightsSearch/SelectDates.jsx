@@ -1,36 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 // import "../../styles/datePicker.scss";
-// import setHours from "date-fns/setHours";
-// import setMinutes from "date-fns/setMinutes";
+
 
 const SelectDates = ({
   handleChangeField,
   minOutboundDate,
   maxReturnDate,
   stayTimeTogether,
+  datesError,
 }) => {
-  // const [startDate, setStartDate] = useState(
-  //   setHours(setMinutes(new Date(), 0), 9)
-  // );
-  const [dateAreValid, setDateAreValid] = useState(true);
-  // const [startDate, setStartDate] = useState("");
-  // const [returnDate, setReturnDate] = useState("");
+  const [dateAreValid, setDateAreValid] = useState(false);
+  const [dateIsEmpty, setDateIsEmpty] = useState(true);
+
   const today = new Date();
-  const minDateOutbound = new Date(moment(today));
-  const maxDateOutbound = new Date(moment(today).add(1, "years"));
-  const minDateReturn = new Date(moment(today).add(stayTimeTogether, "hours"));
-  const maxDateReturn = new Date(
+  const minOutbound = new Date(moment(today));
+  const maxOutbound = new Date(moment(today).add(1, "years"));
+  const minReturn = new Date(moment(today).add(stayTimeTogether, "hours"));
+  const maxReturn = new Date(
     moment(today).add(stayTimeTogether, "hours").add(1, "years")
   );
 
-  const filterPassedTime = (time) => {
-    const currentDate = new Date();
-    const selectedDate = new Date(time);
-    return currentDate.getTime() < selectedDate.getTime();
-  };
+  //  const styles = {
+  //     border: datesError && dateIsEmpty || datesError && !dateAreValid ? "3px solid red" : "1px solid black ",
+  //   };
 
   useEffect(() => {
     const timeDifferenceInHours = moment(maxReturnDate).diff(
@@ -40,17 +35,39 @@ const SelectDates = ({
     timeDifferenceInHours >= stayTimeTogether
       ? setDateAreValid(true)
       : setDateAreValid(false);
+
+    minOutboundDate === "" || maxReturnDate === ""
+      ? setDateIsEmpty(true)
+      : setDateIsEmpty(false);
   }, [minOutboundDate, maxReturnDate, setDateAreValid, stayTimeTogether]);
+
+
+  useEffect(() => {
+    if (datesError) {
+      if (dateIsEmpty) {
+        alert("date is empty");
+      }
+      if (dateAreValid) {
+        alert("departure is bigger than return");
+      }
+    }
+  }, [datesError, dateAreValid, dateIsEmpty]);
+
+  const filterPassedTime = (time) => {
+    const currentDate = new Date();
+    const selectedDate = new Date(time);
+    return currentDate.getTime() < selectedDate.getTime();
+  };
+
 
   return (
     <div className="selectDates">
       <DatePicker className="date-picker"
         placeholderText={"earliest start"}
-        minDate={minDateOutbound}
-        maxDate={maxDateOutbound}
+        minDate={minOutbound}
+        maxDate={maxOutbound}
         selected={minOutboundDate}
         onChange={(date) => {
-          // setStartDate(date);
           handleChangeField("minOutboundDate", date);
         }}
         showTimeSelect
@@ -59,12 +76,12 @@ const SelectDates = ({
         dateFormat="dd-MMM-yyyy HH:mm"
       />
       <DatePicker className="date-picker"
-        placeholderText={"lastest return"}
-        minDate={minDateReturn}
-        maxDate={maxDateReturn}
+        placeholderText={"latest return"}
+        minDate={minReturn}
+        maxDate={maxReturn}
+
         selected={maxReturnDate}
         onChange={(date) => {
-          // setReturnDate(date);
           handleChangeField("maxReturnDate", date);
         }}
         showTimeSelect
