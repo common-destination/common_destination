@@ -4,7 +4,6 @@ import { useTheme } from "../../ThemeContext";
 import icons from "../../functions/icons.js";
 
 function Login() {
-  // const { setValidationMenuToggle, setCurrentUser, backendUrl, handleLogout } =
   const { setValidationMenuToggle, setCurrentUser, backendUrl } = useTheme();
 
   const [username, setUsername] = useState("");
@@ -35,7 +34,7 @@ function Login() {
     if (!response.ok) {
       // setUsername("");
       setPassword("");
-      setInvalidLogin("Oops..check your credentials");
+      setInvalidLogin("Oops... Check your credentials!");
     } else {
       const _currentUser = await response.json();
       console.log(_currentUser);
@@ -77,9 +76,9 @@ function Login() {
             />
             <span className="eyesIcon" onClick={handleShowPasswordButton}>
               {passwordsInputType === "password" ? (
-                <icons.ImEye color="#288fc5" className="reactIcons" />
+                <icons.HiEye color="#e0d8d8" className="reactIcons" />
               ) : (
-                <icons.ImEyeBlocked color="#288fc5" className="reactIcons" />
+                <icons.HiEyeOff color="#e0d8d8" className="reactIcons" />
               )}
             </span>
           </div>

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
-import "react-datepicker/dist/react-datepicker-cssmodules.css";
+// import "../../styles/datePicker.scss";
+
 
 const SelectDates = ({
   handleChangeField,
@@ -40,6 +41,7 @@ const SelectDates = ({
       : setDateIsEmpty(false);
   }, [minOutboundDate, maxReturnDate, setDateAreValid, stayTimeTogether]);
 
+
   useEffect(() => {
     if (datesError) {
       if (dateIsEmpty) {
@@ -57,9 +59,10 @@ const SelectDates = ({
     return currentDate.getTime() < selectedDate.getTime();
   };
 
+
   return (
     <div className="selectDates">
-      <DatePicker
+      <DatePicker className="date-picker"
         placeholderText={"earliest start"}
         minDate={minOutbound}
         maxDate={maxOutbound}
@@ -69,15 +72,14 @@ const SelectDates = ({
         }}
         showTimeSelect
         filterTime={filterPassedTime}
-        timeFormat="HH:mm"
         timeIntervals={60}
         dateFormat="dd-MMM-yyyy HH:mm"
-        
       />
-      <DatePicker
+      <DatePicker className="date-picker"
         placeholderText={"latest return"}
         minDate={minReturn}
         maxDate={maxReturn}
+
         selected={maxReturnDate}
         onChange={(date) => {
           handleChangeField("maxReturnDate", date);

@@ -1,5 +1,6 @@
 .burgerMenu {
-  background-color: $color5;
+  // background-color: $color5;
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,7 +10,7 @@
   top: 0;
   right: 0;
   padding: 2% 1% 2% 1%;
-  border: 2px solid $color6;
+  border: 2px solid rgba(0, 0, 0, 0.39);
   animation: animate 0.6s ease-in-out;
   animation-name: burgeMenuApparition;
 

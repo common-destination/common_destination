@@ -145,7 +145,9 @@ function Home({ className }) {
       setPassengers([...fillDataIntoPassengers(_passengers)]);
       navigate("/commonDestinations");
     } else {
+
       setErrorsToggle(true);
+
     }
   };
 
@@ -180,7 +182,7 @@ function Home({ className }) {
           />
         ))}
         <div className="btnContainer">
-          <icons.GrAddCircle
+          <icons.BsFillPersonPlusFill
             className="addPassengerBtn"
             type="button"
             onClick={handlePassengerAdd}

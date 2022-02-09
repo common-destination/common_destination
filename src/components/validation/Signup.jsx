@@ -142,9 +142,9 @@ function Signup() {
             />
             <span className="eyesIcon" onClick={handleShowPassword}>
               {passwordsInputType1 === "password" ? (
-                <icons.ImEye color="#288fc5" className="reactIcons" />
+                <icons.HiEye color="#e0d8d8" className="reactIcons" />
               ) : (
-                <icons.ImEyeBlocked color="#288fc5" className="reactIcons" />
+                <icons.HiEyeOff color="#e0d8d8" className="reactIcons" />
               )}
             </span>
           </div>
@@ -173,9 +173,9 @@ function Signup() {
             />
             <span className="eyesIcon" onClick={handleShowRepeatPassword}>
               {passwordsInputType2 === "password" ? (
-                <icons.ImEye color="#288fc5" className="reactIcons" />
+                <icons.HiEye color="#e0d8d8" className="reactIcons" />
               ) : (
-                <icons.ImEyeBlocked color="#288fc5" className="reactIcons" />
+                <icons.HiEyeOff color="#e0d8d8" className="reactIcons" />
               )}
             </span>
           </div>

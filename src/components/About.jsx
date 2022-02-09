@@ -1,5 +1,6 @@
 import React from "react";
-import img from "../assets/images/image1.png";
+import img from "../assets/images/image1-min.png";
+// import img from "../assets/images/airport-min.jpg";
 
 function About(props) {
   return (
@@ -9,19 +10,19 @@ function About(props) {
         <img src={img} alt="" />
       </div>
       <div className="description">
-        <h2>About us</h2>
+        {/* <h2>About us</h2> */}
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto
-          aliquid dolorum non minus magni vel officiis adipisci, saepe magnam
-          laborum asperiores. Voluptatum ad quis eaque earum iusto nisi sint
-          maxime veritatis quaerat nesciunt. Corrupti, quod alias nemo
-          temporibus ducimus voluptate pariatur dolor corporis delectus ex at
-          mollitia fuga excepturi beatae! Quia vel quisquam perspiciatis dicta
-          alias nisi nam magni totam voluptatum perferendis quos dignissimos
-          veniam culpa et laborum, sed quis nulla? Dolorem modi ipsum, amet
-          tenetur laboriosam odio fugiat at aliquam quam esse tempora
-          repudiandae recusandae ullam vero corrupti pariatur, ex ab temporibus?
-          Dolor in, cupiditate eligendi placeat expedita repudiandae?
+          COMMON DESTINATION is a start-up company born at the end of 2021 from
+          the chance meeting of three people. Since then, COMMON DESTINATION has
+          grown to allow you to find more than two thousand flights.
+        </p>
+        <br />
+        <p>
+          You and your friends all live in different cities but want to meet up
+          this weekend? Simple, find your COMMON DESTINATION with us! With a
+          simple click you will find out where to meet, which flights are best
+          suited to your needs and at the best price! <br />
+          What are you waiting for, find your COMMON DESTINATION!
         </p>
       </div>
       <div className="wave"></div>

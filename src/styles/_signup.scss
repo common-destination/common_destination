@@ -6,7 +6,6 @@
       @include fieldsetStyle;
       padding: 1% 4% 2% 1%;
 
-
       legend {
         @include legendStyle;
       }
@@ -24,14 +23,15 @@
       .note {
         font-size: clamp(1em, 1vw, 3em);
         text-align: center;
+        // color: #cfc6c6;
       }
 
       .note.invalid {
-        color: #474444;
+        color: #d3cfcfec;
       }
 
       .note.valid {
-        color: #a19a9a;
+        color: #47444485;
       }
 
       .invalid input {
@@ -43,7 +43,7 @@
         justify-content: right;
 
         button {
-         @include buttonStyle;
+          @include buttonStyle;
         }
       }
     }
