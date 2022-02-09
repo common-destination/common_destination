@@ -72,6 +72,7 @@ const SelectDates = ({
         timeFormat="HH:mm"
         timeIntervals={60}
         dateFormat="dd-MMM-yyyy HH:mm"
+        
       />
       <DatePicker
         placeholderText={"latest return"}

@@ -31,7 +31,7 @@ function Home({ className }) {
   const fillDataIntoPassengers = (passengers) => {
     passengers.forEach((passenger, index) => {
       passenger.id = `${index + 1}`;
-      passenger.genericTitle = `Passenger${index + 1}`;
+      // passenger.genericTitle = `Passenger${index + 1}`;
     });
     return passengers;
   };
@@ -136,7 +136,7 @@ function Home({ className }) {
       body: JSON.stringify({ passengers, stayTimeTogether }),
     };
     const response = await fetch(
-      `${backendUrl}/flights/passengers-data`,
+      `${backendUrl}/common-destinations/passengers-data`,
       requestOptions
     );
 
