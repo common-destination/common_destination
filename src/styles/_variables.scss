@@ -60,17 +60,17 @@ $container: #0770e3;
 @mixin buttonStyle {
   box-shadow: 0px 0px 0px 2px #9fb4f2;
   background-color: $color2;
-  border-radius: 8px;
-  border: 2px solid #4e6096;
+  border-radius: 0.5rem;
+  border: 0.2rem solid #4e6096;
   display: inline-block;
   cursor: pointer;
-  color: #ffffff;
+  color: #fff;
   font-family: Arial;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
-  padding: 8px 12px;
+  padding: 0.5rem;
   text-decoration: none;
-  text-shadow: 0px 0px 0px #283966;
+  // text-shadow: 0px 0px 0px #283966;
 
   &:hover {
     background-color: #476e9e;
