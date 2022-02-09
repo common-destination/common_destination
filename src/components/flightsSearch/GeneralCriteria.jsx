@@ -72,7 +72,7 @@ function GeneralCriteria({
             className="iconInfo"
             style={{ cursor: "pointer" }}
             onClick={() => {
-              !infos ? setInfos(true) : setInfos(false);
+              !mettingTimeInfos ? setMeetingTimeInfos(true) : setMeetingTimeInfos(false);
             }}
           />
           <span>minimum duration</span>
