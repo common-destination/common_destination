@@ -1,5 +1,5 @@
 import React from "react";
-import img from "../assets/images/image1-min.png";
+// import img from "../assets/images/image1-min.png";
 // import img from "../assets/images/airport-min.jpg";
 
 function About(props) {
@@ -7,7 +7,7 @@ function About(props) {
     <div className={props.className}>
       {/* <div className="aboutWrapper"> */}
       <div className="image">
-        <img src={img} alt="" />
+        {/* <img src={img} alt="" /> */}
       </div>
       <div className="description">
         {/* <h2>About us</h2> */}
