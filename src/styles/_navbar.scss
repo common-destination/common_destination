@@ -1,8 +1,8 @@
 .Navbar {
   // background-color: rgb(242, 255, 240);
-  background-color:#FFFFFF;
+  background-color:#FFF;
   width: 100%;
-  height: 5vh;
+  height: fit-content;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -19,7 +19,7 @@
     width: clamp(1.5em, 2.5vw, 3.2em);
     // height: clamp(1.8em, 3vh, 3.7em);
     margin-right: 4vw;
-    z-index: 999999999;
+    z-index: 999999999; // ?
   }
   .menuIconClosed {
     width: clamp(1.8em, 1vw, 3.5em);

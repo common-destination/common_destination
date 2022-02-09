@@ -18,36 +18,37 @@ const ShowPassenger = ({
   };
 
   return (
-   
-
-      <div className="showPassenger"
-          style={{ opacity: airportsError || datesError ? 0.5 : 1 }}
-      >
-        <div className="airportDeleteContainer">
+    <div
+      className="showPassenger"
+      style={{ opacity: airportsError || datesError ? 0.5 : 1 }}
+    >
+      <div className="outerContainer">
+        <div className="selectDepartureAirport">
           <SelectDepartureAirport
             departureAirports={departureAirports}
             airport={passenger.airport}
             handleChangeField={handleChangeField}
-airportsError={airportsError}
-            
+            airportsError={airportsError}
           />
-          {canDelete && (
-            <icons.RiDeleteBinLine
-              className="deletePassenger"
-              onClick={handlePassengerDelete}
-            />
-          )}
         </div>
-
-        <SelectDates
-          handleChangeField={handleChangeField}
-          minOutboundDate={passenger.minOutboundDate}
-          maxReturnDate={passenger.maxReturnDate}
-          stayTimeTogether={stayTimeTogether}
-          datesError={datesError}
-        />
+        <div className="selectDates">
+          <SelectDates
+            handleChangeField={handleChangeField}
+            minOutboundDate={passenger.minOutboundDate}
+            maxReturnDate={passenger.maxReturnDate}
+            stayTimeTogether={stayTimeTogether}
+            datesError={datesError}
+          />
+        </div>
       </div>
-   
+      <div className="deletePassenger">
+        {canDelete && (
+          <icons.RiDeleteBinLine
+            onClick={handlePassengerDelete}
+          />
+        )}
+      </div>
+    </div>
   );
 };
 
