@@ -8,10 +8,8 @@ function GeneralCriteria({
   stayTimeTogether,
   setStayTimeTogether,
   datesError,
-  setDatesError,
   airportsError,
-  setAirportsError,
-  setErrorsToggle
+  setErrorsToggle,
 }) {
   const [daysCounter, setDaysCounter] = useState(1);
   const [hoursCounter, setHoursCounter] = useState(0);
@@ -29,25 +27,16 @@ function GeneralCriteria({
 
   return (
     <div className="generalCriteria">
-      {/* //ERRORS POPUPS// */}
-      {datesError && (
+      {(datesError || airportsError) && (
         <SmallComponents.PopUpInfos
           className="passengerCriteriaError"
-          text={popUp.dateError}
-          setInfos={setDatesError}
+          text1={datesError ? popUp.datesErrors.departureLater : ""}
+          text2={datesError ? popUp.datesErrors.withoutMeeting : ""}
+          text3={airportsError ? popUp.airportsErrors : ""}
           setErrorsToggle={setErrorsToggle}
         />
       )}
 
-      {airportsError && (
-        <SmallComponents.PopUpInfos
-          className="passengerCriteriaError"
-          text={popUp.airportError}
-          setInfos={setAirportsError}
-          setErrorsToggle={setErrorsToggle}
-        />
-      )}
-      {/* //ERRORS// POPUPS*/}
       <label>
         {mettingTimeInfos && (
           <SmallComponents.PopUpInfos

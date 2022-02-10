@@ -11,6 +11,7 @@ const ShowPassenger = ({
   stayTimeTogether,
   airportsError,
   datesError,
+  markedErrors
 }) => {
   const handleChangeField = (key, value) => {
     passenger[key] = value;
@@ -28,6 +29,7 @@ const ShowPassenger = ({
           airport={passenger.airport}
           handleChangeField={handleChangeField}
           airportsError={airportsError}
+          markedErrors={markedErrors}
         />
         {canDelete && (
           <icons.RiDeleteBinLine
@@ -43,6 +45,7 @@ const ShowPassenger = ({
         maxReturnDate={passenger.maxReturnDate}
         stayTimeTogether={stayTimeTogether}
         datesError={datesError}
+        markedErrors={markedErrors}
       />
     </div>
   );

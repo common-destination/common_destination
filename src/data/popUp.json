@@ -1,5 +1,8 @@
 {
-    "meetingDuration" : "The minimum time passengers want to spend together.",
-    "airportError" : "The airport fields marked in red are wrong. Make sure that the airport exists.",
-    "dateError" : "Some date fields are wrong."
+  "meetingDuration": "The minimum time passengers want to spend together.",
+  "datesErrors": {
+    "departureLater": "The outward date cannot be later than the return date.",
+    "withoutMeeting": "Some departures are after some returns, passengers can never meet."
+  },
+  "airportsErrors": "Some airport fields are empty or wrong"
 }

@@ -23,6 +23,7 @@ function Home({ className }) {
   const [datesError, setDatesError] = useState(false);
   const [airportsError, setAirportsError] = useState(false);
   const [errorsToggle, setErrorsToggle] = useState(false);
+  const [markedErrors, setMarkedErrors] = useState(false);
   const navigate = useNavigate();
   const outbounds = passengers.map((passenger) => passenger.minOutboundDate);
   const returns = passengers.map((passenger) => passenger.maxReturnDate);
@@ -35,7 +36,7 @@ function Home({ className }) {
     });
     return passengers;
   };
-
+console.log({passengers})
   useEffect(() => {
     (async () => {
       const requestOptions = {
@@ -145,9 +146,8 @@ function Home({ className }) {
       setPassengers([...fillDataIntoPassengers(_passengers)]);
       navigate("/commonDestinations");
     } else {
-
       setErrorsToggle(true);
-
+      setMarkedErrors(true);
     }
   };
 
@@ -161,9 +161,7 @@ function Home({ className }) {
           airportsValidation={airportsValidation}
           datesValidation={datesValidation}
           airportsError={airportsError}
-          setAirportsError={setAirportsError}
           datesError={datesError}
-          setDatesError={setDatesError}
           setErrorsToggle={setErrorsToggle}
         />
         {passengers.map((passenger, index) => (
@@ -180,6 +178,7 @@ function Home({ className }) {
             setAirportsError={setAirportsError}
             datesError={datesError}
             setDatesError={setDatesError}
+            markedErrors={markedErrors}
           />
         ))}
         <div className="btnContainer">

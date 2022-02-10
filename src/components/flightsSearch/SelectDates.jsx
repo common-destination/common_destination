@@ -10,6 +10,7 @@ const SelectDates = ({
   maxReturnDate,
   stayTimeTogether,
   datesError,
+  markedErrors,
 }) => {
   const [dateAreValid, setDateAreValid] = useState(false);
   const [dateIsEmpty, setDateIsEmpty] = useState(true);
@@ -34,7 +35,27 @@ const SelectDates = ({
     minOutboundDate === "" || maxReturnDate === ""
       ? setDateIsEmpty(true)
       : setDateIsEmpty(false);
-  }, [minOutboundDate, maxReturnDate, setDateAreValid, stayTimeTogether]);
+
+    handleChangeField(
+      "minOutboundDate",
+      minOutboundDate === "" && maxReturnDate !== ""
+        ? new Date(moment(maxReturnDate).subtract(stayTimeTogether, "hours"))
+        : minOutboundDate
+    );
+
+    handleChangeField(
+      "maxReturnDate",
+      timeDifferenceInHours < stayTimeTogether 
+        ? new Date(moment(minOutboundDate).add(stayTimeTogether, "hours"))
+        : maxReturnDate
+    );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    minOutboundDate,
+    maxReturnDate,
+    setDateAreValid,
+    stayTimeTogether,
+  ]);
 
   // useEffect(() => {
   //   if (datesError) {
@@ -56,8 +77,9 @@ const SelectDates = ({
     <div className="selectDates">
       <DatePicker
         className={
-          (datesError && dateIsEmpty) || (datesError && !dateAreValid)
-            ? "dateError datePicker"
+          dateIsEmpty && markedErrors
+            ? // || (!dateAreValid && markedErrors)
+              "dateError datePicker"
             : "datePicker"
         }
         placeholderText={"earliest start"}
@@ -73,12 +95,11 @@ const SelectDates = ({
         dateFormat="dd-MMM-yyyy HH:mm"
       />
       <DatePicker
-         className={
-          (datesError && dateIsEmpty) || (datesError && !dateAreValid)
+        className={
+          (dateIsEmpty && markedErrors) || (!dateAreValid && markedErrors)
             ? "dateError datePicker"
             : "datePicker"
         }
-
         placeholderText={"latest return"}
         minDate={minReturn}
         maxDate={maxReturn}
@@ -91,6 +112,7 @@ const SelectDates = ({
         timeFormat="HH:mm"
         timeIntervals={60}
         dateFormat="dd-MMM-yyyy HH:mm"
+        // disabled={minOutboundDate === "" ? true : false}
       />
     </div>
   );

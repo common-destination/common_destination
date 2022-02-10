@@ -4,13 +4,14 @@ function SelectDepartureAirport({
   airport,
   handleChangeField,
   departureAirports,
-  airportsError
+  airportsError,
+  markedErrors
   
 }) {
   const [airportIsValid, setAirportIsValid] = useState(false);
 
   const styles = {
-    border: airportsError ? "3px solid red" : "1px solid black ",
+    border: airportsError && markedErrors? "3px solid red" : "1px solid black ",
   };
 
   useEffect(() => {
