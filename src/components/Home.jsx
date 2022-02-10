@@ -164,6 +164,7 @@ function Home({ className }) {
           setAirportsError={setAirportsError}
           datesError={datesError}
           setDatesError={setDatesError}
+          setErrorsToggle={setErrorsToggle}
         />
         {passengers.map((passenger, index) => (
           <ShowPassenger

@@ -20,8 +20,7 @@ function SelectDepartureAirport({
   }, [
     airport,
     airportIsValid,
-    departureAirports,
-    
+    departureAirports, 
   ]);
 
   return (

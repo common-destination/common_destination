@@ -11,11 +11,11 @@ function GeneralCriteria({
   setDatesError,
   airportsError,
   setAirportsError,
+  setErrorsToggle
 }) {
   const [daysCounter, setDaysCounter] = useState(1);
   const [hoursCounter, setHoursCounter] = useState(0);
   const [mettingTimeInfos, setMeetingTimeInfos] = useState(false);
-
 
   useEffect(() => {
     setStayTimeTogether(daysCounter * 24 + hoursCounter);
@@ -27,16 +27,15 @@ function GeneralCriteria({
     setStayTimeTogether,
   ]);
 
- 
-
   return (
     <div className="generalCriteria">
-
+      {/* //ERRORS POPUPS// */}
       {datesError && (
         <SmallComponents.PopUpInfos
           className="passengerCriteriaError"
           text={popUp.dateError}
           setInfos={setDatesError}
+          setErrorsToggle={setErrorsToggle}
         />
       )}
 
@@ -45,9 +44,10 @@ function GeneralCriteria({
           className="passengerCriteriaError"
           text={popUp.airportError}
           setInfos={setAirportsError}
+          setErrorsToggle={setErrorsToggle}
         />
       )}
-
+      {/* //ERRORS// POPUPS*/}
       <label>
         {mettingTimeInfos && (
           <SmallComponents.PopUpInfos
@@ -56,22 +56,15 @@ function GeneralCriteria({
             setInfos={setMeetingTimeInfos}
           />
         )}
-        {/* <h5>meeting duration:</h5>
-        <icons.FcInfo
-          style={{ cursor: "pointer" }}
-          onClick={() => {
-            !mettingTimeInfos
-              ? setMeetingTimeInfos(true)
-              : setMeetingTimeInfos(false);
-          }}
-        /> */}
 
         <div className="stayTimeTogether">
           <icons.FaInfoCircle
             className="iconInfo"
             style={{ cursor: "pointer" }}
             onClick={() => {
-              !mettingTimeInfos ? setMeetingTimeInfos(true) : setMeetingTimeInfos(false);
+              !mettingTimeInfos
+                ? setMeetingTimeInfos(true)
+                : setMeetingTimeInfos(false);
             }}
           />
           <span>minimum duration</span>

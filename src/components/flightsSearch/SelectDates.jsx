@@ -22,8 +22,6 @@ const SelectDates = ({
     moment(today).add(stayTimeTogether, "hours").add(1, "years")
   );
 
-
-
   useEffect(() => {
     const timeDifferenceInHours = moment(maxReturnDate).diff(
       moment(minOutboundDate),
@@ -54,7 +52,6 @@ const SelectDates = ({
     const selectedDate = new Date(time);
     return currentDate.getTime() < selectedDate.getTime();
   };
-
   return (
     <div className="selectDates">
       <DatePicker
