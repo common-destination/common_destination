@@ -28,18 +28,18 @@ function GeneralCriteria({
   return (
     <div className="generalCriteria">
       {(datesError || airportsError) && (
-        <SmallComponents.PopUpInfos
+        <SmallComponents.PopUps
           className="passengerCriteriaError"
-          text1={datesError ? popUp.datesErrors.departureLater : ""}
-          text2={datesError ? popUp.datesErrors.withoutMeeting : ""}
-          text3={airportsError ? popUp.airportsErrors : ""}
+          text1={datesError && popUp.datesErrors.departureLater}
+          text2={datesError && popUp.datesErrors.withoutMeeting}
+          text3={airportsError && popUp.airportsErrors}
           setErrorsToggle={setErrorsToggle}
         />
       )}
 
       <label>
         {mettingTimeInfos && (
-          <SmallComponents.PopUpInfos
+          <SmallComponents.PopUps
             className="bubble bubble-bottom-left"
             text={popUp.meetingDuration}
             setInfos={setMeetingTimeInfos}
