@@ -11,20 +11,26 @@ const SelectDates = ({
   minOutboundDate,
   maxReturnDate,
   stayTimeTogether,
-  datesError,
   markedErrors,
+ earliestReturn,
+ lastestOutbound,
+ setOtboundLaterThanReturn
 }) => {
   const [dateAreValid, setDateAreValid] = useState(false);
   const [outboundIsEmpty, setOutboundIsEmpty] = useState(true);
   const [returnIsEmpty, setReturnIsEmpty] = useState(true);
-  const [maxOutbound, setMaxOutbound] = useState(new Date(moment(today).add(1, "years")));
-
+  const [maxOutbound, setMaxOutbound] = useState(
+    new Date(moment(today).add(1, "years"))
+  );
+  
   const minOutbound = new Date(moment(today));
   // const maxOutbound = new Date(moment(today).add(1, "years"));
   const minReturn = new Date(moment(today).add(stayTimeTogether, "hours"));
   const maxReturn = new Date(
     moment(today).add(stayTimeTogether, "hours").add(1, "years")
   );
+
+  
 
   useEffect(() => {
     const timeDifferenceInHours = moment(maxReturnDate).diff(
@@ -34,6 +40,8 @@ const SelectDates = ({
     timeDifferenceInHours >= stayTimeTogether
       ? setDateAreValid(true)
       : setDateAreValid(false);
+
+dateAreValid ? setOtboundLaterThanReturn(true) : setOtboundLaterThanReturn(false);
 
     minOutboundDate === ""
       ? setOutboundIsEmpty(true)
@@ -63,16 +71,6 @@ const SelectDates = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [minOutboundDate, maxReturnDate, setDateAreValid, stayTimeTogether]);
 
-  // useEffect(() => {
-  //   if (datesError) {
-  //     if (dateIsEmpty) {
-  //       alert("date is empty");
-  //     }
-  //     if (dateAreValid) {
-  //       alert("departure is bigger than return");
-  //     }
-  //   }
-  // }, [datesError, dateAreValid, dateIsEmpty]);
 
   const filterPassedTime = (time) => {
     const currentDate = new Date();
@@ -83,7 +81,9 @@ const SelectDates = ({
     <div className="selectDates">
       <DatePicker
         className={
-          (outboundIsEmpty && markedErrors) || (!dateAreValid && markedErrors)
+          (outboundIsEmpty && markedErrors) ||
+          (!dateAreValid && markedErrors) ||
+          (minOutboundDate === lastestOutbound && markedErrors)
             ? "dateError datePicker"
             : "datePicker"
         }
@@ -101,7 +101,9 @@ const SelectDates = ({
       />
       <DatePicker
         className={
-          (returnIsEmpty && markedErrors) || (!dateAreValid && markedErrors)
+          (returnIsEmpty && markedErrors) ||
+          (!dateAreValid && markedErrors) ||
+          (maxReturnDate === earliestReturn && markedErrors)
             ? "dateError datePicker"
             : "datePicker"
         }

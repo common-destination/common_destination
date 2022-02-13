@@ -11,7 +11,10 @@ const ShowPassenger = ({
   stayTimeTogether,
   airportsError,
   datesError,
-  markedErrors
+  markedErrors,
+  earliestReturn,
+  lastestOutbound,
+  setOtboundLaterThanReturn
 }) => {
   const handleChangeField = (key, value) => {
     passenger[key] = value;
@@ -21,6 +24,7 @@ const ShowPassenger = ({
   return (
     <div
       className="showPassenger"
+      //MAYBE ONLY ERRORTOGGLE AS CONDITION
       style={{ opacity: airportsError || datesError ? 0.5 : 1 }}
     >
       <div className="airportDeleteContainer">
@@ -28,7 +32,6 @@ const ShowPassenger = ({
           departureAirports={departureAirports}
           airport={passenger.airport}
           handleChangeField={handleChangeField}
-          airportsError={airportsError}
           markedErrors={markedErrors}
         />
         {canDelete && (
@@ -44,8 +47,10 @@ const ShowPassenger = ({
         minOutboundDate={passenger.minOutboundDate}
         maxReturnDate={passenger.maxReturnDate}
         stayTimeTogether={stayTimeTogether}
-        datesError={datesError}
         markedErrors={markedErrors}
+        earliestRetur={earliestReturn}
+        lastestOutbound={lastestOutbound}
+        setOtboundLaterThanReturn={setOtboundLaterThanReturn}
       />
     </div>
   );

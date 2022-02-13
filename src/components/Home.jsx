@@ -17,17 +17,22 @@ function Home({ className }) {
   const [departureAirports, setDepartureAirports] = useState([]);
   const [passengers, setPassengers] = useState([]);
   const [stayTimeTogether, setStayTimeTogether] = useState(24);
+  const [passengersValidation, setPassengersValidation] = useState(false);
   const [datesValidation, setDatesValidation] = useState(false);
   const [airportsValidation, setAirportsValidation] = useState(false);
-  const [passengersValidation, setPassengersValidation] = useState(false);
   const [datesError, setDatesError] = useState(false);
+  const [datesAreEmpty, setDatesAreEmpty] = useState(true);
+  const [noMeeting, setNoMeeting] = useState(true);
+  const [otboundLaterThanReturn, setOtboundLaterThanReturn] = useState(false);
   const [airportsError, setAirportsError] = useState(false);
   const [errorsToggle, setErrorsToggle] = useState(false);
   const [markedErrors, setMarkedErrors] = useState(false);
+  const [earliestReturn, setEarlistReturn] = useState(null);
+  const [lastestOutbound, setLastestOubound] = useState(null);
   const navigate = useNavigate();
+  const airports = passengers.map((passenger) => passenger.airport);
   const outbounds = passengers.map((passenger) => passenger.minOutboundDate);
   const returns = passengers.map((passenger) => passenger.maxReturnDate);
-  const airports = passengers.map((passenger) => passenger.airport);
 
   const fillDataIntoPassengers = (passengers) => {
     passengers.forEach((passenger, index) => {
@@ -36,7 +41,6 @@ function Home({ className }) {
     });
     return passengers;
   };
-console.log({passengers})
   useEffect(() => {
     (async () => {
       const requestOptions = {
@@ -59,29 +63,51 @@ console.log({passengers})
 
   useEffect(() => {
     if (outbounds.length > 0 && returns.length > 0) {
-      const earliestReturn = moment(
+      const _earliestReturn = moment(
         returns.reduce((a, b) => Math.min(moment(a), moment(b)))
       );
-      const lastestOutbound = moment(
+      const _lastestOutbound = moment(
         outbounds.reduce((a, b) => Math.max(moment(b), moment(a)))
       );
-      const howManyTimeTogether = moment(earliestReturn).diff(
-        moment(lastestOutbound),
+      
+      setEarlistReturn(_earliestReturn);
+      setLastestOubound(_lastestOutbound);
+
+      const howManyTimeTogether = moment(_earliestReturn).diff(
+        moment(_lastestOutbound),
         "hours"
       );
-      howManyTimeTogether >= stayTimeTogether &&
-      !returns.includes("") &&
-      !outbounds.includes("")
+
+      returns.includes("") || outbounds.includes("")
+      ? setDatesAreEmpty(true)
+      : setDatesAreEmpty(false);
+
+      !datesAreEmpty && howManyTimeTogether < stayTimeTogether
+        ? setNoMeeting(true)
+        : setNoMeeting(false);
+  
+
+      !noMeeting && !datesAreEmpty
         ? setDatesValidation(true)
         : setDatesValidation(false);
     }
-  }, [passengers, outbounds, returns, stayTimeTogether]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    passengers,
+    // outbounds,
+    // lastestOutbound,
+    // earliestReturn,
+    // returns,
+    stayTimeTogether,
+    datesAreEmpty,
+    noMeeting,
+  ]);
 
   useEffect(() => {
     const allAirportsFieldAreTrue = airports.every((airport) =>
       departureAirports.includes(airport)
     );
-
     if (allAirportsFieldAreTrue) {
       setAirportsValidation(true);
     } else {
@@ -102,6 +128,7 @@ console.log({passengers})
     returns,
   ]);
 
+  //CHECK IF IS IT USERFULL, MAYBE ONLY ERRRORTOGGLES FOR OPACITY IN SHOWPASSENGER DIV
   useEffect(() => {
     errorsToggle && !airportsValidation
       ? setAirportsError(true)
@@ -163,6 +190,9 @@ console.log({passengers})
           airportsError={airportsError}
           datesError={datesError}
           setErrorsToggle={setErrorsToggle}
+          datesAreEmpty={datesAreEmpty}
+          noMeeting={noMeeting}
+          otboundLaterThanReturn={otboundLaterThanReturn}
         />
         {passengers.map((passenger, index) => (
           <ShowPassenger
@@ -178,7 +208,10 @@ console.log({passengers})
             setAirportsError={setAirportsError}
             datesError={datesError}
             setDatesError={setDatesError}
+            earliestRetur={earliestReturn}
+            lastestOutbound={lastestOutbound}
             markedErrors={markedErrors}
+            setOtboundLaterThanReturn={setOtboundLaterThanReturn}
           />
         ))}
         <div className="btnContainer">

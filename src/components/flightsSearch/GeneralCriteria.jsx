@@ -10,6 +10,9 @@ function GeneralCriteria({
   datesError,
   airportsError,
   setErrorsToggle,
+  datesAreEmpty,
+  noMeeting,
+  otboundLaterThanReturn
 }) {
   const [daysCounter, setDaysCounter] = useState(1);
   const [hoursCounter, setHoursCounter] = useState(0);
@@ -30,9 +33,12 @@ function GeneralCriteria({
       {(datesError || airportsError) && (
         <SmallComponents.PopUps
           className="passengerCriteriaError"
-          text1={datesError && popUp.datesErrors.departureLater}
-          text2={datesError && popUp.datesErrors.withoutMeeting}
-          text3={airportsError && popUp.airportsErrors}
+          text1={datesError && otboundLaterThanReturn && popUp.datesErrors.otboundLaterThanReturn}
+          text2={
+            datesError && noMeeting && popUp.datesErrors.withoutMeeting
+          }
+          text3={datesError && datesAreEmpty && popUp.datesErrors.detesAreEmpty}
+          text4={airportsError && popUp.airportsErrors}
           setErrorsToggle={setErrorsToggle}
         />
       )}

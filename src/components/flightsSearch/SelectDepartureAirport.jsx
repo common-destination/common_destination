@@ -4,9 +4,7 @@ function SelectDepartureAirport({
   airport,
   handleChangeField,
   departureAirports,
-  airportsError,
   markedErrors
-  
 }) {
   const [airportIsValid, setAirportIsValid] = useState(false);
 
