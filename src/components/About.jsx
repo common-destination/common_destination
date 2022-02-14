@@ -1,16 +1,14 @@
 import React from "react";
+import RandomImages from "../components/randomImages/RandomImages.jsx";
 // import img from "../assets/images/image1-min.png";
 // import img from "../assets/images/airport-min.jpg";
 
 function About(props) {
   return (
     <div className={props.className}>
-      {/* <div className="aboutWrapper"> */}
-      <div className="image">
-        {/* <img src={img} alt="" /> */}
-      </div>
+      <RandomImages className="image" />
+
       <div className="description">
-        {/* <h2>About us</h2> */}
         <p>
           COMMON DESTINATION is a start-up company born at the end of 2021 from
           the chance meeting of three people. Since then, COMMON DESTINATION has

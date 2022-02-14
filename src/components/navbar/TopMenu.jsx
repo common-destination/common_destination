@@ -4,16 +4,20 @@ import icons from "../../functions/icons.js";
 import { useTheme } from "../../ThemeContext.js";
 // import logo from "../.././assets/images/logoTest2.png";
 
-function TopMenu({setValidationMenuToggle,setMenuAccountToggle,handleBurgerMenuToggles}) {
+function TopMenu({
+  setValidationMenuToggle,
+  setMenuAccountToggle,
+  handleBurgerMenuToggles,
+}) {
   const { mediaQueries, currentUser } = useTheme();
 
   return (
     <div className="topMenu">
       <div className="logo">
         <icons.SiYourtraveldottv className="reactIcons" />
-
-        { !mediaQueries.smallView && (<h1>Common Destination</h1>)}
+        {/* {!mediaQueries.smallView && <h1>Common Destination</h1>} */}
       </div>
+      {!mediaQueries.smallView && <h1>Common Destination</h1>}
       <ul className="topNavbar">
         <li>
           {currentUser.username !== "anonymousUser" && (
