@@ -27,13 +27,12 @@ function Home({ className }) {
   const [airportsError, setAirportsError] = useState(false);
   const [errorsToggle, setErrorsToggle] = useState(false);
   const [markedErrors, setMarkedErrors] = useState(false);
-  const [earliestReturn, setEarlistReturn] = useState(null);
-  const [lastestOutbound, setLastestOubound] = useState(null);
+  const [earliestReturn, setEarlistReturn] = useState("");
+  const [lastestOutbound, setLastestOubound] = useState("");
   const navigate = useNavigate();
   const airports = passengers.map((passenger) => passenger.airport);
   const outbounds = passengers.map((passenger) => passenger.minOutboundDate);
   const returns = passengers.map((passenger) => passenger.maxReturnDate);
-
   const fillDataIntoPassengers = (passengers) => {
     passengers.forEach((passenger, index) => {
       passenger.id = `${index + 1}`;
@@ -69,23 +68,22 @@ function Home({ className }) {
       const _lastestOutbound = moment(
         outbounds.reduce((a, b) => Math.max(moment(b), moment(a)))
       );
-      
-      setEarlistReturn(_earliestReturn);
-      setLastestOubound(_lastestOutbound);
 
+      setEarlistReturn(new Date(_earliestReturn));
+      setLastestOubound(new Date(_lastestOutbound));
+      
       const howManyTimeTogether = moment(_earliestReturn).diff(
         moment(_lastestOutbound),
         "hours"
       );
 
       returns.includes("") || outbounds.includes("")
-      ? setDatesAreEmpty(true)
-      : setDatesAreEmpty(false);
+        ? setDatesAreEmpty(true)
+        : setDatesAreEmpty(false);
 
       !datesAreEmpty && howManyTimeTogether < stayTimeTogether
         ? setNoMeeting(true)
         : setNoMeeting(false);
-  
 
       !noMeeting && !datesAreEmpty
         ? setDatesValidation(true)
@@ -93,12 +91,7 @@ function Home({ className }) {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    passengers,
-    stayTimeTogether,
-    datesAreEmpty,
-    noMeeting,
-  ]);
+  }, [passengers, stayTimeTogether, datesAreEmpty, noMeeting]);
 
   useEffect(() => {
     const allAirportsFieldAreTrue = airports.every((airport) =>
@@ -204,9 +197,10 @@ function Home({ className }) {
             setAirportsError={setAirportsError}
             datesError={datesError}
             setDatesError={setDatesError}
-            earliestRetur={earliestReturn}
+            earliestReturn={earliestReturn}
             lastestOutbound={lastestOutbound}
             markedErrors={markedErrors}
+            noMeeting={noMeeting}
             setOtboundLaterThanReturn={setOtboundLaterThanReturn}
           />
         ))}

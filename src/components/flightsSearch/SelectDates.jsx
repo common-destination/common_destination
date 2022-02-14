@@ -12,9 +12,10 @@ const SelectDates = ({
   maxReturnDate,
   stayTimeTogether,
   markedErrors,
- earliestReturn,
- lastestOutbound,
- setOtboundLaterThanReturn
+  earliestReturn,
+  lastestOutbound,
+  setOtboundLaterThanReturn,
+  noMeeting
 }) => {
   const [dateAreValid, setDateAreValid] = useState(false);
   const [outboundIsEmpty, setOutboundIsEmpty] = useState(true);
@@ -22,15 +23,12 @@ const SelectDates = ({
   const [maxOutbound, setMaxOutbound] = useState(
     new Date(moment(today).add(1, "years"))
   );
-  
   const minOutbound = new Date(moment(today));
   // const maxOutbound = new Date(moment(today).add(1, "years"));
   const minReturn = new Date(moment(today).add(stayTimeTogether, "hours"));
   const maxReturn = new Date(
     moment(today).add(stayTimeTogether, "hours").add(1, "years")
   );
-
-  
 
   useEffect(() => {
     const timeDifferenceInHours = moment(maxReturnDate).diff(
@@ -41,7 +39,9 @@ const SelectDates = ({
       ? setDateAreValid(true)
       : setDateAreValid(false);
 
-dateAreValid ? setOtboundLaterThanReturn(true) : setOtboundLaterThanReturn(false);
+    dateAreValid
+      ? setOtboundLaterThanReturn(true)
+      : setOtboundLaterThanReturn(false);
 
     minOutboundDate === ""
       ? setOutboundIsEmpty(true)
@@ -71,19 +71,21 @@ dateAreValid ? setOtboundLaterThanReturn(true) : setOtboundLaterThanReturn(false
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [minOutboundDate, maxReturnDate, setDateAreValid, stayTimeTogether]);
 
-
   const filterPassedTime = (time) => {
     const currentDate = new Date();
     const selectedDate = new Date(time);
     return currentDate.getTime() < selectedDate.getTime();
   };
+ 
   return (
     <div className="selectDates">
       <DatePicker
         className={
           (outboundIsEmpty && markedErrors) ||
           (!dateAreValid && markedErrors) ||
-          (minOutboundDate === lastestOutbound && markedErrors)
+          (moment(lastestOutbound).format("YYYY-MM-DD HH:mm") ===
+            moment(minOutboundDate).format("YYYY-MM-DD HH:mm") &&
+            markedErrors && !outboundIsEmpty && noMeeting)
             ? "dateError datePicker"
             : "datePicker"
         }
@@ -103,7 +105,9 @@ dateAreValid ? setOtboundLaterThanReturn(true) : setOtboundLaterThanReturn(false
         className={
           (returnIsEmpty && markedErrors) ||
           (!dateAreValid && markedErrors) ||
-          (maxReturnDate === earliestReturn && markedErrors)
+          (moment(earliestReturn).format("YYYY-MM-DD HH:mm") ===
+            moment(maxReturnDate).format("YYYY-MM-DD HH:mm") &&
+            markedErrors && !returnIsEmpty && noMeeting)
             ? "dateError datePicker"
             : "datePicker"
         }
@@ -119,7 +123,6 @@ dateAreValid ? setOtboundLaterThanReturn(true) : setOtboundLaterThanReturn(false
         timeFormat="HH:mm"
         timeIntervals={60}
         dateFormat="dd-MMM-yyyy HH:mm"
-
       />
     </div>
   );

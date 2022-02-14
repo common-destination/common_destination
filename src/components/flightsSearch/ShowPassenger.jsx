@@ -15,6 +15,7 @@ const ShowPassenger = ({
   earliestReturn,
   lastestOutbound,
   setOtboundLaterThanReturn,
+  noMeeting
 }) => {
   const handleChangeField = (key, value) => {
     passenger[key] = value;
@@ -40,9 +41,10 @@ const ShowPassenger = ({
           maxReturnDate={passenger.maxReturnDate}
           stayTimeTogether={stayTimeTogether}
           markedErrors={markedErrors}
-          earliestRetur={earliestReturn}
+          earliestReturn={earliestReturn}
           lastestOutbound={lastestOutbound}
           setOtboundLaterThanReturn={setOtboundLaterThanReturn}
+          noMeeting={noMeeting}
         />
       </div>
       {canDelete && (
