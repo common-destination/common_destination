@@ -44,13 +44,13 @@ const ShowPassenger = ({
           lastestOutbound={lastestOutbound}
           setOtboundLaterThanReturn={setOtboundLaterThanReturn}
         />
-        {canDelete && (
-          <icons.RiDeleteBinLine
-            className="deletePassenger"
-            onClick={handlePassengerDelete}
-          />
-        )}
       </div>
+      {canDelete && (
+        <icons.RiDeleteBinLine
+          className="deletePassenger"
+          onClick={handlePassengerDelete}
+        />
+      )}
     </div>
   );
 };
