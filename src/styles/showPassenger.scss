@@ -2,18 +2,25 @@
   width: clamp(22em, 70vw, 40em);
   height: max-content;
   display: flex;
+
   flex-direction: column;
   align-items: center;
   padding: 1vmax;
   margin: 1vmax;
+
   background-color: $color2;
   border-radius: 0.3rem;
 
   .airportDeleteContainer {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+
+
+    @media (min-width: 768px) {
+      display: flex;
+      align-items: center;
+      // min-width: fit-content;
+    }
+
 
     .deletePassenger {
       margin: auto 2vw auto auto;
@@ -21,14 +28,18 @@
     }
   }
 
-  input {
-    @include inputStyle;
-    margin: 3% 0;
-    padding: 1% 3%;
-  }
 
-  .selectDates {
-    display: flex;
+    input {
+      @include inputStyle;
+      width: fit-content;
+      padding: 0.5vmax 0;
+    }
+
+    .selectDates {
+      display: flex;
+      // margin: auto;
+    }
+
 
     .datePicker {
       width: 100%;
@@ -37,6 +48,19 @@
       border: 2px solid red;
     }
   }
+
+  .deletePassenger {
+    // margin: -1% -1% auto auto;
+    
+    @media (min-width: 768px) {
+      display: flex;
+      align-items: center;
+      margin: auto;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  }
+
 }
 
 // datePicker library => turn off position: relative;

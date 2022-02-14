@@ -119,7 +119,7 @@ dateAreValid ? setOtboundLaterThanReturn(true) : setOtboundLaterThanReturn(false
         timeFormat="HH:mm"
         timeIntervals={60}
         dateFormat="dd-MMM-yyyy HH:mm"
-       
+
       />
     </div>
   );
