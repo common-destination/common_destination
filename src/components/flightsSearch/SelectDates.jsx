@@ -4,25 +4,33 @@ import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 // import "../../styles/datePicker.scss";
 
+const today = new Date();
+
 const SelectDates = ({
   handleChangeField,
   minOutboundDate,
   maxReturnDate,
   stayTimeTogether,
-  datesError,
+  markedErrors,
+ earliestReturn,
+ lastestOutbound,
+ setOtboundLaterThanReturn
 }) => {
   const [dateAreValid, setDateAreValid] = useState(false);
-  const [dateIsEmpty, setDateIsEmpty] = useState(true);
-
-  const today = new Date();
+  const [outboundIsEmpty, setOutboundIsEmpty] = useState(true);
+  const [returnIsEmpty, setReturnIsEmpty] = useState(true);
+  const [maxOutbound, setMaxOutbound] = useState(
+    new Date(moment(today).add(1, "years"))
+  );
+  
   const minOutbound = new Date(moment(today));
-  const maxOutbound = new Date(moment(today).add(1, "years"));
+  // const maxOutbound = new Date(moment(today).add(1, "years"));
   const minReturn = new Date(moment(today).add(stayTimeTogether, "hours"));
   const maxReturn = new Date(
     moment(today).add(stayTimeTogether, "hours").add(1, "years")
   );
 
-
+  
 
   useEffect(() => {
     const timeDifferenceInHours = moment(maxReturnDate).diff(
@@ -33,33 +41,49 @@ const SelectDates = ({
       ? setDateAreValid(true)
       : setDateAreValid(false);
 
-    minOutboundDate === "" || maxReturnDate === ""
-      ? setDateIsEmpty(true)
-      : setDateIsEmpty(false);
+dateAreValid ? setOtboundLaterThanReturn(true) : setOtboundLaterThanReturn(false);
+
+    minOutboundDate === ""
+      ? setOutboundIsEmpty(true)
+      : setOutboundIsEmpty(false);
+
+    maxReturnDate === "" ? setReturnIsEmpty(true) : setReturnIsEmpty(false);
+    handleChangeField(
+      "minOutboundDate",
+      minOutboundDate === "" && maxReturnDate !== ""
+        ? new Date(moment(maxReturnDate).subtract(stayTimeTogether, "hours"))
+        : minOutboundDate
+    );
+
+    handleChangeField(
+      "maxReturnDate",
+      timeDifferenceInHours < stayTimeTogether
+        ? new Date(moment(minOutboundDate).add(stayTimeTogether, "hours"))
+        : maxReturnDate
+    );
+
+    maxReturnDate !== ""
+      ? setMaxOutbound(
+          new Date(moment(maxReturnDate).subtract(stayTimeTogether, "hours"))
+        )
+      : setMaxOutbound(maxOutbound);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [minOutboundDate, maxReturnDate, setDateAreValid, stayTimeTogether]);
 
-  // useEffect(() => {
-  //   if (datesError) {
-  //     if (dateIsEmpty) {
-  //       alert("date is empty");
-  //     }
-  //     if (dateAreValid) {
-  //       alert("departure is bigger than return");
-  //     }
-  //   }
-  // }, [datesError, dateAreValid, dateIsEmpty]);
 
   const filterPassedTime = (time) => {
     const currentDate = new Date();
     const selectedDate = new Date(time);
     return currentDate.getTime() < selectedDate.getTime();
   };
-
   return (
     <div className="selectDates">
       <DatePicker
         className={
-          (datesError && dateIsEmpty) || (datesError && !dateAreValid)
+          (outboundIsEmpty && markedErrors) ||
+          (!dateAreValid && markedErrors) ||
+          (minOutboundDate === lastestOutbound && markedErrors)
             ? "dateError datePicker"
             : "datePicker"
         }
@@ -76,12 +100,13 @@ const SelectDates = ({
         dateFormat="dd-MMM-yyyy HH:mm"
       />
       <DatePicker
-         className={
-          (datesError && dateIsEmpty) || (datesError && !dateAreValid)
+        className={
+          (returnIsEmpty && markedErrors) ||
+          (!dateAreValid && markedErrors) ||
+          (maxReturnDate === earliestReturn && markedErrors)
             ? "dateError datePicker"
             : "datePicker"
         }
-
         placeholderText={"latest return"}
         minDate={minReturn}
         maxDate={maxReturn}
@@ -94,6 +119,7 @@ const SelectDates = ({
         timeFormat="HH:mm"
         timeIntervals={60}
         dateFormat="dd-MMM-yyyy HH:mm"
+        // disabled={minOutboundDate === "" ? true : false}
       />
     </div>
   );

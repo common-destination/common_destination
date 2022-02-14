@@ -8,9 +8,11 @@ function GeneralCriteria({
   stayTimeTogether,
   setStayTimeTogether,
   datesError,
-  setDatesError,
   airportsError,
-  setAirportsError,
+  setErrorsToggle,
+  datesAreEmpty,
+  noMeeting,
+  otboundLaterThanReturn
 }) {
   const [daysCounter, setDaysCounter] = useState(1);
   const [hoursCounter, setHoursCounter] = useState(0);
@@ -28,39 +30,27 @@ function GeneralCriteria({
 
   return (
     <div className="generalCriteria">
-      {datesError && (
-        <SmallComponents.PopUpInfos
+      {(datesError || airportsError) && (
+        <SmallComponents.PopUps
           className="passengerCriteriaError"
-          text={popUp.dateError}
-          setInfos={setDatesError}
-        />
-      )}
-
-      {airportsError && (
-        <SmallComponents.PopUpInfos
-          className="passengerCriteriaError"
-          text={popUp.airportError}
-          setInfos={setAirportsError}
+          text1={datesError && otboundLaterThanReturn && popUp.datesErrors.otboundLaterThanReturn}
+          text2={
+            datesError && noMeeting && popUp.datesErrors.withoutMeeting
+          }
+          text3={datesError && datesAreEmpty && popUp.datesErrors.detesAreEmpty}
+          text4={airportsError && popUp.airportsErrors}
+          setErrorsToggle={setErrorsToggle}
         />
       )}
 
       <label>
         {mettingTimeInfos && (
-          <SmallComponents.PopUpInfos
+          <SmallComponents.PopUps
             className="bubble bubble-bottom-left"
             text={popUp.meetingDuration}
             setInfos={setMeetingTimeInfos}
           />
         )}
-        {/* <h5>meeting duration:</h5>
-        <icons.FcInfo
-          style={{ cursor: "pointer" }}
-          onClick={() => {
-            !mettingTimeInfos
-              ? setMeetingTimeInfos(true)
-              : setMeetingTimeInfos(false);
-          }}
-        /> */}
 
         <div className="stayTimeTogether">
           <icons.FaInfoCircle
@@ -72,7 +62,7 @@ function GeneralCriteria({
                 : setMeetingTimeInfos(false);
             }}
           />
-          <span>duration</span>
+          <span>minimum duration</span>
           {daysCounter > 0 && (
             <>
               <icons.FaMinusCircle
@@ -92,7 +82,7 @@ function GeneralCriteria({
                 className="iconsPlusMinus"
                 onClick={() => setDaysCounter((prev) => prev + 1)}
               />
-              <p>days</p>
+              <p> days</p>
             </>
           )}
 
@@ -120,16 +110,15 @@ function GeneralCriteria({
                   }
                 }}
               />
-              <p>hours</p>
+              <p> hours </p>
             </>
           )}
-          <span className="passengersLength">
-          {passengers.length} Passengers
-          </span>
         </div>
       </label>
+      <span>passengers: {passengers.length}</span>
     </div>
   );
 }
 
 export default GeneralCriteria;
+
