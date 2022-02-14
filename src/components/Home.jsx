@@ -95,10 +95,6 @@ function Home({ className }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     passengers,
-    // outbounds,
-    // lastestOutbound,
-    // earliestReturn,
-    // returns,
     stayTimeTogether,
     datesAreEmpty,
     noMeeting,
