@@ -14,7 +14,7 @@ const ShowPassenger = ({
   markedErrors,
   earliestReturn,
   lastestOutbound,
-  setOtboundLaterThanReturn
+  setOtboundLaterThanReturn,
 }) => {
   const handleChangeField = (key, value) => {
     passenger[key] = value;
@@ -27,12 +27,22 @@ const ShowPassenger = ({
       //MAYBE ONLY ERRORTOGGLE AS CONDITION
       style={{ opacity: airportsError || datesError ? 0.5 : 1 }}
     >
-      <div className="airportDeleteContainer">
+      <div className="outerContainer">
         <SelectDepartureAirport
           departureAirports={departureAirports}
           airport={passenger.airport}
           handleChangeField={handleChangeField}
           markedErrors={markedErrors}
+        />
+        <SelectDates
+          handleChangeField={handleChangeField}
+          minOutboundDate={passenger.minOutboundDate}
+          maxReturnDate={passenger.maxReturnDate}
+          stayTimeTogether={stayTimeTogether}
+          markedErrors={markedErrors}
+          earliestRetur={earliestReturn}
+          lastestOutbound={lastestOutbound}
+          setOtboundLaterThanReturn={setOtboundLaterThanReturn}
         />
         {canDelete && (
           <icons.RiDeleteBinLine
@@ -41,21 +51,8 @@ const ShowPassenger = ({
           />
         )}
       </div>
-
-      <SelectDates
-        handleChangeField={handleChangeField}
-        minOutboundDate={passenger.minOutboundDate}
-        maxReturnDate={passenger.maxReturnDate}
-        stayTimeTogether={stayTimeTogether}
-        markedErrors={markedErrors}
-        earliestRetur={earliestReturn}
-        lastestOutbound={lastestOutbound}
-        setOtboundLaterThanReturn={setOtboundLaterThanReturn}
-      />
     </div>
   );
 };
 
 export default ShowPassenger;
-
-
