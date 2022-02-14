@@ -4,8 +4,8 @@
   min-width: fit-content;
   height: max-content;
   display: flex;
-  padding: 1vmin; // ??? padding: 2vmin;
-  margin: 2vmin;  // ??? margin: 1vmin;
+  padding: 2vmin;
+  margin: 1vmin;
   background-color: $color2;
   border-radius: 0.3rem;
 
@@ -16,11 +16,12 @@
     @media (min-width: 768px) {
       display: flex;
       align-items: center;
-      // min-width: fit-content;
     }
 
     .selectDeparture {
       display: flex;
+      // justify-content: center;
+      margin-right: 1rem;
     }
 
     input {
@@ -31,7 +32,6 @@
 
     .selectDates {
       display: flex;
-      // margin: auto;
     }
 
     .datePicker {
@@ -44,7 +44,7 @@
 
   .deletePassenger {
     // margin: -1% -1% auto auto;
-    
+
     @media (min-width: 768px) {
       display: flex;
       align-items: center;
@@ -56,6 +56,9 @@
 }
 
 // datePicker library => turns off position: relative;
-.react-datepicker__input-container {
-  position: static;
+@media (min-width: 768px) {
+  .react-datepicker__input-container {
+    position: static;
+    padding-right: 1rem;
+  }
 }

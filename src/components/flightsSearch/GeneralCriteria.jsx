@@ -12,7 +12,7 @@ function GeneralCriteria({
   setErrorsToggle,
   datesAreEmpty,
   noMeeting,
-  otboundLaterThanReturn
+  otboundLaterThanReturn,
 }) {
   const [daysCounter, setDaysCounter] = useState(1);
   const [hoursCounter, setHoursCounter] = useState(0);
@@ -33,10 +33,12 @@ function GeneralCriteria({
       {(datesError || airportsError) && (
         <SmallComponents.PopUps
           className="passengerCriteriaError"
-          text1={datesError && otboundLaterThanReturn && popUp.datesErrors.otboundLaterThanReturn}
-          text2={
-            datesError && noMeeting && popUp.datesErrors.withoutMeeting
+          text1={
+            datesError &&
+            otboundLaterThanReturn &&
+            popUp.datesErrors.otboundLaterThanReturn
           }
+          text2={datesError && noMeeting && popUp.datesErrors.withoutMeeting}
           text3={datesError && datesAreEmpty && popUp.datesErrors.detesAreEmpty}
           text4={airportsError && popUp.airportsErrors}
           setErrorsToggle={setErrorsToggle}
@@ -62,7 +64,7 @@ function GeneralCriteria({
                 : setMeetingTimeInfos(false);
             }}
           />
-          <span>minimum duration</span>
+          <span>duration</span>
           {daysCounter > 0 && (
             <>
               <icons.FaMinusCircle
@@ -113,12 +115,13 @@ function GeneralCriteria({
               <p> hours </p>
             </>
           )}
+          <span className="passengersLength">
+            passengers: {passengers.length}
+          </span>
         </div>
       </label>
-      <span>passengers: {passengers.length}</span>
     </div>
   );
 }
 
 export default GeneralCriteria;
-
