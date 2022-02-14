@@ -21,20 +21,21 @@ function RandomImages({ className }) {
     let backgroundPosition = () => {
       switch (selectedPicture) {
         case img0:
-          return "0% 30%";
+          return "50% 30%";
         case img1:
-          return "10% 30%";
+          return "50% 25%";
         case img2:
-          return "center center";
+          return "50% 38%";
         case img3:
-          return "30% 70%";
+          return "50% 20%";
         case img4:
-          return "40% 10%";
+          return "50% 65%";
         default:
-          return "29% 29%";
+          return "center center";
       }
     };
     refAppBg.current.style.backgroundPosition = backgroundPosition();
+
     // console.log(backgroundPosition());
   }, [selectedPicture]);
 
