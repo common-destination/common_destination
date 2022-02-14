@@ -1,5 +1,5 @@
 import React from "react";
-import RandomImages from "../components/randomImages/randomImages.jsx";
+import RandomImages from "../components/randomImages/RandomImages.jsx";
 // import img from "../assets/images/image1-min.png";
 // import img from "../assets/images/airport-min.jpg";
 
