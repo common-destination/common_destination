@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
-// import "../../styles/datePicker.scss";
 
 const today = new Date();
 
@@ -15,7 +14,7 @@ const SelectDates = ({
   earliestReturn,
   lastestOutbound,
   setOtboundLaterThanReturn,
-  noMeeting
+  noMeeting,
 }) => {
   const [dateAreValid, setDateAreValid] = useState(false);
   const [outboundIsEmpty, setOutboundIsEmpty] = useState(true);
@@ -24,11 +23,13 @@ const SelectDates = ({
     new Date(moment(today).add(1, "years"))
   );
   const minOutbound = new Date(moment(today));
-  // const maxOutbound = new Date(moment(today).add(1, "years"));
-  const minReturn = new Date(moment(today).add(stayTimeTogether, "hours"));
-  const maxReturn = new Date(
-    moment(today).add(stayTimeTogether, "hours").add(1, "years")
+  const minReturn = new Date(
+    moment(minOutboundDate !== "" ? minOutboundDate : today).add(
+      stayTimeTogether,
+      "hours"
+    )
   );
+  const maxReturn = new Date(moment(today).add(1, "years"));
 
   useEffect(() => {
     const timeDifferenceInHours = moment(maxReturnDate).diff(
@@ -48,12 +49,13 @@ const SelectDates = ({
       : setOutboundIsEmpty(false);
 
     maxReturnDate === "" ? setReturnIsEmpty(true) : setReturnIsEmpty(false);
-    handleChangeField(
-      "minOutboundDate",
-      minOutboundDate === "" && maxReturnDate !== ""
-        ? new Date(moment(maxReturnDate).subtract(stayTimeTogether, "hours"))
-        : minOutboundDate
-    );
+
+    // handleChangeField(
+    //   "minOutboundDate",
+    //   minOutboundDate === "" && maxReturnDate !== ""
+    //     ? new Date(moment(maxReturnDate).subtract(stayTimeTogether, "hours"))
+    //     : minOutboundDate
+    // );
 
     handleChangeField(
       "maxReturnDate",
@@ -62,11 +64,11 @@ const SelectDates = ({
         : maxReturnDate
     );
 
-    maxReturnDate !== ""
-      ? setMaxOutbound(
-          new Date(moment(maxReturnDate).subtract(stayTimeTogether, "hours"))
-        )
-      : setMaxOutbound(maxOutbound);
+    setMaxOutbound(
+      new Date(
+        moment(today).add(1, "years").subtract(stayTimeTogether, "hours")
+      )
+    );
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [minOutboundDate, maxReturnDate, setDateAreValid, stayTimeTogether]);
@@ -76,7 +78,7 @@ const SelectDates = ({
     const selectedDate = new Date(time);
     return currentDate.getTime() < selectedDate.getTime();
   };
- 
+
   return (
     <div className="selectDates">
       <DatePicker
@@ -85,7 +87,9 @@ const SelectDates = ({
           (!dateAreValid && markedErrors) ||
           (moment(lastestOutbound).format("YYYY-MM-DD HH:mm") ===
             moment(minOutboundDate).format("YYYY-MM-DD HH:mm") &&
-            markedErrors && !outboundIsEmpty && noMeeting)
+            markedErrors &&
+            !outboundIsEmpty &&
+            noMeeting)
             ? "dateError datePicker"
             : "datePicker"
         }
@@ -107,7 +111,9 @@ const SelectDates = ({
           (!dateAreValid && markedErrors) ||
           (moment(earliestReturn).format("YYYY-MM-DD HH:mm") ===
             moment(maxReturnDate).format("YYYY-MM-DD HH:mm") &&
-            markedErrors && !returnIsEmpty && noMeeting)
+            markedErrors &&
+            !returnIsEmpty &&
+            noMeeting)
             ? "dateError datePicker"
             : "datePicker"
         }
