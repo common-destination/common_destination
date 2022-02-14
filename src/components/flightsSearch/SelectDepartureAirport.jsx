@@ -9,7 +9,7 @@ function SelectDepartureAirport({
   const [airportIsValid, setAirportIsValid] = useState(false);
 
   const styles = {
-    border: !airportIsValid  && markedErrors? "3px solid red" : "1px solid black ",
+    border: !airportIsValid  && markedErrors? "2px solid red" : "1px solid black ",
   };
 
   useEffect(() => {
