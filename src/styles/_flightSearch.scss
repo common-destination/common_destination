@@ -1,0 +1,108 @@
+// .flightSearch {
+//   .generalCriteria {
+//     display: flex;
+//     flex-direction: column;
+//     margin: auto 0.5vmax;
+
+//     .passengerCriteriaError {
+//       width: clamp(10em, 50vw, 40em);
+//       border: 2px solid black;
+//       background-color: #1a4578;
+//       position: fixed;
+//       top: 50%;
+//       left: 50%;
+//       margin-right: -50%;
+//       transform: translate(-50%, -50%);
+//       padding: 2% 1% 2% 1%;
+//       box-shadow: 0px 5px 15px 3px #000000;
+//       z-index: 99999;
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: center;
+//       align-items: center;
+//     }
+
+//     .bubble {
+//       position: relative;
+//       width: clamp(300px, 50vmin, 500px);
+//       background: rgb(221, 221, 255, 0.8);
+//       border-radius: 1rem;
+//       // border: 3px solid rgba(221, 221, 255, 0.8);
+//       box-shadow: 0 0 30px 0 #555;
+//       padding: 0.5rem;
+//       text-align: center;
+//       color: #000;
+//       margin-bottom: 23px;
+
+//       &::before {
+//         content: "";
+//         width: 0px;
+//         height: 0px;
+//         position: absolute;
+//         border-left: 24px solid rgb(221, 221, 255);
+//         border-right: 12px solid transparent;
+//         border-top: 12px solid rgba(221, 221, 255);
+//         border-bottom: 20px solid transparent;
+//         left: 9px;
+//         bottom: -31px;
+//       }
+//     }
+
+//     .stayTimeTogether {
+//       width: 100%;
+//       display: flex;
+//       align-items: center;
+//       background-color: #ddd;
+//       border-radius: 0.3rem;
+//       padding: 0 0.5rem;
+//       margin-top: 1.8rem;
+
+//       span {
+//         margin: auto 1rem auto 0.2rem;
+//       }
+
+//       p {
+//         margin: 0.5rem;
+//       }
+
+//       .iconsPlusMinus,
+//       .iconInfo {
+//         font-size: 1.2rem;
+//         color: $color2;
+//       }
+
+//       input {
+//         width: clamp(3em, 6vw, 7em);
+//         margin: 0 1vw;
+//         padding: 0.5% 2%;
+//       }
+
+//       .passengersLength {
+//         margin: auto 0 auto auto;
+//       }
+//     }
+//   }
+//   .btnContainer {
+//     min-width: fit-content;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-around;
+
+//     @media (min-width: 768px) {
+//       display: flex;
+//       justify-content: space-between;
+//       margin: auto 2vmin;
+//     }
+
+//     .addPassengerBtn {
+//       font-size: (clamp(1em, 10vw, 3em));
+//       color: $color2;
+//       cursor: pointer;
+//     }
+
+//     .submitBtn {
+//       @include buttonStyle;
+//       border: none;
+//     }
+//   }
+// }
