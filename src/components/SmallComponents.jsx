@@ -18,7 +18,9 @@ export const PopUps = ({
         }}
         style={{ cursor: "pointer" }}
       />
-      <h3>Fields marked in red are wrong</h3>
+      {(text1 || text2 || text3 || text4) && (
+        <h3>Fields marked in red are wrong</h3>
+      )}
       <br />
 
       {(text1 || text2 || text3) && <h4>DATES ERRORS:</h4>}
@@ -50,6 +52,19 @@ export const PopUps = ({
           <br />
         </>
       )}
+    </div>
+  );
+};
+
+export const Infos = ({ className, text, setInfos }) => {
+  return (
+    <div className={className}>
+      <icons.MdOutlineClose
+        className="menuIconClosed"
+        onClick={() => setInfos(false)}
+        style={{ cursor: "pointer" }}
+      />
+      <p>{text}</p>
     </div>
   );
 };

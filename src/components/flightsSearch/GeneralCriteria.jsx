@@ -28,6 +28,10 @@ function GeneralCriteria({
     setStayTimeTogether,
   ]);
 
+  const infosPopUpToggle = () => {
+    mettingTimeInfos ? setMeetingTimeInfos(false) : setMeetingTimeInfos(true);
+  };
+console.log(mettingTimeInfos)
   return (
     <div className="generalCriteria">
       {(datesError || airportsError) && (
@@ -47,7 +51,7 @@ function GeneralCriteria({
 
       <label>
         {mettingTimeInfos && (
-          <SmallComponents.PopUps
+          <SmallComponents.Infos
             className="bubble bubble-bottom-left"
             text={popUp.meetingDuration}
             setInfos={setMeetingTimeInfos}
@@ -58,11 +62,7 @@ function GeneralCriteria({
           <icons.FaInfoCircle
             className="iconInfo"
             style={{ cursor: "pointer" }}
-            onClick={() => {
-              !mettingTimeInfos
-                ? setMeetingTimeInfos(true)
-                : setMeetingTimeInfos(false);
-            }}
+            onClick={infosPopUpToggle}
           />
           <span>duration</span>
           {daysCounter > 0 && (
@@ -78,6 +78,7 @@ function GeneralCriteria({
                   }
                 }}
               />
+         
               <p>{daysCounter}</p>
               {/* {console.log("days", daysCounter)} */}
               <icons.FaPlusCircle
