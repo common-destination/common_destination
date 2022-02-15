@@ -9,7 +9,7 @@
     display: flex;
     align-items: center;
     // font-size: clamp(1.5em, 2vw, 2em);
-    font-size: 3vmax; // TEST
+    font-size: 2vmax; // TEST
     color: $color1;
     font-weight: bolder;
     margin: 0 0 0 2vmax;
@@ -39,8 +39,7 @@
   }
 
   h1 {
-    // font-size: clamp(1.2em, 1.8vw, 1.8em);
-    font-size: 2.2vmax;
+    font-size: clamp(1.2em, 2vw, 2em);
     color: $color1;
   }
 
@@ -49,8 +48,7 @@
     align-items: center;
 
     .reactIcons {
-      // font-size: clamp(1.5em, 2vw, 2em);
-      font-size: 2.3vmax;
+      font-size: clamp(1.5em, 2vw, 2em);
       margin: 0 1rem;
     }
   }

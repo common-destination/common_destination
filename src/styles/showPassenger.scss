@@ -1,4 +1,5 @@
 .showPassenger {
+  position: relative;
   // width: clamp(22em, 95vmin, 49em);
   display: flex;
   min-width: fit-content;
@@ -43,12 +44,16 @@
   }
 
   .deletePassenger {
+    position: absolute;
+    right: 2%;
     // margin: -1% -1% auto auto;
 
     @media (min-width: 768px) {
       display: flex;
       align-items: center;
       margin: auto;
+      top: 33.33%;
+      right: 0.7%;
       font-size: 1.5rem;
       cursor: pointer;
     }

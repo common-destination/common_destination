@@ -71,7 +71,7 @@ function Home({ className }) {
 
       setEarlistReturn(new Date(_earliestReturn));
       setLastestOubound(new Date(_lastestOutbound));
-      
+
       const howManyTimeTogether = moment(_earliestReturn).diff(
         moment(_lastestOutbound),
         "hours"
