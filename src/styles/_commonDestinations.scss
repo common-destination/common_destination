@@ -1,0 +1,21 @@
+.CommonDestinations {
+  max-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .uniqueAirports {
+    width: 80vw;
+    height: 30vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+
+    .uniqueAirport {
+      width: 30%;
+      height: 100%;
+      border: 2px solid red;
+    }
+  }
+}
