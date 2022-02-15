@@ -23,6 +23,7 @@ function About(props) {
           What are you waiting for, find your COMMON DESTINATION!
         </p>
         {/* test */}
+      <p>TEST VERCEL</p>
       </div>
       <div className="wave"></div>
       {/* </div> */}
