@@ -31,7 +31,7 @@ function GeneralCriteria({
   const infosPopUpToggle = () => {
     mettingTimeInfos ? setMeetingTimeInfos(false) : setMeetingTimeInfos(true);
   };
-console.log(mettingTimeInfos)
+  console.log(mettingTimeInfos);
   return (
     <div className="generalCriteria">
       {(datesError || airportsError) && (
@@ -52,7 +52,7 @@ console.log(mettingTimeInfos)
       <label>
         {mettingTimeInfos && (
           <SmallComponents.Infos
-            className="bubble bubble-bottom-left"
+            className="bubble "
             text={popUp.meetingDuration}
             setInfos={setMeetingTimeInfos}
           />
@@ -78,7 +78,7 @@ console.log(mettingTimeInfos)
                   }
                 }}
               />
-         
+
               <p>{daysCounter}</p>
               {/* {console.log("days", daysCounter)} */}
               <icons.FaPlusCircle

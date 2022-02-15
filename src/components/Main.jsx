@@ -99,7 +99,7 @@ const Main = () => {
         ></Route>
           <Route
           exact
-          path="/commonDestinations"
+          path="/common-destinations"
           element={
             <CommonDestinations
               className={

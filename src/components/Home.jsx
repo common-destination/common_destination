@@ -158,9 +158,9 @@ function Home({ className }) {
     );
 
     if (response.ok && passengersValidation) {
-      const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
-      setPassengers([...fillDataIntoPassengers(_passengers)]);
-      navigate("/commonDestinations");
+      // const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
+      // setPassengers([...fillDataIntoPassengers(_passengers)]);
+      navigate("/common-destinations");
     } else {
       setErrorsToggle(true);
       setMarkedErrors(true);
