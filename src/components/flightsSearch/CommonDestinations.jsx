@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import { useTheme } from "../../ThemeContext.js";
+import CommonDestination from "./CommonDestination.jsx";
 
-function CommonDestinations(className) {
+function CommonDestinations({ className }) {
   const [commonDestinations, setCommonDestinations] = useState([]);
+  const [uniqueAirports, setUniqueAirports] = useState([]);
   const { backendUrl } = useTheme();
-  // const navigate = useNavigate();
-
+  console.log(commonDestinations);
+  // console.log(uniqueAirports);
   useEffect(() => {
     (async () => {
       const requestOptions = {
@@ -17,32 +19,57 @@ function CommonDestinations(className) {
         `${backendUrl}/common-destinations/two`,
         requestOptions
       );
-      console.log(response);
-      if (response.ok) {
-        const _commonDestinations = await response.json();
-        setCommonDestinations(_commonDestinations);
-        console.log(commonDestinations);
-      }
+      const _commonDestinations = await response.json();
+      setCommonDestinations(_commonDestinations);
     })();
-    // console.log(currentUser);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    const _uniqueAirports = [
+      ...new Set(
+        commonDestinations.map((commonDestination) => commonDestination.airport)
+      ),
+    ];
+    setUniqueAirports(_uniqueAirports);
+  }, [commonDestinations]);
   return (
     <div className={className}>
-      <ul>
-        {commonDestinations.map(
-          (commonDestination) =>
-            [...new Set(commonDestination.airport)].map(
-              (uniqueAirport, index) => <div key={index}>{uniqueAirport}</div>
-            )
-            // [...new Set(airports.map((airport) => airport.airport))]
-          // <>
-          //   <h2>{commonDestination.airport}</h2>
-          //   {/* <li>{commonDestination.passengerFlights}</li> */}
-          // </>
-        )}
-      </ul>
+         {/* <Routes>
+            {uniqueAirports.map((uniqueAirport, index) => (
+              <Route
+                path="/uniqueAirport"
+                element={
+                  <CommonDestination key={index} airport={uniqueAirport} />
+                }
+              ></Route>
+            ))}
+          </Routes> */}
+      {/* {!commonDestinations && (
+        <>
+          <h5>
+            there are no suitable destinations with these criteria, try changing
+            the dates or the meeting time
+          </h5>
+        </>
+      )} */}
+
+      {commonDestinations.length > 0 ? (
+        <ul className="uniqueAirports">
+          <Routes>
+            {uniqueAirports.map((uniqueAirport, index) => (
+              <Route
+                path="/uniqueAirport"
+                element={
+                  <CommonDestination key={index} airport={uniqueAirport} />
+                }
+              ></Route>
+            ))}
+          </Routes>
+        </ul>
+      ) : (
+        <h5>Loading...</h5>
+      )}
     </div>
   );
 }
