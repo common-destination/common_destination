@@ -158,8 +158,8 @@ function Home({ className }) {
     );
 
     if (response.ok && passengersValidation) {
-      // const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
-      // setPassengers([...fillDataIntoPassengers(_passengers)]);
+      const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
+      setPassengers([...fillDataIntoPassengers(_passengers)]);
       navigate("/common-destinations");
     } else {
       setErrorsToggle(true);
