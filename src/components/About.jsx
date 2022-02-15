@@ -22,6 +22,7 @@ function About(props) {
           suited to your needs and at the best price! <br />
           What are you waiting for, find your COMMON DESTINATION!
         </p>
+        {/* test */}
       </div>
       <div className="wave"></div>
       {/* </div> */}
