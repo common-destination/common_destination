@@ -40,7 +40,6 @@ function FlightSearch() {
     });
     return passengers;
   };
-  console.log(passengers);
   useEffect(() => {
     (async () => {
       const requestOptions = {
