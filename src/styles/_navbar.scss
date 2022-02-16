@@ -6,7 +6,9 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  position: fixed;
+  // position: fixed;
+  position: absolute;
+  z-index: 2;
   top: 0;
 
  

@@ -61,9 +61,11 @@
 }
 
 // datePicker library => turns off position: relative;
+.react-datepicker__input-container {
+  position: static;
+}
 @media (min-width: 768px) {
   .react-datepicker__input-container {
-    position: static;
     padding-right: 1rem;
   }
 }
