@@ -13,9 +13,8 @@ const _emptyPassenger = {
   maxReturnDate: "",
 };
 function FlightSearch() {
-  const { backendUrl } = useTheme();
   const [departureAirports, setDepartureAirports] = useState([]);
-  const [passengers, setPassengers] = useState([]);
+  // const [passengers, setPassengers] = useState([]);
   const [stayTimeTogether, setStayTimeTogether] = useState(24);
   const [passengersValidation, setPassengersValidation] = useState(false);
   const [datesValidation, setDatesValidation] = useState(false);
@@ -29,6 +28,7 @@ function FlightSearch() {
   const [markedErrors, setMarkedErrors] = useState(false);
   const [earliestReturn, setEarlistReturn] = useState("");
   const [lastestOutbound, setLastestOubound] = useState("");
+  const { backendUrl, passengers, setPassengers } = useTheme();
   const navigate = useNavigate();
   const airports = passengers.map((passenger) => passenger.airport);
   const outbounds = passengers.map((passenger) => passenger.minOutboundDate);

@@ -1,13 +1,9 @@
 import React, { useRef, useEffect } from "react";
-import FlightSearch from "./flightsSearch/FlightSearch";
-// import CityImages from "../components/randomImages/CityImages.jsx";
-import images from "../functions/images.js";
-import { useTheme } from "../ThemeContext.js";
+import images from "../../functions/images.js";
 
-function Home({ className }) {
-  const { passengers } = useTheme();
+function CityImages({passengers}) {
   const refBgImages = useRef(null);
-  
+
   const arrImages = [
     images.Amsterdam,
     images.Athens,
@@ -113,13 +109,8 @@ function Home({ className }) {
     refBgImages.current.style.bgPosition = bgPosition();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [passengers]);
-  return (
-    <div className={className} ref={refBgImages}>
-      {/* <CityImages passengers={passengers} /> */}
-      <FlightSearch />
-      <div className="wave"></div>
-    </div>
-  );
+
+  return <div className="images" ref={refBgImages}></div>;
 }
 
-export default Home;
+export default CityImages;
