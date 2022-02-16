@@ -18,7 +18,9 @@ export function ThemeProvider({ children }) {
   const [menuAccountToggle, setMenuAccountToggle] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [passengers, setPassengers] = useState([]);
-
+  const [flightsToDestination, setFlightsToDestination] = useState([]);
+  const [passengersFlights, setPassengersFlights] = useState([]);
+  const [passengerFlight, setPassengerFlight] = useState({});
 
 
   const mediaQueries = {
@@ -62,6 +64,12 @@ export function ThemeProvider({ children }) {
         handleLogout,
         passengers,
         setPassengers,
+        flightsToDestination,
+        setFlightsToDestination,
+        passengersFlights,
+        setPassengersFlights,
+        passengerFlight,
+        setPassengerFlight,
       }}
     >
       {children}

@@ -31,7 +31,6 @@ function GeneralCriteria({
   const infosPopUpToggle = () => {
     mettingTimeInfos ? setMeetingTimeInfos(false) : setMeetingTimeInfos(true);
   };
-  console.log(mettingTimeInfos);
   return (
     <div className="generalCriteria">
       {(datesError || airportsError) && (
