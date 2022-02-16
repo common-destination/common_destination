@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route} from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { useTheme } from "../../ThemeContext.js";
-import CommonDestination from "./CommonDestination.jsx";
 
-function CommonDestinations({ className }) {
+function CommonDestinations() {
   const [commonDestinations, setCommonDestinations] = useState([]);
   const [uniqueAirports, setUniqueAirports] = useState([]);
-  const { backendUrl } = useTheme();
-  console.log(commonDestinations);
-  // console.log(uniqueAirports);
+  const { backendUrl, setFlightsToDestination } = useTheme();
+
   useEffect(() => {
     (async () => {
       const requestOptions = {
@@ -33,18 +31,16 @@ function CommonDestinations({ className }) {
     ];
     setUniqueAirports(_uniqueAirports);
   }, [commonDestinations]);
+
+  const getFlightsToDestination = (airport) => {
+    const _flightsToDestination = commonDestinations.filter(
+      (commonDestination) => commonDestination.airport === airport
+    );
+    setFlightsToDestination(_flightsToDestination);
+    console.log(_flightsToDestination);
+  };
   return (
-    <div className={className}>
-         {/* <Routes>
-            {uniqueAirports.map((uniqueAirport, index) => (
-              <Route
-                path="/uniqueAirport"
-                element={
-                  <CommonDestination key={index} airport={uniqueAirport} />
-                }
-              ></Route>
-            ))}
-          </Routes> */}
+    <div className="commonDestinations">
       {/* {!commonDestinations && (
         <>
           <h5>
@@ -55,21 +51,23 @@ function CommonDestinations({ className }) {
       )} */}
 
       {commonDestinations.length > 0 ? (
-        <ul className="uniqueAirports">
-          <Routes>
-            {uniqueAirports.map((uniqueAirport, index) => (
-              <Route
-                path="/uniqueAirport"
-                element={
-                  <CommonDestination key={index} airport={uniqueAirport} />
-                }
-              ></Route>
-            ))}
-          </Routes>
+        <ul className="destinations">
+          {uniqueAirports.map((uniqueAirport, index) => (
+            <NavLink
+              key={index}
+              to="flights-to-destination"
+              onClick={() => getFlightsToDestination(uniqueAirport)}
+            >
+              <div key={index} className="destination">
+                <h2>{uniqueAirport}</h2>
+              </div>
+            </NavLink>
+          ))}
         </ul>
       ) : (
         <h5>Loading...</h5>
       )}
+      <Outlet />
     </div>
   );
 }

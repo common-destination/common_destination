@@ -6,7 +6,10 @@ import Account from "./Account";
 import About from "./About";
 import Contact from "./Contact";
 import Home from "./Home";
-import CommonDestinations from "./flightsSearch/CommonDestinations.jsx"
+import CommonDestinations from "./flightsSearch/CommonDestinations.jsx";
+import FlightsToDestination from "./flightsSearch/FlightsToDestination.jsx";
+import PassengerFlights from "./flightsSearch/PassengerFlights.jsx";
+import PassengerFlight from "./flightsSearch/PassengerFlight.jsx";
 import { useTheme } from "../ThemeContext";
 import { useEffect } from "react";
 
@@ -51,7 +54,7 @@ const Main = () => {
     <div className="Main">
       {validationMenuToggle && <Validation />}
 
-      {!burgerMenuToggle && !mediaQueries.smallView &&(
+      {!burgerMenuToggle && !mediaQueries.smallView && (
         <img
           className="airplaneScrollBar"
           src={scrollbarAnimation.getScrollbarImage(
@@ -68,6 +71,16 @@ const Main = () => {
 
       <Routes>
         <Route
+          path="/"
+          element={
+            <Home
+              className={
+                validationMenuToggle ? "Home backgroundBlurOpac" : "Home"
+              }
+            />
+          }
+        />
+        <Route
           path="/account"
           element={
             <Account
@@ -76,7 +89,7 @@ const Main = () => {
               }
             />
           }
-        ></Route>
+        />
         <Route
           path="/about"
           element={
@@ -86,7 +99,7 @@ const Main = () => {
               }
             />
           }
-        ></Route>
+        />
         <Route
           path="/contact"
           element={
@@ -96,32 +109,20 @@ const Main = () => {
               }
             />
           }
-        ></Route>
+        />
+        <Route path="/common-destinations" element={<CommonDestinations />}>
           <Route
-          exact
-          path="/common-destinations"
-          element={
-            <CommonDestinations
-              className={
-                validationMenuToggle ? "CommonDestinations backgroundBlurOpac" : "CommonDestinations"
-              }
-            />
-          }
-        ></Route>
-        <Route
-          exact
-          path="/"
-          element={
-            <Home
-              className={
-                validationMenuToggle  ? "Home backgroundBlurOpac" : "Home"
-              }
-            />
-          }
-        ></Route>
+            path="flights-to-destination"
+            element={<FlightsToDestination />}
+          >
+            <Route path="passenger-flights" element={<PassengerFlights />}>
+              <Route path="passenger-flight" element={<PassengerFlight />} />
+            </Route>
+          </Route>
+        </Route>
       </Routes>
     </div>
   );
 };
-
+;
 export default Main;

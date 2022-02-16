@@ -17,7 +17,9 @@ export function ThemeProvider({ children }) {
   const [airplanePosition, setAirplanePosition] = useState(0);
   const [menuAccountToggle, setMenuAccountToggle] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-
+  const [flightsToDestination, setFlightsToDestination] = useState([]);
+  const [passengersFlights, setPassengersFlights] = useState([]);
+  const [passengerFlight, setPassengerFlight] = useState({});
 
   const mediaQueries = {
     smallView: useMediaQuery("(max-width: 800px)"),
@@ -58,6 +60,12 @@ export function ThemeProvider({ children }) {
         setMenuAccountToggle,
         menuAccountToggle,
         handleLogout,
+        flightsToDestination,
+        setFlightsToDestination,
+        passengersFlights,
+        setPassengersFlights,
+        passengerFlight,
+        setPassengerFlight,
       }}
     >
       {children}
