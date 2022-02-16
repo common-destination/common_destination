@@ -17,6 +17,8 @@ export function ThemeProvider({ children }) {
   const [airplanePosition, setAirplanePosition] = useState(0);
   const [menuAccountToggle, setMenuAccountToggle] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [passengers, setPassengers] = useState([]);
+
 
 
   const mediaQueries = {
@@ -58,6 +60,8 @@ export function ThemeProvider({ children }) {
         setMenuAccountToggle,
         menuAccountToggle,
         handleLogout,
+        passengers,
+        setPassengers,
       }}
     >
       {children}
