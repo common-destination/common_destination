@@ -17,7 +17,6 @@
 
     .selectDeparture {
       display: flex;
-      // justify-content: center;
       margin-bottom: 0.2rem;
 
       @media (min-width: 768px) {
@@ -38,8 +37,6 @@
 
     .datePicker {
       width: 98%;
-      //  border: 2px solid blue;
-      //  margin-right: 1rem;
     }
     .dateError {
       border: 2px solid red;
@@ -51,7 +48,6 @@
     right: 2%;
     font-size: 1.2rem;
     color: #145375;
-    // margin: -1% -1% auto auto;
 
     @media (min-width: 768px) {
       display: flex;
@@ -68,9 +64,4 @@
 // datePicker library => turns off position: relative;
 .react-datepicker__input-container {
   position: static;
-}
-@media (min-width: 768px) {
-  .react-datepicker__input-container {
-    // padding-right: 1rem;
-  }
 }

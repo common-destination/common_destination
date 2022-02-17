@@ -1,6 +1,6 @@
 .Navbar {
-  // background-color: rgb(242, 255, 240);
-  background-color:#FFF4eb;
+  // background-color:#fff4ebb9;
+  background-color: #ffffff8e;
   width: 100%;
   height: fit-content;
   display: flex;
@@ -10,7 +10,7 @@
   position: absolute;
   z-index: 2;
   top: 0;
- 
+
   .menuIcon,
   .menuIconClosed {
     cursor: grabbing;
@@ -33,4 +33,3 @@
     animation-name: burgeMenuApparition;
   }
 }
-

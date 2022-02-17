@@ -15,8 +15,18 @@ function TopMenu({
     <div className="topMenu">
       <div className="logo">
         <icons.SiYourtraveldottv className="reactIcons" />
+       
         {/* {!mediaQueries.smallView && <h1>Common Destination</h1>} */}
       </div>
+      <div className="homeIcon"
+          onClick={() => {
+            setValidationMenuToggle(false);
+          }}
+        >
+          <NavLink to="/">
+            <icons.FcHome className="reactIcons" />
+          </NavLink>
+        </div>
       {!mediaQueries.smallView && <h1>Common Destination</h1>}
       <ul className="topNavbar">
         <li>
@@ -26,7 +36,7 @@ function TopMenu({
             </NavLink>
           )}
         </li>
-        <li
+        {/* <li
           onClick={() => {
             setValidationMenuToggle(false);
           }}
@@ -34,7 +44,7 @@ function TopMenu({
           <NavLink to="/">
             <icons.FcHome className="reactIcons" />
           </NavLink>
-        </li>
+        </li> */}
         <li
           onClick={() => {
             setValidationMenuToggle(false);
