@@ -10,9 +10,7 @@
     display: flex;
     align-items: center;
     font-size: clamp(1.2em, 2vw, 2em);
-    // font-size: clamp(1.5em, 2vw, 2em);
-    // font-size: 2vmax; // TEST
-    color: #145375;
+    // color: #145375;
     font-weight: bolder;
     margin: 0 0 0 2vmax;
     -webkit-animation: rotate-center 20s linear infinite reverse both;
