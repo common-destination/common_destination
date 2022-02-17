@@ -9,8 +9,9 @@
   .logo {
     display: flex;
     align-items: center;
+    font-size: clamp(1.2em, 2vw, 2em);
     // font-size: clamp(1.5em, 2vw, 2em);
-    font-size: 2vmax; // TEST
+    // font-size: 2vmax; // TEST
     color: #145375;
     font-weight: bolder;
     margin: 0 0 0 2vmax;
@@ -39,9 +40,15 @@
     }
   }
 
+  .homeIcon {
+    margin: auto auto auto 0.1rem;
+    font-size: clamp(1.2em, 2vw, 2em);
+  }
+
   h1 {
     font-size: clamp(1.2em, 2vw, 2em);
     color: #145375;
+    margin: auto auto auto 1rem;
   }
 
   .topNavbar {
