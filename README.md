@@ -94,5 +94,5 @@ styled with **SASS**.
 ## Find us on Linkedin
 
 [![Pierluigi](https://img.shields.io/badge/Pierluigi-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://www.linkedin.com/in/pierluigi-baiano/)
-[![Giacomo](https://img.shields.io/badge/Giacomo-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://www.linkedin.com/in/pierluigi-baiano/)
-[![Renat](https://img.shields.io/badge/Renat-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://www.linkedin.com/in/pierluigi-baiano/)
+[![Giacomo](https://img.shields.io/badge/Giacomo-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://www.linkedin.com/in/giacomo-tolari/)
+[![Renat](https://img.shields.io/badge/Renat-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://www.linkedin.com/in/renat-khambazarov)
