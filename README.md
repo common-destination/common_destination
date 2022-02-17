@@ -85,7 +85,7 @@ styled with **SASS**.
 <br />
 <br />
 
-### 🔗 contact
+##🔗 contact
 
 [![email](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:commondestinations@gmail.com)
 
@@ -94,5 +94,5 @@ styled with **SASS**.
 ## Find us on Linkedin
 
 [![Pierluigi](https://img.shields.io/badge/Pierluigi-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://www.linkedin.com/in/pierluigi-baiano/)
-[![Pierluigi](https://img.shields.io/badge/linkedin-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://www.linkedin.com/in/pierluigi-baiano/)
-[![Pierluigi](https://img.shields.io/badge/linkedin-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://www.linkedin.com/in/pierluigi-baiano/)
+[![Giacomo](https://img.shields.io/badge/Giacomo-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://www.linkedin.com/in/pierluigi-baiano/)
+[![Renat](https://img.shields.io/badge/Renat-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://www.linkedin.com/in/pierluigi-baiano/)
