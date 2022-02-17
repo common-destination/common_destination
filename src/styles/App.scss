@@ -8,8 +8,8 @@
 }
 
 html {
-  width: 100vmax;
-  height: 100vmin;
+  // width: 100vmax;
+  // height: 100vmin;
   // background-color: red;
   // overflow-x: hidden; /* Hide scrollbars */
 
@@ -49,53 +49,16 @@ html {
         list-style: none;
         li,
         a {
-          color: $color1;
+          color: #145375;
           font-weight: bolder;
         }
       }
 
       .reactIcons {
         font-size: clamp(1.2em, 1.8vw, 1.8em);
-        margin: 0 1vw;
+        margin-left: 1vw;
       }
     }
-
-    // -webkit-animation: color-change-5x 30s ease infinite alternate both;
-    // animation: color-change-5x 30s ease infinite alternate both;
-    // @-webkit-keyframes color-change-5x {
-    //   0% {
-    //     background: #19dcea;
-    //   }
-    //   25% {
-    //     background: #f5be10;
-    //   }
-    //   50% {
-    //     background: #b22cff;
-    //   }
-    //   75% {
-    //     background: #ea2222;
-    //   }
-    //   100% {
-    //     background: #3bd80d;
-    //   }
-    // }
-    // @keyframes color-change-5x {
-    //   0% {
-    //     background: #19dcea;
-    //   }
-    //   25% {
-    //     background: #f5be10;
-    //   }
-    //   50% {
-    //     background: #b22cff;
-    //   }
-    //   75% {
-    //     background: #ea2222;
-    //   }
-    //   100% {
-    //     background: #3bd80d;
-    //   }
-    // }
   }
 
   *::-webkit-scrollbar-track {
@@ -105,36 +68,4 @@ html {
   .datepicker {
     border: none;
   }
-
-  // -webkit-animation: kenburns-bottom 20s linear infinite alternate both;
-  // animation: kenburns-bottom 20s linear infinite alternate both;
-
-  // @-webkit-keyframes kenburns-bottom {
-  //   0% {
-  //     -webkit-transform: scale(1) translateY(0);
-  //     transform: scale(1) translateY(0);
-  //     -webkit-transform-origin: 50% 84%;
-  //     transform-origin: 50% 84%;
-  //   }
-  //   100% {
-  //     -webkit-transform: scale(1.25) translateY(15px);
-  //     transform: scale(1.25) translateY(15px);
-  //     -webkit-transform-origin: bottom;
-  //     transform-origin: bottom;
-  //   }
-  // }
-  // @keyframes kenburns-bottom {
-  //   0% {
-  //     -webkit-transform: scale(1) translateY(0);
-  //     transform: scale(1) translateY(0);
-  //     -webkit-transform-origin: 50% 84%;
-  //     transform-origin: 50% 84%;
-  //   }
-  //   100% {
-  //     -webkit-transform: scale(1.25) translateY(15px);
-  //     transform: scale(1.25) translateY(15px);
-  //     -webkit-transform-origin: bottom;
-  //     transform-origin: bottom;
-  //   }
-  // }
 }

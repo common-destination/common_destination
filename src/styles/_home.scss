@@ -1,7 +1,11 @@
 .Home {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   margin-top: 6vh;
+  background-image: url("../assets/images/skyscrapersAtNight.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  // background-position: 30% 50%;
 }

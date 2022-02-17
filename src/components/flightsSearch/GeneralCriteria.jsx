@@ -58,11 +58,7 @@ function GeneralCriteria({
         )}
 
         <div className="stayTimeTogether">
-          <icons.FaInfoCircle
-            className="iconInfo"
-            style={{ cursor: "pointer" }}
-            onClick={infosPopUpToggle}
-          />
+          <icons.FaInfoCircle className="iconInfo" onClick={infosPopUpToggle} />
           <span>duration</span>
           {daysCounter === 1 && (
             <>
@@ -136,15 +132,10 @@ function GeneralCriteria({
               <p>hours</p>
             </>
           )}
-          {/* <div className="container"> */}
-          {/* <div className="passengersIcon"> */}
-
-          {/* </div> */}
           <div className="passengersLenght">
             <icons.BsPeopleFill className="passengersIcon" />
-            {passengers.length}
+            <span className="passengersAmount">{passengers.length}</span>
           </div>
-          {/* </div> */}
         </div>
       </label>
     </div>
