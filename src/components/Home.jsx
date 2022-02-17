@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from "react";
 import FlightSearch from "./flightsSearch/FlightSearch";
-// import CityImages from "../components/randomImages/CityImages.jsx";
 import images from "../functions/images.js";
 import { useTheme } from "../ThemeContext.js";
 
@@ -115,9 +114,7 @@ function Home({ className }) {
   }, [passengers]);
   return (
     <div className={className} ref={refBgImages}>
-      {/* <CityImages passengers={passengers} /> */}
       <FlightSearch />
-      <div className="wave"></div>
     </div>
   );
 }
