@@ -1,7 +1,7 @@
 .flightSearch {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.4);
   height: fit-content;
-  
+
   @media (min-width: 768px) {
     margin-top: 7vmin;
     border-radius: 1rem;
@@ -10,8 +10,10 @@
   .generalCriteria {
     display: flex;
     flex-direction: column;
-    margin: auto 0.5vmax;
     position: relative;
+    color: #fff4eb;
+    font-weight: bolder;
+    font-size: 1.2rem;
 
     .passengerCriteriaError {
       position: absolute;
@@ -29,7 +31,6 @@
 
     .bubble {
       position: absolute;
-      top: -2vmin;
       z-index: 1;
       width: clamp(300px, 50vmin, 500px);
       background: rgb(221, 221, 255, 1);
@@ -44,35 +45,48 @@
       position: absolute;
       top: 0;
       right: 0;
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
 
     .stayTimeTogether {
-      width: fit-content;
+      width: 100%;
       display: flex;
       align-items: center;
-      // border-radius: 0.3rem;
-      padding: 0 0.5rem 0 1rem;
+      justify-content: space-between;
+      // margin: 0.5rem auto auto 0.5rem;
+      padding: 1rem 1rem 0 1rem;
 
       .hoursCounter,
       .daysCounter {
         font-size: 1.25rem;
       }
 
-      // span {
-      //   margin: auto 1rem auto 0.2rem;
-      // }
-
-      // p {
-      //   padding: 0 0.5rem;
-      // }
-
-      .iconsPlusMinus,
       .iconInfo {
-        font-size: 1.5rem;
-        color: $color2;
+        font-size: 1.7rem;
+        border-radius: 50%;
+        color: #145375;
+        background-color: #fff4eb;
+        border: 2px solid #fff4eb;
         cursor: pointer;
-        margin: 0 0.5rem;
+        margin-right: 0.5rem;
+
+        &:hover {
+          color: #476e9e;
+        }
+      }
+
+      .iconsPlusMinus {
+        font-size: 1.7rem;
+        border-radius: 50%;
+        color: #145375;
+        background-color: #fff4eb;
+        border: 2px solid #fff4eb;
+        cursor: pointer;
+        margin: auto 0.5rem;
+
+        &:hover {
+          color: #476e9e;
+        }
       }
 
       input {
@@ -81,48 +95,53 @@
         padding: 0.5% 2%;
       }
 
-      // .container {
-      //   display: flex;
-      //   align-items: center;
-      //   // margin: 0 2rem 0 auto;
+      .passengersLenght {
+        display: flex;
+        align-items: center;
+        font-size: 1.25rem;
+        margin: auto 0 auto auto;
+        background-color: #145375;
+        border-radius: 1rem;
+        padding: 0 1rem;
+        border: 2px solid #fff4eb;
 
-      //   .passengersIcon {
-      //     padding: 0 1rem;
-      //     color: $color2;
-      //     font-size: 1.5rem;
-      //   }
-
-        .passengersLenght {
-          font-size: 1.25rem;
-          color: $color2;
-          margin: auto 0 auto auto;
+        .passengersIcon {
+          color: #fff4eb;
+          font-size: 1.5rem;
         }
-      // }
+
+        .passengersAmount {
+          padding-left: 0.5rem;
+        }
+      }
     }
   }
 
   .btnContainer {
-    min-width: fit-content;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-
-    @media (min-width: 768px) {
-      display: flex;
-      justify-content: space-between;
-      margin: auto 2vmin;
-    }
+    // justify-content: space-around;
 
     .addPassengerBtn {
       font-size: (clamp(1em, 10vw, 3em));
-      color: $color2;
+      color: #145375;
       cursor: pointer;
+      margin: 0 0 0.5rem 1rem;
+
+      &:hover {
+        color: #476e9e;
+      }
     }
 
     .submitBtn {
       @include buttonStyle;
-      border: none;
       cursor: pointer;
+      background-color: #145375;
+      color: #fff;
+      margin: 0 1rem 1rem auto;
+      padding: 0.7rem;
     }
   }
 }

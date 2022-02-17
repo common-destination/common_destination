@@ -15,7 +15,7 @@ const ShowPassenger = ({
   earliestReturn,
   lastestOutbound,
   setOtboundLaterThanReturn,
-  noMeeting
+  noMeeting,
 }) => {
   const handleChangeField = (key, value) => {
     passenger[key] = value;
@@ -30,6 +30,7 @@ const ShowPassenger = ({
     >
       <div className="outerContainer">
         <SelectDepartureAirport
+          className="SelectDepartureInput"
           departureAirports={departureAirports}
           airport={passenger.airport}
           handleChangeField={handleChangeField}
