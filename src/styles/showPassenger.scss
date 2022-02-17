@@ -1,11 +1,15 @@
 .showPassenger {
   position: relative;
   display: flex;
-  max-width: 100%;
+  width: fit-content;
   height: 100%;
-  padding: 2vmin;
-  margin: 1vmax;
-  border-radius: 0.3rem;
+  border-bottom: 2px solid #145375;
+  margin: 0 2%;
+  padding: 2% 0;
+
+  &:nth-last-child(2) {
+    border-bottom: none;
+  }
 
   .outerContainer {
     width: fit-content;
@@ -28,15 +32,15 @@
     input {
       @include inputStyle;
       width: fit-content;
-      padding: 0.5vmax 0;
     }
 
     .selectDates {
       display: flex;
+      margin-right: 1rem;
     }
 
     .datePicker {
-      width: 98%;
+      width: 99%;
     }
     .dateError {
       border: 2px solid red;
@@ -45,8 +49,8 @@
 
   .deletePassenger {
     position: absolute;
-    right: 2%;
-    font-size: 1.2rem;
+    right: 5%;
+    font-size: 1.5rem;
     color: #145375;
 
     @media (min-width: 768px) {
@@ -54,8 +58,7 @@
       align-items: center;
       margin: auto;
       top: 33.33%;
-      right: 0;
-      font-size: 1.5rem;
+      right: -1%;
       cursor: pointer;
     }
   }
