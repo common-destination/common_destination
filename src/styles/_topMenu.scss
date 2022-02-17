@@ -13,29 +13,29 @@
     color: $color1;
     font-weight: bolder;
     margin: 0 0 0 2vmax;
-    -webkit-animation: rotate-center 10s linear infinite reverse both;
-    animation: rotate-center 10s linear infinite reverse both;
+    // -webkit-animation: rotate-center 30s linear infinite reverse;
+    // animation: rotate-center 30s linear infinite reverse;
 
-    @-webkit-keyframes rotate-center {
-      0% {
-        -webkit-transform: rotate(0);
-        transform: rotate(0);
-      }
-      100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-      }
-    }
-    @keyframes rotate-center {
-      0% {
-        -webkit-transform: rotate(0);
-        transform: rotate(0);
-      }
-      100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-      }
-    }
+    // @-webkit-keyframes rotate-center {
+    //   0% {
+    //     -webkit-transform: rotate(0);
+    //     transform: rotate(0);
+    //   }
+    //   100% {
+    //     -webkit-transform: rotate(360deg);
+    //     transform: rotate(360deg);
+    //   }
+    // }
+    // @keyframes rotate-center {
+    //   0% {
+    //     -webkit-transform: rotate(0);
+    //     transform: rotate(0);
+    //   }
+    //   100% {
+    //     -webkit-transform: rotate(360deg);
+    //     transform: rotate(360deg);
+    //   }
+    // }
   }
 
   h1 {

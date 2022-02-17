@@ -1,6 +1,11 @@
 .flightSearch {
-  background-color: rgba(255, 255, 255, 0.496);
-  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  height: fit-content;
+  
+  @media (min-width: 768px) {
+    margin-top: 7vmin;
+    border-radius: 1rem;
+  }
 
   .generalCriteria {
     display: flex;
@@ -13,64 +18,61 @@
       z-index: 1;
       top: 24vmin;
       left: 5vmax;
-      // transform: translate(-50%, -50%);
       width: clamp(300px, 50vmin, 700px);
       background: rgb(221, 221, 255, 1);
       border-radius: 1rem;
       box-shadow: 0 0 30px 0 #555;
-      padding: 0.5rem;
+      padding: 1.5rem 0 0 0;
       text-align: center;
       color: #000;
     }
 
     .bubble {
       position: absolute;
+      top: -2vmin;
       z-index: 1;
       width: clamp(300px, 50vmin, 500px);
       background: rgb(221, 221, 255, 1);
       border-radius: 1rem;
-      // border: 3px solid rgba(221, 221, 255, 0.8);
       box-shadow: 0 0 30px 0 #555;
-      padding: 0.5rem;
+      padding: 1.5rem 0 0 0;
       text-align: center;
       color: #000;
-      margin-bottom: 23px;
+    }
 
-      // &::before {
-      //   content: "";
-      //   width: 0px;
-      //   height: 0px;
-      //   position: absolute;
-      //   border-left: 26px solid rgb(221, 221, 255);
-      //   border-right: 13px solid transparent;
-      //   border-top: 13px solid rgba(221, 221, 255);
-      //   border-bottom: 26px solid transparent;
-      //   left: 17px;
-      //   bottom: -38px;
-      // }
+    .menuIconClosed {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 1.5rem;
     }
 
     .stayTimeTogether {
-      width: 100%;
+      width: fit-content;
       display: flex;
       align-items: center;
-      background-color: #ddd;
-      border-radius: 0.3rem;
-      padding: 0 0.5rem;
-      margin-top: 1.8rem;
+      // border-radius: 0.3rem;
+      padding: 0 0.5rem 0 1rem;
 
-      span {
-        margin: auto 1rem auto 0.2rem;
+      .hoursCounter,
+      .daysCounter {
+        font-size: 1.25rem;
       }
 
-      p {
-        margin: 0.5rem;
-      }
+      // span {
+      //   margin: auto 1rem auto 0.2rem;
+      // }
+
+      // p {
+      //   padding: 0 0.5rem;
+      // }
 
       .iconsPlusMinus,
       .iconInfo {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         color: $color2;
+        cursor: pointer;
+        margin: 0 0.5rem;
       }
 
       input {
@@ -79,9 +81,23 @@
         padding: 0.5% 2%;
       }
 
-      .passengersLength {
-        margin: auto 0 auto auto;
-      }
+      // .container {
+      //   display: flex;
+      //   align-items: center;
+      //   // margin: 0 2rem 0 auto;
+
+      //   .passengersIcon {
+      //     padding: 0 1rem;
+      //     color: $color2;
+      //     font-size: 1.5rem;
+      //   }
+
+        .passengersLenght {
+          font-size: 1.25rem;
+          color: $color2;
+          margin: auto 0 auto auto;
+        }
+      // }
     }
   }
 
@@ -106,6 +122,7 @@
     .submitBtn {
       @include buttonStyle;
       border: none;
+      cursor: pointer;
     }
   }
 }

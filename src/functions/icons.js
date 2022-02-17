@@ -13,7 +13,7 @@ import { GrContact, GrAddCircle } from "react-icons/gr";
 import { ImEyeBlocked, ImEye } from "react-icons/im";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { HiMinusCircle, HiEye, HiEyeOff } from "react-icons/hi";
-import { BsPlusCircleFill } from "react-icons/bs";
+import { BsPlusCircleFill, BsPeopleFill } from "react-icons/bs";
 
 const icons = {
   FcHome,
@@ -39,6 +39,7 @@ const icons = {
   HiEyeOff,
   FaMinusCircle,
   FaPlusCircle,
+  BsPeopleFill,
 };
 
 export default icons;

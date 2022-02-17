@@ -64,7 +64,7 @@ function GeneralCriteria({
             onClick={infosPopUpToggle}
           />
           <span>duration</span>
-          {daysCounter > 0 && (
+          {daysCounter === 1 && (
             <>
               <icons.FaMinusCircle
                 className="iconsPlusMinus"
@@ -78,13 +78,35 @@ function GeneralCriteria({
                 }}
               />
 
-              <p>{daysCounter}</p>
-              {/* {console.log("days", daysCounter)} */}
+              <p className="daysCounter">{daysCounter}</p>
               <icons.FaPlusCircle
                 className="iconsPlusMinus"
                 onClick={() => setDaysCounter((prev) => prev + 1)}
               />
-              <p> days</p>
+              <p>day</p>
+            </>
+          )}
+
+          {daysCounter >= 2 && (
+            <>
+              <icons.FaMinusCircle
+                className="iconsPlusMinus"
+                onClick={() => {
+                  if (daysCounter < 2) {
+                    setHoursCounter(22);
+                  }
+                  if (daysCounter >= 1) {
+                    setDaysCounter((prev) => prev - 1);
+                  }
+                }}
+              />
+
+              <p className="daysCounter">{daysCounter}</p>
+              <icons.FaPlusCircle
+                className="iconsPlusMinus"
+                onClick={() => setDaysCounter((prev) => prev + 1)}
+              />
+              <p>days</p>
             </>
           )}
 
@@ -95,11 +117,10 @@ function GeneralCriteria({
                 onClick={() => {
                   if (hoursCounter < 24 && hoursCounter > 2)
                     return setHoursCounter((prev) => prev - 2);
-                  // if (hoursCounter === 24) return setHoursCounter(0); // => no need to set
+                  // if (hoursCounter === 24) return setHoursCounter(0);
                 }}
               />
-              <p>{hoursCounter}</p>
-              {/* {console.log("hours", hoursCounter)} */}
+              <p className="hoursCounter">{hoursCounter}</p>
               <icons.FaPlusCircle
                 className="iconsPlusMinus"
                 onClick={() => {
@@ -112,12 +133,18 @@ function GeneralCriteria({
                   }
                 }}
               />
-              <p> hours </p>
+              <p>hours</p>
             </>
           )}
-          <span className="passengersLength">
-            passengers: {passengers.length}
-          </span>
+          {/* <div className="container"> */}
+          {/* <div className="passengersIcon"> */}
+
+          {/* </div> */}
+          <div className="passengersLenght">
+            <icons.BsPeopleFill className="passengersIcon" />
+            {passengers.length}
+          </div>
+          {/* </div> */}
         </div>
       </label>
     </div>
