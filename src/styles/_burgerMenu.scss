@@ -1,6 +1,7 @@
 .burgerMenu {
+  width: 100%;
   // background-color: $color5;
-  background-color: white;
+  background-color: #fff4eb;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,14 +21,17 @@
   }
 
   li {
-    width: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2vh;
-    padding: 1% 7%;
-    border-bottom: 1px solid black;
-    border-width: medium;
+    width: 50%;
+    // display: flex;
+    // align-items: center;
+    margin: 1rem auto;
+    padding: auto;
+    border-bottom: 2px solid black;
+
+    .reactIcons {
+      display: flex;
+      // margin: auto;
+    }
   }
 
   *:hover {
