@@ -12,7 +12,9 @@
   top: 0;
   right: 0;
   padding: 2% 1% 2% 1%;
-  border: 2px solid rgba(0, 0, 0, 0.39);
+  // border-left: 1px solid #00000063;
+  // border-bottom: 1px solid #00000063;
+  box-shadow: 3px 3px 2px #d5dee2da, -3px -3px 2px #8aadbeb9;
   animation: animate 0.6s ease-in-out;
   animation-name: burgeMenuApparition;
 
