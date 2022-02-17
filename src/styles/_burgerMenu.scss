@@ -1,6 +1,7 @@
 .burgerMenu {
+  width: 100%;
   // background-color: $color5;
-  background-color: rgba(236, 236, 236, 0.945);
+  background-color: #fff4eb;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,16 +23,16 @@
   }
 
   li {
-    width: 80%;
-    display: flex;
-    justify-content: center;
+    width: 50%;
+    // display: flex;
     // align-items: center;
-    margin: 2vh;
-    // padding: 1% 7%;
-    border-bottom: 1px solid rgba(168, 165, 165, 0.774);
-    border-width: medium;
-    .reactIcons{
-      margin-right: 0.5rem;
+    margin: 1rem auto;
+    padding: auto;
+    border-bottom: 2px solid black;
+
+    .reactIcons {
+      display: flex;
+      // margin: auto;
     }
   }
 
