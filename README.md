@@ -93,6 +93,6 @@ styled with **SASS**.
 
 ## Find us on Linkedin
 
-[![Pierluigi](https://img.shields.io/badge/linkedin-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://www.linkedin.com/in/pierluigi-baiano/)
+[[Pierluigi](https://img.shields.io/badge/linkedin-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://www.linkedin.com/in/pierluigi-baiano/)
 [![Pierluigi](https://img.shields.io/badge/linkedin-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://www.linkedin.com/in/pierluigi-baiano/)
 [![Pierluigi](https://img.shields.io/badge/linkedin-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://www.linkedin.com/in/pierluigi-baiano/)
