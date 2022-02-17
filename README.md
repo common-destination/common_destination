@@ -88,12 +88,21 @@ styled with **SASS**.
 <br />
 <br />
 
+## More info about our project
+
+- [Presentation - Demo](https://prezi.com/view/zLrzjOC3zc5uWvv62cmm/)
+
+<br />
+<br />
+
 
 ### 🔗 contact
 [![email](https://img.shields.io/badge/gmail-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](mailto:commondestinations@gmail.com)
 
 <br />
-<br />
+
+## our Linkedin
+[![Pierluigi](https://img.shields.io/badge/linkedin-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://www.linkedin.com/in/pierluigi-baiano/)
 
 
 
