@@ -1,12 +1,8 @@
 .flightSearch {
   background-color: #ffffff66;
   height: fit-content;
-  margin-top: 8rem;
+  margin-top: 6rem;
   border-radius: 1rem;
-
-  // @media (min-width: 768px) {
-  //   border-radius: 1rem;
-  // }
 
   .generalCriteria {
     display: flex;
@@ -45,8 +41,8 @@
     .menuIconClosed {
       position: absolute;
       top: 0;
-      right: 0;
-      font-size: 2rem;
+      left: 0;
+      font-size: 1.7rem;
     }
 
     .stayTimeTogether {
@@ -102,8 +98,8 @@
         font-size: 1.25rem;
         margin: auto 0 auto auto;
         background-color: #145375;
-        border-radius: 1rem;
-        padding: 0 1rem;
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
         border: 2px solid #fff4eb;
 
         .passengersIcon {
