@@ -2,10 +2,11 @@
   background-color: #ffffff66;
   height: fit-content;
   margin-top: 8rem;
+  border-radius: 1rem;
 
-  @media (min-width: 768px) {
-    border-radius: 1rem;
-  }
+  // @media (min-width: 768px) {
+  //   border-radius: 1rem;
+  // }
 
   .generalCriteria {
     display: flex;
