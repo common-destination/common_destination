@@ -27,8 +27,8 @@
     width: clamp(1.8em, 1vw, 3.5em);
     height: clamp(1.8em, 1vh, 3.5em);
     position: absolute;
-    top: 3vh;
-    margin-right: 1vw;
+    top: 2vh;
+    right: 2vw;
     animation: animate 0.7s ease-in-out;
     animation-name: burgeMenuApparition;
   }
