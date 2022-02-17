@@ -67,6 +67,13 @@ styled with **SASS**.
 
 <br />
 <br />
+
+
+
+
+### if you want to know more about our project, watch the [Presentation - Demo](https://prezi.com/view/zLrzjOC3zc5uWvv62cmm/)
+
+<br />
 <br />
 <br />
 
@@ -77,11 +84,6 @@ styled with **SASS**.
 - [@pierluigibaiano](https://github.com/Pierluigi10)
   <br />
   <br />
-
-### if you want to know more about our project, watch the [Presentation - Demo](https://prezi.com/view/zLrzjOC3zc5uWvv62cmm/)
-
-<br />
-<br />
 
 ## Contact
 
