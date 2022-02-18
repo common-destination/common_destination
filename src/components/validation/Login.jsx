@@ -61,7 +61,7 @@ function Login() {
               type="text"
               id="login"
               value={username}
-              placeholder="enter your username"
+              placeholder="username"
               onChange={handleUsername}
             />
           </div>
@@ -71,7 +71,7 @@ function Login() {
               id="password"
               value={password}
               autoComplete="on"
-              placeholder="enter your password"
+              placeholder="password"
               onChange={handlePassword}
             />
             <span className="eyesIcon" onClick={handleShowPasswordButton}>
