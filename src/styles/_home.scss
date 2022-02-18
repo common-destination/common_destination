@@ -7,14 +7,14 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  animation: bg-pan-clockwise 30s ease-in-out infinite alternate both;
+  // animation: bg-pan-clockwise 30s ease-in-out infinite alternate both;
 
-  @keyframes bg-pan-clockwise {
-    0% {
-      background-position: 100% 100%;
-    }
-    100% {
-      background-position: 0% 0%;
-    }
-  }
+  // @keyframes bg-pan-clockwise {
+  //   0% {
+  //     background-position: 100% 100%;
+  //   }
+  //   100% {
+  //     background-position: 0% 0%;
+  //   }
+  // }
 }
