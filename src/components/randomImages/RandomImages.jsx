@@ -12,7 +12,7 @@ function RandomImages({ className }) {
   const pictureArray = [img0, img1, img2, img3, img4];
   const randomIndex = Math.floor(Math.random() * pictureArray.length);
   const selectedPicture = pictureArray[randomIndex];
-  console.log(randomIndex);
+  // console.log(randomIndex);
 
   useEffect(() => {
     // console.log(selectedPicture);
@@ -37,7 +37,8 @@ function RandomImages({ className }) {
     refAppBg.current.style.backgroundPosition = backgroundPosition();
 
     // console.log(backgroundPosition());
-  }, [selectedPicture]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return <div className={className} ref={refAppBg}></div>;
 }

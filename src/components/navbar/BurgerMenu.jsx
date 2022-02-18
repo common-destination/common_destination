@@ -44,10 +44,10 @@ function BurgerMenu({handleBurgerMenuToggles,handleLogout,setValidationMenuToggl
           ABOUT
         </NavLink>
       </li>
-
+   
       <li onClick={handleBurgerMenuToggles}>
         <NavLink to="/contact">
-          <icons.GrContact className="reactIcons" />
+          <icons.BsFillChatRightTextFill className="reactIcons" />
           CONTACT
         </NavLink>
       </li>

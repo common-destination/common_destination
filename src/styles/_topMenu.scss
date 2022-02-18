@@ -41,6 +41,10 @@
   .homeIcon {
     margin: auto auto auto 0.1rem;
     font-size: clamp(1.2em, 2vw, 2em);
+    .color{
+      color:#145375;
+    }
+    
   }
 
   h1 {
@@ -56,6 +60,7 @@
     .reactIcons {
       font-size: clamp(1.5em, 2vw, 2em);
       margin-right: 1rem;
+     
     }
   }
 }

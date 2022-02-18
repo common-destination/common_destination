@@ -1,7 +1,8 @@
 .burgerMenu {
   width: 100%;
   // background-color: $color5;
-  background-color: #fff4eb;
+  // background-color: #fff4eb;
+  background-color: rgba(236, 236, 236, 0.945);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,20 +25,24 @@
 
   li {
     width: 50%;
-    // display: flex;
+    display: flex;
+    justify-content: center;
     // align-items: center;
-    margin: 1rem auto;
-    padding: auto;
-    border-bottom: 2px solid black;
+    // align-items: center;
+    margin: 2vh;
+    // padding: 1% 7%;
+    // border-bottom: 1px solid rgba(168, 165, 165, 0.774);
+    // border-width: medium;
 
     .reactIcons {
-      display: flex;
+      // display: flex;
       // margin: auto;
+      margin-right: 0.5rem;
     }
   }
 
   *:hover {
-    color: $color6;
+    color: $color2;
   }
 }
 

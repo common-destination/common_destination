@@ -24,7 +24,7 @@ function TopMenu({
           }}
         >
           <NavLink to="/">
-            <icons.FcHome className="reactIcons" />
+            <icons.FaHome className="reactIcons color" />
           </NavLink>
         </div>
       {!mediaQueries.smallView && <h1>Common Destination</h1>}

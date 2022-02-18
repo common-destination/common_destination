@@ -35,7 +35,7 @@ function Validation() {
       <ul>
         {loginToggle ? (
           <li>
-            <p>don't have an account yet?</p>
+            <p>Don't have an account yet?</p>
             <button
               onClick={() => {
                 setLoginToggle(false);
@@ -47,7 +47,7 @@ function Validation() {
           </li>
         ) : (
           <li>
-            <p>if you have already an account</p><button
+            <p>If you already have an account</p><button
               onClick={() => {
                 setLoginToggle(true);
                 setSignupToggle(false);

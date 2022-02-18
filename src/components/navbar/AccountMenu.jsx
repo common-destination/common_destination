@@ -8,7 +8,7 @@ function AccountMenu({setMenuAccountToggle,handleLogout,setValidationMenuToggle}
   return (
     <div className="AccountMenu">
       {currentUser.username !== "anonymousUser" && (
-        <h3 style={{ marginBottom: "3vh" }}>
+        <h3 style={{  marginBottom: "3vh" }}>
           <NavLink to="/account">{currentUser.username}</NavLink>
         </h3>
       )}

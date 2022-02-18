@@ -12,11 +12,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 39px;
-  background: #2f799f;
-  box-shadow: 5px 5px 4px #286787, -5px -5px 4px #368bb7;
-  // background: #e0e0e0;
-  // box-shadow: 8px 8px 10px #bebebe, -8px -8px 10px #ffffff;
+  // border-radius: 39px;
+  // background: #2f799f;
+  // background: #145375;
+  border-radius: 50px;
+  background: #145375;
+  box-shadow: -5px -5px 10px #114763, 5px 5px 10px #175f87;
+  
 
   ul {
     li {
@@ -37,8 +39,8 @@
         @include buttonStyle;
         padding: 0.3vw;
         border-radius: 0.3rem;
-        font-weight: 200;
-        font-size: clamp(1em, 1vw, 1.2em);
+        font-weight: bold;
+        // font-size: clamp(1em, 1vw, 1.2em);
         margin-left: 0.3vw;
       }
     }
