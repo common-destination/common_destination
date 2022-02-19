@@ -15,18 +15,17 @@ function TopMenu({
     <div className="topMenu">
       <div className="logo">
         <icons.SiYourtraveldottv className="reactIcons" />
-       
         {/* {!mediaQueries.smallView && <h1>Common Destination</h1>} */}
       </div>
       <div className="homeIcon"
-          onClick={() => {
-            setValidationMenuToggle(false);
-          }}
-        >
-          <NavLink to="/">
-            <icons.FaHome className="reactIcons color" />
-          </NavLink>
-        </div>
+        onClick={() => {
+          setValidationMenuToggle(false);
+        }}
+      >
+        <NavLink to="/">
+          <icons.FaHome className="reactIcons color" />
+        </NavLink>
+      </div>
       {!mediaQueries.smallView && <h1>Common Destination</h1>}
       <ul className="topNavbar">
         <li>
