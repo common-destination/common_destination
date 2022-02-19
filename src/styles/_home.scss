@@ -2,13 +2,15 @@
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   background-image: url("../assets/images/skyscrapersAtNight1.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  // animation: bg-pan-clockwise 30s ease-in-out infinite alternate both;
 
+  // animation: bg-pan-clockwise 30s ease-in-out infinite alternate both;
   // @keyframes bg-pan-clockwise {
   //   0% {
   //     background-position: 100% 100%;
@@ -17,17 +19,106 @@
   //     background-position: 0% 0%;
   //   }
   // }
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  
+
   h2 {
-    // width: 100%;
-    // border: 1px solid red;
+    position: absolute;
+    top: 12vh;
+    width: 100%;
     text-align: center;
     font-size: clamp(2em, 2.1vw, 4em);
     color: #145375;
-    margin-top: -10rem;
+    // margin-top: -10rem;
+
+    &::after {
+      content: "";
+      animation: slogan 60s cubic-bezier(0.2, 1, 0.2, 1) infinite alternate
+        both;
+      @keyframes slogan {
+        0% {
+          content: "Where is your next trip together?";
+          opacity: 0;
+        }
+        8% {
+          content: "Where is your next trip together?";
+          opacity: 1;
+        }
+        15% {
+          content: "Where is your next trip together?";
+          opacity: 0;
+        }
+        15.01% {
+          content: "Find your point around the world";
+          opacity: 0;
+        }
+        22% {
+          content: "Find your point around the world";
+          opacity: 1;
+        }
+        29% {
+          content: "Find your point around the world";
+          opacity: 0;
+        }
+        29.01% {
+          content: "Not busy? Travel easy!";
+          opacity: 0;
+        }
+        36% {
+          content: "Not busy? Travel easy!";
+          opacity: 1;
+        }
+        43% {
+          content: "Not busy? Travel easy!";
+          opacity: 0;
+        }
+        43.01% {
+          content: "We connect with the whole planet";
+          opacity: 0;
+        }
+        50% {
+          content: "We connect with the whole planet";
+          opacity: 1;
+        }
+        57% {
+          content: "We connect with the whole planet";
+          opacity: 0;
+        }
+        57.01% {
+          content: "Find your city to make the holidays pretty";
+          opacity: 0;
+        }
+        64% {
+          content: "Find your city to make the holidays pretty";
+          opacity: 1;
+        }
+        71% {
+          content: "Find your city to make the holidays pretty";
+          opacity: 0;
+        }
+        71.01% {
+          content: "Unites the population";
+          opacity: 0;
+        }
+        78% {
+          content: "Unites the population";
+          opacity: 1;
+        }
+        85% {
+          content: "Unites the population";
+          opacity: 0;
+        }
+        85.01% {
+          content: "Flights combination";
+          opacity: 0;
+        }
+        92% {
+          content: "Flights combination";
+          opacity: 1;
+        }
+        100% {
+          content: "Flights combination";
+          opacity: 0;
+        }
+      }
+    }
   }
 }
