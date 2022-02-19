@@ -7,9 +7,6 @@ import About from "./About";
 import Contact from "./Contact";
 import Home from "./Home";
 import CommonDestinations from "./flightsSearch/CommonDestinations.jsx";
-import FlightsToDestination from "./flightsSearch/FlightsToDestination.jsx";
-import PassengerFlights from "./flightsSearch/PassengerFlights.jsx";
-import PassengerFlight from "./flightsSearch/PassengerFlight.jsx";
 import { useTheme } from "../ThemeContext";
 import { useEffect } from "react";
 
@@ -111,18 +108,10 @@ const Main = () => {
           }
         />
         <Route path="/common-destinations" element={<CommonDestinations />}>
-          <Route
-            path="flights-to-destination"
-            element={<FlightsToDestination />}
-          >
-            <Route path="passenger-flights" element={<PassengerFlights />}>
-              <Route path="passenger-flight" element={<PassengerFlight />} />
-            </Route>
-          </Route>
+          {/* <Route path="passenger-flight" element={<PassengerFlight />} /> */}
         </Route>
       </Routes>
     </div>
   );
 };
-;
 export default Main;
