@@ -59,7 +59,7 @@ function GeneralCriteria({
 
         <div className="stayTimeTogether">
           <icons.FaInfoCircle className="iconInfo" onClick={infosPopUpToggle} />
-          <span>duration</span>
+          <span>duration:</span>
           {daysCounter === 1 && (
             <>
               <icons.FaMinusCircle

@@ -1,15 +1,15 @@
-import React from "react";
-import { useTheme } from "../../ThemeContext.js";
-import { useNavigate } from "react-router-dom";
+// import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function PassengersFlights() {
-  const { passengerFlights } = useTheme();
   const navigate = useNavigate();
+  const location = useLocation();
+
   return (
-    <div>
-       <button onClick={() => navigate(-1)}>go back</button>
-      <ul className="passengerFlights">
-        {passengerFlights.map((passengerFlight, index) => (
+    <div className="passengerFlights">
+      <button onClick={() => navigate(-1)}>go back</button>
+      <ul className="passengerFlightsList">
+        {location.state.map((passengerFlight, index) => (
           <li key={index} className="passengerFlight">
             <h2>{`passenger${passengerFlight.passengerId}:  ${passengerFlight.outboundFlight.from} - ${passengerFlight.outboundFlight.to}`}</h2>
             <h2>{`passenger${passengerFlight.passengerId}:   ${passengerFlight.returnFlight.from} - ${passengerFlight.returnFlight.to}`}</h2>

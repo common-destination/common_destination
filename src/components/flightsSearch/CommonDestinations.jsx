@@ -7,7 +7,7 @@ function CommonDestinations() {
   const [uniqueAirports, setUniqueAirports] = useState([]);
   const { backendUrl } = useTheme();
   const navigate = useNavigate();
-  const { setPassengerFlights } = useTheme();
+
   useEffect(() => {
     (async () => {
       const requestOptions = {
@@ -43,12 +43,6 @@ function CommonDestinations() {
     );
   };
 
-  const getPassengersFlights = (flightsToDestination) => {
-    const _passengersFlights = flightsToDestination.passengerFlights;
-    setPassengerFlights(_passengersFlights);
-    console.log(_passengersFlights);
-  };
-
   return (
     <div className="commonDestinations">
       {commonDestinations.length > 0 && (
@@ -62,8 +56,10 @@ function CommonDestinations() {
                     <li key={index} className="flightToDestination">
                       <h2
                         onClick={() => {
-                          navigate("/passenger-flights");
-                          getPassengersFlights(flightToDestination);
+                          navigate("/passenger-flights", {
+                            state: flightToDestination.passengerFlights,
+                          });
+                          
                         }}
                       >{`time: ${flightToDestination.howManyTimeTogether}h ${flightToDestination.groupPrice}€`}</h2>
                     </li>
