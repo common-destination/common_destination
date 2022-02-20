@@ -28,7 +28,7 @@ function FlightSearch() {
   const [markedErrors, setMarkedErrors] = useState(false);
   const [earliestReturn, setEarlistReturn] = useState("");
   const [lastestOutbound, setLastestOubound] = useState("");
-  const { backendUrl, passengers, setPassengers } = useTheme();
+  const { backendUrl, passengers, setPassengers, mediaQueries } = useTheme();
   const navigate = useNavigate();
   const airports = passengers.map((passenger) => passenger.airport);
   const outbounds = passengers.map((passenger) => passenger.minOutboundDate);
@@ -71,7 +71,7 @@ function FlightSearch() {
 
       setEarlistReturn(new Date(_earliestReturn));
       setLastestOubound(new Date(_lastestOutbound));
-      
+
       const howManyTimeTogether = moment(_earliestReturn).diff(
         moment(_lastestOutbound),
         "hours"
@@ -135,6 +135,8 @@ function FlightSearch() {
     const _passengers = [...passengers, { ..._emptyPassenger }];
     fillDataIntoPassengers(_passengers);
     setPassengers([..._passengers]);
+
+    window.scrollBy(0, 7000);
   };
 
   const handlePassengerDelete = (index) => {

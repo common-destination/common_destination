@@ -20,6 +20,7 @@ function Validation() {
       style={{
         width: mediaQueries.smallView ? "100vw" : "40vw",
         minHeight: mediaQueries.smallView ? "100vh" : "70vh",
+        borderRadius: mediaQueries.smallView ? "0" : "50px",
       }}
     >
       <icons.MdOutlineClose

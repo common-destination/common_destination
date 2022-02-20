@@ -1,6 +1,7 @@
 .Home {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 10vh 8vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,18 +22,19 @@
   // }
 
   h2 {
-    position: absolute;
-    top: 12vh;
+    // position: absolute;
+    // top: 12vh;
     width: 100%;
     text-align: center;
     font-size: clamp(2em, 2.1vw, 4em);
     color: #145375;
+  // z-index: 2;
+
     // margin-top: -10rem;
 
     &::after {
       content: "";
-      animation: slogan 60s cubic-bezier(0.2, 1, 0.2, 1) infinite alternate
-        both;
+      animation: slogan 60s cubic-bezier(0.2, 1, 0.2, 1) infinite alternate both;
       @keyframes slogan {
         0% {
           content: "Where is your next trip together?";
