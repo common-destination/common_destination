@@ -1,8 +1,7 @@
 .commonDestinations {
   max-width: 100vw;
-  // min-height: 100vh;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 
@@ -11,8 +10,9 @@
     width: 80vw;
     // height: 70vh;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
+    // align-items: center;
     justify-content: space-around;
 
     li {

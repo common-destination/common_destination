@@ -1,14 +1,15 @@
 // import React, { useState } from "react";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { useTheme } from "../ThemeContext";
+import { useEffect } from "react";
 import Validation from "./validation/Validation";
 import Account from "./Account";
 import About from "./About";
 import Contact from "./Contact";
 import Home from "./Home";
 import CommonDestinations from "./flightsSearch/CommonDestinations.jsx";
-import { useTheme } from "../ThemeContext";
-import { useEffect } from "react";
+import PassengerFlights from "./flightsSearch/PassengerFlights.jsx";
 
 import images from "../functions/images.js";
 import * as scrollbarAnimation from "../functions/scrollbarAnimation.jsx";
@@ -107,9 +108,8 @@ const Main = () => {
             />
           }
         />
-        <Route path="/common-destinations" element={<CommonDestinations />}>
-          {/* <Route path="passenger-flight" element={<PassengerFlight />} /> */}
-        </Route>
+        <Route path="/common-destinations" element={<CommonDestinations />} />
+        <Route path="/passenger-flights" element={<PassengerFlights />} />
       </Routes>
     </div>
   );

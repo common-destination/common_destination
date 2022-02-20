@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-// import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../ThemeContext.js";
 
 function CommonDestinations() {
   const [commonDestinations, setCommonDestinations] = useState([]);
   const [uniqueAirports, setUniqueAirports] = useState([]);
   const { backendUrl } = useTheme();
-
+  const navigate = useNavigate();
+  const { setPassengerFlights } = useTheme();
   useEffect(() => {
     (async () => {
       const requestOptions = {
@@ -24,12 +25,16 @@ function CommonDestinations() {
   }, []);
 
   useEffect(() => {
-    const _uniqueAirports = [
-      ...new Set(
-        commonDestinations.map((commonDestination) => commonDestination.airport)
-      ),
-    ];
-    setUniqueAirports(_uniqueAirports);
+    if (commonDestinations !== "") {
+      const _uniqueAirports = [
+        ...new Set(
+          commonDestinations.map(
+            (commonDestination) => commonDestination.airport
+          )
+        ),
+      ];
+      setUniqueAirports(_uniqueAirports);
+    }
   }, [commonDestinations]);
 
   const flightsToDestination = (airport) => {
@@ -38,9 +43,15 @@ function CommonDestinations() {
     );
   };
 
+  const getPassengersFlights = (flightsToDestination) => {
+    const _passengersFlights = flightsToDestination.passengerFlights;
+    setPassengerFlights(_passengersFlights);
+    console.log(_passengersFlights);
+  };
+
   return (
     <div className="commonDestinations">
-      {commonDestinations.length > 0 ? (
+      {commonDestinations.length > 0 && (
         <ul className="destinations">
           {uniqueAirports.map((uniqueAirport, index) => (
             <li key={index} className="destination" toggle>
@@ -49,21 +60,12 @@ function CommonDestinations() {
                 {flightsToDestination(uniqueAirport).map(
                   (flightToDestination, index) => (
                     <li key={index} className="flightToDestination">
-                      <h2>{`${flightToDestination.airport}-${flightToDestination.howManyTimeTogether}h--${flightToDestination.groupPrice}€`}</h2>
-                      <ul className="passengerFlights">
-                        {flightToDestination.passengerFlights.map(
-                          (passengerFlight, index) => (
-                            <li key={index} className="passengerFlight">
-                              <h2>{`passenger${passengerFlight.passengerId}:  ${passengerFlight.outboundFlight.from} - ${passengerFlight.outboundFlight.to}`}</h2>
-                              <h2>{`passenger${passengerFlight.passengerId}:   ${passengerFlight.returnFlight.from} - ${passengerFlight.returnFlight.to}`}</h2>
-                              <ul className="passengerFlight">
-                                <h3>{`OUTBOUND:${passengerFlight.outboundFlight.from}  departure:${passengerFlight.outboundFlight.departure} - arrival:${passengerFlight.outboundFlight.arrival}`}</h3>
-                                <h3>{`RETURN:${passengerFlight.returnFlight.from}  departure:${passengerFlight.returnFlight.departure} - arrival:${passengerFlight.returnFlight.arrival}`}</h3>
-                              </ul>
-                            </li>
-                          )
-                        )}
-                      </ul>
+                      <h2
+                        onClick={() => {
+                          navigate("/passenger-flights");
+                          getPassengersFlights(flightToDestination);
+                        }}
+                      >{`time: ${flightToDestination.howManyTimeTogether}h ${flightToDestination.groupPrice}€`}</h2>
                     </li>
                   )
                 )}
@@ -71,8 +73,17 @@ function CommonDestinations() {
             </li>
           ))}
         </ul>
-      ) : (
+      )}
+      {commonDestinations.length === 0 && commonDestinations !== "" && (
         <h5>Loading...</h5>
+      )}
+      {commonDestinations === "" && (
+        <>
+          <h5>
+            there are no suitable destinations with these criteria, try changing
+            the dates or the meeting time
+          </h5>
+        </>
       )}
     </div>
   );

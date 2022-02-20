@@ -1,29 +1,26 @@
 import React from "react";
 import { useTheme } from "../../ThemeContext.js";
-import { NavLink, Outlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function PassengersFlights() {
-  const { passengersFlights, setPassengerFlight} = useTheme();
-    const getPassengerFlight = (passengersFlights) => {
-      const _passengerFlight = passengersFlights;
-      setPassengerFlight(_passengerFlight);
-      console.log(_passengerFlight);
-    };
-
+  const { passengerFlights } = useTheme();
+  const navigate = useNavigate();
   return (
-    <>
+    <div>
+       <button onClick={() => navigate(-1)}>go back</button>
       <ul className="passengerFlights">
-        {passengersFlights.map((passengerFlight, index) => (
-            <NavLink key={index} to="passenger-flight"  onClick={() => getPassengerFlight(passengerFlight)}>
-          <div key={index} className="passengerFlight">
-            <h2>{`passenger${passengerFlight.passengerId}: flightId:${passengerFlight._id} ${passengerFlight.outboundFlight.from} - ${passengerFlight.outboundFlight.to}`}</h2>
-            <h2>{`passenger${passengerFlight.passengerId}:  flightId:${passengerFlight._id} ${passengerFlight.returnFlight.from} - ${passengerFlight.returnFlight.to}`}</h2>
-          </div>
-           </NavLink>
+        {passengerFlights.map((passengerFlight, index) => (
+          <li key={index} className="passengerFlight">
+            <h2>{`passenger${passengerFlight.passengerId}:  ${passengerFlight.outboundFlight.from} - ${passengerFlight.outboundFlight.to}`}</h2>
+            <h2>{`passenger${passengerFlight.passengerId}:   ${passengerFlight.returnFlight.from} - ${passengerFlight.returnFlight.to}`}</h2>
+            <ul className="passengerFlight">
+              <h3>{`OUTBOUND:${passengerFlight.outboundFlight.from}  departure:${passengerFlight.outboundFlight.departure} - arrival:${passengerFlight.outboundFlight.arrival}`}</h3>
+              <h3>{`RETURN:${passengerFlight.returnFlight.from}  departure:${passengerFlight.returnFlight.departure} - arrival:${passengerFlight.returnFlight.arrival}`}</h3>
+            </ul>
+          </li>
         ))}
       </ul>
-      <Outlet />
-    </>
+    </div>
   );
 }
 
