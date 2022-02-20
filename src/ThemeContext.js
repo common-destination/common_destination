@@ -18,10 +18,10 @@ export function ThemeProvider({ children }) {
   const [menuAccountToggle, setMenuAccountToggle] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [passengers, setPassengers] = useState([]);
-  const [flightsToDestination, setFlightsToDestination] = useState([]);
-  const [passengersFlights, setPassengersFlights] = useState([]);
-  const [passengerFlight, setPassengerFlight] = useState({});
-
+  const [passengerFlights, setPassengerFlights] = useState([]);
+  // const [flightsToDestination, setFlightsToDestination] = useState([]);
+  // const [passengersFlights, setPassengersFlights] = useState([]);
+  // const [passengerFlight, setPassengerFlight] = useState({});
 
   const mediaQueries = {
     smallView: useMediaQuery("(max-width: 800px)"),
@@ -64,12 +64,8 @@ export function ThemeProvider({ children }) {
         handleLogout,
         passengers,
         setPassengers,
-        flightsToDestination,
-        setFlightsToDestination,
-        passengersFlights,
-        setPassengersFlights,
-        passengerFlight,
-        setPassengerFlight,
+        passengerFlights,
+        setPassengerFlights,
       }}
     >
       {children}

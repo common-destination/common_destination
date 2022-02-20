@@ -2,21 +2,42 @@
   max-width: 100vw;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+
   .destinations {
+    border: 2px solid red;
     width: 80vw;
-    height: 30vh;
+    // height: 70vh;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
+    // align-items: center;
     justify-content: space-around;
 
+    li {
+      margin: 5% 0;
+    }
     .destination {
+      color: red;
+      font-weight: bolder;
       width: 30%;
       // height: 100%;
       // border: 2px solid red;
+    }
+
+    .flightsToDestination {
+      border: 2px solid black;
+      margin: 5% 0;
+
+      .passengerFlights {
+        border: 2px solid black;
+        margin: 5% 0;
+
+        h2 {
+          border: 2px solid black;
+        }
+      }
     }
   }
 }
