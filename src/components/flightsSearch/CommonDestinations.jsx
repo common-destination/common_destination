@@ -43,7 +43,7 @@ function CommonDestinations() {
       {commonDestinations.length > 0 ? (
         <ul className="destinations">
           {uniqueAirports.map((uniqueAirport, index) => (
-            <li key={index} className="destination">
+            <li key={index} className="destination" toggle>
               <h2>{uniqueAirport}</h2>
               <ul className="flightsToDestination">
                 {flightsToDestination(uniqueAirport).map(
