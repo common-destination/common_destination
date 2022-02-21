@@ -55,10 +55,10 @@ styled with **SASS**.
 
 | Color         | Hex                                                              |
 | ------------- | ---------------------------------------------------------------- |
-| Example Color | ![#0a192f](https://via.placeholder.com/10/0a192f?text=+) #0a192f |
-| Example Color | ![#f8f8f8](https://via.placeholder.com/10/145375?text=+) #145375|
-| Example Color | ![#00b48a](https://via.placeholder.com/10/00b48a?text=+) #00b48a |
-| Example Color | ![#00d1a0](https://via.placeholder.com/10/00b48a?text=+) #00d1a0 |
+| Example Color | ![#0a192f](https://via.placeholder.com/10/288fc5?text=+) #288fc5 |
+| Example Color | ![#00b48a](https://via.placeholder.com/10/217099?text=+) #217099 |
+| Example Color | ![#f8f8f8](https://via.placeholder.com/10/145375?text=+) #145375 |
+| Example Color | ![#00d1a0](https://via.placeholder.com/10/fbfbfb?text=+) #fbfbfb |
 
 <br />
 <br />
