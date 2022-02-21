@@ -38,10 +38,10 @@ This is a **MERN** project written in **JavaScript** and
 styled with **SASS**.
 <br />
 
-**Backend:** NodeJs, Express and MongoDB
+**Backend:** Node.js, Express and MongoDB
 <br />
 
-**Frontend:** ReactJs
+**Frontend:** React
 <br />
 
 **Libraries:** moment, node-open-geocorder, geolib, react-datepicker, emailJs
