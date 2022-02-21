@@ -12,25 +12,20 @@ Common Destination is a final project of the web developer course at the Digital
 
 ### [Backend](https://backend-commondestination.herokuapp.com/) deployed to Heroku
 
-### [Frontend](https://commondestination.netlify.app/) deployed to Vercel
+### [Frontend](https://commondestination.netlify.app/) deployed to Netlify
 
 <br />
-<br />
-
-## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 <br />
 
 > Mobile Version
 
-![Screenshot Page Mobile](./src/images/mobile.png)
+![Screenshot Page Mobile](./src/assets/images/mobile-min.png)
 
 <br />
 
 > Desktop Version
 
-![Screenshot Page Desktop](./src/images/desktop.png)
+![Screenshot Page Desktop](./src/assets/images/desktop-min.png)
 
 <br />
 <br />
@@ -67,9 +62,6 @@ styled with **SASS**.
 
 <br />
 <br />
-
-
-
 
 ### if you want to know more about our project, watch the [Presentation - Demo](https://prezi.com/view/zLrzjOC3zc5uWvv62cmm/)
 
