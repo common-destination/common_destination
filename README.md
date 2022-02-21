@@ -10,9 +10,9 @@ Common Destination is a final project of the web developer course at the Digital
 
 <br />
 
-### [Backend](https://backend-commondestination.herokuapp.com/) deployed to Heroku
+### [Backend](https://backend-commondestination.herokuapp.com/) deployed at Heroku
 
-### [Frontend](https://commondestination.netlify.app/) deployed to Netlify
+### [Frontend](https://commondestination.netlify.app/) deployed at Netlify
 
 <br />
 <br />
@@ -44,7 +44,7 @@ styled with **SASS**.
 **Frontend:** React
 <br />
 
-**Libraries:** moment, node-open-geocorder, geolib, react-datepicker, emailJs
+**Libraries:** moment, node-open-geocorder, geolib, react-datepicker, emailJS
 
 **Tools:** GitHub, VSCode, Slack, Trello, Figma, Prezi
 <br />
