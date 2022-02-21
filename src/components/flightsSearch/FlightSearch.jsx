@@ -162,12 +162,16 @@ function FlightSearch() {
     if (response.ok && passengersValidation) {
       const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
       setPassengers([...fillDataIntoPassengers(_passengers)]);
+      console.log("afterButton", passengers);
+
       navigate("/common-destinations");
     } else {
       setErrorsToggle(true);
       setMarkedErrors(true);
     }
   };
+
+  console.log("forButton", passengers);
 
   return (
     <div className="flightSearch">

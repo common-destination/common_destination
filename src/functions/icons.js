@@ -7,16 +7,25 @@ import {
   FaMinusCircle,
   FaPlusCircle,
   FaInfoCircle,
-  
+  FaUserClock,
+  FaClock,
+  FaEuroSign,
 } from "react-icons/fa";
 import { BsInfoSquareFill, BsFillPersonPlusFill } from "react-icons/bs";
 import { GrContact, GrAddCircle } from "react-icons/gr";
 import { ImEyeBlocked, ImEye } from "react-icons/im";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { HiMinusCircle, HiEye, HiEyeOff } from "react-icons/hi";
-import { BsPlusCircleFill, BsPeopleFill,BsFillChatRightTextFill } from "react-icons/bs";
+import {
+  BsPlusCircleFill,
+  BsPeopleFill,
+  BsFillChatRightTextFill,
+} from "react-icons/bs";
 
 const icons = {
+  FaEuroSign,
+  FaClock,
+  FaUserClock,
   FcHome,
   FcInfo,
   FaInfoCircle,

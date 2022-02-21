@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../ThemeContext.js";
-
+import icons from "../../functions/icons.js";
 function CommonDestinations() {
   const [commonDestinations, setCommonDestinations] = useState([]);
-  const [uniqueAirports, setUniqueAirports] = useState([]);
   const { backendUrl } = useTheme();
   const navigate = useNavigate();
 
@@ -15,7 +14,7 @@ function CommonDestinations() {
         credentials: "include",
       };
       const response = await fetch(
-        `${backendUrl}/common-destinations/two`,
+        `${backendUrl}/common-destinations`,
         requestOptions
       );
       const _commonDestinations = await response.json();
@@ -24,44 +23,29 @@ function CommonDestinations() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    if (commonDestinations !== "") {
-      const _uniqueAirports = [
-        ...new Set(
-          commonDestinations.map(
-            (commonDestination) => commonDestination.airport
-          )
-        ),
-      ];
-      setUniqueAirports(_uniqueAirports);
-    }
-  }, [commonDestinations]);
-
-  const flightsToDestination = (airport) => {
-    return commonDestinations.filter(
-      (commonDestination) => commonDestination.airport === airport
-    );
-  };
-
   return (
     <div className="commonDestinations">
       {commonDestinations.length > 0 && (
         <ul className="destinations">
-          {uniqueAirports.map((uniqueAirport, index) => (
-            <li key={index} className="destination" toggle>
-              <h2>{uniqueAirport}</h2>
-              <ul className="flightsToDestination">
-                {flightsToDestination(uniqueAirport).map(
-                  (flightToDestination, index) => (
-                    <li key={index} className="flightToDestination">
-                      <h2
-                        onClick={() => {
-                          navigate("/passenger-flights", {
-                            state: flightToDestination.passengerFlights,
-                          });
-                          
-                        }}
-                      >{`time: ${flightToDestination.howManyTimeTogether}h ${flightToDestination.groupPrice}€`}</h2>
+          {commonDestinations.map((destination, index) => (
+            <li key={index} className="destination">
+              <h2>{destination.airport}</h2>
+              <ul className="commonDestinationsToAirport">
+                {destination.commonDestinationsToAirport.map(
+                  (commonDestinationToAirport, index) => (
+                    <li
+                      key={index}
+                      className="commonDestinationToAirport"
+                      onClick={() => {
+                        navigate("/passenger-flights", {
+                          state: commonDestinationToAirport.trips,
+                        });
+                      }}
+                    >
+                      <icons.FaClock />
+                      {commonDestinationToAirport.timeTogether}
+                      <icons.FaEuroSign />
+                      {commonDestinationToAirport.groupPrice}
                     </li>
                   )
                 )}
