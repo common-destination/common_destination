@@ -28,13 +28,15 @@
     text-align: center;
     font-size: clamp(2em, 2.1vw, 4em);
     color: #145375;
+    height: 3rem;
+    word-wrap: pre;
     // z-index: 2;
 
     // margin-top: -10rem;
 
     &::after {
       content: "";
-      animation: slogan 60s cubic-bezier(0.2, 1, 0.2, 1) infinite alternate both;
+      animation: slogan 60s cubic-bezier(0.2, 1, 0.2, 1) infinite both;
       @keyframes slogan {
         0% {
           content: "Where is your next trip together?";
@@ -49,15 +51,15 @@
           opacity: 0;
         }
         15.01% {
-          content: "Find your point around the world";
+          content: "Find your meeting point around the world";
           opacity: 0;
         }
         22% {
-          content: "Find your point around the world";
+          content: "Find your meeting point around the world";
           opacity: 1;
         }
         29% {
-          content: "Find your point around the world";
+          content: "Find your meeting point around the world";
           opacity: 0;
         }
         29.01% {
@@ -73,15 +75,15 @@
           opacity: 0;
         }
         43.01% {
-          content: "We connect with the whole planet";
+          content: "We connect the whole planet";
           opacity: 0;
         }
         50% {
-          content: "We connect with the whole planet";
+          content: "We connect the whole planet";
           opacity: 1;
         }
         57% {
-          content: "We connect with the whole planet";
+          content: "We connect the whole planet";
           opacity: 0;
         }
         57.01% {
@@ -97,27 +99,27 @@
           opacity: 0;
         }
         71.01% {
-          content: "Unites the population";
+          content: "Unite the population";
           opacity: 0;
         }
         78% {
-          content: "Unites the population";
+          content: "Unite the population";
           opacity: 1;
         }
         85% {
-          content: "Unites the population";
+          content: "Unite the population";
           opacity: 0;
         }
         85.01% {
-          content: "Flights combination";
+          content: "Flight combination";
           opacity: 0;
         }
         92% {
-          content: "Flights combination";
+          content: "Flight combination";
           opacity: 1;
         }
         100% {
-          content: "Flights combination";
+          content: "Flight combination";
           opacity: 0;
         }
       }
