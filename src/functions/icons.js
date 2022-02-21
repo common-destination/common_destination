@@ -10,6 +10,9 @@ import {
   FaUserClock,
   FaClock,
   FaEuroSign,
+  FaUser,
+  FaPlaneDeparture,
+  FaPlaneArrival,
 } from "react-icons/fa";
 import { BsInfoSquareFill, BsFillPersonPlusFill } from "react-icons/bs";
 import { GrContact, GrAddCircle } from "react-icons/gr";
@@ -23,7 +26,10 @@ import {
 } from "react-icons/bs";
 
 const icons = {
+  FaPlaneArrival,
+  FaPlaneDeparture,
   FaEuroSign,
+  FaUser,
   FaClock,
   FaUserClock,
   FcHome,

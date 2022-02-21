@@ -2,44 +2,80 @@
   max-width: 100vw;
   min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
   .destinations {
-    border: 2px solid red;
-    width: 80vw;
+    // border: 2px solid red;
+    width: 90vw;
     // height: 70vh;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    // align-items: center;
     justify-content: space-around;
+    // align-items: center;
 
     li {
-      margin: 5% 0;
+      margin: 10% 0;
     }
     .destination {
-      color: red;
+      color: rgb(226, 15, 15);
       font-weight: bolder;
-      width: 30%;
+      // width: 30%;
       // height: 100%;
       // border: 2px solid red;
+      margin-top: 3rem;
+      text-align: center;
     }
 
     .commonDestinationToAirport {
-      border: 2px solid black;
+      cursor: pointer;
+      color: $color2;
+      font-family: Arial;
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 0.2rem;
+      // text-align: center;
+      display: flex;
+      justify-content: center;
     }
- 
-    
   }
 }
 
-
 .passengerFlights {
-  border: 2px solid black;
-  margin: 5% 0;
+  max-width: 100vw;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5%;
 
-  h2 {
-    border: 2px solid black;
+  .passengerFlight {
+    margin-top: 15%;
+    text-align: center;
+  }
+
+  button {
+    width: fit-content;
+    background-color: $color2;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    margin-top: 5%;
+
+    &:hover {
+      background-color: #5c83b3;
+    }
+
+    &:active {
+      position: relative;
+      top: 2px;
+    }
   }
 }
