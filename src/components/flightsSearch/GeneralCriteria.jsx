@@ -79,7 +79,7 @@ function GeneralCriteria({
                 className="iconsPlusMinus"
                 onClick={() => setDaysCounter((prev) => prev + 1)}
               />
-              <p>day</p>
+              <p className="hoursDays">day</p>
             </>
           )}
 
@@ -102,7 +102,7 @@ function GeneralCriteria({
                 className="iconsPlusMinus"
                 onClick={() => setDaysCounter((prev) => prev + 1)}
               />
-              <p>days</p>
+              <p className="days">days</p>
             </>
           )}
 
@@ -129,7 +129,7 @@ function GeneralCriteria({
                   }
                 }}
               />
-              <p>hours</p>
+              <p className="hours">hours</p>
             </>
           )}
           <div className="passengersLenght">

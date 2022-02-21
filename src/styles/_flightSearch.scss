@@ -1,5 +1,5 @@
 .flightSearch {
-  background-color: #ffffff66;
+  background-color: #9c9797af;
   height: fit-content;
   margin-top: 6rem;
   border-radius: 1rem;
@@ -58,8 +58,19 @@
         font-size: 1.25rem;
       }
 
+      .hoursDays {
+        padding: 0 1.05rem;
+      }
+
+      .hours {
+        padding: 0;
+      }
+
+      .days {
+        padding: 0 0.6rem;
+      }
       .iconInfo {
-        font-size: 1.7rem;
+        font-size: 1.3rem;
         border-radius: 50%;
         color: #145375;
         background-color: #fff4eb;
@@ -99,7 +110,7 @@
         margin: auto 0 auto auto;
         background-color: #145375;
         border-radius: 0.5rem;
-        padding: 0.5rem 1rem;
+        padding: 0.2rem 0.6rem;
         border: 2px solid #fff4eb;
 
         .passengersIcon {
@@ -108,7 +119,7 @@
         }
 
         .passengersAmount {
-          padding-left: 0.5rem;
+          padding-left: 0.2rem;
         }
       }
     }
