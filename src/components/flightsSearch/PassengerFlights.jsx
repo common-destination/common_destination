@@ -1,5 +1,6 @@
 // import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import icons from "../../functions/icons.js";
 
 function PassengersFlights() {
   const navigate = useNavigate();
@@ -7,16 +8,31 @@ function PassengersFlights() {
 
   return (
     <div className="passengerFlights">
-      <button onClick={() => navigate(-1)}>go back</button>
+     
       <ul className="passengerFlightsList">
         {location.state.map((passengerFlight, index) => (
           <li key={index} className="passengerFlight">
-            <h3>{`passenger ${passengerFlight.passengerId}`}</h3>
-            <h3>{`OUTBOUND:${passengerFlight.outboundFlight.from}  departure:${passengerFlight.outboundFlight.departure} - arrival:${passengerFlight.outboundFlight.arrival}`}</h3>
-            <h3>{`RETURN:${passengerFlight.returnFlight.from}  departure:${passengerFlight.returnFlight.departure} - arrival:${passengerFlight.returnFlight.arrival}`}</h3>
+            <div>
+              <icons.FaUser />
+              {passengerFlight.passengerId}
+            </div>
+            <div className="passengerOutbound">
+              <p>{`OUTBOUND: ${passengerFlight.outboundFlight.from}`}</p>
+              <p><icons.FaPlaneDeparture />{passengerFlight.outboundFlight.departure} - <icons.FaPlaneArrival />{passengerFlight.outboundFlight.arrival}
+              </p>
+            </div>
+            <div className="passengerOutbound">
+              <p>{`RETURN: ${passengerFlight.returnFlight.from} `}</p>
+              <p>
+                <icons.FaPlaneDeparture />
+                {passengerFlight.returnFlight.departure} - <icons.FaPlaneArrival />
+                {passengerFlight.returnFlight.arrival}
+              </p>
+            </div>
           </li>
         ))}
       </ul>
+      <button onClick={() => navigate(-1)}>go back</button>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../ThemeContext.js";
 import icons from "../../functions/icons.js";
+
 function CommonDestinations() {
   const [commonDestinations, setCommonDestinations] = useState([]);
   const { backendUrl } = useTheme();
