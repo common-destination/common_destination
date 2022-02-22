@@ -88,12 +88,12 @@ function Signup() {
         email: email,
       }),
     };
-    console.log("request" + requestOptions);
+    // console.log("request" + requestOptions);
     const response = await fetch(`${backendUrl}/users/signup`, requestOptions);
-    console.log("repsonse" + response);
+    // console.log("repsonse" + response);
     if (response.ok) {
       const _currentUser = await response.json();
-      console.log(_currentUser);
+      // console.log(_currentUser);
       setCurrentUser((prev) => ({ ...prev, ..._currentUser }));
 
       setUsername("");

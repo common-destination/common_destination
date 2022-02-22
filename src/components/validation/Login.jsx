@@ -29,7 +29,7 @@ function Login() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
     };
-    console.log(requestOptions);
+    // console.log(requestOptions);
     const response = await fetch(`${backendUrl}/users/login`, requestOptions);
     if (!response.ok) {
       // setUsername("");
@@ -37,7 +37,7 @@ function Login() {
       setInvalidLogin("Oops... Check your credentials!");
     } else {
       const _currentUser = await response.json();
-      console.log(_currentUser);
+      // console.log(_currentUser);
       setCurrentUser((prev) => ({ ...prev, ..._currentUser }));
       setUsername("");
       setPassword("");
