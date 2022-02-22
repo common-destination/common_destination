@@ -2,6 +2,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import icons from "../../functions/icons.js";
 import convertHours from "../../functions/convertHours.js";
+import formatFlightDurationWithoutLetters from "../../functions/formatFlightDurationWithoutLetters.js";
 
 function PassengersFlights() {
   const navigate = useNavigate();
@@ -12,26 +13,46 @@ function PassengersFlights() {
       <ul className="passengerFlightsList">
         {location.state.map((passengerFlight, index) => (
           <li key={index} className="passengerFlight">
-            <div>
+            <div className="passengerIcon">
               <icons.FaUser />
               {passengerFlight.passengerId}
             </div>
             <div className="passengerOutbound">
-              <p>{`OUTBOUND: ${passengerFlight.outboundFlight.from}`}</p>
               <p>
                 <icons.FaPlaneDeparture />
-                {passengerFlight.outboundFlight.departure} -{" "}
-                <icons.FaPlaneArrival />
-                {passengerFlight.outboundFlight.arrival}
+                {` ${passengerFlight.outboundFlight.from} - ${passengerFlight.outboundFlight.to}`}
+              </p>
+              <p>
+                {`${passengerFlight.outboundFlight.departure.slice(0, -5)} - 
+                ${passengerFlight.outboundFlight.arrival.slice(0, -5)}`}
+              </p>
+              <p>
+                <icons.FaClock className="clockIcons" />
+                {` ${passengerFlight.outboundFlight.departure.slice(11)} - 
+                ${passengerFlight.outboundFlight.arrival.slice(11)}`}
               </p>
             </div>
             <div className="passengerOutbound">
-              <p>{`RETURN: ${passengerFlight.returnFlight.from} `}</p>
               <p>
-                <icons.FaPlaneDeparture />
-                {passengerFlight.returnFlight.departure} -{" "}
                 <icons.FaPlaneArrival />
-                {passengerFlight.returnFlight.arrival}
+                {` ${passengerFlight.returnFlight.from} - ${passengerFlight.returnFlight.to}`}
+              </p>
+              <p>
+                {`${passengerFlight.returnFlight.departure.slice(0, -5)} - 
+                ${passengerFlight.returnFlight.arrival.slice(0, -5)}`}
+              </p>
+              <p>
+                <icons.FaClock className="clockIcons" />
+                {` ${passengerFlight.returnFlight.departure.slice(11)} - 
+                ${passengerFlight.returnFlight.arrival.slice(11)}`}
+              </p>
+            </div>
+            <div className="stayTimeTotalPrice">
+              <p>
+                {`Flight duration: ${formatFlightDurationWithoutLetters(
+                  passengerFlight.outboundFlight.flightDuration
+                )}`}
+                <icons.FaClock className="clockIcons" />
               </p>
               <p>
                 {`Total price: ${passengerFlight.totalPrice}`}
@@ -39,7 +60,7 @@ function PassengersFlights() {
               </p>
               <p>
                 {`Stay time: ${convertHours(passengerFlight.stayTime)}`}
-                <icons.FaClock />
+                <icons.FaClock className="clockIcons" />
               </p>
             </div>
           </li>
