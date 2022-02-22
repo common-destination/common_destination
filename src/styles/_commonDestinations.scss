@@ -4,40 +4,37 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 8vh;
 
   .destinations {
-    // border: 2px solid red;
-    width: 90vw;
-    // height: 70vh;
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
-    // align-items: center;
+    justify-content: space-evenly;
 
     li {
-      margin: 10% 0;
+      margin-top: 1vh;
     }
+
     .destination {
       color: rgb(226, 15, 15);
       font-weight: bolder;
-      // width: 30%;
-      // height: 100%;
-      // border: 2px solid red;
-      margin-top: 3rem;
+      border: 2px solid red;
+      width: fit-content;
+      height: fit-content;
       text-align: center;
+      padding: 0.2rem;
     }
 
     .commonDestinationToAirport {
-      cursor: pointer;
+      width: 100%;
       color: $color2;
       font-family: Arial;
-      font-size: 1rem;
       font-weight: bold;
       padding: 0.2rem;
-      // text-align: center;
-      display: flex;
-      justify-content: center;
+      cursor: pointer;
+      border: 2px solid red;
     }
   }
 }

@@ -1,6 +1,7 @@
 .flightSearch {
-  background-color: #9c9797af;
+  width: fit-content;
   height: fit-content;
+  background-color: #9c9797af;
   margin-top: 6rem;
   border-radius: 1rem;
 
@@ -9,7 +10,7 @@
     flex-direction: column;
     position: relative;
     color: #fff4eb;
-    font-weight: bolder;
+    font-weight: bold;
     font-size: 1.2rem;
 
     .passengerCriteriaError {
@@ -55,28 +56,23 @@
 
       .hoursCounter,
       .daysCounter {
+        width: 1.5rem;
+        text-align: center;
         font-size: 1.25rem;
       }
 
-      .hoursDays {
-        padding: 0 1.05rem;
+      .flightSearchTopText {
+        width: 3.5rem;
       }
 
-      .hours {
-        padding: 0;
-      }
-
-      .days {
-        padding: 0 0.6rem;
-      }
       .iconInfo {
-        font-size: 1.3rem;
+        font-size: 1rem;
         border-radius: 50%;
         color: #145375;
         background-color: #fff4eb;
-        border: 2px solid #fff4eb;
+        // border: 2px solid #fff4eb;
         cursor: pointer;
-        margin-right: 0.5rem;
+        margin: 0 0 1rem 0;
 
         &:hover {
           color: #476e9e;
@@ -84,13 +80,13 @@
       }
 
       .iconsPlusMinus {
-        font-size: 1.7rem;
+        font-size: 1.6rem;
         border-radius: 50%;
         color: #145375;
         background-color: #fff4eb;
         border: 2px solid #fff4eb;
         cursor: pointer;
-        margin: auto 0.5rem;
+        margin: auto 0.3rem;
 
         &:hover {
           color: #476e9e;
@@ -99,8 +95,8 @@
 
       input {
         width: clamp(3em, 6vw, 7em);
-        margin: 0 1vw;
-        padding: 0.5% 2%;
+        margin: 0 1vw; // ?
+        padding: 0.5% 2%; // ?
       }
 
       .passengersLenght {
@@ -110,12 +106,12 @@
         margin: auto 0 auto auto;
         background-color: #145375;
         border-radius: 0.5rem;
-        padding: 0.2rem 0.6rem;
+        padding: 0.1rem 0.5rem;
         border: 2px solid #fff4eb;
 
         .passengersIcon {
           color: #fff4eb;
-          font-size: 1.5rem;
+          font-size: 1.25rem;
         }
 
         .passengersAmount {
