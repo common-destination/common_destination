@@ -1,6 +1,7 @@
 // import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import icons from "../../functions/icons.js";
+import convertHours from "../../functions/convertHours.js";
 
 function PassengersFlights() {
   const navigate = useNavigate();
@@ -8,7 +9,6 @@ function PassengersFlights() {
 
   return (
     <div className="passengerFlights">
-     
       <ul className="passengerFlightsList">
         {location.state.map((passengerFlight, index) => (
           <li key={index} className="passengerFlight">
@@ -18,15 +18,28 @@ function PassengersFlights() {
             </div>
             <div className="passengerOutbound">
               <p>{`OUTBOUND: ${passengerFlight.outboundFlight.from}`}</p>
-              <p><icons.FaPlaneDeparture />{passengerFlight.outboundFlight.departure} - <icons.FaPlaneArrival />{passengerFlight.outboundFlight.arrival}
+              <p>
+                <icons.FaPlaneDeparture />
+                {passengerFlight.outboundFlight.departure} -{" "}
+                <icons.FaPlaneArrival />
+                {passengerFlight.outboundFlight.arrival}
               </p>
             </div>
             <div className="passengerOutbound">
               <p>{`RETURN: ${passengerFlight.returnFlight.from} `}</p>
               <p>
                 <icons.FaPlaneDeparture />
-                {passengerFlight.returnFlight.departure} - <icons.FaPlaneArrival />
+                {passengerFlight.returnFlight.departure} -{" "}
+                <icons.FaPlaneArrival />
                 {passengerFlight.returnFlight.arrival}
+              </p>
+              <p>
+                {`Total price: ${passengerFlight.totalPrice}`}
+                <icons.FaEuroSign />
+              </p>
+              <p>
+                {`Stay time: ${convertHours(passengerFlight.stayTime)}`}
+                <icons.FaClock />
               </p>
             </div>
           </li>
