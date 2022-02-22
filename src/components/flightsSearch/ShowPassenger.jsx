@@ -25,7 +25,6 @@ const ShowPassenger = ({
   return (
     <div
       className="showPassenger"
-      //MAYBE ONLY ERRORTOGGLE AS CONDITION
       style={{ opacity: airportsError || datesError ? 0.5 : 1 }}
     >
       <div className="outerContainer">
@@ -51,7 +50,7 @@ const ShowPassenger = ({
       {canDelete && (
         <icons.RiDeleteBinLine
           className="deletePassenger"
-          onClick={handlePassengerDelete}
+          onClick={() => handlePassengerDelete(passenger.id - 1)}
         />
       )}
     </div>

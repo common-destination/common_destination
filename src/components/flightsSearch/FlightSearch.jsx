@@ -12,9 +12,16 @@ const _emptyPassenger = {
   minOutboundDate: "",
   maxReturnDate: "",
 };
+
+const fillDataIntoPassengers = (passengers) => {
+  passengers.forEach((passenger, index) => {
+    passenger.id = `${index + 1}`;
+  });
+  return passengers;
+};
+
 function FlightSearch() {
   const [departureAirports, setDepartureAirports] = useState([]);
-  // const [passengers, setPassengers] = useState([]);
   const [stayTimeTogether, setStayTimeTogether] = useState(24);
   const [passengersValidation, setPassengersValidation] = useState(false);
   const [datesValidation, setDatesValidation] = useState(false);
@@ -33,13 +40,7 @@ function FlightSearch() {
   const airports = passengers.map((passenger) => passenger.airport);
   const outbounds = passengers.map((passenger) => passenger.minOutboundDate);
   const returns = passengers.map((passenger) => passenger.maxReturnDate);
-  const fillDataIntoPassengers = (passengers) => {
-    passengers.forEach((passenger, index) => {
-      passenger.id = `${index + 1}`;
-      // passenger.genericTitle = `Passenger${index + 1}`;
-    });
-    return passengers;
-  };
+
   useEffect(() => {
     (async () => {
       const requestOptions = {
@@ -117,7 +118,6 @@ function FlightSearch() {
     returns,
   ]);
 
-  //CHECK IF IS IT USERFULL, MAYBE ONLY ERRRORTOGGLES FOR OPACITY IN SHOWPASSENGER DIV
   useEffect(() => {
     errorsToggle && !airportsValidation
       ? setAirportsError(true)
@@ -135,7 +135,6 @@ function FlightSearch() {
     const _passengers = [...passengers, { ..._emptyPassenger }];
     fillDataIntoPassengers(_passengers);
     setPassengers([..._passengers]);
-
     window.scrollBy(0, 7000);
   };
 
@@ -162,16 +161,12 @@ function FlightSearch() {
     if (response.ok && passengersValidation) {
       const _passengers = [{ ..._emptyPassenger }, { ..._emptyPassenger }];
       setPassengers([...fillDataIntoPassengers(_passengers)]);
-      // console.log("afterButton", passengers);
-
       navigate("/common-destinations");
     } else {
       setErrorsToggle(true);
       setMarkedErrors(true);
     }
   };
-
-  // console.log("forButton", passengers);
 
   return (
     <div className="flightSearch">
