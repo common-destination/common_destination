@@ -59,7 +59,7 @@ function GeneralCriteria({
 
         <div className="stayTimeTogether">
           <icons.FaInfoCircle className="iconInfo" onClick={infosPopUpToggle} />
-          <span>duration:</span>
+          <span>duration</span>
           {daysCounter === 1 && (
             <>
               <icons.FaMinusCircle
@@ -79,7 +79,7 @@ function GeneralCriteria({
                 className="iconsPlusMinus"
                 onClick={() => setDaysCounter((prev) => prev + 1)}
               />
-              <p className="hoursDays">day</p>
+              <p className="flightSearchTopText">day</p>
             </>
           )}
 
@@ -102,7 +102,7 @@ function GeneralCriteria({
                 className="iconsPlusMinus"
                 onClick={() => setDaysCounter((prev) => prev + 1)}
               />
-              <p className="days">days</p>
+              <p className="flightSearchTopText">days</p>
             </>
           )}
 
@@ -129,7 +129,7 @@ function GeneralCriteria({
                   }
                 }}
               />
-              <p className="hours">hours</p>
+              <p className="flightSearchTopText">hours</p>
             </>
           )}
           <div className="passengersLenght">
