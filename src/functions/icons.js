@@ -23,6 +23,7 @@ import {
   BsPlusCircleFill,
   BsPeopleFill,
   BsFillChatRightTextFill,
+  BsFillBookmarkCheckFill,
 } from "react-icons/bs";
 
 const icons = {
@@ -57,6 +58,7 @@ const icons = {
   FaPlusCircle,
   BsPeopleFill,
   BsFillChatRightTextFill,
+  BsFillBookmarkCheckFill,
 };
 
 export default icons;

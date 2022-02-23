@@ -1,14 +1,49 @@
-// import React, { useState, useEffect } from "react";
+// import React, { useState} from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useTheme } from "../../ThemeContext.js";
 import icons from "../../functions/icons.js";
 import convertHours from "../../functions/convertHours.js";
+import Validation from "../../components/validation/Validation.jsx";
 
 function PassengersFlights() {
   const navigate = useNavigate();
   const location = useLocation();
+  const {
+    currentUser,
+    validationMenuToggle,
+    setValidationMenuToggle,
+    backendUrl,
+  } = useTheme();
+
+  const saveTrip = async () => {
+    currentUser.username !== "anonymousUser"
+      ? await fetch(
+          `${backendUrl}/common-destinations/favorite-trips/${currentUser._id}`,
+          {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            // favoriteTrips: location.state,
+            body: JSON.stringify({ favoriteTrips: location.state }),
+          }
+        )
+      : setValidationMenuToggle(true);
+  };
+
+  // const handleAddLike = async (poem, description) => {
+  //   await fetch(`${backendUrl}/addLike/${description}/${poem._id}`, {
+  //     method: "PATCH",
+  //     headers: { "Content-Type": "application/json" },
+  //     likes: poem.likes,
+  //     body: JSON.stringify({ userName: currentUser.userName }),
+  //   });
+  //   (async () => {
+  //     await loadPoems();
+  //   })();
+  // };
 
   return (
     <div className="passengerFlights">
+      {validationMenuToggle && <Validation />}
       <ul className="passengerFlightsList">
         {location.state.map((passengerFlight, index) => (
           <li key={index} className="passengerFlight">
@@ -46,6 +81,9 @@ function PassengersFlights() {
         ))}
       </ul>
       <button onClick={() => navigate(-1)}>go back</button>
+      <br />
+      <br />
+      <icons.BsFillBookmarkCheckFill onClick={saveTrip} />
     </div>
   );
 }
