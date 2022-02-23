@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import icons from "../../functions/icons.js";
 import convertHours from "../../functions/convertHours.js";
 import formatFlightDurationWithoutLetters from "../../functions/formatFlightDurationWithoutLetters.js";
+import timeSlicer from "../../functions/timeSlicer.js";
+import dateSlicer from "../../functions/dateSlicer.js";
 
 function PassengersFlights() {
   const navigate = useNavigate();
@@ -18,33 +20,37 @@ function PassengersFlights() {
               {passengerFlight.passengerId}
             </div>
             <div className="passengerOutbound">
-              <p>
-                <icons.FaPlaneDeparture />
+              <p className="airportsToUppercase">
+                <icons.FaPlaneDeparture className="reactIconAirplane" />
                 {` ${passengerFlight.outboundFlight.from} - ${passengerFlight.outboundFlight.to}`}
               </p>
-              <p>
-                {`${passengerFlight.outboundFlight.departure.slice(0, -5)} - 
-                ${passengerFlight.outboundFlight.arrival.slice(0, -5)}`}
-              </p>
-              <p>
-                <icons.FaClock className="clockIcons" />
-                {` ${passengerFlight.outboundFlight.departure.slice(11)} - 
-                ${passengerFlight.outboundFlight.arrival.slice(11)}`}
+              {/* <p>
+                {`${timeSlicer(passengerFlight.outboundFlight.departure)} - 
+                ${timeSlicer(passengerFlight.outboundFlight.arrival)}`}
+              </p> */}
+              <p className="datesColor">
+                <icons.FaClock className="reactIconClock" />
+                {` ${dateSlicer(passengerFlight.outboundFlight.departure)} - 
+                ${dateSlicer(
+                  passengerFlight.outboundFlight.arrival
+                )} ${timeSlicer(passengerFlight.outboundFlight.departure)}`}
               </p>
             </div>
             <div className="passengerOutbound">
-              <p>
-                <icons.FaPlaneArrival />
+              <p className="airportsToUppercase">
+                <icons.FaPlaneArrival className="reactIconAirplane" />
                 {` ${passengerFlight.returnFlight.from} - ${passengerFlight.returnFlight.to}`}
               </p>
-              <p>
-                {`${passengerFlight.returnFlight.departure.slice(0, -5)} - 
-                ${passengerFlight.returnFlight.arrival.slice(0, -5)}`}
-              </p>
-              <p>
-                <icons.FaClock className="clockIcons" />
-                {` ${passengerFlight.returnFlight.departure.slice(11)} - 
-                ${passengerFlight.returnFlight.arrival.slice(11)}`}
+              {/* <p>
+                {`${timeSlicer(passengerFlight.returnFlight.departure)} - 
+                ${timeSlicer(passengerFlight.returnFlight.arrival)}`}
+              </p> */}
+              <p className="datesColor">
+                <icons.FaClock className="reactIconClock" />
+                {` ${dateSlicer(passengerFlight.returnFlight.departure)} - 
+                ${dateSlicer(
+                  passengerFlight.returnFlight.arrival
+                )} ${timeSlicer(passengerFlight.returnFlight.departure)}`}
               </p>
             </div>
             <div className="stayTimeTotalPrice">
@@ -52,15 +58,20 @@ function PassengersFlights() {
                 {`Flight duration: ${formatFlightDurationWithoutLetters(
                   passengerFlight.outboundFlight.flightDuration
                 )}`}
-                <icons.FaClock className="clockIcons" />
+                {console.log(
+                  formatFlightDurationWithoutLetters(
+                    passengerFlight.outboundFlight.flightDuration
+                  )
+                )}
+                {/* <icons.FaClock className="reactIconClock" /> */}
               </p>
               <p>
                 {`Total price: ${passengerFlight.totalPrice}`}
-                <icons.FaEuroSign />
+                <icons.FaEuroSign className="reactIconEuro" />
               </p>
               <p>
                 {`Stay time: ${convertHours(passengerFlight.stayTime)}`}
-                <icons.FaClock className="clockIcons" />
+                {/* <icons.FaClock className="reactIconClock" /> */}
               </p>
             </div>
           </li>
