@@ -34,16 +34,40 @@
       width: fit-content;
     }
 
+    .airport {
+      @include inputStyle;
+      width: fit-content;
+    }
+
+    .airportError {
+      @include inputStyle;
+      width: fit-content;
+      box-shadow: inset 0 0 0 2rem #f00;
+
+      &::placeholder {
+        color: #fff4eb;
+      }
+    }
+
     .selectDates {
       display: flex;
-      margin-right: 1rem;
+
+      @media (min-width: 768px) {
+        margin-right: 1rem;
+      }
     }
 
     .datePicker {
       width: 99%;
     }
+
     .dateError {
       border: 2px solid red;
+      box-shadow: inset 0 0 0 2rem #f00;
+
+      &::placeholder {
+        color: #fff4eb;
+      }
     }
   }
 

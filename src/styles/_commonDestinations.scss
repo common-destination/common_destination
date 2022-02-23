@@ -19,23 +19,35 @@
     }
 
     .destination {
-      color: rgb(226, 15, 15);
+      color: #145375;
       font-weight: bolder;
-      border: 2px solid red;
+      // border: 2px solid $color2;
       width: fit-content;
       height: fit-content;
       text-align: center;
-      padding: 0.2rem;
+      padding: 0.5rem;
     }
 
     .commonDestinationToAirport {
       width: 100%;
       color: $color2;
+      background-color: #fff4eb;
       font-family: Arial;
       font-weight: bold;
-      padding: 0.2rem;
+      padding: 0.5rem;
       cursor: pointer;
-      border: 2px solid red;
+      border: 2px solid $color2;
+
+      &:nth-child(odd) {
+        background: $color2;
+        color: #fff4eb;
+      }
+
+      &:hover {
+        position: relative;
+        bottom: 3px;
+        transform: scale(1.05);
+      }
     }
   }
 }
@@ -49,7 +61,7 @@
   margin-top: 11%;
 
   @media (min-width: 768px) {
-    margin-top: 3.2%;
+    margin-top: 3.5%;
   }
 
   .passengerFlight {
@@ -58,27 +70,52 @@
     width: 100%;
     height: fit-content;
     background-color: #fff4eb;
-    margin-bottom: 1%;
-    padding: 0.6rem 3rem;
-    // border: 2px solid red;
+    margin-bottom: 3%;
+    padding: 1rem;
+    // border: 6px dashed #145375;
+    box-shadow: 0 0 10px 5px #145375;
     // text-align: center;
     line-height: 1.5rem;
 
-    // .passengerIcon {
-    // position: absolute;
-    // left: 5vw;
-    // }
+    &:hover {
+      position: relative;
+      bottom: 3px;
+    }
 
-    .passengerOutbound {
+    .passengerIcon {
+      font-size: 1.8rem;
       margin-bottom: 0.5rem;
     }
 
-    // .stayTimeTotalPrice {
-    // text-align: left;
-    // }
+    .passengerOutbound {
+      margin-bottom: 1rem;
 
-    .clockIcons {
-      margin-left: 0.2rem;
+      .datesColor {
+        color: #000;
+
+        .reactIconClock {
+          color: #145375;
+          font-size: 1.25rem;
+        }
+      }
+
+      .airportsToUppercase {
+        text-transform: uppercase;
+        color: #000;
+
+        .reactIconAirplane {
+          color: #145375; // ???
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .stayTimeTotalPrice {
+      color: #000;
+
+      // .reactIconEuro {
+      //   color: #145375;
+      // }
     }
   }
 

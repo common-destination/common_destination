@@ -23,7 +23,7 @@ export const PopUps = ({
       )}
       <br />
 
-      {(text1 || text2 || text3) && <h4>DATES ERRORS:</h4>}
+      {(text1 || text2 || text3) && <h4>DATE ERRORS:</h4>}
 
       {text1 && (
         <>
@@ -44,7 +44,7 @@ export const PopUps = ({
         </>
       )}
 
-      {text4 && <h4>AIRPORTS ERRORS:</h4>}
+      {text4 && <h4>AIRPORT ERRORS:</h4>}
 
       {text4 && (
         <>

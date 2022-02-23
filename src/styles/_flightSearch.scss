@@ -16,34 +16,41 @@
     .passengerCriteriaError {
       position: absolute;
       z-index: 1;
-      top: 24vmin;
-      left: 5vmax;
-      width: clamp(300px, 50vmin, 700px);
-      background: rgb(221, 221, 255, 1);
-      border-radius: 1rem;
-      box-shadow: 0 0 30px 0 #555;
-      padding: 1.5rem 0 0 0;
+      top: 16vmin;
+      // left: 2vmax;
+      width: clamp(330px, 50vmin, 700px);
+      // background: rgb(221, 221, 255, 1);
+      background-color: #fff4eb;
+      border-radius: 1rem 0 1rem 1rem;
+      // box-shadow: 0 0 30px 0 #555;
+      padding: .3rem;
       text-align: center;
-      color: #000;
+      color: #f00;
     }
 
     .bubble {
       position: absolute;
       z-index: 1;
-      width: clamp(300px, 50vmin, 500px);
-      background: rgb(221, 221, 255, 1);
-      border-radius: 1rem;
-      box-shadow: 0 0 30px 0 #555;
-      padding: 1.5rem 0 0 0;
+      // width: clamp(300px, 50vmin, 325px);
+      width: 330px;
+      // background: rgb(219, 219, 255);
+      background-color: #fff4eb;
+      border-radius: 1rem 0 1rem 1rem;
+      // box-shadow: 0 0 50px 0 #555;
+      padding: .3rem;
       text-align: center;
-      color: #000;
+      color: #f00;
     }
 
     .menuIconClosed {
       position: absolute;
-      top: 0;
-      left: 0;
-      font-size: 1.7rem;
+      top: -5px;
+      right: -5px;
+      font-size: 1.5rem;
+      // background-color: #f00;
+      // border-radius: 0 0 0 .5rem;
+      color: #f00;
+      font-weight: bold;
     }
 
     .stayTimeTogether {
@@ -84,7 +91,6 @@
         border-radius: 50%;
         color: #145375;
         background-color: #fff4eb;
-        border: 2px solid #fff4eb;
         cursor: pointer;
         margin: auto 0.3rem;
 
