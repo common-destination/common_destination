@@ -34,8 +34,9 @@ function CommonDestinations() {
             <li key={index} className="destination">
               <h2>{destination.airport}</h2>
               <ul className="commonDestinationsToAirport">
-                {destination.commonDestinationsToAirport.map(
-                  (commonDestinationToAirport, index) => (
+                {destination.commonDestinationsToAirport
+                  .sort((a, b) => a.groupPrice - b.groupPrice)
+                  .map((commonDestinationToAirport, index) => (
                     <li
                       key={index}
                       className="commonDestinationToAirport"
@@ -50,8 +51,7 @@ function CommonDestinations() {
                       <icons.FaEuroSign />
                       {commonDestinationToAirport.groupPrice}
                     </li>
-                  )
-                )}
+                  ))}
               </ul>
             </li>
           ))}
