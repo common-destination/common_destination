@@ -58,11 +58,11 @@ function PassengersFlights() {
                 {`Flight duration: ${formatFlightDurationWithoutLetters(
                   passengerFlight.outboundFlight.flightDuration
                 )}`}
-                {console.log(
+                {/* {console.log(
                   formatFlightDurationWithoutLetters(
                     passengerFlight.outboundFlight.flightDuration
                   )
-                )}
+                )} */}
                 {/* <icons.FaClock className="reactIconClock" /> */}
               </p>
               <p>
