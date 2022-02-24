@@ -46,7 +46,7 @@ function FlightSearch() {
       const requestOptions = {
         method: "GET",
         credentials: "include",
-        mode: "no-cors"
+        // mode: "no-cors"
       };
       const response = await fetch(
         `${backendUrl}/flights/airports`,
