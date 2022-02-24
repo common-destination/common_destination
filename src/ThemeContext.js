@@ -28,6 +28,7 @@ export function ThemeProvider({ children }) {
     const requestOptions = {
       method: "GET",
       credentials: "include",
+      // mode: "no-cors"
     };
     const response = await fetch(`${backendUrl}/users/logout`, requestOptions);
     if (response.ok) {
