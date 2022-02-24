@@ -21,26 +21,26 @@ export const PopUps = ({
       {(text1 || text2 || text3 || text4) && (
         <h3>Fields marked in red are wrong</h3>
       )}
-      <br />
+      {/* <br /> */}
 
       {(text1 || text2 || text3) && <h4>DATE ERRORS:</h4>}
 
       {text1 && (
         <>
           <p>- {text1}</p>
-          <br />
+          {/* <br /> */}
         </>
       )}
       {text2 && (
         <>
           <p>- {text2}</p>
-          <br />
+          {/* <br /> */}
         </>
       )}
       {text3 && (
         <>
           <p>- {text3}</p>
-          <br />
+          {/* <br /> */}
         </>
       )}
 
@@ -49,7 +49,7 @@ export const PopUps = ({
       {text4 && (
         <>
           <p>- {text4}</p>
-          <br />
+          {/* <br /> */}
         </>
       )}
     </div>
