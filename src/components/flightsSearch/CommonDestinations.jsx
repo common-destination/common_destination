@@ -14,6 +14,7 @@ function CommonDestinations() {
       const requestOptions = {
         method: "GET",
         credentials: "include",
+        mode: "no-cors",
       };
       const response = await fetch(
         `${backendUrl}/common-destinations`,
