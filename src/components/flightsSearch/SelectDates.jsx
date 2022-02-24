@@ -102,6 +102,7 @@ const SelectDates = ({
         }}
         showTimeSelect
         filterTime={filterPassedTime}
+        timeFormat="HH:mm"
         timeIntervals={60}
         dateFormat="dd-MMM-yyyy HH:mm"
       />
