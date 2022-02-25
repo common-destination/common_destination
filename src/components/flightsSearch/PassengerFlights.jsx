@@ -22,30 +22,17 @@ function PassengersFlights() {
           {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
-            // favoriteTrips: location.state,
             body: JSON.stringify({ favoriteTrips: location.state }),
           }
         )
       : setValidationMenuToggle(true);
   };
 
-  // const handleAddLike = async (poem, description) => {
-  //   await fetch(`${backendUrl}/addLike/${description}/${poem._id}`, {
-  //     method: "PATCH",
-  //     headers: { "Content-Type": "application/json" },
-  //     likes: poem.likes,
-  //     body: JSON.stringify({ userName: currentUser.userName }),
-  //   });
-  //   (async () => {
-  //     await loadPoems();
-  //   })();
-  // };
-
   return (
     <div className="passengerFlights">
       {validationMenuToggle && <Validation />}
       <ul className="passengerFlightsList">
-        {location.state.map((passengerFlight, index) => (
+        {location.state.trips.map((passengerFlight, index) => (
           <li key={index} className="passengerFlight">
             <div>
               <icons.FaUser />
