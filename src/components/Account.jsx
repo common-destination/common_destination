@@ -1,11 +1,13 @@
 import React from "react";
 import { useTheme } from "../ThemeContext.js";
+import { useNavigate } from "react-router-dom";
 import icons from "..//functions/icons.js";
 import convertHours from "../functions/convertHours.js";
 
 function Account({ className }) {
   const { currentUser } = useTheme();
-  console.log(currentUser);
+  const navigate = useNavigate();
+
 
   return (
     <div className={className}>
@@ -13,27 +15,30 @@ function Account({ className }) {
 
       <br />
       {Object.values(currentUser).length > 0 && (
-        <ul>
-          {currentUser.favoriteTrips.map((favoriteTrip, index) => (
-            <li
-              key={index}
-              className="commonDestinationToAirport"
-              // onClick={() => {
-              //   navigate("/passenger-flights", {
-              //     state: commonDestinationToAirport,
-              //   });
-              // }}
-            >
-              <icons.FaClock />
-              {convertHours(favoriteTrip.timeTogether)}
-              <icons.FaEuroSign />
-              {favoriteTrip.groupPrice}
-            </li>
-          ))}
-        </ul>
-        // <ul className="passengerFlightsList">
-        //   {currentUser.favoriteTrips.trips.map((passengerFlight, index) => (
-        //   <li key={index} className="passengerFlight">
+        <>
+          <h2>{`you have ${currentUser.favoriteTrips.length} favorite trips`}</h2>
+          <ul>
+            {currentUser.favoriteTrips.map((favoriteTrip, index) => (
+              <li
+                key={index}
+                className="commonDestinationToAirport"
+                onClick={() => {
+                  navigate("/passenger-flights", {
+                    state: favoriteTrip,
+                  });
+                }}
+              >
+                {favoriteTrip.trips[0].outboundFlight.to}
+                <icons.FaClock />
+                {convertHours(favoriteTrip.timeTogether)}
+                <icons.FaEuroSign />
+                {favoriteTrip.groupPrice}
+              </li>
+            ))}
+          </ul>
+          {/* // <ul className="passengerFlightsList">
+        //   {currentUser.favoriteTrips.trips.map((passengerFlight, index) => ( */}
+          {/* //   <li key={index} className="passengerFlight">
         //     <div>
         //       <icons.FaUser />
         //       {passengerFlight.passengerId}
@@ -66,7 +71,8 @@ function Account({ className }) {
         //     </div>
         //   </li>
         // ))}
-        // </ul>
+        // </ul> */}
+        </>
       )}
     </div>
   );
