@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTheme } from "../ThemeContext.js";
 import { useNavigate } from "react-router-dom";
-import icons from "..//functions/icons.js";
+import icons from "../functions/icons.js";
 import convertHours from "../functions/convertHours.js";
 
 function Account({ className }) {
-  const { currentUser } = useTheme();
+  const { currentUser, backendUrl, setCurrentUser } = useTheme();
   const navigate = useNavigate();
 
-
+  useEffect(() => {
+    (async () => {
+      const requestOptions = {
+        method: "GET",
+        credentials: "include",
+      };
+      const response = await fetch(
+        `${backendUrl}/users/currentuser`,
+        requestOptions
+      );
+      if (response.ok) {
+        const _currentUser = await response.json();
+        setCurrentUser((prev) => ({ ...prev, ..._currentUser }));
+      }
+    })();
+    // console.log(currentUser);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className={className}>
       {currentUser && <h1> {`WELCOME ${currentUser.username}`}</h1>}

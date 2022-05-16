@@ -39,8 +39,10 @@ function CommonDestinations() {
                       key={index}
                       className="commonDestinationToAirport"
                       onClick={() => {
+                     
+                        console.log(commonDestinationToAirport);
                         navigate("/passenger-flights", {
-                          state: commonDestinationToAirport.trips,
+                          state: commonDestinationToAirport,
                         });
                       }}
                     >

@@ -1,6 +1,6 @@
 // import React, { useState } from "react";
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { useEffect } from "react";
 import Validation from "./validation/Validation";
@@ -24,10 +24,15 @@ const Main = () => {
     backendUrl,
     burgerMenuToggle,
     menuAccountToggle,
+    currentUser,
   } = useTheme();
-
+  const location = useLocation();
   document.body.style.overflowY =
     validationMenuToggle || burgerMenuToggle ? "hidden" : "scroll";
+
+  useEffect(() => {
+    console.log(location.pathname);
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -46,7 +51,7 @@ const Main = () => {
     })();
     // console.log(currentUser);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [validationMenuToggle, menuAccountToggle]);
+  }, [currentUser, menuAccountToggle, validationMenuToggle]);
 
   return (
     <div className="Main">
